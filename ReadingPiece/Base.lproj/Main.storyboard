@@ -1,24 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Anx-nU-P5w">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--챌린지-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="챌린지" image="challenge" selectedImage="selectedChallenge" id="goX-QP-QKY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="923.1884057971015" y="103.79464285714285"/>
+        </scene>
+        <!--내 서재-->
+        <scene sceneID="kLd-8C-SJZ">
+            <objects>
+                <viewController id="Aea-jm-pEA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CJf-jI-6aF">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Vkv-TG-RjP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="내 서재" image="library" selectedImage="selectedLibrary" id="8hO-Yr-y3J"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jE-Sk-qkn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="923" y="916"/>
+        </scene>
+        <!--커뮤니티-->
+        <scene sceneID="av1-aO-IjM">
+            <objects>
+                <viewController id="Jns-TM-0LO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y3G-VR-hCU">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qlu-Nc-Xzc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="커뮤니티" image="community" selectedImage="selectedCommunity" id="dJJ-Yo-ZDJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rkw-OF-qXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="1754"/>
+        </scene>
+        <!--MY-->
+        <scene sceneID="ppJ-kL-Lqn">
+            <objects>
+                <viewController id="TXL-0b-LsC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BVH-ZK-UKW">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Y62-PC-BfK"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="MY" image="MY" selectedImage="selectedMY" id="bXB-7K-38a"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="san-al-imm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="923" y="2596"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="SzS-uw-ezL">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Anx-nU-P5w" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sz4-3Z-jeF">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.42352941179999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="9h0-yu-y0d"/>
+                        <segue destination="Aea-jm-pEA" kind="relationship" relationship="viewControllers" id="ljt-09-Kaw"/>
+                        <segue destination="Jns-TM-0LO" kind="relationship" relationship="viewControllers" id="JCs-lg-hq2"/>
+                        <segue destination="TXL-0b-LsC" kind="relationship" relationship="viewControllers" id="xfK-V5-uNO"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hjp-47-I1h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13.043478260869566" y="103.79464285714285"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MY" width="25" height="25"/>
+        <image name="challenge" width="25" height="25"/>
+        <image name="community" width="25" height="25"/>
+        <image name="library" width="25" height="25"/>
+        <image name="selectedChallenge" width="25" height="25"/>
+        <image name="selectedCommunity" width="25" height="25"/>
+        <image name="selectedLibrary" width="25" height="25"/>
+        <image name="selectedMY" width="25" height="25"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

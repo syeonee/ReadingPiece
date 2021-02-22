@@ -56,6 +56,9 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
+				D6A255FA25E4256000731B10 /* Controller */,
+				D6A255F925E4255000731B10 /* View */,
+				D6A255F825E4254A00731B10 /* Model */,
 				D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */,
 				D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */,
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
@@ -65,6 +68,27 @@
 				D6288D3525E2B5DD00D73A61 /* Info.plist */,
 			);
 			path = ReadingPiece;
+			sourceTree = "<group>";
+		};
+		D6A255F825E4254A00731B10 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D6A255F925E4255000731B10 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D6A255FA25E4256000731B10 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +313,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K437BLHFS;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,6 +333,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8K437BLHFS;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
