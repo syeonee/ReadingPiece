@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mfQ-97-olZ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Community-->
+        <scene sceneID="dKV-UG-xjK">
+            <objects>
+                <viewController storyboardIdentifier="CommunityController" title="Community" useStoryboardIdentifierAsRestorationIdentifier="YES" id="umE-if-lku" customClass="CommunityViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NOT-yX-Jec">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ib9-Wb-8Ik"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="커뮤니티" image="community" selectedImage="selectedCommunity" id="EXD-AX-D88"/>
+                    <navigationItem key="navigationItem" title="커뮤니티" id="Pzc-iz-ZKR">
+                        <barButtonItem key="rightBarButtonItem" image="write" id="uks-vy-Ejn">
+                            <color key="tintColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="jCD-hg-rNA" kind="show" id="UAz-MA-sXu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LAV-95-WFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1189.8550724637682" y="59.598214285714285"/>
+        </scene>
+        <!--GoalNavController-->
+        <scene sceneID="Pui-C0-AkX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Goal" referencedIdentifier="GoalNavController" id="jCD-hg-rNA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Hdw-3W-4gW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KGc-P8-b2g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1969" y="-170"/>
+        </scene>
+        <!--Community Nav View Controller-->
+        <scene sceneID="JRt-jr-cgs">
+            <objects>
+                <navigationController storyboardIdentifier="CommunityNavController" automaticallyAdjustsScrollViewInsets="NO" id="mfQ-97-olZ" customClass="CommunityNavViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vr5-xE-saf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="umE-if-lku" kind="relationship" relationship="rootViewController" id="8aA-J7-2TW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mGP-Qn-AB8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="279.71014492753625" y="59.598214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="community" width="25" height="25"/>
+        <image name="selectedCommunity" width="25" height="25"/>
+        <image name="write" width="20" height="19.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

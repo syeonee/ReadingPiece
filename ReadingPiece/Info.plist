@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<string>ko_KR</string>
+	<key>CFBundleDisplayName</key>
+	<string>리딩피스</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +22,17 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSansCJKkr-Black.otf</string>
+		<string>NotoSansCJKkr-Bold.otf</string>
+		<string>NotoSansCJKkr-DemiLight.otf</string>
+		<string>NotoSansCJKkr-Light.otf</string>
+		<string>NotoSansCJKkr-Medium.otf</string>
+		<string>NotoSansCJKkr-Regular.otf</string>
+		<string>NotoSansCJKkr-Thin.otf</string>
+		<string>GmarketSans-Medium.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

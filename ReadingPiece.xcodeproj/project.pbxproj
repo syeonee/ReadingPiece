@@ -7,15 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
 		D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */; };
 		D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2B25E2B5DB00D73A61 /* ViewController.swift */; };
 		D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D2D25E2B5DB00D73A61 /* Main.storyboard */; };
 		D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3025E2B5DD00D73A61 /* Assets.xcassets */; };
 		D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3225E2B5DD00D73A61 /* LaunchScreen.storyboard */; };
+		D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */; };
+		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
+		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
+		D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */; };
+		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
+		D6509DF625EADD2E000D7160 /* GmarketSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D6509DF325EADD2E000D7160 /* GmarketSans-Medium.otf */; };
+		D67C656925E4EFFE00F15290 /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656025E4EFFE00F15290 /* NotoSansCJKkr-Medium.otf */; };
+		D67C656A25E4EFFE00F15290 /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656125E4EFFE00F15290 /* NotoSansCJKkr-Regular.otf */; };
+		D67C656B25E4EFFE00F15290 /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656225E4EFFE00F15290 /* NotoSansCJKkr-Bold.otf */; };
+		D67C656C25E4EFFE00F15290 /* NotoSansCJKkr-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656325E4EFFE00F15290 /* NotoSansCJKkr-Light.otf */; };
+		D67C656F25E4EFFE00F15290 /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656625E4EFFE00F15290 /* NotoSansCJKkr-Black.otf */; };
+		D67C657025E4EFFE00F15290 /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656725E4EFFE00F15290 /* NotoSansCJKkr-Thin.otf */; };
+		D67C657125E4EFFE00F15290 /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = D67C656825E4EFFE00F15290 /* NotoSansCJKkr-DemiLight.otf */; };
+		D67C657625E566C600F15290 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657525E566C600F15290 /* Library.storyboard */; };
+		D67C657925E5715F00F15290 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657825E5715F00F15290 /* Community.storyboard */; };
+		D67C657C25E5717300F15290 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657B25E5717300F15290 /* My.storyboard */; };
+		D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C657E25E571A100F15290 /* LibraryViewController.swift */; };
+		D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658125E572DB00F15290 /* CommunityViewController.swift */; };
+		D67C658525E572FA00F15290 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658425E572FA00F15290 /* MyViewController.swift */; };
+		D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658C25E5B08300F15290 /* MyNavViewController.swift */; };
+		D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */; };
+		D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */; };
+		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +49,29 @@
 		D6288D3025E2B5DD00D73A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6288D3325E2B5DD00D73A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6288D3525E2B5DD00D73A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
+		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
+		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
+		D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
+		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D6509DF325EADD2E000D7160 /* GmarketSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GmarketSans-Medium.otf"; path = "../../../../../Downloads/GmarketSansOTF/GmarketSans-Medium.otf"; sourceTree = "<group>"; };
+		D67C656025E4EFFE00F15290 /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Medium.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		D67C656125E4EFFE00F15290 /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Regular.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		D67C656225E4EFFE00F15290 /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Bold.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
+		D67C656325E4EFFE00F15290 /* NotoSansCJKkr-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Light.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Light.otf"; sourceTree = "<group>"; };
+		D67C656625E4EFFE00F15290 /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Black.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
+		D67C656725E4EFFE00F15290 /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-Thin.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
+		D67C656825E4EFFE00F15290 /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSansCJKkr-DemiLight.otf"; path = "../../../../../Downloads/NotoSansCJKkr-hinted 2/NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
+		D67C657525E566C600F15290 /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
+		D67C657825E5715F00F15290 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
+		D67C657B25E5717300F15290 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
+		D67C657E25E571A100F15290 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		D67C658125E572DB00F15290 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		D67C658425E572FA00F15290 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		D67C658C25E5B08300F15290 /* MyNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavViewController.swift; sourceTree = "<group>"; };
+		D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavViewController.swift; sourceTree = "<group>"; };
+		D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavViewController.swift; sourceTree = "<group>"; };
+		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +85,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D60B363F25EE2E3B000E949D /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				D60B364925EE300D000E949D /* TermViewController.swift */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
+		D60B364025EE2E45000E949D /* My */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		D60B364125EE2E51000E949D /* Challenge */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Challenge;
+			sourceTree = "<group>";
+		};
+		D60B364225EE2E5A000E949D /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
 		D6288D1B25E2B5DB00D73A61 = {
 			isa = PBXGroup;
 			children = (
@@ -56,18 +133,44 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
+				D67C655F25E4EFB200F15290 /* font */,
 				D6A255FA25E4256000731B10 /* Controller */,
 				D6A255F925E4255000731B10 /* View */,
 				D6A255F825E4254A00731B10 /* Model */,
 				D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */,
 				D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */,
-				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
-				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D6288D3025E2B5DD00D73A61 /* Assets.xcassets */,
 				D6288D3225E2B5DD00D73A61 /* LaunchScreen.storyboard */,
 				D6288D3525E2B5DD00D73A61 /* Info.plist */,
 			);
 			path = ReadingPiece;
+			sourceTree = "<group>";
+		};
+		D67C655F25E4EFB200F15290 /* font */ = {
+			isa = PBXGroup;
+			children = (
+				D6509DF325EADD2E000D7160 /* GmarketSans-Medium.otf */,
+				D67C656625E4EFFE00F15290 /* NotoSansCJKkr-Black.otf */,
+				D67C656225E4EFFE00F15290 /* NotoSansCJKkr-Bold.otf */,
+				D67C656825E4EFFE00F15290 /* NotoSansCJKkr-DemiLight.otf */,
+				D67C656325E4EFFE00F15290 /* NotoSansCJKkr-Light.otf */,
+				D67C656025E4EFFE00F15290 /* NotoSansCJKkr-Medium.otf */,
+				D67C656125E4EFFE00F15290 /* NotoSansCJKkr-Regular.otf */,
+				D67C656725E4EFFE00F15290 /* NotoSansCJKkr-Thin.otf */,
+			);
+			path = font;
+			sourceTree = "<group>";
+		};
+		D67C658F25E5BE8600F15290 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				D67C658C25E5B08300F15290 /* MyNavViewController.swift */,
+				D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */,
+				D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */,
+				D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */,
+				D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 		D6A255F825E4254A00731B10 /* Model */ = {
@@ -80,6 +183,12 @@
 		D6A255F925E4255000731B10 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
+				D67C657525E566C600F15290 /* Library.storyboard */,
+				D67C657825E5715F00F15290 /* Community.storyboard */,
+				D67C657B25E5717300F15290 /* My.storyboard */,
+				D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */,
+				D6509DE625EAC87F000D7160 /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -87,6 +196,17 @@
 		D6A255FA25E4256000731B10 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D60B364225EE2E5A000E949D /* Library */,
+				D60B364125EE2E51000E949D /* Challenge */,
+				D60B364025EE2E45000E949D /* My */,
+				D60B363F25EE2E3B000E949D /* Goal */,
+				D67C658F25E5BE8600F15290 /* Navigation */,
+				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
+				D67C657E25E571A100F15290 /* LibraryViewController.swift */,
+				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
+				D67C658425E572FA00F15290 /* MyViewController.swift */,
+				D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */,
+				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -148,9 +268,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
+				D67C656F25E4EFFE00F15290 /* NotoSansCJKkr-Black.otf in Resources */,
+				D67C656A25E4EFFE00F15290 /* NotoSansCJKkr-Regular.otf in Resources */,
+				D67C656C25E4EFFE00F15290 /* NotoSansCJKkr-Light.otf in Resources */,
 				D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */,
 				D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
+				D67C657125E4EFFE00F15290 /* NotoSansCJKkr-DemiLight.otf in Resources */,
+				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
+				D67C656925E4EFFE00F15290 /* NotoSansCJKkr-Medium.otf in Resources */,
+				D67C656B25E4EFFE00F15290 /* NotoSansCJKkr-Bold.otf in Resources */,
+				D6509DF625EADD2E000D7160 /* GmarketSans-Medium.otf in Resources */,
+				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
+				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
+				D67C657025E4EFFE00F15290 /* NotoSansCJKkr-Thin.otf in Resources */,
+				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +294,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
+				D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */,
+				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
+				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
+				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
+				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
+				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
+				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
+				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
+				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
+				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
