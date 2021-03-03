@@ -20,11 +20,13 @@ extension UIColor {
     }
     
     // MARK: 메인 테마 색 또는 자주 쓰는 색을 정의
-    // ex. label.textColor = .mainOrange
     class var stopWatchNumberBlack: UIColor { UIColor(hex: 0x656565) }
     class var stopWatchBackgroundPink: UIColor { UIColor(hex: 0xFFB2AB)}
     class var navigationBarButtonTitleColor: UIColor { UIColor(hex: 0xFF6C5F)}
     class var mainPink: UIColor { UIColor(hex: 0xFF6C5F)}
+    class var subtitleGray: UIColor { UIColor(hex: 0x808080)}
+
+    // ex. label.textColor = .mainOrange
 
 }
 
