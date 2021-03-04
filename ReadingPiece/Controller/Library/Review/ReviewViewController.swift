@@ -8,10 +8,18 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
+    
+    let reviewCell = ReviewCell()
 
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: reviewCell.cellID)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 263.5
     }
 
 
@@ -25,4 +33,17 @@ class ReviewViewController: UIViewController {
     }
     */
 
+}
+
+extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
+        return cell
+    }
+    
+    
 }

@@ -20,6 +20,8 @@
 		599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9E25F08BFF0085F134 /* FocusView.xib */; };
 		599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AA325F0909B0085F134 /* ReviewViewController.swift */; };
 		599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AA625F090B40085F134 /* JournalViewController.swift */; };
+		599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AB425F11AB30085F134 /* ReviewCell.swift */; };
+		599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AB525F11AB30085F134 /* ReviewCell.xib */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -60,6 +62,8 @@
 		599D3A9E25F08BFF0085F134 /* FocusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusView.xib; sourceTree = "<group>"; };
 		599D3AA325F0909B0085F134 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		599D3AA625F090B40085F134 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		599D3AB425F11AB30085F134 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		599D3AB525F11AB30085F134 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +108,8 @@
 			isa = PBXGroup;
 			children = (
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
+				599D3AB425F11AB30085F134 /* ReviewCell.swift */,
+				599D3AB525F11AB30085F134 /* ReviewCell.xib */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -150,8 +156,8 @@
 		D60B364225EE2E5A000E949D /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				599D3AA225F090870085F134 /* Journal */,
 				599D3AA125F0907D0085F134 /* Review */,
+				599D3AA225F090870085F134 /* Journal */,
 				D67C657E25E571A100F15290 /* LibraryViewController.swift */,
 				599D3A9725F08A690085F134 /* MenuCell.swift */,
 				599D3A9A25F08A9F0085F134 /* MenuCell.xib */,
@@ -337,6 +343,7 @@
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
+				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
 				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
@@ -408,6 +415,7 @@
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
+				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
