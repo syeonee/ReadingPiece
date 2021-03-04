@@ -1,13 +1,13 @@
 //
-//  LibraryViewController.swift
+//  JournalViewController.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/02/24.
+//  Created by 정지현 on 2021/03/04.
 //
 
 import UIKit
 
-class LibraryViewController: UIViewController {
+class JournalViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
