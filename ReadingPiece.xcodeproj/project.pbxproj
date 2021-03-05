@@ -24,6 +24,10 @@
 		599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AB525F11AB30085F134 /* ReviewCell.xib */; };
 		599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */; };
 		599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */; };
+		599D3AC625F236510085F134 /* JournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AC425F236510085F134 /* JournalCell.swift */; };
+		599D3AC725F236510085F134 /* JournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AC525F236510085F134 /* JournalCell.xib */; };
+		599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AC925F240A60085F134 /* JournalHeaderCell.swift */; };
+		599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -68,6 +72,10 @@
 		599D3AB525F11AB30085F134 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
 		599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHeaderCell.swift; sourceTree = "<group>"; };
 		599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewHeaderCell.xib; sourceTree = "<group>"; };
+		599D3AC425F236510085F134 /* JournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCell.swift; sourceTree = "<group>"; };
+		599D3AC525F236510085F134 /* JournalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalCell.xib; sourceTree = "<group>"; };
+		599D3AC925F240A60085F134 /* JournalHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalHeaderCell.swift; sourceTree = "<group>"; };
+		599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalHeaderCell.xib; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				599D3AA625F090B40085F134 /* JournalViewController.swift */,
+				599D3AC425F236510085F134 /* JournalCell.swift */,
+				599D3AC525F236510085F134 /* JournalCell.xib */,
+				599D3AC925F240A60085F134 /* JournalHeaderCell.swift */,
+				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -355,6 +367,8 @@
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
 				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
+				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
+				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
 			);
@@ -409,9 +423,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
 				D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
+				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
