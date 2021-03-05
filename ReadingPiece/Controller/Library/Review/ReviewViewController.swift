@@ -10,6 +10,9 @@ import UIKit
 class ReviewViewController: UIViewController {
     
     let reviewCell = ReviewCell()
+    let fullReviewCell = FullReviewCell()
+    
+    let textSample = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
@@ -18,6 +21,8 @@ class ReviewViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: reviewCell.cellID)
+        tableView.register(UINib(nibName: "FullReviewCell", bundle: nil), forCellReuseIdentifier: fullReviewCell.cellID)
+        
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
         
@@ -41,12 +46,19 @@ class ReviewViewController: UIViewController {
 
 extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
-        return cell
+        if indexPath.row <= 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
+            cell.reviewTextLabel.text = textSample
+            return cell
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

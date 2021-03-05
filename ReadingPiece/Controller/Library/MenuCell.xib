@@ -27,10 +27,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtC-hh-FAX">
-                    <rect key="frame" x="0.0" y="109" width="200" height="2"/>
+                    <rect key="frame" x="0.0" y="111.5" width="200" height="1"/>
                     <color key="backgroundColor" red="0.70983195300000002" green="0.70973712209999995" blue="0.71372652049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="2" id="s7a-Qm-t58"/>
+                        <constraint firstAttribute="height" constant="1" id="s7a-Qm-t58"/>
                     </constraints>
                 </view>
             </subviews>
@@ -40,7 +40,7 @@
                 <constraint firstItem="8Ti-VX-EQM" firstAttribute="centerY" secondItem="0OS-rj-tR6" secondAttribute="centerY" constant="-1" id="Km0-JA-ENp"/>
                 <constraint firstAttribute="trailing" secondItem="BtC-hh-FAX" secondAttribute="trailing" id="Uqc-dZ-xLb"/>
                 <constraint firstItem="8Ti-VX-EQM" firstAttribute="centerX" secondItem="0OS-rj-tR6" secondAttribute="centerX" id="k3r-ss-IIH"/>
-                <constraint firstAttribute="bottom" secondItem="BtC-hh-FAX" secondAttribute="bottom" constant="2" id="kKe-vr-cIh"/>
+                <constraint firstAttribute="bottom" secondItem="BtC-hh-FAX" secondAttribute="bottom" constant="0.5" id="kKe-vr-cIh"/>
                 <constraint firstItem="BtC-hh-FAX" firstAttribute="leading" secondItem="0OS-rj-tR6" secondAttribute="leading" id="oCA-1h-nxZ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
