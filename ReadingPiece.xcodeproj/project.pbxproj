@@ -31,7 +31,6 @@
 		D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */; };
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
-		D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
 		D67C657625E566C600F15290 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657525E566C600F15290 /* Library.storyboard */; };
 		D67C657925E5715F00F15290 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657825E5715F00F15290 /* Community.storyboard */; };
@@ -43,6 +42,8 @@
 		D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */; };
 		D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
+		D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */; };
+		D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1B7025F2408700A0B980 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +74,6 @@
 		D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
-		D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D67C657525E566C600F15290 /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
 		D67C657825E5715F00F15290 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavViewController.swift; sourceTree = "<group>"; };
 		D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavViewController.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		D6FF1B7025F2408700A0B980 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadingPiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				D60B364925EE300D000E949D /* TermViewController.swift */,
+				D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */,
+				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -252,7 +256,6 @@
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
-				D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */,
 				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 			);
 			path = Controller;
@@ -396,17 +399,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
-				D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
+				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
+				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,

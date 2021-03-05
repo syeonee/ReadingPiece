@@ -44,13 +44,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJa-rb-VRg">
-                                <rect key="frame" x="32" y="232" width="29.5" height="24"/>
+                                <rect key="frame" x="32" y="232" width="28" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4wg-hs-nce">
-                                <rect key="frame" x="32" y="276" width="86" height="36"/>
+                                <rect key="frame" x="32" y="271" width="86" height="36"/>
                                 <state key="normal" image="week"/>
                                 <state key="selected" image="selectedWeek"/>
                                 <state key="highlighted" image="selectedWeek"/>
@@ -59,7 +59,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-DH-a4A">
-                                <rect key="frame" x="130" y="276" width="86" height="36"/>
+                                <rect key="frame" x="130" y="271" width="86" height="36"/>
                                 <state key="normal" image="month"/>
                                 <state key="selected" image="selectedMonth"/>
                                 <state key="highlighted" image="selectedMonth"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJj-DG-v36">
-                                <rect key="frame" x="228" y="276" width="86" height="36"/>
+                                <rect key="frame" x="228" y="271" width="86" height="36"/>
                                 <state key="normal" image="year"/>
                                 <state key="selected" image="selectedYear"/>
                                 <state key="highlighted" image="selectedYear"/>
@@ -77,13 +77,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="독서량" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNu-BD-a9y">
-                                <rect key="frame" x="32" y="368" width="44.5" height="24"/>
+                                <rect key="frame" x="32" y="363" width="42" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZNo-To-Mru">
-                                <rect key="frame" x="32" y="412" width="93" height="40"/>
+                                <rect key="frame" x="32" y="402" width="93" height="40"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="93" id="T8x-0e-SaC"/>
@@ -94,7 +94,7 @@
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="권" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIf-17-HaS">
-                                <rect key="frame" x="143" y="419.5" width="16" height="25.5"/>
+                                <rect key="frame" x="143" y="412" width="15" height="20"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -163,13 +163,23 @@
         <!--목표 추가-->
         <scene sceneID="Q90-Ud-m2v">
             <objects>
-                <viewController id="sME-ys-cfE" sceneMemberID="viewController">
+                <viewController id="sME-ys-cfE" customClass="TimeViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="at3-ia-Qim">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4t-rw-XrO">
+                                <rect key="frame" x="150.5" y="381" width="113" height="29"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
+                                <state key="normal" title="시간을 선택해주세요">
+                                    <color key="titleColor" red="1" green="0.42352941179999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="timeSelectButtonTapped:" destination="sME-ys-cfE" eventType="touchUpInside" id="wWH-ki-QHm"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2t-eJ-Upo">
-                                <rect key="frame" x="32" y="116" width="235" height="83"/>
+                                <rect key="frame" x="32" y="116" width="235" height="65.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="235" id="ADR-xn-Oln"/>
                                 </constraints>
@@ -180,36 +190,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="독서 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4n-os-4wq">
-                                <rect key="frame" x="32" y="243" width="63.5" height="24"/>
+                                <rect key="frame" x="32" y="243" width="60" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLd-zd-Fe3">
-                                <rect key="frame" x="51" y="501" width="312" height="46"/>
+                                <rect key="frame" x="51" y="470" width="312" height="46"/>
                                 <state key="normal" image="selectedNext"/>
                                 <connections>
                                     <segue destination="znP-37-YL6" kind="show" id="doF-iz-ilm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4t-rw-XrO">
-                                <rect key="frame" x="141" y="408" width="120" height="33"/>
-                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
-                                <state key="normal" title="시간을 선택해주세요">
-                                    <color key="titleColor" red="1" green="0.42352941179999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYh-t9-aLx">
-                                <rect key="frame" x="269" y="413.5" width="6" height="22"/>
+                                <rect key="frame" x="271.5" y="384.5" width="6" height="22"/>
                                 <state key="normal" image="arrow"/>
+                                <state key="selected" image="arrow"/>
+                                <state key="highlighted" image="arrow"/>
+                                <connections>
+                                    <action selector="timeSelectButtonTapped:" destination="sME-ys-cfE" eventType="touchUpInside" id="goU-O1-FEp"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUt-lG-QjI">
-                                <rect key="frame" x="129" y="301" width="156" height="131"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0:00" textAlignment="right" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="vlg-oH-MBp">
+                                <rect key="frame" x="129" y="296" width="156" height="95"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="80"/>
-                                <state key="normal" title="0:00">
-                                    <color key="titleColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZe-rX-FXC">
+                                <rect key="frame" x="285" y="356" width="16" height="21"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
+                                <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B8d-uT-HUq"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -218,13 +233,15 @@
                             <constraint firstItem="PLd-zd-Fe3" firstAttribute="centerX" secondItem="B8d-uT-HUq" secondAttribute="centerX" id="5A1-ex-BjO"/>
                             <constraint firstItem="J4n-os-4wq" firstAttribute="top" secondItem="B8d-uT-HUq" secondAttribute="top" constant="155" id="5y1-2K-bdM"/>
                             <constraint firstItem="VYh-t9-aLx" firstAttribute="centerY" secondItem="j4t-rw-XrO" secondAttribute="centerY" id="8QF-QY-zZ0"/>
-                            <constraint firstItem="rUt-lG-QjI" firstAttribute="top" secondItem="J4n-os-4wq" secondAttribute="bottom" constant="34" id="TpT-bJ-P0z"/>
-                            <constraint firstItem="j4t-rw-XrO" firstAttribute="bottom" secondItem="rUt-lG-QjI" secondAttribute="bottom" constant="9" id="Y34-Le-yqP"/>
+                            <constraint firstItem="j4t-rw-XrO" firstAttribute="centerX" secondItem="B8d-uT-HUq" secondAttribute="centerX" id="IyJ-IU-z8H"/>
+                            <constraint firstItem="lZe-rX-FXC" firstAttribute="leading" secondItem="vlg-oH-MBp" secondAttribute="trailing" id="P5X-pT-s9f"/>
+                            <constraint firstItem="j4t-rw-XrO" firstAttribute="top" secondItem="vlg-oH-MBp" secondAttribute="bottom" constant="-10" id="TYS-qn-VXz"/>
+                            <constraint firstItem="vlg-oH-MBp" firstAttribute="centerX" secondItem="B8d-uT-HUq" secondAttribute="centerX" id="Zrb-rb-j05"/>
+                            <constraint firstItem="vlg-oH-MBp" firstAttribute="top" secondItem="J4n-os-4wq" secondAttribute="bottom" constant="34" id="aoV-SA-4YX"/>
                             <constraint firstItem="PLd-zd-Fe3" firstAttribute="top" secondItem="j4t-rw-XrO" secondAttribute="bottom" constant="60" id="bae-lJ-EI1"/>
+                            <constraint firstItem="lZe-rX-FXC" firstAttribute="firstBaseline" secondItem="vlg-oH-MBp" secondAttribute="firstBaseline" id="c6j-yT-azu"/>
                             <constraint firstItem="VYh-t9-aLx" firstAttribute="leading" secondItem="j4t-rw-XrO" secondAttribute="trailing" constant="8" id="cT4-kZ-2Af"/>
-                            <constraint firstItem="rUt-lG-QjI" firstAttribute="centerX" secondItem="B8d-uT-HUq" secondAttribute="centerX" id="fsX-rv-Gdk"/>
                             <constraint firstItem="U2t-eJ-Upo" firstAttribute="top" secondItem="B8d-uT-HUq" secondAttribute="top" constant="28" id="h0b-aD-NPf"/>
-                            <constraint firstItem="j4t-rw-XrO" firstAttribute="leading" secondItem="rUt-lG-QjI" secondAttribute="leading" constant="12" id="hBr-0t-c0U"/>
                             <constraint firstItem="U2t-eJ-Upo" firstAttribute="leading" secondItem="B8d-uT-HUq" secondAttribute="leading" constant="32" id="jAw-Ml-sQI"/>
                         </constraints>
                     </view>
@@ -237,15 +254,20 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="arrowButton" destination="VYh-t9-aLx" id="HEK-4j-D3K"/>
+                        <outlet property="timeSelectButton" destination="j4t-rw-XrO" id="BkO-Od-cha"/>
+                        <outlet property="timeTextField" destination="vlg-oH-MBp" id="D3f-ca-Jol"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dLV-ua-bcs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026" y="145"/>
+            <point key="canvasLocation" x="2024.6376811594205" y="144.64285714285714"/>
         </scene>
         <!--책 추가-->
         <scene sceneID="pFa-j0-1OX">
             <objects>
-                <viewController id="6S8-HU-csk" customClass="BookSearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6S8-HU-csk" customClass="SearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X8o-x7-vfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -291,24 +313,91 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 123권의 검색 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0x-qi-ItU">
-                                <rect key="frame" x="20" y="158" width="116" height="20"/>
+                                <rect key="frame" x="20" y="158" width="116" height="19.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3No-EK-nBn">
-                                <rect key="frame" x="0.0" y="191" width="414" height="705"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3No-EK-nBn">
+                                <rect key="frame" x="0.0" y="190.5" width="414" height="705.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="GCH-Ek-SWM">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="130" id="GCH-Ek-SWM" customClass="BookCell" customModule="ReadingPiece" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GCH-Ek-SWM" id="58Y-KP-0Sk">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-13-USu">
+                                                    <rect key="frame" x="20" y="10" width="79" height="110"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="l1q-Pe-8HB"/>
+                                                        <constraint firstAttribute="width" constant="79" id="yo7-5P-Lpq"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                            <real key="value" value="0.10000000000000001"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgu-3q-cyJ">
+                                                    <rect key="frame" x="119" y="10" width="43" height="21"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
+                                                    <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3E-Te-LBK">
+                                                    <rect key="frame" x="119" y="32" width="39" height="21"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIF-bE-lT4">
+                                                    <rect key="frame" x="119" y="67" width="39" height="21"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
+                                                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFr-G9-1DW">
+                                                    <rect key="frame" x="351" y="44.5" width="41" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="41" id="pcy-Ut-4cs"/>
+                                                        <constraint firstAttribute="height" constant="41" id="qQ6-zK-thf"/>
+                                                    </constraints>
+                                                    <state key="normal" image="plusButton"/>
+                                                    <state key="selected" image="selectedPlusButton"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hIF-bE-lT4" firstAttribute="leading" secondItem="u3E-Te-LBK" secondAttribute="leading" id="4yh-xz-FNQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="dFr-G9-1DW" secondAttribute="trailing" constant="22" id="Sge-km-y3N"/>
+                                                <constraint firstItem="Wgu-3q-cyJ" firstAttribute="top" secondItem="eEl-13-USu" secondAttribute="top" id="ZCU-gp-X5a"/>
+                                                <constraint firstItem="hIF-bE-lT4" firstAttribute="top" secondItem="u3E-Te-LBK" secondAttribute="bottom" constant="14" id="e8g-g9-sXF"/>
+                                                <constraint firstItem="eEl-13-USu" firstAttribute="centerY" secondItem="58Y-KP-0Sk" secondAttribute="centerY" id="g7E-4c-cLs"/>
+                                                <constraint firstItem="dFr-G9-1DW" firstAttribute="centerY" secondItem="58Y-KP-0Sk" secondAttribute="centerY" id="hhG-4D-4T7"/>
+                                                <constraint firstItem="Wgu-3q-cyJ" firstAttribute="leading" secondItem="eEl-13-USu" secondAttribute="trailing" constant="20" id="k44-xZ-d2m"/>
+                                                <constraint firstItem="u3E-Te-LBK" firstAttribute="top" secondItem="Wgu-3q-cyJ" secondAttribute="bottom" constant="1" id="l5V-ho-k9f"/>
+                                                <constraint firstItem="eEl-13-USu" firstAttribute="leading" secondItem="58Y-KP-0Sk" secondAttribute="leading" constant="20" symbolic="YES" id="mWP-XL-Zg7"/>
+                                                <constraint firstItem="u3E-Te-LBK" firstAttribute="leading" secondItem="Wgu-3q-cyJ" secondAttribute="leading" id="wSt-FD-tS0"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addButton" destination="dFr-G9-1DW" id="jNZ-Rz-Scb"/>
+                                            <outlet property="authorLabel" destination="u3E-Te-LBK" id="tFF-E2-OcT"/>
+                                            <outlet property="bookImageView" destination="eEl-13-USu" id="Deb-pR-3Ac"/>
+                                            <outlet property="publisherLabel" destination="hIF-bE-lT4" id="URG-Tb-jia"/>
+                                            <outlet property="titleLabel" destination="Wgu-3q-cyJ" id="hcc-ki-lH8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="6S8-HU-csk" id="nea-Yt-QAV"/>
+                                    <outlet property="delegate" destination="6S8-HU-csk" id="H3j-Q8-LYj"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-YL-fPu">
                                 <rect key="frame" x="313" y="153" width="46" height="30"/>
@@ -337,7 +426,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="JOz-j5-Dzj"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelButton" destination="HYk-gY-a23" id="2on-Wg-HMH"/>
+                        <outlet property="cancelButton" destination="HYk-gY-a23" id="oon-cp-8mc"/>
                         <outlet property="searchButton" destination="FMa-MG-gaX" id="wNG-5s-c3C"/>
                         <outlet property="searchTextField" destination="Dgp-hg-tpY" id="Vae-5B-kBT"/>
                         <segue destination="5Rs-3U-fIc" kind="show" id="KIS-69-rws"/>
@@ -605,7 +694,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어떤 책을 읽을 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAU-Nu-V6N">
-                                <rect key="frame" x="32" y="116" width="239.5" height="38"/>
+                                <rect key="frame" x="32" y="116" width="229.5" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="5Cs-nY-hv9"/>
                                 </constraints>
@@ -614,13 +703,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색을 통해 가장 먼저 읽을 책을 골라주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-UB-7HI">
-                                <rect key="frame" x="32" y="158" width="255.5" height="21"/>
+                                <rect key="frame" x="32" y="158" width="241.5" height="16.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Light" family="Noto Sans CJK KR" pointSize="14"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwv-MN-IM1">
-                                <rect key="frame" x="32" y="207" width="311" height="40"/>
+                                <rect key="frame" x="32" y="202.5" width="311" height="40"/>
                                 <state key="normal" image="bookSearchBar"/>
                                 <state key="selected" image="bookSearchBar"/>
                                 <state key="highlighted" image="bookSearchBar"/>
@@ -629,7 +718,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookillust" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-Ib-D5L">
-                                <rect key="frame" x="118.5" y="418" width="177.5" height="146.5"/>
+                                <rect key="frame" x="118.5" y="413.5" width="177.5" height="146.5"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tvF-bG-pLZ"/>
@@ -699,7 +788,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Gq0-HY-kHL"/>
-        <segue reference="KIS-69-rws"/>
+        <segue reference="14N-Xh-MB9"/>
         <segue reference="MMK-oj-1Fo"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -713,9 +802,11 @@
         <image name="navBack" width="11" height="19"/>
         <image name="navNext" width="29.5" height="16"/>
         <image name="next" width="312" height="46"/>
+        <image name="plusButton" width="41" height="41"/>
         <image name="profile" width="54" height="27"/>
         <image name="selectedMonth" width="86" height="36"/>
         <image name="selectedNext" width="312" height="46"/>
+        <image name="selectedPlusButton" width="25" height="25"/>
         <image name="selectedStar" width="36" height="36"/>
         <image name="selectedWeek" width="86" height="36"/>
         <image name="selectedYear" width="86" height="36"/>
