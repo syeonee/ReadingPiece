@@ -34,7 +34,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-S5-SWL">
-                                <rect key="frame" x="0.0" y="143" width="414" height="753"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
                                 <connections>
                                     <segue destination="ojP-JJ-Esu" kind="embed" id="27l-J6-atU"/>
                                 </connections>
@@ -49,7 +49,7 @@
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="KnG-ZV-bf8"/>
                             <constraint firstAttribute="bottom" secondItem="2wk-S5-SWL" secondAttribute="bottom" id="NlQ-IK-X9k"/>
                             <constraint firstItem="it2-95-kuM" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="fQK-jJ-EoU"/>
-                            <constraint firstItem="2wk-S5-SWL" firstAttribute="top" secondItem="it2-95-kuM" secondAttribute="bottom" constant="5" id="sDM-Kq-t1Z"/>
+                            <constraint firstItem="2wk-S5-SWL" firstAttribute="top" secondItem="it2-95-kuM" secondAttribute="bottom" id="sDM-Kq-t1Z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="내 서재" image="library" selectedImage="selectedLibrary" id="92u-ec-o0W"/>
@@ -118,7 +118,7 @@
             <objects>
                 <viewController id="ojP-JJ-Esu" customClass="PagingContentViewController" customModule="PagingKit" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTb-U1-uWe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9o2-42-nYR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -137,14 +137,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LqG-cv-otg">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mfO-kR-JeX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="LqG-cv-otg" firstAttribute="top" secondItem="mfO-kR-JeX" secondAttribute="top" id="gZ0-Ba-Ku5"/>
+                            <constraint firstItem="LqG-cv-otg" firstAttribute="top" secondItem="yWL-hE-bha" secondAttribute="top" id="gZ0-Ba-Ku5"/>
                             <constraint firstItem="mfO-kR-JeX" firstAttribute="bottom" secondItem="LqG-cv-otg" secondAttribute="bottom" id="j0c-wz-d0K"/>
                             <constraint firstItem="mfO-kR-JeX" firstAttribute="trailing" secondItem="LqG-cv-otg" secondAttribute="trailing" id="xpA-Kp-7HE"/>
                             <constraint firstItem="LqG-cv-otg" firstAttribute="leading" secondItem="mfO-kR-JeX" secondAttribute="leading" id="xvX-ki-nVI"/>

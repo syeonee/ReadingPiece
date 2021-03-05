@@ -69,7 +69,7 @@
                                 <color key="textColor" red="0.3960812688" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="daily" translatesAutoresizingMaskIntoConstraints="NO" id="gAA-pc-10m">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="gAA-pc-10m">
                                 <rect key="frame" x="97" y="85" width="15" height="11"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="iMv-IV-QsR"/>
@@ -151,28 +151,17 @@
                             <constraint firstItem="Quf-pT-hnl" firstAttribute="top" secondItem="WP2-ea-NgX" secondAttribute="top" constant="15" id="vsC-98-rv9"/>
                         </constraints>
                     </view>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="달러구트 꿈 백화점은 우리에게 또다른 세상을 보여준다. 우리가 전혀 알지 못했던 사실을 익숙하면서도" translatesAutoresizingMaskIntoConstraints="NO" id="ZWC-kv-8au">
-                        <rect key="frame" x="20" y="165" width="319" height="50"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="50" id="JNc-vx-b2T"/>
-                            <constraint firstAttribute="width" constant="319" id="g5s-bt-GvV"/>
-                        </constraints>
-                        <color key="textColor" systemColor="labelColor"/>
-                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvx-PQ-9wd">
-                        <rect key="frame" x="20" y="237" width="16.5" height="14"/>
+                        <rect key="frame" x="20" y="229" width="16.5" height="14"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16.5" id="ApJ-o3-9ab"/>
                             <constraint firstAttribute="height" constant="14" id="kP3-LN-Odg"/>
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <state key="normal" image="heart" catalog="system"/>
+                        <state key="normal" image="like icon"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMe-OY-5eu">
-                        <rect key="frame" x="41" y="234" width="21" height="16"/>
+                        <rect key="frame" x="41" y="228" width="21" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="21" id="2cG-6x-RHp"/>
                             <constraint firstAttribute="height" constant="16" id="A6v-Qb-G2h"/>
@@ -182,7 +171,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJV-fC-giN">
-                        <rect key="frame" x="106" y="234" width="14" height="16"/>
+                        <rect key="frame" x="106" y="228.5" width="14" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="e8o-1w-R5G"/>
                             <constraint firstAttribute="height" constant="16" id="lZF-wk-Oe4"/>
@@ -192,32 +181,65 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-eQ-IXi">
-                        <rect key="frame" x="84.5" y="238" width="17" height="12.5"/>
+                        <rect key="frame" x="84.5" y="230" width="17" height="12.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12.9" id="T2V-e3-wqO"/>
                             <constraint firstAttribute="width" constant="17" id="Va3-ZO-fX4"/>
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <state key="normal" image="community"/>
+                        <state key="normal" image="comment icon"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q99-TO-tYk">
+                        <rect key="frame" x="20" y="165" width="319" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="319" id="DEy-Zr-5Xh"/>
+                            <constraint firstAttribute="height" constant="42" id="FgV-e6-fmz"/>
+                        </constraints>
+                        <string key="text">달러구트 꿈 백화점은 우리에게 또다른 세상을 보여준다.
+우리가 전혀 알지 못했던 사실을 익숙하면서도</string>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypl-nL-yBC">
+                        <rect key="frame" x="308" y="186" width="47" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="47" id="3mX-SR-cgp"/>
+                            <constraint firstAttribute="height" constant="21" id="b5S-4a-oGs"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                        <state key="normal" title="..더보기">
+                            <color key="titleColor" red="0.9312739968" green="0.45607632399999998" blue="0.39997643230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wUz-tq-hFB">
+                        <rect key="frame" x="320" y="225.5" width="19" height="22"/>
+                        <color key="tintColor" red="0.70983195300000002" green="0.70973712209999995" blue="0.71372652049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="ellipsis" catalog="system"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ZWC-kv-8au" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="3FF-8W-jXd"/>
                     <constraint firstItem="EJV-fC-giN" firstAttribute="leading" secondItem="Pif-eQ-IXi" secondAttribute="trailing" constant="4.5" id="5Dq-hm-WPY"/>
-                    <constraint firstItem="Pif-eQ-IXi" firstAttribute="top" secondItem="ZWC-kv-8au" secondAttribute="bottom" constant="23" id="AVM-fH-DVO"/>
+                    <constraint firstItem="Q99-TO-tYk" firstAttribute="top" secondItem="WP2-ea-NgX" secondAttribute="bottom" constant="16" id="5Kq-wJ-seJ"/>
                     <constraint firstItem="WP2-ea-NgX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25.800000000000001" id="ApU-4N-sew"/>
-                    <constraint firstItem="EJV-fC-giN" firstAttribute="top" secondItem="ZWC-kv-8au" secondAttribute="bottom" constant="19" id="Bpd-GE-b0T"/>
+                    <constraint firstItem="wUz-tq-hFB" firstAttribute="centerY" secondItem="Pif-eQ-IXi" secondAttribute="centerY" id="BCv-nZ-h4V"/>
                     <constraint firstItem="Yvx-PQ-9wd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Bxe-6z-Ifa"/>
+                    <constraint firstItem="OMe-OY-5eu" firstAttribute="centerY" secondItem="Yvx-PQ-9wd" secondAttribute="centerY" id="CiJ-jO-lvB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="OMe-OY-5eu" secondAttribute="bottom" constant="21.800000000000001" id="D0g-SM-fLm"/>
                     <constraint firstAttribute="trailing" secondItem="WP2-ea-NgX" secondAttribute="trailing" constant="20" id="DdL-T2-Z74"/>
+                    <constraint firstItem="Yvx-PQ-9wd" firstAttribute="top" secondItem="Q99-TO-tYk" secondAttribute="bottom" constant="22" id="Ijx-RG-0j8"/>
                     <constraint firstItem="WP2-ea-NgX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="Qh7-Dv-muw"/>
-                    <constraint firstItem="OMe-OY-5eu" firstAttribute="top" secondItem="ZWC-kv-8au" secondAttribute="bottom" constant="19" id="X3D-Wl-ROp"/>
+                    <constraint firstItem="EJV-fC-giN" firstAttribute="centerY" secondItem="Pif-eQ-IXi" secondAttribute="centerY" id="QkV-UR-JrI"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Q99-TO-tYk" secondAttribute="trailing" constant="16" id="XBJ-IQ-W7d"/>
                     <constraint firstItem="OMe-OY-5eu" firstAttribute="leading" secondItem="Yvx-PQ-9wd" secondAttribute="trailing" constant="4.5" id="ZUI-Gf-aQg"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Yvx-PQ-9wd" secondAttribute="bottom" constant="20.699999999999999" id="b7J-xw-P38"/>
-                    <constraint firstItem="ZWC-kv-8au" firstAttribute="top" secondItem="WP2-ea-NgX" secondAttribute="bottom" constant="16" id="cu4-Gr-d7C"/>
                     <constraint firstItem="WP2-ea-NgX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lUq-1c-kYs"/>
+                    <constraint firstItem="Pif-eQ-IXi" firstAttribute="top" secondItem="Q99-TO-tYk" secondAttribute="bottom" constant="23" id="nKX-w3-oQ6"/>
                     <constraint firstItem="Pif-eQ-IXi" firstAttribute="leading" secondItem="OMe-OY-5eu" secondAttribute="trailing" constant="22.5" id="pDK-Cb-M1T"/>
-                    <constraint firstItem="Yvx-PQ-9wd" firstAttribute="top" secondItem="ZWC-kv-8au" secondAttribute="bottom" constant="22" id="wh1-BR-RmM"/>
+                    <constraint firstItem="wUz-tq-hFB" firstAttribute="trailing" secondItem="Q99-TO-tYk" secondAttribute="trailing" id="sfI-Pg-Uba"/>
+                    <constraint firstItem="Ypl-nL-yBC" firstAttribute="trailing" secondItem="WP2-ea-NgX" secondAttribute="trailing" id="yLN-jZ-M7n"/>
+                    <constraint firstItem="Q99-TO-tYk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ygf-hI-vrj"/>
+                    <constraint firstItem="Ypl-nL-yBC" firstAttribute="top" secondItem="WP2-ea-NgX" secondAttribute="bottom" constant="37" id="yyy-wY-9cg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -230,15 +252,13 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="book" width="17.5" height="13"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
-        <image name="community" width="25" height="25"/>
-        <image name="daily" width="15" height="15"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
+        <image name="comment icon" width="17" height="13"/>
+        <image name="ellipsis" catalog="system" width="128" height="37"/>
+        <image name="like icon" width="16.5" height="14.5"/>
         <image name="selectedStar" width="36" height="36"/>
         <image name="time" width="15" height="15"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
