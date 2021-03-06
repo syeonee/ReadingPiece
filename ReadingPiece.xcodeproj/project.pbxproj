@@ -21,6 +21,16 @@
 		599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9E25F08BFF0085F134 /* FocusView.xib */; };
 		599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AA325F0909B0085F134 /* ReviewViewController.swift */; };
 		599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AA625F090B40085F134 /* JournalViewController.swift */; };
+		599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AB425F11AB30085F134 /* ReviewCell.swift */; };
+		599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AB525F11AB30085F134 /* ReviewCell.xib */; };
+		599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */; };
+		599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */; };
+		599D3AC625F236510085F134 /* JournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AC425F236510085F134 /* JournalCell.swift */; };
+		599D3AC725F236510085F134 /* JournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3AC525F236510085F134 /* JournalCell.xib */; };
+		599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3AC925F240A60085F134 /* JournalHeaderCell.swift */; };
+		599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */; };
+		599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3ACE25F26EC00085F134 /* FullReviewCell.swift */; };
+		599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACF25F26EC00085F134 /* FullReviewCell.xib */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -62,6 +72,16 @@
 		599D3A9E25F08BFF0085F134 /* FocusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusView.xib; sourceTree = "<group>"; };
 		599D3AA325F0909B0085F134 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		599D3AA625F090B40085F134 /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
+		599D3AB425F11AB30085F134 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		599D3AB525F11AB30085F134 /* ReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCell.xib; sourceTree = "<group>"; };
+		599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHeaderCell.swift; sourceTree = "<group>"; };
+		599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewHeaderCell.xib; sourceTree = "<group>"; };
+		599D3AC425F236510085F134 /* JournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCell.swift; sourceTree = "<group>"; };
+		599D3AC525F236510085F134 /* JournalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalCell.xib; sourceTree = "<group>"; };
+		599D3AC925F240A60085F134 /* JournalHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalHeaderCell.swift; sourceTree = "<group>"; };
+		599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalHeaderCell.xib; sourceTree = "<group>"; };
+		599D3ACE25F26EC00085F134 /* FullReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullReviewCell.swift; sourceTree = "<group>"; };
+		599D3ACF25F26EC00085F134 /* FullReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReviewCell.xib; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +133,7 @@
 		599D3AA125F0907D0085F134 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				599D3AD325F26EC90085F134 /* ReviewCells */,
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
 			);
 			path = Review;
@@ -122,8 +143,25 @@
 			isa = PBXGroup;
 			children = (
 				599D3AA625F090B40085F134 /* JournalViewController.swift */,
+				599D3AC425F236510085F134 /* JournalCell.swift */,
+				599D3AC525F236510085F134 /* JournalCell.xib */,
+				599D3AC925F240A60085F134 /* JournalHeaderCell.swift */,
+				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
 			);
 			path = Journal;
+			sourceTree = "<group>";
+		};
+		599D3AD325F26EC90085F134 /* ReviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				599D3AB425F11AB30085F134 /* ReviewCell.swift */,
+				599D3AB525F11AB30085F134 /* ReviewCell.xib */,
+				599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */,
+				599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */,
+				599D3ACE25F26EC00085F134 /* FullReviewCell.swift */,
+				599D3ACF25F26EC00085F134 /* FullReviewCell.xib */,
+			);
+			path = ReviewCells;
 			sourceTree = "<group>";
 		};
 		7D25273E0465C2D67DFF944A /* Pods */ = {
@@ -160,8 +198,8 @@
 		D60B364225EE2E5A000E949D /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				599D3AA225F090870085F134 /* Journal */,
 				599D3AA125F0907D0085F134 /* Review */,
+				599D3AA225F090870085F134 /* Journal */,
 				D67C657E25E571A100F15290 /* LibraryViewController.swift */,
 				599D3A9725F08A690085F134 /* MenuCell.swift */,
 				599D3A9A25F08A9F0085F134 /* MenuCell.xib */,
@@ -343,15 +381,20 @@
 				5913B23A25EF2E4D002AAA8C /* NotoSansCJKkr-Light.otf in Resources */,
 				D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
+				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
+				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
+				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
 				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
+				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
+				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
 			);
@@ -406,9 +449,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
+				599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */,
 				D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
+				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
@@ -418,8 +464,10 @@
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
+				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
+				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
