@@ -142,11 +142,8 @@
 		599D3AA225F090870085F134 /* Journal */ = {
 			isa = PBXGroup;
 			children = (
+				599D3AD925F37A770085F134 /* JournalCells */,
 				599D3AA625F090B40085F134 /* JournalViewController.swift */,
-				599D3AC425F236510085F134 /* JournalCell.swift */,
-				599D3AC525F236510085F134 /* JournalCell.xib */,
-				599D3AC925F240A60085F134 /* JournalHeaderCell.swift */,
-				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -162,6 +159,17 @@
 				599D3ACF25F26EC00085F134 /* FullReviewCell.xib */,
 			);
 			path = ReviewCells;
+			sourceTree = "<group>";
+		};
+		599D3AD925F37A770085F134 /* JournalCells */ = {
+			isa = PBXGroup;
+			children = (
+				599D3AC425F236510085F134 /* JournalCell.swift */,
+				599D3AC525F236510085F134 /* JournalCell.xib */,
+				599D3AC925F240A60085F134 /* JournalHeaderCell.swift */,
+				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
+			);
+			path = JournalCells;
 			sourceTree = "<group>";
 		};
 		7D25273E0465C2D67DFF944A /* Pods */ = {

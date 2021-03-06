@@ -13,7 +13,7 @@ class ReviewViewController: UIViewController {
     let fullReviewCell = FullReviewCell()
     
     let textSample = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged."
-
+    
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +69,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = Bundle.main.loadNibNamed("ReviewHeaderCell", owner: self, options: nil)?.first as! ReviewHeaderCell
         return headerView
     }
+    
     
     @available(iOS 11.0, *)
     override func viewSafeAreaInsetsDidChange() {
