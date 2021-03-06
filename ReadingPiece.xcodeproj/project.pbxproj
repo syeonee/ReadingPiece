@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
 		5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		049711AD81EEFAB3F8E9AE75 /* Pods-ReadingPiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.release.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.release.xcconfig"; sourceTree = "<group>"; };
 		5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00838FC425F3607100340AE0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				00838FC525F3607A00340AE0 /* Colors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		599D3AA125F0907D0085F134 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +191,7 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
+				00838FC425F3607100340AE0 /* Extensions */,
 				D67C655F25E4EFB200F15290 /* font */,
 				D6A255FA25E4256000731B10 /* Controller */,
 				D6A255F925E4255000731B10 /* View */,
@@ -402,6 +413,7 @@
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
+				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
