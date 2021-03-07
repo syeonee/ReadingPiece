@@ -1,16 +1,24 @@
 PODS:
   - PagingKit (1.15.0)
+  - SnapKit (5.0.1)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - PagingKit
+  - SnapKit (~> 5.0.0)
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - PagingKit
+    - SnapKit
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: e8acbfcffd2c5c0b6d7e3e14774a5656f1f7d766
+PODFILE CHECKSUM: b63f58f3578ddcc51b0a9e4ee7835efb3d0844aa
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.10.0
