@@ -23,19 +23,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 3개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pI-Vw-ilT">
-                        <rect key="frame" x="21" y="20" width="37" height="21"/>
+                        <rect key="frame" x="21" y="25" width="37" height="21"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최신순" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bf2-Qf-idX">
-                        <rect key="frame" x="246" y="20" width="39" height="21"/>
+                        <rect key="frame" x="246" y="25" width="39" height="21"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtU-v6-f9C">
-                        <rect key="frame" x="288" y="19.5" width="19" height="22"/>
+                        <rect key="frame" x="288" y="24.5" width="19" height="22"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" image="chevron.down" catalog="system"/>
                     </button>
@@ -45,9 +45,9 @@
                     <constraint firstAttribute="trailing" secondItem="Bf2-Qf-idX" secondAttribute="trailing" constant="35" id="7cZ-OA-Akf"/>
                     <constraint firstItem="8pI-Vw-ilT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="21" id="HXA-Vf-1xQ"/>
                     <constraint firstItem="qtU-v6-f9C" firstAttribute="centerY" secondItem="Bf2-Qf-idX" secondAttribute="centerY" id="P3A-TS-08m"/>
-                    <constraint firstItem="Bf2-Qf-idX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hgM-Yz-vPB"/>
+                    <constraint firstItem="Bf2-Qf-idX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="hgM-Yz-vPB"/>
                     <constraint firstAttribute="trailing" secondItem="qtU-v6-f9C" secondAttribute="trailing" constant="13" id="t0V-3x-1Lq"/>
-                    <constraint firstItem="8pI-Vw-ilT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ygj-i4-udZ"/>
+                    <constraint firstItem="8pI-Vw-ilT" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="5" id="ygj-i4-udZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

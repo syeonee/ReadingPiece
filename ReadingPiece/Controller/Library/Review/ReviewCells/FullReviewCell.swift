@@ -17,6 +17,10 @@ class FullReviewCell: UITableViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var ratingView: UIView!
     
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         upperView.layer.cornerRadius = 4
