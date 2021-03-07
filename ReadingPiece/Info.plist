@@ -32,6 +32,7 @@
 		<string>NotoSansCJKkr-Regular.otf</string>
 		<string>NotoSansCJKkr-Thin.otf</string>
 		<string>GmarketSans-Medium.otf</string>
+        <string>NotoSans-SemiBold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

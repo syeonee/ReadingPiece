@@ -1,13 +1,13 @@
 //
-//  MyNavViewController.swift
+//  BookAddNavViewController.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/02/24.
+//  Created by SYEON on 2021/03/08.
 //
 
 import UIKit
 
-class MyNavViewController: UINavigationController {
+class BookAddNavViewController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

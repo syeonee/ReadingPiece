@@ -12,6 +12,7 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var timeSelectButton: UIButton!
     @IBOutlet weak var arrowButton: UIButton!
+    @IBOutlet weak var minuteLabel: UILabel!
     
     let datePicker = UIDatePicker()
  
@@ -21,6 +22,7 @@ class TimeViewController: UIViewController {
     }
     
     func createDatePicker() {
+        minuteLabel.isHidden = true
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -35,12 +37,12 @@ class TimeViewController: UIViewController {
     
     @objc func donePressed() {
         timeTextField.text = "\(Int(datePicker.countDownDuration/60))"
+        minuteLabel.isHidden = false
         self.view.endEditing(true)
     }
     
     @IBAction func timeSelectButtonTapped(_ sender: Any) {
         timeTextField.becomeFirstResponder()
-        
     }
     
 }

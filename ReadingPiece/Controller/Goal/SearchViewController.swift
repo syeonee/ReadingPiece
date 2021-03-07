@@ -21,6 +21,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == searchTextField { // 키보드에서 '검색' 버튼 눌러서 검색할 수 있도록 처리
             textField.resignFirstResponder()//
