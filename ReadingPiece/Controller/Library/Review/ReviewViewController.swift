@@ -11,8 +11,9 @@ class ReviewViewController: UIViewController {
     
     let reviewCell = ReviewCell()
     let fullReviewCell = FullReviewCell()
+    let headerView = ReviewHeaderCell()
     
-    var moreButtonTapped: Bool = false
+    //var moreButtonTapped: Bool = false
     var more: [Int] = []
     
     var reviews = [
@@ -31,9 +32,11 @@ class ReviewViewController: UIViewController {
         
         tableView.register(UINib(nibName: "ReviewCell", bundle: nil), forCellReuseIdentifier: reviewCell.cellID)
         tableView.register(UINib(nibName: "FullReviewCell", bundle: nil), forCellReuseIdentifier: fullReviewCell.cellID)
+        tableView.register(UINib(nibName: "ReviewHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: headerView.identifier)
         
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
+        
         
         self.more = Array<Int>(repeating: 0, count: 5)
     }
@@ -92,6 +95,12 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerView.identifier) as! ReviewHeaderCell
+        return cell
+    }
+    
+    /*
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -100,7 +109,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         let headerView = Bundle.main.loadNibNamed("ReviewHeaderCell", owner: self, options: nil)?.first as! ReviewHeaderCell
         return headerView
     }
-    
+    */
     
     @available(iOS 11.0, *)
     override func viewSafeAreaInsetsDidChange() {
@@ -135,7 +144,7 @@ extension ReviewViewController: ReviewCellDelegate {
         print("ReviewViewController - didTapMoreButton() called. indexPath: \(String(describing: indexPath))")
         self.more[indexPath![1]] = 1
         
-        self.moreButtonTapped = true
+        //self.moreButtonTapped = true
         self.tableView.reloadRows(at: [IndexPath(row: indexPath![1], section: 0)], with: .fade)
     }
     
