@@ -15,10 +15,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sZf-Rj-Iyd">
-                    <rect key="frame" x="0.0" y="108" width="199" height="3"/>
+                    <rect key="frame" x="0.0" y="112" width="199" height="2"/>
                     <color key="backgroundColor" red="0.9312739968" green="0.45607632399999998" blue="0.39997643230000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="3" id="cL3-y7-2oj"/>
+                        <constraint firstAttribute="height" constant="2" id="cL3-y7-2oj"/>
                     </constraints>
                 </view>
             </subviews>
@@ -26,7 +26,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="sZf-Rj-Iyd" firstAttribute="trailing" secondItem="blR-ah-nNF" secondAttribute="trailing" id="2ea-Ft-1Nn"/>
-                <constraint firstItem="blR-ah-nNF" firstAttribute="bottom" secondItem="sZf-Rj-Iyd" secondAttribute="bottom" constant="3" id="SOk-HD-LDQ"/>
+                <constraint firstItem="blR-ah-nNF" firstAttribute="bottom" secondItem="sZf-Rj-Iyd" secondAttribute="bottom" id="SOk-HD-LDQ"/>
                 <constraint firstItem="sZf-Rj-Iyd" firstAttribute="leading" secondItem="blR-ah-nNF" secondAttribute="leading" id="rn0-6z-B4O"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
