@@ -9,4 +9,10 @@ import UIKit
 
 class ReviewHeaderCell: UITableViewHeaderFooterView {
     let identifier = "ReviewHeaderCell"
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //contentView.frame.size.height = 40
+    }
+    
 }

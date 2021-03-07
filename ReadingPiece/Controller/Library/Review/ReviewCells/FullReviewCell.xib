@@ -182,9 +182,12 @@
                         <state key="normal" image="comment icon"/>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBg-Dv-alU">
-                        <rect key="frame" x="322" y="250.5" width="19" height="22"/>
+                        <rect key="frame" x="338" y="250.5" width="19" height="22"/>
                         <color key="tintColor" red="0.70983195300000002" green="0.70973712209999995" blue="0.71372652049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="ellipsis" catalog="system"/>
+                        <connections>
+                            <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L2i-WL-3FR"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -193,7 +196,7 @@
                     <constraint firstItem="xhC-HX-cer" firstAttribute="centerY" secondItem="D4W-mn-ULK" secondAttribute="centerY" id="5rk-Cd-IO1"/>
                     <constraint firstItem="5tv-fS-1KV" firstAttribute="leading" secondItem="GnL-uc-SL2" secondAttribute="leading" constant="1" id="5wU-k2-orC"/>
                     <constraint firstItem="EBg-Dv-alU" firstAttribute="centerY" secondItem="rtT-f9-lON" secondAttribute="centerY" id="A8w-H3-mhw"/>
-                    <constraint firstItem="EBg-Dv-alU" firstAttribute="trailing" secondItem="GnL-uc-SL2" secondAttribute="trailing" constant="-16" id="FQ8-af-9bl"/>
+                    <constraint firstItem="EBg-Dv-alU" firstAttribute="trailing" secondItem="GnL-uc-SL2" secondAttribute="trailing" id="FQ8-af-9bl"/>
                     <constraint firstItem="GnL-uc-SL2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25.800000000000001" id="M8a-FT-CRY"/>
                     <constraint firstItem="xhC-HX-cer" firstAttribute="leading" secondItem="rtT-f9-lON" secondAttribute="trailing" constant="4.5" id="MPA-vb-zzm"/>
                     <constraint firstAttribute="bottomMargin" secondItem="IRL-Mz-34s" secondAttribute="bottom" constant="20.699999999999999" id="OZC-zf-hWL"/>

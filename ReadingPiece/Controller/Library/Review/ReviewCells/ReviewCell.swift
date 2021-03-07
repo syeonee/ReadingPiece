@@ -10,7 +10,8 @@ import UIKit
 class ReviewCell: UITableViewCell {
     
     let cellID = "ReviewCell"
-    var delegate: ReviewCellDelegate?
+    var moreDelegate: ReviewMoreDelegate?
+    var editDelegate: ReviewEditDelegate?
 
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -28,17 +29,26 @@ class ReviewCell: UITableViewCell {
         bookImageView.layer.cornerRadius = 4
         ratingView.layer.cornerRadius = 5
         ratingView.layer.borderWidth = 0.3
-        ratingView.layer.borderColor = #colorLiteral(red: 1, green: 0.4199270606, blue: 0.3739868402, alpha: 1)
+        ratingView.layer.borderColor = UIColor.melon.cgColor
+        ratingLabel.textColor = .melon
         
         reviewTextLabel.lineBreakMode = .byWordWrapping
     }
     
     @IBAction func moreButtonTapped(_ sender: UIButton) {
-        delegate?.didTapMoreButton(cell: self)
+        moreDelegate?.didTapMoreButton(cell: self)
     }
+    
+    @IBAction func editButtonTapped(_ sender: Any) {
+        editDelegate?.didTapEditButton(cell: self)
+    }
+    
     
 }
 
-protocol ReviewCellDelegate {
+protocol ReviewMoreDelegate {
     func didTapMoreButton(cell: ReviewCell)
+}
+protocol ReviewEditDelegate {
+    func didTapEditButton(cell: ReviewCell)
 }
