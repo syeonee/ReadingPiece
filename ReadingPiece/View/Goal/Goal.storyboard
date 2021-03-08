@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="책 이름, 작가, 출판사" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-hg-tpY">
-                                        <rect key="frame" x="18" y="16.5" width="299" height="21"/>
+                                        <rect key="frame" x="18" y="16" width="299" height="22.5"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -452,7 +452,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-rr-Jal">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="693"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="안은영" translatesAutoresizingMaskIntoConstraints="NO" id="RuQ-wj-Mws">
                                                 <rect key="frame" x="153.5" y="28" width="107" height="149"/>
@@ -551,7 +551,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="386" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fee-iO-vTt">
-                                                        <rect key="frame" x="53" y="18.5" width="26" height="21"/>
+                                                        <rect key="frame" x="53" y="18.5" width="26" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="15"/>
                                                         <color key="textColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -589,10 +589,18 @@
                                                     <constraint firstAttribute="height" constant="189.5" id="NLk-Pd-QqJ"/>
                                                 </constraints>
                                             </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmE-DF-Uks">
+                                                <rect key="frame" x="0.0" y="663" width="414" height="0.5"/>
+                                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="0.5" id="hiM-ec-F30"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="A4h-Y6-EgN" firstAttribute="top" secondItem="UBn-Mv-ldj" secondAttribute="bottom" constant="12" id="1GO-uA-2aI"/>
+                                            <constraint firstItem="HmE-DF-Uks" firstAttribute="leading" secondItem="jyc-rr-Jal" secondAttribute="leading" id="1Pn-oV-87t"/>
                                             <constraint firstItem="udc-V0-Nsm" firstAttribute="leading" secondItem="A4h-Y6-EgN" secondAttribute="trailing" constant="6" id="2em-6k-QJe"/>
                                             <constraint firstItem="A4h-Y6-EgN" firstAttribute="leading" secondItem="bVH-vx-1Rw" secondAttribute="trailing" constant="24" id="2zF-Qm-yFc"/>
                                             <constraint firstItem="IHM-KQ-FZW" firstAttribute="leading" secondItem="jyc-rr-Jal" secondAttribute="leading" id="6Gp-eV-6gJ"/>
@@ -606,10 +614,12 @@
                                             <constraint firstAttribute="trailing" secondItem="B2O-yp-xuc" secondAttribute="trailing" id="Csj-L8-dDs"/>
                                             <constraint firstAttribute="trailing" secondItem="IHM-KQ-FZW" secondAttribute="trailing" id="D2j-4Q-zZe"/>
                                             <constraint firstItem="bVH-vx-1Rw" firstAttribute="centerY" secondItem="A4h-Y6-EgN" secondAttribute="centerY" id="DRx-Wv-tk9"/>
+                                            <constraint firstAttribute="bottom" secondItem="wuh-od-aD4" secondAttribute="bottom" constant="30" id="Hq4-qW-scw"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UBn-Mv-ldj" secondAttribute="trailing" constant="21" id="IXv-DN-8LL"/>
                                             <constraint firstItem="UBn-Mv-ldj" firstAttribute="centerX" secondItem="RuQ-wj-Mws" secondAttribute="centerX" id="KDE-Rv-dVz"/>
                                             <constraint firstItem="UBn-Mv-ldj" firstAttribute="top" secondItem="RuQ-wj-Mws" secondAttribute="bottom" constant="14" id="KPW-ur-g1T"/>
                                             <constraint firstItem="Nar-ot-7Q5" firstAttribute="centerY" secondItem="A4h-Y6-EgN" secondAttribute="centerY" id="Koo-Ea-sJZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="HmE-DF-Uks" secondAttribute="trailing" id="MsO-Xw-QV5"/>
                                             <constraint firstItem="RuQ-wj-Mws" firstAttribute="centerX" secondItem="jyc-rr-Jal" secondAttribute="centerX" id="NEy-4r-LlN"/>
                                             <constraint firstItem="A4h-Y6-EgN" firstAttribute="centerX" secondItem="UBn-Mv-ldj" secondAttribute="centerX" id="NWt-Ad-Iau"/>
                                             <constraint firstItem="SD2-18-jx7" firstAttribute="top" secondItem="7bn-98-wi0" secondAttribute="bottom" constant="31.5" id="RNz-rG-FQq"/>
@@ -624,6 +634,7 @@
                                             <constraint firstItem="A4h-Y6-EgN" firstAttribute="leading" secondItem="Nar-ot-7Q5" secondAttribute="trailing" constant="53" id="hEw-S5-9XU"/>
                                             <constraint firstItem="udc-V0-Nsm" firstAttribute="centerY" secondItem="A4h-Y6-EgN" secondAttribute="centerY" id="hQi-Mv-Jcg"/>
                                             <constraint firstItem="wuh-od-aD4" firstAttribute="top" secondItem="sPL-FU-jBv" secondAttribute="bottom" id="lkN-Ec-XFc"/>
+                                            <constraint firstItem="HmE-DF-Uks" firstAttribute="top" secondItem="wuh-od-aD4" secondAttribute="bottom" id="mmP-AL-4qU"/>
                                             <constraint firstAttribute="trailing" secondItem="7bn-98-wi0" secondAttribute="trailing" constant="21" id="nWK-fJ-MsP"/>
                                             <constraint firstItem="sPL-FU-jBv" firstAttribute="leading" secondItem="jyc-rr-Jal" secondAttribute="leading" id="sxy-dz-8z8"/>
                                             <constraint firstItem="7bn-98-wi0" firstAttribute="leading" secondItem="jyc-rr-Jal" secondAttribute="leading" constant="21" id="uCC-dH-zMT"/>
@@ -638,9 +649,11 @@
                                     <constraint firstAttribute="trailing" secondItem="jyc-rr-Jal" secondAttribute="trailing" id="NZL-tZ-aaE"/>
                                     <constraint firstAttribute="bottom" secondItem="jyc-rr-Jal" secondAttribute="bottom" id="ddH-Ix-hGG"/>
                                     <constraint firstItem="jyc-rr-Jal" firstAttribute="leading" secondItem="djH-xm-05T" secondAttribute="leading" id="jcT-Oe-E4X"/>
-                                    <constraint firstItem="jyc-rr-Jal" firstAttribute="height" secondItem="djH-xm-05T" secondAttribute="height" id="yot-4V-7FZ"/>
+                                    <constraint firstItem="jyc-rr-Jal" firstAttribute="height" secondItem="djH-xm-05T" secondAttribute="height" priority="250" id="yot-4V-7FZ"/>
                                     <constraint firstItem="jyc-rr-Jal" firstAttribute="top" secondItem="djH-xm-05T" secondAttribute="top" id="zXP-wu-SeI"/>
                                 </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Iti-XE-dFb"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="pBo-Zx-k7S"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WfA-Ez-LaP"/>
@@ -662,6 +675,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentView" destination="jyc-rr-Jal" id="MaA-kG-RGF"/>
                         <outlet property="reviewTableView" destination="wuh-od-aD4" id="dTw-co-RNh"/>
                     </connections>
                 </viewController>
@@ -688,18 +702,33 @@
         <!--리뷰-->
         <scene sceneID="PmJ-ag-8EZ">
             <objects>
-                <viewController id="Jua-9V-jwc" sceneMemberID="viewController">
+                <viewController id="Jua-9V-jwc" customClass="BookReviewViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5fW-Uz-GU2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3GL-mN-l3j">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Dcd-dB-yki"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="3GL-mN-l3j" firstAttribute="bottom" secondItem="5fW-Uz-GU2" secondAttribute="bottom" id="6nJ-c8-Bwi"/>
+                            <constraint firstItem="3GL-mN-l3j" firstAttribute="leading" secondItem="5fW-Uz-GU2" secondAttribute="leading" id="CB5-11-kXk"/>
+                            <constraint firstAttribute="trailing" secondItem="3GL-mN-l3j" secondAttribute="trailing" id="Md2-Eh-0X6"/>
+                            <constraint firstItem="3GL-mN-l3j" firstAttribute="top" secondItem="Dcd-dB-yki" secondAttribute="top" id="bXv-Lz-tcN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="리뷰" id="EX9-v7-CfX"/>
+                    <connections>
+                        <outlet property="reviewTableView" destination="3GL-mN-l3j" id="TPj-Qy-ACz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6OC-JK-Pyp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2977" y="1014"/>
+            <point key="canvasLocation" x="2976.811594202899" y="1013.8392857142857"/>
         </scene>
         <!--책 추가-->
         <scene sceneID="lzx-vv-T1z">
@@ -730,7 +759,7 @@
                                 <state key="selected" image="bookSearchBar"/>
                                 <state key="highlighted" image="bookSearchBar"/>
                                 <connections>
-                                    <segue destination="OGY-0i-f5j" kind="show" id="LAX-ml-ugI"/>
+                                    <segue destination="6S8-HU-csk" kind="show" id="thh-U8-nav"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookillust" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-Ib-D5L">
@@ -750,7 +779,9 @@
                             <constraint firstItem="MXh-Ib-D5L" firstAttribute="centerX" secondItem="tvF-bG-pLZ" secondAttribute="centerX" id="wyK-an-AQt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="책 추가" id="nym-de-8w0"/>
+                    <navigationItem key="navigationItem" title="책 추가" id="nym-de-8w0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="W5N-2X-pTZ"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deB-Iy-evV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -777,29 +808,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ik2-Uq-Hda" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="247.82608695652175" y="144.64285714285714"/>
-        </scene>
-        <!--Book Add Nav View Controller-->
-        <scene sceneID="4uq-md-iKz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="OGY-0i-f5j" customClass="BookAddNavViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="zke-sy-83O"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bWi-DM-XrU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="6S8-HU-csk" kind="relationship" relationship="rootViewController" id="g5l-qn-q6x"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="II9-vc-lUV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="248" y="1014"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
