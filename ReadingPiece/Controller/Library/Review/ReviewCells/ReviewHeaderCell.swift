@@ -7,17 +7,12 @@
 
 import UIKit
 
-class ReviewHeaderCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+class ReviewHeaderCell: UITableViewHeaderFooterView {
+    let identifier = "ReviewHeaderCell"
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        //contentView.frame.size.height = 40
     }
     
 }
