@@ -18,6 +18,7 @@ class JournalViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "JournalCell", bundle: nil), forCellReuseIdentifier: journalCell.cellID)
+        
         //tableView.rowHeight = UITableView.automaticDimension
         //tableView.estimatedRowHeight = 150
         tableView.rowHeight = 150

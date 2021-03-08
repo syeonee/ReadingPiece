@@ -39,6 +39,8 @@
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
 		59F4F22F25F5C0B400E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22E25F5C0B400E82417 /* Review.swift */; };
+		59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */; };
+		59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -102,6 +104,8 @@
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		59F4F22E25F5C0B400E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = ReadingPiece/Model/Library/Review.swift; sourceTree = "<group>"; };
+		59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDropDownCell.swift; sourceTree = "<group>"; };
+		59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewDropDownCell.xib; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,10 +200,12 @@
 			children = (
 				599D3AB425F11AB30085F134 /* ReviewCell.swift */,
 				599D3AB525F11AB30085F134 /* ReviewCell.xib */,
-				599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */,
-				599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */,
 				599D3ACE25F26EC00085F134 /* FullReviewCell.swift */,
 				599D3ACF25F26EC00085F134 /* FullReviewCell.xib */,
+				599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */,
+				599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */,
+				59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */,
+				59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */,
 			);
 			path = ReviewCells;
 			sourceTree = "<group>";
@@ -444,6 +450,7 @@
 				D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */,
 				5913B23A25EF2E4D002AAA8C /* NotoSansCJKkr-Light.otf in Resources */,
 				D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */,
+				59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
@@ -531,6 +538,7 @@
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
+				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,

@@ -17,6 +17,8 @@ class JournalCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.contentView.backgroundColor = .lightgrey2
+        
         self.mainBackgoundView.layer.shadowColor = UIColor.black.cgColor
         self.mainBackgoundView.layer.shadowOpacity = 0.15
         self.mainBackgoundView.layer.shadowOffset = CGSize(width: 0, height: 1.0)

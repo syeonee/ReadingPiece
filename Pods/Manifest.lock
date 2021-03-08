@@ -1,24 +1,28 @@
 PODS:
+  - DropDown (2.3.13)
   - PagingKit (1.15.0)
   - SnapKit (5.0.1)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - DropDown (~> 2.3.2)
   - PagingKit
   - SnapKit (~> 5.0.0)
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
+    - DropDown
     - PagingKit
     - SnapKit
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: b63f58f3578ddcc51b0a9e4ee7835efb3d0844aa
+PODFILE CHECKSUM: 21a8bfdb51b27e2eee8bb383bc2a648a1f1fbaa8
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1
