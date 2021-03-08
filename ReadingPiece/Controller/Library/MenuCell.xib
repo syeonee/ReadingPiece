@@ -46,6 +46,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="titleLabel" destination="8Ti-VX-EQM" id="WEO-JY-OKX"/>
+                <outlet property="underlineView" destination="BtC-hh-FAX" id="Tsk-uB-PLZ"/>
             </connections>
             <point key="canvasLocation" x="131.25" y="-106.875"/>
         </view>

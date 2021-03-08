@@ -10,6 +10,7 @@ import UIKit
 class FullReviewCell: UITableViewCell {
     
     let cellID = "FullReviewCell"
+    var editDelegate: ReviewFullEditDelegate?
 
     @IBOutlet weak var reviewTextLabel: UILabel!
     
@@ -17,13 +18,18 @@ class FullReviewCell: UITableViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var ratingView: UIView!
     
+    @IBOutlet weak var bookTitleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         upperView.layer.cornerRadius = 4
         bookImageView.layer.cornerRadius = 4
         ratingView.layer.cornerRadius = 5
         ratingView.layer.borderWidth = 0.3
-        ratingView.layer.borderColor = #colorLiteral(red: 1, green: 0.4199270606, blue: 0.3739868402, alpha: 1)
+        ratingView.layer.borderColor = UIColor.melon.cgColor
+        ratingLabel.textColor = .melon
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -32,4 +38,13 @@ class FullReviewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func editButtonTapped(_ sender: Any) {
+        editDelegate?.didTapFullEditButton(cell: self)
+    }
+    
+    
+}
+
+protocol ReviewFullEditDelegate {
+    func didTapFullEditButton(cell: FullReviewCell)
 }

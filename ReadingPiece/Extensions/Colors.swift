@@ -84,6 +84,10 @@ extension UIColor {
   @nonobjc class var fillDisabled: UIColor {
     return UIColor(red: 244.0 / 255.0, green: 244.0 / 255.0, blue: 245.0 / 255.0, alpha: 1.0)
   }
+    
+    @nonobjc class var melon: UIColor {
+      return UIColor(red: 1.0, green: 108.0 / 255.0, blue: 95.0 / 255.0, alpha: 1.0)
+    }
 
 }
 
@@ -106,6 +110,8 @@ extension UIColor {
     class var navigationBarButtonTitleColor: UIColor { UIColor(hex: 0xFF6C5F)}
     class var mainPink: UIColor { UIColor(hex: 0xFF6C5F)}
     class var subtitleGray: UIColor { UIColor(hex: 0x808080)}
+    
+    
 
 
 }
@@ -113,6 +119,4 @@ extension UIColor {
 extension CGColor {
     class var deepRed: CGColor { CGColor(red: 218, green: 37, blue: 123, alpha: 0)}
     class var rightOrange: CGColor { CGColor(red: 231, green: 92, blue: 91, alpha: 0)}
-
 }
-
