@@ -117,7 +117,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 45
     }
     
     @available(iOS 11.0, *)

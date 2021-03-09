@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-S5-SWL">
-                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <connections>
                                     <segue destination="ojP-JJ-Esu" kind="embed" id="27l-J6-atU"/>
                                 </connections>
@@ -42,9 +42,9 @@
                             <constraint firstItem="it2-95-kuM" firstAttribute="centerX" secondItem="ZmZ-wR-gxX" secondAttribute="centerX" id="22I-Z3-KoK"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="trailing" secondItem="7aw-6M-EcA" secondAttribute="trailing" id="4Q4-cy-ILM"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="KnG-ZV-bf8"/>
-                            <constraint firstAttribute="bottom" secondItem="2wk-S5-SWL" secondAttribute="bottom" id="NlQ-IK-X9k"/>
                             <constraint firstItem="it2-95-kuM" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="fQK-jJ-EoU"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="top" secondItem="it2-95-kuM" secondAttribute="bottom" id="sDM-Kq-t1Z"/>
+                            <constraint firstItem="2wk-S5-SWL" firstAttribute="bottom" secondItem="7aw-6M-EcA" secondAttribute="bottom" id="wk6-AK-ywJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="내 서재" image="library" selectedImage="selectedLibrary" id="92u-ec-o0W"/>
@@ -113,7 +113,7 @@
             <objects>
                 <viewController id="ojP-JJ-Esu" customClass="PagingContentViewController" customModule="PagingKit" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTb-U1-uWe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9o2-42-nYR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

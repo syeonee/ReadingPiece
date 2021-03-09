@@ -23,6 +23,9 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var reviewTextLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         upperView.layer.cornerRadius = 4
@@ -42,6 +45,12 @@ class ReviewCell: UITableViewCell {
     @IBAction func editButtonTapped(_ sender: Any) {
         editDelegate?.didTapEditButton(cell: self)
     }
+    
+    @IBAction func likeButtonTapped(_ sender: Any) {
+    }
+    @IBAction func commentsButtonTapped(_ sender: Any) {
+    }
+    
     
     
 }
