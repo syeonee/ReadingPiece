@@ -34,7 +34,7 @@ extension UIViewController {
     }
     
     // MARK: 공통 네비게이션바 디자인 적용    
-    func setupMyPageNavigationBar(_ leftButtonTitle: String?, _ rightButtonTitle: String, _ barTitle: String, buttonImage: UIImage? ) {
+    func setupNavigationBar(_ leftButtonTitle: String?, _ rightButtonTitle: String, _ barTitle: String, buttonImage: UIImage? ) {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevorn.left"),
                                             style: .plain,
                                             target: nil,

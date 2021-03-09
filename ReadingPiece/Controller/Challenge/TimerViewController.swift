@@ -29,7 +29,7 @@ class TimerViewController: UIViewController {
         self.navigationItem.rightBarButtonItem?.tintColor = .main
         timerBackgroundView.layer.borderWidth = 5
         timerBackgroundView.layer.borderColor = UIColor.sub2.cgColor
-        timerBackgroundView.asCircle()
+        timerBackgroundView.makeCircle()
         currentTimeLabel.textColor = .charcoal
         bookTitleLabel.textColor = .black
         let attributedString = NSMutableAttributedString(string: "")
@@ -53,8 +53,13 @@ class TimerViewController: UIViewController {
         stopReadingButton.layer.borderColor = UIColor.main.cgColor
         stopReadingButton.backgroundColor = .main
         stopReadingButton.layer.cornerRadius = 24
-
     }
-
 }
 
+extension UIView {
+    func makeCircle() {
+        print("LOG", self.frame.width)
+        self.layer.cornerRadius = self.frame.width / 2
+        self.layer.masksToBounds = true
+    }
+}
