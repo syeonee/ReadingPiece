@@ -16,8 +16,24 @@ class TermViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        createToolbar()
+    }
+    
+    func createToolbar() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.barTintColor = UIColor.lightgrey1
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        doneButton.tintColor = .melon
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([flexibleSpace, doneButton], animated: true)
+        
+        bookQuantityTextField.inputAccessoryView = toolbar
+    }
+    
+    @objc func donePressed() {
+        self.view.endEditing(true)
     }
     
     @IBAction func tapBackground(_ sender: Any) {
