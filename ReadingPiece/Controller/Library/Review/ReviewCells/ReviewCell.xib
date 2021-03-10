@@ -150,25 +150,19 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMe-OY-5eu">
-                        <rect key="frame" x="42" y="227" width="21" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="21" id="2cG-6x-RHp"/>
-                        </constraints>
+                        <rect key="frame" x="42" y="227" width="20" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJV-fC-giN">
-                        <rect key="frame" x="107" y="227" width="14" height="18"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="14" id="e8o-1w-R5G"/>
-                        </constraints>
+                        <rect key="frame" x="106" y="227" width="14" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-eQ-IXi">
-                        <rect key="frame" x="85.5" y="229.5" width="17" height="13"/>
+                        <rect key="frame" x="84.5" y="229.5" width="17" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12.9" id="T2V-e3-wqO"/>
                             <constraint firstAttribute="width" constant="17" id="Va3-ZO-fX4"/>
@@ -241,7 +235,9 @@
                 <outlet property="authorLabel" destination="iNm-nT-Biv" id="PRB-Vt-wKk"/>
                 <outlet property="bookImageView" destination="Quf-pT-hnl" id="ny1-SL-6B1"/>
                 <outlet property="bookTitleLabel" destination="Ndl-l8-G9s" id="RMc-fY-WFM"/>
+                <outlet property="commentCount" destination="EJV-fC-giN" id="itM-Jt-Pue"/>
                 <outlet property="likeButton" destination="Yvx-PQ-9wd" id="NXV-A2-3Jy"/>
+                <outlet property="likeCount" destination="OMe-OY-5eu" id="pw8-A6-crc"/>
                 <outlet property="ratingLabel" destination="vc2-II-gDY" id="BJd-Ol-Tis"/>
                 <outlet property="ratingView" destination="vMG-DP-7ZJ" id="ncM-tG-8wN"/>
                 <outlet property="reviewTextLabel" destination="Q99-TO-tYk" id="4lm-ne-b9n"/>

@@ -12,6 +12,7 @@ class LibraryViewController: UIViewController {
     
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
+    var currentVC: Int = 0
     
     var dataSource = [(menu: String, content: UIViewController)]() {
         didSet {
@@ -71,6 +72,8 @@ class LibraryViewController: UIViewController {
         }
     }
     
+    
+    
 
     /*
     // MARK: - Navigation
@@ -107,6 +110,8 @@ extension LibraryViewController: PagingMenuViewControllerDataSource {
 extension LibraryViewController: PagingMenuViewControllerDelegate {
     func menuViewController(viewController: PagingMenuViewController, didSelect page: Int, previousPage: Int) {
         contentViewController.scroll(to: page, animated: true)
+        self.currentVC = page
+        //print("현재 페이지: ", currentVC)
     }
 }
 

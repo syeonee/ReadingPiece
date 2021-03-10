@@ -158,7 +158,7 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             self.journals.remove(at: indexPath[1])
             self.tableView.deleteRows(at: [IndexPath(row: indexPath[1], section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
