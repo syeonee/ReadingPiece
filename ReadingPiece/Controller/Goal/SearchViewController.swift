@@ -6,22 +6,30 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var resultCountLabel: UILabel!
     
+    @IBOutlet weak var resultTableView: UITableView!
     
+    var books : [Book] = []
+    var page : Int = 1
+    var resultCount : Int = 0
+    var isEnd : Bool = true
+    
+    var searchTerm : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchTextField.delegate = self
-        
+        resultTableView.separatorInset.left = 20
+        resultTableView.separatorInset.right = 20
     }
-    
-    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == searchTextField { // 키보드에서 '검색' 버튼 눌러서 검색할 수 있도록 처리
@@ -37,30 +45,70 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func bookSearch(_ sender: Any) {
         searchTextField.resignFirstResponder()//검색 아이콘 누르면 키보드 내려가도록
-        print(searchTextField.text)
+        guard let term = searchTextField.text, term.isEmpty == false else { return }
+        page = 1
+        searchTerm = term
+        NetworkAPI.search(query: searchTerm, page: page) { books, resultCount, isEnd in
+            DispatchQueue.main.async {
+                self.books = books
+                self.resultCount = resultCount
+                self.isEnd = isEnd
+                self.resultCountLabel.text = "총 \(self.resultCount)권의 검색 결과"
+                self.resultTableView.reloadData()
+            }
+        }
     }
     
 }
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        return books.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "bookCell", for: indexPath) as? BookCell else {
             return UITableViewCell()
         }
-        
-        cell.bookImageView.image = UIImage(named: "안은영")
-        cell.titleLabel.text = "보건교사 안은영"
-        cell.authorLabel.text = "정세랑"
-        cell.publisherLabel.text = "민음사"
+        let book = books[indexPath.item]
+        let url = URL(string: book.thumbnailPath)
+        cell.bookImageView.kf.setImage(with: url)
+        cell.titleLabel.text = book.title
+        cell.authorLabel.text = book.authors.joined(separator: ",")
+        cell.publisherLabel.text = book.publisher
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("index = \(indexPath.row)")
+        let book = books[indexPath.item]
+        
+        let sb = UIStoryboard(name: "Goal", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "BookDetailController") as! BookDetailViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.book = book
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height: CGFloat = scrollView.frame.size.height
+        let contentYOffset: CGFloat = scrollView.contentOffset.y
+        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+                  
+        if distanceFromBottom < height && !isEnd {
+            addData()
+        }
+    }
+    
+    func addData(){
+        page+=1
+        NetworkAPI.search(query: searchTerm, page: page) { books, resultCount, isEnd in
+            DispatchQueue.main.async {
+                self.books.append(contentsOf: books)
+                self.isEnd = isEnd
+                self.resultTableView.reloadData()
+            }
+        }
     }
     
 }

@@ -25,9 +25,18 @@ class TimeViewController: UIViewController {
         minuteLabel.isHidden = true
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
+        toolbar.barTintColor = UIColor.lightgrey1
         
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([doneButton], animated: true)
+        doneButton.tintColor = .melon
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let timeLabel = UILabel(frame: .zero)
+        timeLabel.text = "매일 독서 시간"
+        timeLabel.textAlignment = .center
+        timeLabel.font = UIFont.NotoSans(.regular, size: 14)
+        timeLabel.textColor = #colorLiteral(red: 0.2274509804, green: 0.231372549, blue: 0.2392156863, alpha: 1)
+        let textBarButton = UIBarButtonItem(customView: timeLabel)
+        toolbar.setItems([flexibleSpace, textBarButton, flexibleSpace, doneButton], animated: true)
         
         timeTextField.inputAccessoryView = toolbar
         timeTextField.inputView = datePicker

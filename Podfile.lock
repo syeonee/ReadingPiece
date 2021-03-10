@@ -1,24 +1,32 @@
 PODS:
+  - Alamofire (5.4.1)
+  - Kingfisher (6.0.1)
   - PagingKit (1.15.0)
   - SnapKit (5.0.1)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - Kingfisher (~> 6.0)
   - PagingKit
   - SnapKit (~> 5.0.0)
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - Kingfisher
     - PagingKit
     - SnapKit
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
   PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: b63f58f3578ddcc51b0a9e4ee7835efb3d0844aa
+PODFILE CHECKSUM: ab9d35a8ee473e3a3d0eff06992bb7a82a2b2a04
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

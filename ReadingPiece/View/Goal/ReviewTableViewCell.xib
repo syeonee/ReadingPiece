@@ -101,6 +101,9 @@
                         <state key="normal" title="..더보기">
                             <color key="titleColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="textExpandButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="VkM-Jj-Dhs"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zso-Qp-rGe">
                         <rect key="frame" x="333" y="157.5" width="14" height="16"/>
@@ -127,6 +130,9 @@
                             <constraint firstAttribute="width" constant="18" id="oJW-wK-P8F"/>
                         </constraints>
                         <state key="normal" image="moreEdit"/>
+                        <connections>
+                            <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pKS-gi-f5e"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ba6-qr-wIc">
                         <rect key="frame" x="254" y="160.5" width="16.5" height="14"/>
@@ -135,6 +141,9 @@
                             <constraint firstAttribute="height" constant="14" id="uIN-sT-lgN"/>
                         </constraints>
                         <state key="normal" image="like icon"/>
+                        <connections>
+                            <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="nI1-mK-SMq"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j1a-Jh-pqd">
                         <rect key="frame" x="311.5" y="156.5" width="17" height="22"/>
@@ -143,6 +152,9 @@
                             <constraint firstAttribute="width" constant="17" id="twO-0z-iUK"/>
                         </constraints>
                         <state key="normal" image="comment icon"/>
+                        <connections>
+                            <action selector="commentButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xGP-2f-TYV"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -199,7 +211,7 @@
                 <outlet property="star4ImageView" destination="X2U-LW-XBD" id="EFx-tD-hrM"/>
                 <outlet property="star5ImageView" destination="2Ps-m5-16X" id="fLp-YL-mUO"/>
             </connections>
-            <point key="canvasLocation" x="138" y="153"/>
+            <point key="canvasLocation" x="-64" y="155"/>
         </tableViewCell>
     </objects>
     <resources>

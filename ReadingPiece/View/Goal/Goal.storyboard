@@ -333,7 +333,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-13-USu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-13-USu">
                                                     <rect key="frame" x="20" y="10" width="79" height="110"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="110" id="l1q-Pe-8HB"/>
@@ -377,6 +377,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Wgu-3q-cyJ" secondAttribute="trailing" constant="10" id="2a8-ks-33H"/>
                                                 <constraint firstItem="hIF-bE-lT4" firstAttribute="leading" secondItem="u3E-Te-LBK" secondAttribute="leading" id="4yh-xz-FNQ"/>
                                                 <constraint firstAttribute="trailing" secondItem="dFr-G9-1DW" secondAttribute="trailing" constant="22" id="Sge-km-y3N"/>
                                                 <constraint firstItem="Wgu-3q-cyJ" firstAttribute="top" secondItem="eEl-13-USu" secondAttribute="top" id="ZCU-gp-X5a"/>
@@ -403,14 +404,6 @@
                                     <outlet property="delegate" destination="6S8-HU-csk" id="H3j-Q8-LYj"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3M-YL-fPu">
-                                <rect key="frame" x="313" y="153" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="5Rs-3U-fIc" kind="show" id="14N-Xh-MB9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="smb-ES-47J"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -431,6 +424,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="HYk-gY-a23" id="oon-cp-8mc"/>
+                        <outlet property="resultCountLabel" destination="c0x-qi-ItU" id="EdH-RT-pGX"/>
+                        <outlet property="resultTableView" destination="3No-EK-nBn" id="nxG-wK-u9s"/>
                         <outlet property="searchButton" destination="FMa-MG-gaX" id="wNG-5s-c3C"/>
                         <outlet property="searchTextField" destination="Dgp-hg-tpY" id="Vae-5B-kBT"/>
                         <segue destination="5Rs-3U-fIc" kind="show" id="KIS-69-rws"/>
@@ -443,7 +438,7 @@
         <!--책 추가-->
         <scene sceneID="WUL-on-48l">
             <objects>
-                <viewController id="5Rs-3U-fIc" customClass="BookDetailViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Rs-3U-fIc" customClass="BookDetailViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Owz-HN-Xp9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -470,7 +465,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보건교사 안은영" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBn-Mv-ldj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보건교사 안은영" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBn-Mv-ldj">
                                                 <rect key="frame" x="146.5" y="191" width="121" height="27"/>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
                                                 <nil key="textColor"/>
@@ -675,8 +670,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="authorsLabel" destination="Nar-ot-7Q5" id="Zlg-se-vi5"/>
+                        <outlet property="bookImageView" destination="RuQ-wj-Mws" id="VZ0-TS-kzV"/>
                         <outlet property="contentView" destination="jyc-rr-Jal" id="MaA-kG-RGF"/>
+                        <outlet property="publisherLabel" destination="A4h-Y6-EgN" id="njd-PC-6Kc"/>
                         <outlet property="reviewTableView" destination="wuh-od-aD4" id="dTw-co-RNh"/>
+                        <outlet property="summaryLabel" destination="7bn-98-wi0" id="BAy-Ba-8ut"/>
+                        <outlet property="titleLabel" destination="UBn-Mv-ldj" id="goH-td-G0P"/>
+                        <outlet property="yearLabel" destination="VQt-20-fRN" id="PhE-yK-XbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqu-EP-NB2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -812,7 +813,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Gq0-HY-kHL"/>
-        <segue reference="14N-Xh-MB9"/>
         <segue reference="MMK-oj-1Fo"/>
     </inferredMetricsTieBreakers>
     <resources>
