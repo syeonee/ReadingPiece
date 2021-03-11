@@ -6,9 +6,9 @@ target 'ReadingPiece' do
   use_frameworks!
 
   # Pods for ReadingPiece
-   pod "PagingKit"
-   pod "SnapKit", '~> 5.0.0'
-   pod 'Toast-Swift', '~> 5.0.1'
-   pod 'DropDown', '~> 2.3.2'
-
+  pod "PagingKit"
+  pod "SnapKit", '~> 5.0.0'
+  pod 'Toast-Swift', '~> 5.0.1'
+  pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 6.0'
 end

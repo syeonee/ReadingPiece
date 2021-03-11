@@ -54,11 +54,17 @@
 		D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D2D25E2B5DB00D73A61 /* Main.storyboard */; };
 		D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3025E2B5DD00D73A61 /* Assets.xcassets */; };
 		D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3225E2B5DD00D73A61 /* LaunchScreen.storyboard */; };
+		D635B6B425F7DD3F0048331F /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D635B6B225F7DD3F0048331F /* CommentViewController.swift */; };
+		D635B6B525F7DD3F0048331F /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D635B6B325F7DD3F0048331F /* CommentViewController.xib */; };
 		D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */; };
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
-		D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
+		D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */; };
+		D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C7BFA25F6761700944094 /* BookReviewViewController.swift */; };
+		D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678692C25F53B5900DBB59C /* BookDetailViewController.swift */; };
+		D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678693425F5426400DBB59C /* ReviewTableViewCell.swift */; };
+		D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D678693525F5426400DBB59C /* ReviewTableViewCell.xib */; };
 		D67C657625E566C600F15290 /* Library.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657525E566C600F15290 /* Library.storyboard */; };
 		D67C657925E5715F00F15290 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657825E5715F00F15290 /* Community.storyboard */; };
 		D67C657C25E5717300F15290 /* My.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D67C657B25E5717300F15290 /* My.storyboard */; };
@@ -68,7 +74,11 @@
 		D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658C25E5B08300F15290 /* MyNavViewController.swift */; };
 		D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */; };
 		D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */; };
+		D6F153E625F9159C0044900E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E525F9159C0044900E /* Book.swift */; };
+		D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E825F9395B0044900E /* NetworkAPI.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
+		D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */; };
+		D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FF1B7025F2408700A0B980 /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,11 +136,17 @@
 		D6288D3025E2B5DD00D73A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6288D3325E2B5DD00D73A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6288D3525E2B5DD00D73A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D635B6B225F7DD3F0048331F /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		D635B6B325F7DD3F0048331F /* CommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
-		D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-SemiBold.ttf"; path = "../../../../NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		D65C7BFA25F6761700944094 /* BookReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewViewController.swift; sourceTree = "<group>"; };
+		D678692C25F53B5900DBB59C /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
+		D678693425F5426400DBB59C /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		D678693525F5426400DBB59C /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		D67C657525E566C600F15290 /* Library.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Library.storyboard; sourceTree = "<group>"; };
 		D67C657825E5715F00F15290 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		D67C657B25E5717300F15290 /* My.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = My.storyboard; sourceTree = "<group>"; };
@@ -140,7 +156,11 @@
 		D67C658C25E5B08300F15290 /* MyNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavViewController.swift; sourceTree = "<group>"; };
 		D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavViewController.swift; sourceTree = "<group>"; };
 		D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavViewController.swift; sourceTree = "<group>"; };
+		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
+		D6FF1B7025F2408700A0B980 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadingPiece.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -274,6 +294,12 @@
 			isa = PBXGroup;
 			children = (
 				D60B364925EE300D000E949D /* TermViewController.swift */,
+				D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */,
+				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
+				D678692C25F53B5900DBB59C /* BookDetailViewController.swift */,
+				D65C7BFA25F6761700944094 /* BookReviewViewController.swift */,
+				D635B6B225F7DD3F0048331F /* CommentViewController.swift */,
+				D6F153E825F9395B0044900E /* NetworkAPI.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -334,9 +360,21 @@
 			path = ReadingPiece;
 			sourceTree = "<group>";
 		};
+		D678693225F541B200DBB59C /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				D635B6B325F7DD3F0048331F /* CommentViewController.xib */,
+				D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */,
+				D678693425F5426400DBB59C /* ReviewTableViewCell.swift */,
+				D678693525F5426400DBB59C /* ReviewTableViewCell.xib */,
+			);
+			path = Goal;
+			sourceTree = "<group>";
+		};
 		D67C655F25E4EFB200F15290 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */,
 				5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */,
 				5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */,
 				5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */,
@@ -364,6 +402,7 @@
 		D6A255F825E4254A00731B10 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D6F153E425F9158C0044900E /* Goal */,
 				59F4F22A25F5C0AB00E82417 /* Library */,
 			);
 			path = Model;
@@ -373,11 +412,11 @@
 			isa = PBXGroup;
 			children = (
 				00838FD325F3645200340AE0 /* Challenge */,
+				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657525E566C600F15290 /* Library.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
 				D67C657B25E5717300F15290 /* My.storyboard */,
-				D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */,
 				D6509DE625EAC87F000D7160 /* Login.storyboard */,
 			);
 			path = View;
@@ -394,10 +433,17 @@
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
-				D649DDB525E6DD2900C6CD5B /* BookSearchViewController.swift */,
 				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D6F153E425F9158C0044900E /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				D6F153E525F9159C0044900E /* Book.swift */,
+			);
+			path = Goal;
 			sourceTree = "<group>";
 		};
 		D6F89EF020BB50CB3EB3254B /* Frameworks */ = {
@@ -467,6 +513,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D635B6B525F7DD3F0048331F /* CommentViewController.xib in Resources */,
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
 				5913B23B25EF2E4D002AAA8C /* NotoSansCJKkr-DemiLight.otf in Resources */,
@@ -481,7 +528,9 @@
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
+				D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
+				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
 				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
@@ -548,10 +597,11 @@
 				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
 				599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */,
-				D649DDB625E6DD2900C6CD5B /* BookSearchViewController.swift in Sources */,
 				00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */,
+				D635B6B425F7DD3F0048331F /* CommentViewController.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
+				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
@@ -560,6 +610,7 @@
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
+				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
@@ -567,11 +618,16 @@
 				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
+				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
+				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
+				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
+				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
+				D6F153E625F9159C0044900E /* Book.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
@@ -580,6 +636,7 @@
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
+				D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
