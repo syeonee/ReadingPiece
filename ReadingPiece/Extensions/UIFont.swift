@@ -25,3 +25,18 @@ extension UIFont {
     
     // ex. label.font = .NotoSans(.medium, size: 16)
 }
+
+extension NSMutableAttributedString {
+    func bold(_ text: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.NotoSans(.bold, size: fontSize)]
+        self.append(NSMutableAttributedString(string: text, attributes: attrs))
+        return self
+    }
+
+    func normal(_ text: String, fontSize: CGFloat) -> NSMutableAttributedString {
+        let attrs: [NSAttributedString.Key: Any] = [.font: UIFont.NotoSans(.regular, size: fontSize)]
+        self.append(NSMutableAttributedString(string: text, attributes: attrs))
+        return self
+    }
+
+}

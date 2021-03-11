@@ -16,15 +16,28 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     }
     
     private func setupUI() {
+        setNavBar()
         setupTableView()
-        
     }
     
+    private func setNavBar() {
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+        let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
+    }
+
     private func setupTableView() {
+//        daillyDiaryWrittenTableView.backgroundColor = .tableViewBackroundGray
         daillyDiaryWrittenTableView.delegate = self
         daillyDiaryWrittenTableView.dataSource = self
         daillyDiaryWrittenTableView.register(UINib(nibName: ChallengeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ChallengeTableViewCell.identifier)
         daillyDiaryWrittenTableView.register(UINib(nibName: DaillyReadingTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DaillyReadingTableViewCell.identifier)
+    }
+    
+    @objc func shareDaillyReadingResult(sender: UIBarButtonItem){
+        
     }
 }
 
@@ -34,7 +47,7 @@ extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITab
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
-        view.backgroundColor = .systemGray3
+        view.backgroundColor = .systemGray6
         return view
     }
     
@@ -62,6 +75,6 @@ extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITab
 
 extension DaillyDiaryWrittenCompletionViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.backgroundColor = .systemGray3
+        scrollView.backgroundColor = .systemGray6
     }
 }

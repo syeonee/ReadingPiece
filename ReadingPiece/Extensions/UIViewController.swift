@@ -10,7 +10,7 @@ import SnapKit
 import Toast_Swift
 import Network
 
-extension UIViewController {
+extension UIViewController {    
     func checkNetworkConnectivity() {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue.global(qos: .background)

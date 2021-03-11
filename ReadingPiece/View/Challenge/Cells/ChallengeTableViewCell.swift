@@ -23,7 +23,27 @@ class ChallengeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
+    }
+    
+    private func setupUI() {
+        challengeTitleButton.setTitleColor(.charcoal, for: .normal)
+        todayRadingPage.textColor = .grey
+        todayRadingTime.textColor = .grey
+        totalDiary.textColor = .grey
+        
+        let daillyReadingPercentText = NSMutableAttributedString()
+            .bold("00", fontSize: 28)
+            .normal("%", fontSize: 18)
+        daillyReadingStatusLabel.attributedText = daillyReadingPercentText
+        let daillyReadingTimeText = NSMutableAttributedString()
+            .bold("00", fontSize: 28)
+            .normal("분", fontSize: 18)
+        daillyReadingTimeLabel.attributedText = daillyReadingTimeText
+        let totalDiaryCountText = NSMutableAttributedString()
+            .bold("00", fontSize: 28)
+            .normal("개", fontSize: 18)
+        totalDiary.attributedText = totalDiaryCountText
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
