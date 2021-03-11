@@ -47,6 +47,13 @@
 		59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */; };
 		59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */; };
 		59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */; };
+		59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */; };
+		59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */; };
+		59F4F2FA25F9BD8600E82417 /* ReviewRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */; };
+		59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */; };
+		59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */; };
+		59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */; };
+		59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -127,6 +134,13 @@
 		59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewViewController.swift; sourceTree = "<group>"; };
 		59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateReviewViewController.xib; sourceTree = "<group>"; };
 		59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBookInfoCell.swift; sourceTree = "<group>"; };
+		59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewBookInfoCell.xib; sourceTree = "<group>"; };
+		59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingCell.swift; sourceTree = "<group>"; };
+		59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewRatingCell.xib; sourceTree = "<group>"; };
+		59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritingCell.swift; sourceTree = "<group>"; };
+		59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewWritingCell.xib; sourceTree = "<group>"; };
+		59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,10 +289,24 @@
 		59F4F2C225F9031700E82417 /* CreateReview */ = {
 			isa = PBXGroup;
 			children = (
+				59F4F2F225F9B86600E82417 /* CreateReviewCells */,
 				59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */,
 				59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */,
 			);
 			path = CreateReview;
+			sourceTree = "<group>";
+		};
+		59F4F2F225F9B86600E82417 /* CreateReviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */,
+				59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */,
+				59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */,
+				59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */,
+				59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */,
+				59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */,
+			);
+			path = CreateReviewCells;
 			sourceTree = "<group>";
 		};
 		7D25273E0465C2D67DFF944A /* Pods */ = {
@@ -295,6 +323,7 @@
 			children = (
 				D60B364925EE300D000E949D /* TermViewController.swift */,
 				D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */,
+				59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */,
 				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
 				D678692C25F53B5900DBB59C /* BookDetailViewController.swift */,
 				D65C7BFA25F6761700944094 /* BookReviewViewController.swift */,
@@ -529,9 +558,11 @@
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
+				59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
+				59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */,
 				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
@@ -539,6 +570,7 @@
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
+				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
@@ -594,10 +626,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
 				599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */,
+				59F4F2FA25F9BD8600E82417 /* ReviewRatingCell.swift in Sources */,
 				00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */,
+				59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */,
 				D635B6B425F7DD3F0048331F /* CommentViewController.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
@@ -612,6 +647,7 @@
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
+				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,

@@ -73,6 +73,14 @@ class LibraryViewController: UIViewController {
     }
     
     
+    @IBAction func createReview(_ sender: Any) {
+        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
+        vc.initializer = 1
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        //let reviewVC = CreateReviewViewController()
+        //self.navigationController?.pushViewController(reviewVC, animated: true)
+    }
     
 
     /*

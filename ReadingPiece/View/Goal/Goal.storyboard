@@ -271,13 +271,13 @@
         <!--책 추가-->
         <scene sceneID="pFa-j0-1OX">
             <objects>
-                <viewController id="6S8-HU-csk" customClass="SearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" id="6S8-HU-csk" customClass="SearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X8o-x7-vfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhO-oU-5me">
-                                <rect key="frame" x="0.0" y="88" width="414" height="54"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FMa-MG-gaX">
                                         <rect key="frame" x="367" y="0.0" width="47" height="54"/>
@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="책 이름, 작가, 출판사" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-hg-tpY">
-                                        <rect key="frame" x="18" y="16" width="299" height="22.5"/>
+                                        <rect key="frame" x="18" y="18" width="299" height="18"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -317,13 +317,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 123권의 검색 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0x-qi-ItU">
-                                <rect key="frame" x="20" y="158" width="116" height="19.5"/>
+                                <rect key="frame" x="20" y="114" width="111.5" height="15.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3No-EK-nBn">
-                                <rect key="frame" x="0.0" y="190.5" width="414" height="705.5"/>
+                                <rect key="frame" x="0.0" y="142.5" width="414" height="753.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="130" id="GCH-Ek-SWM" customClass="BookCell" customModule="ReadingPiece" customModuleProvider="target">
@@ -349,19 +349,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgu-3q-cyJ">
-                                                    <rect key="frame" x="119" y="10" width="43" height="21"/>
+                                                    <rect key="frame" x="119" y="10" width="40.5" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3E-Te-LBK">
-                                                    <rect key="frame" x="119" y="32" width="39" height="21"/>
+                                                    <rect key="frame" x="119" y="27.5" width="36.5" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIF-bE-lT4">
-                                                    <rect key="frame" x="119" y="67" width="39" height="21"/>
+                                                    <rect key="frame" x="119" y="58" width="36.5" height="16.5"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -428,7 +428,7 @@
                         <outlet property="resultTableView" destination="3No-EK-nBn" id="nxG-wK-u9s"/>
                         <outlet property="searchButton" destination="FMa-MG-gaX" id="wNG-5s-c3C"/>
                         <outlet property="searchTextField" destination="Dgp-hg-tpY" id="Vae-5B-kBT"/>
-                        <segue destination="5Rs-3U-fIc" kind="show" id="KIS-69-rws"/>
+                        <segue destination="5Rs-3U-fIc" kind="show" identifier="goToBookDetailVC" id="KIS-69-rws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfj-lz-M2Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -440,11 +440,11 @@
             <objects>
                 <viewController storyboardIdentifier="BookDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Rs-3U-fIc" customClass="BookDetailViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Owz-HN-Xp9">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="djH-xm-05T">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-rr-Jal">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="693"/>
@@ -665,7 +665,7 @@
                         <barButtonItem key="rightBarButtonItem" title="추가" id="9Kx-xI-sZN">
                             <color key="tintColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="FJb-Uf-div" kind="showDetail" id="kV3-92-s54"/>
+                                <action selector="addBook:" destination="5Rs-3U-fIc" id="wOk-hU-O7G"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -705,11 +705,11 @@
             <objects>
                 <viewController id="Jua-9V-jwc" customClass="BookReviewViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5fW-Uz-GU2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3GL-mN-l3j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -734,7 +734,7 @@
         <!--책 추가-->
         <scene sceneID="lzx-vv-T1z">
             <objects>
-                <viewController id="znP-37-YL6" sceneMemberID="viewController">
+                <viewController id="znP-37-YL6" customClass="SearchBookViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aJf-Je-X0K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -760,7 +760,7 @@
                                 <state key="selected" image="bookSearchBar"/>
                                 <state key="highlighted" image="bookSearchBar"/>
                                 <connections>
-                                    <segue destination="6S8-HU-csk" kind="show" id="thh-U8-nav"/>
+                                    <action selector="goToSearch:" destination="znP-37-YL6" eventType="touchUpInside" id="ntl-nC-O0n"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookillust" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-Ib-D5L">
@@ -812,7 +812,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gq0-HY-kHL"/>
+        <segue reference="doF-iz-ilm"/>
         <segue reference="MMK-oj-1Fo"/>
     </inferredMetricsTieBreakers>
     <resources>
