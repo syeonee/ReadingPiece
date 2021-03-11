@@ -46,6 +46,7 @@
 		59F4F27425F7858700E82417 /* FullJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F27225F7858700E82417 /* FullJournalCell.xib */; };
 		59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */; };
 		59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */; };
+		59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -60,7 +61,6 @@
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
-		D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */; };
 		D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C7BFA25F6761700944094 /* BookReviewViewController.swift */; };
 		D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678692C25F53B5900DBB59C /* BookDetailViewController.swift */; };
 		D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678693425F5426400DBB59C /* ReviewTableViewCell.swift */; };
@@ -126,6 +126,7 @@
 		59F4F27225F7858700E82417 /* FullJournalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullJournalCell.xib; sourceTree = "<group>"; };
 		59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewViewController.swift; sourceTree = "<group>"; };
 		59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateReviewViewController.xib; sourceTree = "<group>"; };
+		59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,7 +143,6 @@
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-SemiBold.ttf"; path = "../../../../NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		D65C7BFA25F6761700944094 /* BookReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewViewController.swift; sourceTree = "<group>"; };
 		D678692C25F53B5900DBB59C /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D678693425F5426400DBB59C /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		D67C655F25E4EFB200F15290 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */,
+				59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */,
 				5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */,
 				5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */,
 				5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */,
@@ -528,7 +528,6 @@
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
-				D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
@@ -539,6 +538,7 @@
 				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
+				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
