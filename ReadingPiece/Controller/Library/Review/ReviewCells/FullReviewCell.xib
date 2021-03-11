@@ -153,33 +153,33 @@
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="like icon"/>
+                        <connections>
+                            <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YOv-Bp-BCA"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-mn-ULK">
-                        <rect key="frame" x="42" y="253" width="21" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="21" id="jfb-il-1pX"/>
-                        </constraints>
+                        <rect key="frame" x="42" y="249" width="20" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-HX-cer">
-                        <rect key="frame" x="107" y="253" width="14" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="14" id="1Jc-rc-B5u"/>
-                        </constraints>
+                        <rect key="frame" x="106" y="249" width="14" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtT-f9-lON">
-                        <rect key="frame" x="85.5" y="255" width="17" height="13"/>
+                        <rect key="frame" x="84.5" y="255" width="17" height="13"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12.9" id="G6M-Iu-cDx"/>
                             <constraint firstAttribute="width" constant="17" id="cnm-Ps-yLr"/>
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="comment icon"/>
+                        <connections>
+                            <action selector="commentsButtonTapped:" destination="KGk-i7-Jjw" eventType="touchDragInside" id="yhc-Ma-Obc"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBg-Dv-alU">
                         <rect key="frame" x="338" y="250.5" width="19" height="22"/>
@@ -216,6 +216,9 @@
                 <outlet property="authorLabel" destination="M1U-bU-VMS" id="M1X-LE-YKf"/>
                 <outlet property="bookImageView" destination="iPj-2E-nfY" id="UOC-kU-TSw"/>
                 <outlet property="bookTitleLabel" destination="8Li-hq-e3g" id="gGO-cw-tRH"/>
+                <outlet property="commentCount" destination="xhC-HX-cer" id="jKJ-Re-MVo"/>
+                <outlet property="likeButton" destination="IRL-Mz-34s" id="MU2-dL-zYt"/>
+                <outlet property="likeCount" destination="D4W-mn-ULK" id="pON-MB-qxz"/>
                 <outlet property="ratingLabel" destination="YPk-6I-I2o" id="8hx-T5-G1D"/>
                 <outlet property="ratingView" destination="FUR-1M-tRQ" id="2TN-kW-ews"/>
                 <outlet property="reviewTextLabel" destination="5tv-fS-1KV" id="92R-Mc-l4L"/>

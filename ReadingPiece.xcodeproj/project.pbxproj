@@ -39,6 +39,21 @@
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
 		59F4F22F25F5C0B400E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22E25F5C0B400E82417 /* Review.swift */; };
+		59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */; };
+		59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */; };
+		59F4F26F25F76CF500E82417 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F26E25F76CF500E82417 /* Journal.swift */; };
+		59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F27125F7858700E82417 /* FullJournalCell.swift */; };
+		59F4F27425F7858700E82417 /* FullJournalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F27225F7858700E82417 /* FullJournalCell.xib */; };
+		59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */; };
+		59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */; };
+		59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */; };
+		59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */; };
+		59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */; };
+		59F4F2FA25F9BD8600E82417 /* ReviewRatingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */; };
+		59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */; };
+		59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */; };
+		59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */; };
+		59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
@@ -53,7 +68,6 @@
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
-		D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */; };
 		D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C7BFA25F6761700944094 /* BookReviewViewController.swift */; };
 		D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678692C25F53B5900DBB59C /* BookDetailViewController.swift */; };
 		D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678693425F5426400DBB59C /* ReviewTableViewCell.swift */; };
@@ -112,6 +126,21 @@
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		59F4F22E25F5C0B400E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = ReadingPiece/Model/Library/Review.swift; sourceTree = "<group>"; };
+		59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDropDownCell.swift; sourceTree = "<group>"; };
+		59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewDropDownCell.xib; sourceTree = "<group>"; };
+		59F4F26E25F76CF500E82417 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		59F4F27125F7858700E82417 /* FullJournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullJournalCell.swift; sourceTree = "<group>"; };
+		59F4F27225F7858700E82417 /* FullJournalCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullJournalCell.xib; sourceTree = "<group>"; };
+		59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateReviewViewController.swift; sourceTree = "<group>"; };
+		59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateReviewViewController.xib; sourceTree = "<group>"; };
+		59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBookInfoCell.swift; sourceTree = "<group>"; };
+		59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewBookInfoCell.xib; sourceTree = "<group>"; };
+		59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRatingCell.swift; sourceTree = "<group>"; };
+		59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewRatingCell.xib; sourceTree = "<group>"; };
+		59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWritingCell.swift; sourceTree = "<group>"; };
+		59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewWritingCell.xib; sourceTree = "<group>"; };
+		59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +157,6 @@
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
-		D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-SemiBold.ttf"; path = "../../../../NotoSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		D65C7BFA25F6761700944094 /* BookReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewViewController.swift; sourceTree = "<group>"; };
 		D678692C25F53B5900DBB59C /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D678693425F5426400DBB59C /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -198,6 +226,7 @@
 			children = (
 				599D3AD325F26EC90085F134 /* ReviewCells */,
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
+				59F4F2C225F9031700E82417 /* CreateReview */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -216,10 +245,12 @@
 			children = (
 				599D3AB425F11AB30085F134 /* ReviewCell.swift */,
 				599D3AB525F11AB30085F134 /* ReviewCell.xib */,
-				599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */,
-				599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */,
 				599D3ACE25F26EC00085F134 /* FullReviewCell.swift */,
 				599D3ACF25F26EC00085F134 /* FullReviewCell.xib */,
+				599D3ABF25F1E32B0085F134 /* ReviewHeaderCell.swift */,
+				599D3AC025F1E32B0085F134 /* ReviewHeaderCell.xib */,
+				59F4F26825F657A600E82417 /* ReviewDropDownCell.swift */,
+				59F4F26925F657A600E82417 /* ReviewDropDownCell.xib */,
 			);
 			path = ReviewCells;
 			sourceTree = "<group>";
@@ -229,6 +260,8 @@
 			children = (
 				599D3AC425F236510085F134 /* JournalCell.swift */,
 				599D3AC525F236510085F134 /* JournalCell.xib */,
+				59F4F27125F7858700E82417 /* FullJournalCell.swift */,
+				59F4F27225F7858700E82417 /* FullJournalCell.xib */,
 				599D3AC925F240A60085F134 /* JournalHeaderCell.swift */,
 				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
 			);
@@ -248,8 +281,32 @@
 			isa = PBXGroup;
 			children = (
 				59F4F22B25F5C0AB00E82417 /* Review.swift */,
+				59F4F26E25F76CF500E82417 /* Journal.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		59F4F2C225F9031700E82417 /* CreateReview */ = {
+			isa = PBXGroup;
+			children = (
+				59F4F2F225F9B86600E82417 /* CreateReviewCells */,
+				59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */,
+				59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */,
+			);
+			path = CreateReview;
+			sourceTree = "<group>";
+		};
+		59F4F2F225F9B86600E82417 /* CreateReviewCells */ = {
+			isa = PBXGroup;
+			children = (
+				59F4F2F325F9B9A300E82417 /* ReviewBookInfoCell.swift */,
+				59F4F2F425F9B9A300E82417 /* ReviewBookInfoCell.xib */,
+				59F4F2F825F9BD8600E82417 /* ReviewRatingCell.swift */,
+				59F4F2F925F9BD8600E82417 /* ReviewRatingCell.xib */,
+				59F4F2FD25F9C38200E82417 /* ReviewWritingCell.swift */,
+				59F4F2FE25F9C38200E82417 /* ReviewWritingCell.xib */,
+			);
+			path = CreateReviewCells;
 			sourceTree = "<group>";
 		};
 		7D25273E0465C2D67DFF944A /* Pods */ = {
@@ -266,6 +323,7 @@
 			children = (
 				D60B364925EE300D000E949D /* TermViewController.swift */,
 				D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */,
+				59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */,
 				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
 				D678692C25F53B5900DBB59C /* BookDetailViewController.swift */,
 				D65C7BFA25F6761700944094 /* BookReviewViewController.swift */,
@@ -345,7 +403,7 @@
 		D67C655F25E4EFB200F15290 /* font */ = {
 			isa = PBXGroup;
 			children = (
-				D65C7BF625F66A1D00944094 /* NotoSans-SemiBold.ttf */,
+				59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */,
 				5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */,
 				5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */,
 				5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */,
@@ -491,22 +549,28 @@
 				D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */,
 				5913B23A25EF2E4D002AAA8C /* NotoSansCJKkr-Light.otf in Resources */,
 				D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */,
+				59F4F27425F7858700E82417 /* FullJournalCell.xib in Resources */,
+				59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
+				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
-				D65C7BF725F66A1D00944094 /* NotoSans-SemiBold.ttf in Resources */,
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
+				59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
+				59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */,
 				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
 				D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */,
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
+				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
+				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
@@ -562,10 +626,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
 				599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */,
+				59F4F2FA25F9BD8600E82417 /* ReviewRatingCell.swift in Sources */,
 				00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */,
+				59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */,
 				D635B6B425F7DD3F0048331F /* CommentViewController.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
@@ -580,8 +647,12 @@
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
+				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
+				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
+				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,
+				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
@@ -597,6 +668,7 @@
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
+				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,

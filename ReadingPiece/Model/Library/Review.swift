@@ -13,13 +13,20 @@ class Review {
     var author: String
     var rating: String
     var reviewText: String
+    var date: Date
+    var liked: Int
+    var comments: Int
     
-    init(thumbnailImage: UIImage, bookTitle: String, author: String, rating: String, reviewText: String) {
+    
+    init(thumbnailImage: UIImage, bookTitle: String, author: String, rating: String, reviewText: String, date: Date, liked: Int, comments: Int) {
         self.thumbnailImage = thumbnailImage
         self.bookTitle = bookTitle
         self.author = author
         self.rating = rating
         self.reviewText = reviewText
+        self.date = date
+        self.liked = liked
+        self.comments = comments
     }
     
 }

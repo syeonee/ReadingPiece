@@ -12,6 +12,7 @@ class LibraryViewController: UIViewController {
     
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
+    var currentVC: Int = 0
     
     var dataSource = [(menu: String, content: UIViewController)]() {
         didSet {
@@ -71,6 +72,16 @@ class LibraryViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func createReview(_ sender: Any) {
+        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
+        vc.initializer = 1
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+        //let reviewVC = CreateReviewViewController()
+        //self.navigationController?.pushViewController(reviewVC, animated: true)
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -107,6 +118,8 @@ extension LibraryViewController: PagingMenuViewControllerDataSource {
 extension LibraryViewController: PagingMenuViewControllerDelegate {
     func menuViewController(viewController: PagingMenuViewController, didSelect page: Int, previousPage: Int) {
         contentViewController.scroll(to: page, animated: true)
+        self.currentVC = page
+        //print("현재 페이지: ", currentVC)
     }
 }
 

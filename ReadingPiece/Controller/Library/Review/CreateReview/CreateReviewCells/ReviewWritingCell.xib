@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewWritingCell" rowHeight="283" id="KGk-i7-Jjw" customClass="ReviewWritingCell" customModule="ReadingPiece" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="283"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="283"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리뷰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tW-sm-k5T">
+                        <rect key="frame" x="20" y="16" width="31.5" height="25"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="기억에 남는 문구, 소감을 기록하세요!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="JDX-C2-HSb">
+                        <rect key="frame" x="20" y="57" width="325" height="135"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="135" id="E2e-Ks-g2B"/>
+                        </constraints>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zW0-vZ-gnI">
+                        <rect key="frame" x="20" y="216" width="100" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="MgU-dF-efZ"/>
+                            <constraint firstAttribute="height" constant="36" id="v5f-49-vh3"/>
+                        </constraints>
+                        <state key="normal" image="publicButtonDefault"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-Sl-AwD">
+                        <rect key="frame" x="132" y="216" width="100" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="n7i-SG-btg"/>
+                            <constraint firstAttribute="width" constant="100" id="qfn-Mt-Lgq"/>
+                        </constraints>
+                        <state key="normal" image="privateButtonDefault"/>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPictureIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3d6-hV-7bD">
+                        <rect key="frame" x="322" y="18" width="19" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="19" id="L0t-VP-YE1"/>
+                            <constraint firstAttribute="height" constant="19" id="pFd-xA-VCQ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3d6-hV-7bD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17.800000000000001" id="8p1-WB-aJP"/>
+                    <constraint firstAttribute="trailing" secondItem="3d6-hV-7bD" secondAttribute="trailing" constant="24" id="Bbg-1S-uRK"/>
+                    <constraint firstItem="0eL-Sl-AwD" firstAttribute="leading" secondItem="zW0-vZ-gnI" secondAttribute="trailing" constant="12" id="BiN-Xu-o9p"/>
+                    <constraint firstItem="0eL-Sl-AwD" firstAttribute="centerY" secondItem="zW0-vZ-gnI" secondAttribute="centerY" id="Cvx-6V-t4J"/>
+                    <constraint firstItem="JDX-C2-HSb" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="GHv-ie-vyw"/>
+                    <constraint firstItem="JDX-C2-HSb" firstAttribute="top" secondItem="3tW-sm-k5T" secondAttribute="bottom" constant="16" id="J6f-w8-ZNF"/>
+                    <constraint firstItem="3tW-sm-k5T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="NaA-0C-si8"/>
+                    <constraint firstItem="3tW-sm-k5T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15.800000000000001" id="SQw-Nt-xNz"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="zW0-vZ-gnI" secondAttribute="bottom" constant="20" id="gai-X9-2nT"/>
+                    <constraint firstItem="JDX-C2-HSb" firstAttribute="leading" secondItem="3tW-sm-k5T" secondAttribute="leading" id="mUv-24-Wvz"/>
+                    <constraint firstItem="zW0-vZ-gnI" firstAttribute="leading" secondItem="JDX-C2-HSb" secondAttribute="leading" id="oS9-uc-m9g"/>
+                    <constraint firstItem="zW0-vZ-gnI" firstAttribute="top" secondItem="JDX-C2-HSb" secondAttribute="bottom" constant="24" id="rXc-E6-XHA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="138.40579710144928" y="138.95089285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="addPictureIcon" width="19" height="19"/>
+        <image name="privateButtonDefault" width="96" height="36"/>
+        <image name="publicButtonDefault" width="100" height="36"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

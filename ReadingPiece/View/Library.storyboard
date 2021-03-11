@@ -29,7 +29,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wk-S5-SWL">
-                                <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="138" width="414" height="675"/>
                                 <connections>
                                     <segue destination="ojP-JJ-Esu" kind="embed" id="27l-J6-atU"/>
                                 </connections>
@@ -42,9 +42,9 @@
                             <constraint firstItem="it2-95-kuM" firstAttribute="centerX" secondItem="ZmZ-wR-gxX" secondAttribute="centerX" id="22I-Z3-KoK"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="trailing" secondItem="7aw-6M-EcA" secondAttribute="trailing" id="4Q4-cy-ILM"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="KnG-ZV-bf8"/>
-                            <constraint firstAttribute="bottom" secondItem="2wk-S5-SWL" secondAttribute="bottom" id="NlQ-IK-X9k"/>
                             <constraint firstItem="it2-95-kuM" firstAttribute="leading" secondItem="7aw-6M-EcA" secondAttribute="leading" id="fQK-jJ-EoU"/>
                             <constraint firstItem="2wk-S5-SWL" firstAttribute="top" secondItem="it2-95-kuM" secondAttribute="bottom" id="sDM-Kq-t1Z"/>
+                            <constraint firstItem="2wk-S5-SWL" firstAttribute="bottom" secondItem="7aw-6M-EcA" secondAttribute="bottom" id="wk6-AK-ywJ"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="내 서재" image="library" selectedImage="selectedLibrary" id="92u-ec-o0W"/>
@@ -52,7 +52,7 @@
                         <barButtonItem key="rightBarButtonItem" image="write" id="mhn-Rk-vu7">
                             <color key="tintColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="ioM-mV-C8w" kind="show" id="k6M-oQ-nc8"/>
+                                <action selector="createReview:" destination="EO9-7T-gEG" id="EW0-xI-LsD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -62,15 +62,15 @@
             </objects>
             <point key="canvasLocation" x="1237.68115942029" y="124.55357142857142"/>
         </scene>
-        <!--LoginController-->
-        <scene sceneID="43b-yC-h4N">
+        <!--SearchViewController-->
+        <scene sceneID="c4F-hM-wY7">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="LoginController" id="ioM-mV-C8w" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="FPJ-Kh-lEW"/>
+                <viewControllerPlaceholder storyboardName="Goal" referencedIdentifier="SearchViewController" id="ZlV-80-jjn" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RLW-vv-hkk"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UsI-nr-6mE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIg-jQ-AGI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2010" y="-386"/>
+            <point key="canvasLocation" x="1887" y="-279"/>
         </scene>
         <!--Library Nav View Controller-->
         <scene sceneID="kxL-pM-jx2">
@@ -113,7 +113,7 @@
             <objects>
                 <viewController id="ojP-JJ-Esu" customClass="PagingContentViewController" customModule="PagingKit" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTb-U1-uWe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="675"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9o2-42-nYR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

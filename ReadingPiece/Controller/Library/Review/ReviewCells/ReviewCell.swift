@@ -12,7 +12,11 @@ class ReviewCell: UITableViewCell {
     let cellID = "ReviewCell"
     var moreDelegate: ReviewMoreDelegate?
     var editDelegate: ReviewEditDelegate?
-
+    var likeDelegate: ReviewLikeDelegate?
+    var commentsDelegate: ReviewCommentsDelegate?
+    
+    var likeState: Bool = false
+    
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var ratingView: UIView!
@@ -23,6 +27,11 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var reviewTextLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeCount: UILabel!
+    @IBOutlet weak var commentCount: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         upperView.layer.cornerRadius = 4
@@ -31,7 +40,6 @@ class ReviewCell: UITableViewCell {
         ratingView.layer.borderWidth = 0.3
         ratingView.layer.borderColor = UIColor.melon.cgColor
         ratingLabel.textColor = .melon
-        
         reviewTextLabel.lineBreakMode = .byWordWrapping
     }
     
@@ -43,6 +51,24 @@ class ReviewCell: UITableViewCell {
         editDelegate?.didTapEditButton(cell: self)
     }
     
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        if likeState == false {
+            likeDelegate?.didTapLikeButton(cell: self)
+            //self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            self.likeState = true
+        } else {
+            likeDelegate?.deselectLikeButton(cell: self)
+            //self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            self.likeState = false
+        }
+    }
+    @IBAction func commentsButtonTapped(_ sender: Any) {
+        commentsDelegate?.didTapCommentButton()
+    }
+    
+    
     
 }
 
@@ -51,4 +77,11 @@ protocol ReviewMoreDelegate {
 }
 protocol ReviewEditDelegate {
     func didTapEditButton(cell: ReviewCell)
+}
+protocol ReviewLikeDelegate {
+    func didTapLikeButton(cell: ReviewCell)
+    func deselectLikeButton(cell: ReviewCell)
+}
+protocol ReviewCommentsDelegate {
+    func didTapCommentButton()
 }

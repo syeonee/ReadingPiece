@@ -9,6 +9,11 @@ import UIKit
 import Kingfisher
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
+    
+    // SearchViewController가 어디서 호출되었는지 Int 값으로 전달하는 변수입니다
+    // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
+    // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
+    var initializer: Int?
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var searchButton: UIButton!
@@ -26,6 +31,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("initializer: \(String(describing: self.initializer))")
         self.searchTextField.delegate = self
         resultTableView.separatorInset.left = 20
         resultTableView.separatorInset.right = 20
@@ -85,6 +91,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let sb = UIStoryboard(name: "Goal", bundle: nil)
         let vc = sb.instantiateViewController(identifier: "BookDetailController") as! BookDetailViewController
         vc.modalPresentationStyle = .fullScreen
+        vc.initializer = self.initializer
         vc.book = book
         self.navigationController?.pushViewController(vc, animated: true)
     }
