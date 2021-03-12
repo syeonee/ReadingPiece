@@ -10,11 +10,7 @@
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
 		00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FCD25F362DD00340AE0 /* TimerViewController.swift */; };
 		00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD025F3640500340AE0 /* TimerStopViewController.swift */; };
-		00838FD525F3649F00340AE0 /* DailyReadingCompleteScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD425F3649F00340AE0 /* DailyReadingCompleteScene.swift */; };
 		00838FDC25F3659700340AE0 /* DailyDiaryWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FDB25F3659700340AE0 /* DailyDiaryWrittenViewController.swift */; };
-		00838FE325F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FE225F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift */; };
-		00838FE625F4EEE600340AE0 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FE525F4EEE600340AE0 /* UIView.swift */; };
-		00838FE925F4FD5B00340AE0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FE825F4FD5B00340AE0 /* UIViewController.swift */; };
 		00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FF025F5017200340AE0 /* IndicatorView.swift */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
@@ -68,9 +64,7 @@
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		00838FCD25F362DD00340AE0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		00838FD025F3640500340AE0 /* TimerStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopViewController.swift; sourceTree = "<group>"; };
-		00838FD425F3649F00340AE0 /* DailyReadingCompleteScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReadingCompleteScene.swift; sourceTree = "<group>"; };
 		00838FDB25F3659700340AE0 /* DailyDiaryWrittenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDiaryWrittenViewController.swift; sourceTree = "<group>"; };
-		00838FE225F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReadingUnCompleteScene.swift; sourceTree = "<group>"; };
 		00838FE525F4EEE600340AE0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		00838FE825F4FD5B00340AE0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		00838FF025F5017200340AE0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
@@ -162,8 +156,6 @@
 		00838FD325F3645200340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				00838FD425F3649F00340AE0 /* DailyReadingCompleteScene.swift */,
-				00838FE225F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
