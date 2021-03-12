@@ -12,6 +12,7 @@
 		00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD025F3640500340AE0 /* TimerStopViewController.swift */; };
 		00838FDC25F3659700340AE0 /* DailyDiaryWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FDB25F3659700340AE0 /* DailyDiaryWrittenViewController.swift */; };
 		00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FF025F5017200340AE0 /* IndicatorView.swift */; };
+		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
 		5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */; };
@@ -92,12 +93,11 @@
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		00838FCD25F362DD00340AE0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		00838FD025F3640500340AE0 /* TimerStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopViewController.swift; sourceTree = "<group>"; };
-		00838FD425F3649F00340AE0 /* DailyReadingCompleteScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReadingCompleteScene.swift; sourceTree = "<group>"; };
 		00838FDB25F3659700340AE0 /* DailyDiaryWrittenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDiaryWrittenViewController.swift; sourceTree = "<group>"; };
-		00838FE225F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReadingUnCompleteScene.swift; sourceTree = "<group>"; };
 		00838FE525F4EEE600340AE0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		00838FE825F4FD5B00340AE0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		00838FF025F5017200340AE0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		049711AD81EEFAB3F8E9AE75 /* Pods-ReadingPiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.release.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.release.xcconfig"; sourceTree = "<group>"; };
 		5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
@@ -198,6 +198,7 @@
 				00838FE825F4FD5B00340AE0 /* UIViewController.swift */,
 				59F4F22325F5C09500E82417 /* UIFont.swift */,
 				00838FF025F5017200340AE0 /* IndicatorView.swift */,
+				00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,8 +216,6 @@
 		00838FD325F3645200340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				00838FD425F3649F00340AE0 /* DailyReadingCompleteScene.swift */,
-				00838FE225F4DEDB00340AE0 /* DailyReadingUnCompleteScene.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -646,6 +645,7 @@
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
+				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,

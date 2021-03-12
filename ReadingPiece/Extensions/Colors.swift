@@ -9,6 +9,10 @@ import UIKit
 
 extension UIColor {
 
+    @nonobjc class var tableViewBackroundGray: UIColor {
+        return UIColor(red: 229.0 / 255.0, green: 229.0 / 255.0, blue: 229.0 / 255.0, alpha: 1.0)
+    }
+
   @nonobjc class var lightgrey2: UIColor {
     return UIColor(white: 246.0 / 255.0, alpha: 1.0)
   }
