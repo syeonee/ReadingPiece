@@ -8,6 +8,7 @@
 import UIKit
 
 class InputReadingStatusPopupViewController: UIViewController {
+    
     @IBOutlet weak var popupView: UIView!
     static var storyobardId: String = "InputReadingStatusPopupVC"
     @IBOutlet weak var closePopupButton: UIButton!

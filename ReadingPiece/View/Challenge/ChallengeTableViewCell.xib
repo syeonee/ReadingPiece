@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Bold.otf">
+            <string>NotoSansCJKkr-Bold</string>
+        </array>
+        <array key="NotoSansCJKkr-Medium.otf">
+            <string>NotoSansCJKkr-Medium</string>
+        </array>
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChallengeTableViewCell" id="U1P-fv-PfX" customClass="ChallengeTableViewCell" customModule="ReadingPiece" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U1P-fv-PfX" id="R6h-mQ-iLH">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLM-yx-vn6">
+                        <rect key="frame" x="104" y="0.0" width="112.5" height="33.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00님, 정말 부지런하시네요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVO-8O-kHk">
+                        <rect key="frame" x="63" y="41.5" width="194.5" height="25.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vpC-Fi-hNF">
+                        <rect key="frame" x="122.5" y="97" width="75" height="15"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                        <state key="normal" title="2일 연속 독서">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="successGlyph" translatesAutoresizingMaskIntoConstraints="NO" id="Ps9-Bi-Yd9">
+                        <rect key="frame" x="105.5" y="97" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="f0R-xo-Yni"/>
+                            <constraint firstAttribute="height" constant="15" id="hnT-BE-cih"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="KeC-9r-rmb">
+                        <rect key="frame" x="33" y="162" width="256" height="118.5"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="hMG-he-ObJ">
+                                <rect key="frame" x="0.0" y="0.0" width="72" height="118.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookIcon" translatesAutoresizingMaskIntoConstraints="NO" id="j63-wI-zAF">
+                                        <rect key="frame" x="2.5" y="0.0" width="67" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="4dx-Yx-aCa"/>
+                                            <constraint firstAttribute="width" constant="67" id="sxd-6U-N4E"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 %" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEV-mK-U1l">
+                                        <rect key="frame" x="12.5" y="46" width="47.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 독서량" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qE-ng-FY3">
+                                        <rect key="frame" x="18" y="80" width="36" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vLn-nR-Htb">
+                                <rect key="frame" x="92" y="0.0" width="72" height="118.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4Yl-lL-XNM">
+                                        <rect key="frame" x="2.5" y="0.0" width="67" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="67" id="Rte-5h-Isu"/>
+                                            <constraint firstAttribute="height" constant="42" id="rCf-zW-SnV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40 분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8q-0I-fjC">
+                                        <rect key="frame" x="13" y="46" width="46.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 독서시간" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QT3-0Q-wyG">
+                                        <rect key="frame" x="12" y="80" width="48" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="J9q-V0-c1R">
+                                <rect key="frame" x="184" y="0.0" width="72" height="118.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diaryIcon" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-ZO-6Cq">
+                                        <rect key="frame" x="2.5" y="0.0" width="67" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="Xxd-jP-eLX"/>
+                                            <constraint firstAttribute="width" constant="67" id="cv6-Ie-4KZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oDx-6g-04k">
+                                        <rect key="frame" x="18.5" y="46" width="35" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지금까지 작성한 일지" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIX-iG-7is">
+                                        <rect key="frame" x="4.5" y="80" width="63" height="38.5"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                <constraints>
+                    <constraint firstItem="XLM-yx-vn6" firstAttribute="top" secondItem="R6h-mQ-iLH" secondAttribute="top" id="3hM-Tj-bN0"/>
+                    <constraint firstItem="NVO-8O-kHk" firstAttribute="centerX" secondItem="R6h-mQ-iLH" secondAttribute="centerX" id="4u4-ak-j2M"/>
+                    <constraint firstItem="vpC-Fi-hNF" firstAttribute="centerX" secondItem="R6h-mQ-iLH" secondAttribute="centerX" id="4yX-81-sMT"/>
+                    <constraint firstItem="NVO-8O-kHk" firstAttribute="top" secondItem="XLM-yx-vn6" secondAttribute="bottom" constant="8" id="Bi4-kU-drD"/>
+                    <constraint firstItem="Ps9-Bi-Yd9" firstAttribute="top" secondItem="vpC-Fi-hNF" secondAttribute="top" id="JfX-Gx-FH6"/>
+                    <constraint firstItem="KeC-9r-rmb" firstAttribute="leading" secondItem="R6h-mQ-iLH" secondAttribute="leading" constant="33" id="UD4-t2-uc2"/>
+                    <constraint firstItem="Ps9-Bi-Yd9" firstAttribute="bottom" secondItem="vpC-Fi-hNF" secondAttribute="bottom" id="Va1-i5-CYz"/>
+                    <constraint firstItem="vpC-Fi-hNF" firstAttribute="leading" secondItem="Ps9-Bi-Yd9" secondAttribute="trailing" constant="2" id="ZkH-DA-Xal"/>
+                    <constraint firstAttribute="trailing" secondItem="KeC-9r-rmb" secondAttribute="trailing" constant="31" id="h9m-qF-vrD"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KeC-9r-rmb" secondAttribute="bottom" constant="10" id="kuV-6E-nbO"/>
+                    <constraint firstItem="KeC-9r-rmb" firstAttribute="top" secondItem="vpC-Fi-hNF" secondAttribute="bottom" constant="50" id="neU-SW-uQx"/>
+                    <constraint firstItem="XLM-yx-vn6" firstAttribute="centerX" secondItem="R6h-mQ-iLH" secondAttribute="centerX" id="q4B-Ld-6lf"/>
+                    <constraint firstItem="Ps9-Bi-Yd9" firstAttribute="centerY" secondItem="vpC-Fi-hNF" secondAttribute="centerY" id="sB4-ZS-6Qk"/>
+                    <constraint firstItem="vpC-Fi-hNF" firstAttribute="top" secondItem="NVO-8O-kHk" secondAttribute="bottom" constant="30" id="v1F-VJ-izX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="5TH-cj-ywp"/>
+            <connections>
+                <outlet property="cellTitleLabel" destination="XLM-yx-vn6" id="WVU-57-G9r"/>
+                <outlet property="challengeTitleButton" destination="vpC-Fi-hNF" id="KH9-WH-vRh"/>
+                <outlet property="daillyReadingStatusLabel" destination="DEV-mK-U1l" id="oSN-Nx-DEy"/>
+                <outlet property="daillyReadingTimeLabel" destination="e8q-0I-fjC" id="rM0-s9-Vgx"/>
+                <outlet property="todayRadingPage" destination="1qE-ng-FY3" id="0bQ-f8-CBV"/>
+                <outlet property="todayRadingTime" destination="QT3-0Q-wyG" id="MfW-Nl-VcG"/>
+                <outlet property="totalDiary" destination="oIX-iG-7is" id="Bad-jR-84G"/>
+                <outlet property="totalDiaryCountLabel" destination="oDx-6g-04k" id="etE-QV-TI7"/>
+                <outlet property="userNameLabel" destination="NVO-8O-kHk" id="0yv-5E-d5t"/>
+            </connections>
+            <point key="canvasLocation" x="-355.07246376811599" y="114.50892857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bookIcon" width="67" height="46.5"/>
+        <image name="diaryIcon" width="59" height="59"/>
+        <image name="successGlyph" width="121" height="121"/>
+        <image name="timeIcon" width="58" height="58"/>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

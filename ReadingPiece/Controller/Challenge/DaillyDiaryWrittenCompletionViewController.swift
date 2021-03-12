@@ -10,6 +10,7 @@ import UIKit
 class DaillyDiaryWrittenCompletionViewController: UIViewController {
 
     @IBOutlet weak var daillyDiaryWrittenTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

@@ -18,6 +18,7 @@ class ReviewWrittenViewController: UIViewController {
     @IBOutlet weak var publicPostButton: UIButton!
     @IBOutlet weak var bookThumbnailImage: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!
+    
     // 별 평점이 속한 뷰 그룹
     @IBOutlet weak var reviewRatingView: UIView!
     // "나의 평가" : 로직없이 UI만 적용

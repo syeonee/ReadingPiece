@@ -8,6 +8,7 @@
 import UIKit
 
 class ChallengeCompletionViewController: UIViewController {
+    
     @IBOutlet weak var challengeRewardImage: UIImageView!
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var challengeCakeNameLabel: UILabel!
