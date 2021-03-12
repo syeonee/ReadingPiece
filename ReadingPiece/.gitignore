@@ -30,6 +30,7 @@ DerivedData/
 
 ## Gcc Patch
 /*.gcno
+*.pbxproj binary merge=union 
 
 ### Xcode Patch ###
 *.xcodeproj/*
