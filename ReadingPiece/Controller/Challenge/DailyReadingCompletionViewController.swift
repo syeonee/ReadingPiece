@@ -8,6 +8,7 @@
 import UIKit
 
 class DailyReadingCompletionViewController: UIViewController {
+    
     @IBOutlet weak var readingTargetTimeLabel: UILabel!
     @IBOutlet weak var daillyTotalReadingTimeLabel: UILabel!
 

@@ -8,16 +8,16 @@
 import UIKit
 
 class TimerViewController: UIViewController {
-    var isReading: Bool = true
-    var readingTime : Int = 0
-
+    
     @IBOutlet weak var timerBackgroundView: UIView!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var targetRadingTimeLabel: UILabel!
     @IBOutlet weak var pauseRadingButton: UIButton!
     @IBOutlet weak var stopReadingButton: UIButton!
-    
+    var isReading: Bool = true
+    var readingTime : Int = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()

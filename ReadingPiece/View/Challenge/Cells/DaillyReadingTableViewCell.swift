@@ -8,7 +8,6 @@
 import UIKit
 
 class DaillyReadingTableViewCell: UITableViewCell {
-    static var identifier: String = "DaillyReadingTableViewCell"
     
     @IBOutlet weak var innerStatusBarWidth: NSLayoutConstraint!
     @IBOutlet weak var innerChallengeStatusBar: UIView!
@@ -20,7 +19,8 @@ class DaillyReadingTableViewCell: UITableViewCell {
     @IBOutlet weak var challengeReaminingBooks: UILabel!
     @IBOutlet weak var challengeExpireDate: UILabel!
     
-    
+    static var identifier: String = "DaillyReadingTableViewCell"
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()

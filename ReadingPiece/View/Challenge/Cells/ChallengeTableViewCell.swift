@@ -8,7 +8,7 @@
 import UIKit
 
 class ChallengeTableViewCell: UITableViewCell {
-    static var identifier: String = "ChallengeTableViewCell"
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var challengeTitleButton: UIButton!
     @IBOutlet weak var daillyReadingStatusLabel: UILabel!
@@ -20,6 +20,8 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak var todayRadingPage: UILabel!
     @IBOutlet weak var todayRadingTime: UILabel!
     @IBOutlet weak var totalDiary: UILabel!
+
+    static var identifier: String = "ChallengeTableViewCell"
 
     override func awakeFromNib() {
         super.awakeFromNib()

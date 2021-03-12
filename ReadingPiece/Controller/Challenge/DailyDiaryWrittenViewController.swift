@@ -8,6 +8,7 @@
 import UIKit
 
 class DailyDiaryWrittenViewController: UIViewController {
+    
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var bookInfoView: UIView!
     @IBOutlet weak var bookThumbnailImage: UIImageView!
