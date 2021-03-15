@@ -12,7 +12,6 @@ struct Book: Codable {
     let title: String
     let authors: [String]
     let publisher: String
-    let publicationDate: String
     let thumbnailPath: String
     let summary: String
 
@@ -20,7 +19,6 @@ struct Book: Codable {
         case title
         case authors
         case publisher
-        case publicationDate = "datetime"
         case thumbnailPath = "thumbnail"
         case summary = "contents"
     }

@@ -35,6 +35,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         self.searchTextField.delegate = self
         resultTableView.separatorInset.left = 20
         resultTableView.separatorInset.right = 20
+        resultCountLabel.isHidden = true
+        resultTableView.isHidden = true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -60,7 +62,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
                 self.resultCount = resultCount
                 self.isEnd = isEnd
                 self.resultCountLabel.text = "총 \(self.resultCount)권의 검색 결과"
+                self.resultCountLabel.isHidden = false
                 self.resultTableView.reloadData()
+                self.resultTableView.isHidden = false
             }
         }
     }
@@ -126,4 +130,8 @@ class BookCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    
+    override func awakeFromNib() {
+        self.selectionStyle = .none
+    }
 }

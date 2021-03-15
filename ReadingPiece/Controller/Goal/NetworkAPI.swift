@@ -11,9 +11,7 @@ import Alamofire
 class NetworkAPI {
     static func search(query: String, page: Int, completion: @escaping ([Book],Int,Bool) -> Void) {
         let APIKey = "7e7729343ca056b32e80622098e52b27"
-        let searchUrl = "https://dapi.kakao.com/v3/search/book?query=\(query)&page=\(page)"
-        //let parameters = ["query" : query, "page" : page ] as [String : Any]
-        
+
         var urlComponents = URLComponents(string: "https://dapi.kakao.com/v3/search/book?")!
         let queryItem = URLQueryItem(name: "query", value: query)
         let pageItem = URLQueryItem(name: "page", value: String(page))

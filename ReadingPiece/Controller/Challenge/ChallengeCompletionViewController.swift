@@ -6,26 +6,32 @@
 //
 
 import UIKit
+import SpriteKit
 
 class ChallengeCompletionViewController: UIViewController {
-    
     @IBOutlet weak var challengeRewardImage: UIImageView!
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var challengeCakeNameLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
-    
+    @IBOutlet weak var fireCrackerView: SKView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // Do any additional setup after loading the view.
     }
     
     private func setupUI() {
         setNavBar()
-        setFirecracker()
+        setFireCracker()
         continueButton.makeRoundedButtnon("계속하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         challengeNameLabel.textColor = .main
         challengeCakeNameLabel.textColor = .darkgrey
+    }
+    
+    func setFireCracker() {
+        fireCrackerView.backgroundColor = .clear
+        let scene = SnowScene()
+        fireCrackerView.presentScene(scene)
     }
     
     private func setNavBar() {
@@ -35,14 +41,6 @@ class ChallengeCompletionViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
-    private func setFirecracker() {
-        let redCracker = UIImageView(image: UIImage(named: "redPeice"))
-        let greenCracker = UIImageView(image: UIImage(named: "greenPeice"))
-        let purpleCracker = UIImageView(image: UIImage(named: "purplePeice"))
-        redCracker.frame = CGRect(x: 200, y: 200, width: 10, height: 20)
-        view.addSubview(redCracker)
-    }
-
     @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
         
     }

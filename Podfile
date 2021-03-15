@@ -12,6 +12,6 @@ target 'ReadingPiece' do
   pod 'Alamofire', '~> 5.2'
   pod 'Kingfisher', '~> 6.0'
   pod 'DropDown', '~> 2.3.2'
-  pod 'Cosmos', '~> 23.0'
+  pod 'PanModal'
 
 end
