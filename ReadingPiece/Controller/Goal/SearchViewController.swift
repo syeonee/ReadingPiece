@@ -126,4 +126,8 @@ class BookCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    
+    override func awakeFromNib() {
+        self.selectionStyle = .none
+    }
 }

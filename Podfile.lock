@@ -3,6 +3,7 @@ PODS:
   - DropDown (2.3.13)
   - Kingfisher (6.0.1)
   - PagingKit (1.15.0)
+  - PanModal (1.2.7)
   - SnapKit (5.0.1)
   - Toast-Swift (5.0.1)
 
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - DropDown (~> 2.3.2)
   - Kingfisher (~> 6.0)
   - PagingKit
+  - PanModal
   - SnapKit (~> 5.0.0)
   - Toast-Swift (~> 5.0.1)
 
@@ -20,6 +22,7 @@ SPEC REPOS:
     - DropDown
     - Kingfisher
     - PagingKit
+    - PanModal
     - SnapKit
     - Toast-Swift
 
@@ -28,9 +31,10 @@ SPEC CHECKSUMS:
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   Kingfisher: adde87a4f74f6a3845395769354efff593581740
   PagingKit: 4bd58b65d71a82ab98486b6927e870c7fbc6c6eb
+  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 6110766f46d8b30a9d8e25b601ee2a0556d17dfc
+PODFILE CHECKSUM: 5ccd9df220172ec2d25cacab360551388fd3406d
 
 COCOAPODS: 1.10.1

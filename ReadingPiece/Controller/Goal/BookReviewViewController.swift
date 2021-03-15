@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PanModal
 
 class BookReviewViewController: UIViewController {
 
@@ -58,6 +59,10 @@ extension BookReviewViewController: ReviewTableViewCellDelegate {
     func commentButtonTapped(cell: ReviewTableViewCell) {
         let indexPath = reviewTableView.indexPath(for: cell)
         print("comment button tapped at row-\(String(describing: indexPath?.row))")
+        let storyboard = UIStoryboard(name: "Goal", bundle: nil)
+        if let myViewController = storyboard.instantiateViewController(withIdentifier: "CommentController") as? CommentViewController {
+            presentPanModal(myViewController)
+        }
     }
     
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
