@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateReviewViewController" customModule="ReadingPiece" customModuleProvider="target">
             <connections>
+                <outlet property="doneButton" destination="VF2-0A-sis" id="64D-cV-vxE"/>
                 <outlet property="tableView" destination="rco-Kk-000" id="rWt-dm-598"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

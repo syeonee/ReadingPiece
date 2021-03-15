@@ -11,6 +11,7 @@ import Cosmos
 class ReviewRatingCell: UITableViewCell {
     
     let cellID = "ReviewRatingCell"
+    var starCount: Int = 0
 
     @IBOutlet weak var starRatingView: CosmosView!
     override func awakeFromNib() {
@@ -26,6 +27,7 @@ class ReviewRatingCell: UITableViewCell {
         starRatingView.settings.emptyImage = UIImage(named: "star")
         starRatingView.didFinishTouchingCosmos = { rating in
             print("result: \(rating)")
+            self.starCount = Int(rating)
         }
     }
     

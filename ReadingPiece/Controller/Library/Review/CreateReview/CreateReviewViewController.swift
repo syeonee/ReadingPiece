@@ -16,6 +16,8 @@ class CreateReviewViewController: UIViewController {
     var book : Book?
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var doneButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavBar()
@@ -70,6 +72,7 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: writingCell.cellID) as! ReviewWritingCell
+            cell.delegate = self
             return cell
         }
     }
@@ -82,5 +85,11 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
         } else {
             return 280
         }
+    }
+}
+extension CreateReviewViewController: ReviewWritingCellDelegate {
+    func activateDoneButton() {
+        self.doneButton.setImage(UIImage(named: "completeButton"), for: .normal)
+        self.navigationItem.rightBarButtonItem?.tintColor = .main
     }
 }

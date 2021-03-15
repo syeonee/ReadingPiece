@@ -45,7 +45,13 @@
                             <constraint firstAttribute="width" constant="100" id="MgU-dF-efZ"/>
                             <constraint firstAttribute="height" constant="36" id="v5f-49-vh3"/>
                         </constraints>
-                        <state key="normal" image="publicButtonDefault"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal" title="전체공개">
+                            <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="publicButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IYr-Rt-ghK"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-Sl-AwD">
                         <rect key="frame" x="132" y="216" width="100" height="36"/>
@@ -53,7 +59,13 @@
                             <constraint firstAttribute="height" constant="36" id="n7i-SG-btg"/>
                             <constraint firstAttribute="width" constant="100" id="qfn-Mt-Lgq"/>
                         </constraints>
-                        <state key="normal" image="privateButtonDefault"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <state key="normal" title="나만보기">
+                            <color key="titleColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="privateButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mev-ip-sat"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -71,14 +83,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="privateButton" destination="0eL-Sl-AwD" id="w4y-5J-rIP"/>
+                <outlet property="publicButton" destination="zW0-vZ-gnI" id="KRD-mV-3dt"/>
                 <outlet property="reviewInputTextView" destination="JDX-C2-HSb" id="x8D-ox-8SK"/>
             </connections>
             <point key="canvasLocation" x="138.40579710144928" y="138.95089285714286"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="privateButtonDefault" width="96" height="36"/>
-        <image name="publicButtonDefault" width="100" height="36"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
