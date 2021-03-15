@@ -81,8 +81,6 @@
 		D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D2D25E2B5DB00D73A61 /* Main.storyboard */; };
 		D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3025E2B5DD00D73A61 /* Assets.xcassets */; };
 		D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3225E2B5DD00D73A61 /* LaunchScreen.storyboard */; };
-		D635B6B425F7DD3F0048331F /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D635B6B225F7DD3F0048331F /* CommentViewController.swift */; };
-		D635B6B525F7DD3F0048331F /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D635B6B325F7DD3F0048331F /* CommentViewController.xib */; };
 		D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */; };
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
@@ -100,6 +98,7 @@
 		D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658C25E5B08300F15290 /* MyNavViewController.swift */; };
 		D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */; };
 		D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */; };
+		D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */; };
 		D6F153E625F9159C0044900E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E525F9159C0044900E /* Book.swift */; };
 		D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E825F9395B0044900E /* NetworkAPI.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
@@ -187,8 +186,6 @@
 		D6288D3025E2B5DD00D73A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6288D3325E2B5DD00D73A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6288D3525E2B5DD00D73A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D635B6B225F7DD3F0048331F /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
-		D635B6B325F7DD3F0048331F /* CommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
 		D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +203,7 @@
 		D67C658C25E5B08300F15290 /* MyNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavViewController.swift; sourceTree = "<group>"; };
 		D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavViewController.swift; sourceTree = "<group>"; };
 		D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavViewController.swift; sourceTree = "<group>"; };
+		D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -410,8 +408,8 @@
 				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
 				D678692C25F53B5900DBB59C /* BookDetailViewController.swift */,
 				D65C7BFA25F6761700944094 /* BookReviewViewController.swift */,
-				D635B6B225F7DD3F0048331F /* CommentViewController.swift */,
 				D6F153E825F9395B0044900E /* NetworkAPI.swift */,
+				D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -476,7 +474,6 @@
 		D678693225F541B200DBB59C /* Goal */ = {
 			isa = PBXGroup;
 			children = (
-				D635B6B325F7DD3F0048331F /* CommentViewController.xib */,
 				D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */,
 				D678693425F5426400DBB59C /* ReviewTableViewCell.swift */,
 				D678693525F5426400DBB59C /* ReviewTableViewCell.xib */,
@@ -627,7 +624,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D635B6B525F7DD3F0048331F /* CommentViewController.xib in Resources */,
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
@@ -772,6 +768,7 @@
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */,
+				D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */,
 				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
