@@ -6,18 +6,21 @@
 //
 
 import UIKit
-import PanModal
 
 class BookReviewViewController: UIViewController {
 
     @IBOutlet weak var reviewTableView: UITableView!
+    var expandedIndexSet : IndexSet = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")
-        reviewTableView.rowHeight = 189.5
+        //reviewTableView.rowHeight = 189.5
+        
+        reviewTableView.rowHeight = UITableView.automaticDimension
+        reviewTableView.estimatedRowHeight = 189.5
         
     }
     
@@ -25,7 +28,7 @@ class BookReviewViewController: UIViewController {
 
 extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,8 +36,31 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         cell.reviewCellDelegate = self
+        
+        if expandedIndexSet.contains(indexPath.row) {// 더보기 버튼을 누른 셀인 경우
+            cell.reviewLabel.numberOfLines = 0
+            cell.moreReadButton.isHidden = true
+        } else {
+            cell.reviewLabel.numberOfLines = 2
+            cell.moreReadButton.isHidden = false
+        }
  
         return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height: CGFloat = scrollView.frame.size.height
+        let contentYOffset: CGFloat = scrollView.contentOffset.y
+        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+                  
+        if distanceFromBottom < height {
+            addData()
+        }
+    }
+    
+    func addData(){
+        
     }
     
     
@@ -42,8 +68,17 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension BookReviewViewController: ReviewTableViewCellDelegate {
     func moreTextButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        print("more button tapped at row-\(String(describing: indexPath?.row))")
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("more button tapped at row-\(String(indexPath.row))")
+//            // 다시 줄이기 기능이 있을 경우
+//            if(expandedIndexSet.contains(indexPath.row)){
+//                expandedIndexSet.remove(indexPath.row)
+//            } else {
+//                expandedIndexSet.insert(indexPath.row)
+//            }
+            expandedIndexSet.insert(indexPath.row)
+            reviewTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     func editReviewButtonTapped(cell: ReviewTableViewCell) {
@@ -83,3 +118,4 @@ extension BookReviewViewController: ReviewTableViewCellDelegate {
     }
     
 }
+
