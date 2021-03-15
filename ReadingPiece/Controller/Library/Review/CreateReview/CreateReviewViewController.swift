@@ -47,8 +47,12 @@ class CreateReviewViewController: UIViewController {
     
     @objc func postReview(sender: UIBarButtonItem) {
         print("리뷰 작성 완료")
+        self.navigationController?.popToRootViewController(animated: true)
     }
-
+    @IBAction func doneButtonTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 }
 
 extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate {
@@ -64,8 +68,8 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
             cell.titleLabel.text = book?.title
             cell.authorLabel.text = book?.authors.joined(separator: ",")
             cell.publisherLabel.text = book?.publisher
-            let year = book?.publicationDate.components(separatedBy: "-")[0]
-            cell.yearLabel.text = "\(year ?? "")년"
+            //let year = book?.publicationDate.components(separatedBy: "-")[0]
+            //cell.yearLabel.text = "\(year ?? "")년"
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ratingCell.cellID) as! ReviewRatingCell

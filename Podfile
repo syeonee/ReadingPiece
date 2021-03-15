@@ -13,5 +13,6 @@ target 'ReadingPiece' do
   pod 'Kingfisher', '~> 6.0'
   pod 'DropDown', '~> 2.3.2'
   pod 'PanModal'
+  pod 'Cosmos', '~> 23.0'
 
 end
