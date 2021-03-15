@@ -11,9 +11,12 @@ class ReviewWritingCell: UITableViewCell {
     
     let cellID = "ReviewWritingCell"
 
+    @IBOutlet weak var reviewInputTextView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        reviewInputTextView.backgroundColor = .lightgrey1
+        reviewInputTextView.textColor = .middlegrey1
+        reviewInputTextView.layer.cornerRadius = 8
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

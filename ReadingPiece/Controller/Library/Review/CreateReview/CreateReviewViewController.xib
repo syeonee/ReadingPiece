@@ -26,7 +26,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VF2-0A-sis">
                     <rect key="frame" x="0.0" y="772" width="414" height="50"/>
-                    <state key="normal" image="completeButton"/>
+                    <state key="normal" image="completeButtonDisabled"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -45,7 +45,7 @@
         </view>
     </objects>
     <resources>
-        <image name="completeButton" width="335" height="50"/>
+        <image name="completeButtonDisabled" width="335" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

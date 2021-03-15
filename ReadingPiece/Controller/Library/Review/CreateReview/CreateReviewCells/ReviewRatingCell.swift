@@ -6,20 +6,27 @@
 //
 
 import UIKit
+import Cosmos
 
 class ReviewRatingCell: UITableViewCell {
     
     let cellID = "ReviewRatingCell"
 
+    @IBOutlet weak var starRatingView: CosmosView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupStar()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func setupStar() {
+        starRatingView.rating = 0
+        starRatingView.settings.minTouchRating = 0
+        starRatingView.settings.fillMode = .full
+        starRatingView.settings.filledImage = UIImage(named: "selectedStar")
+        starRatingView.settings.emptyImage = UIImage(named: "star")
+        starRatingView.didFinishTouchingCosmos = { rating in
+            print("result: \(rating)")
+        }
     }
     
 }

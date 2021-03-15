@@ -14,19 +14,24 @@ class ReviewBookInfoCell: UITableViewCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
+    @IBOutlet weak var publisherTitleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    private func setupUI() {
+        titleLabel.textColor = .charcoal
+        authorLabel.textColor = .charcoal
+        authorTitleLabel.textColor = .middlegrey1
+        publisherLabel.textColor = .charcoal
+        publisherTitleLabel.textColor = .middlegrey1
+        yearLabel.textColor = .charcoal
     }
     
 }
