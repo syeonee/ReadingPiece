@@ -18,12 +18,15 @@
 		0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */; };
 		0026128525FB25A3000B40D1 /* ReviewWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */; };
 		0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */; };
+		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
 		00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FCD25F362DD00340AE0 /* TimerViewController.swift */; };
 		00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD025F3640500340AE0 /* TimerStopViewController.swift */; };
 		00838FDC25F3659700340AE0 /* DailyDiaryWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FDB25F3659700340AE0 /* DailyDiaryWrittenViewController.swift */; };
 		00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FF025F5017200340AE0 /* IndicatorView.swift */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
+		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
+		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
 		5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */; };
@@ -112,6 +115,7 @@
 		0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCompletionViewController.swift; sourceTree = "<group>"; };
 		0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWrittenViewController.swift; sourceTree = "<group>"; };
 		0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingStatusPopupViewController.swift; sourceTree = "<group>"; };
+		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		00838FCD25F362DD00340AE0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		00838FD025F3640500340AE0 /* TimerStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 		00838FE825F4FD5B00340AE0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		00838FF025F5017200340AE0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
+		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
+		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		049711AD81EEFAB3F8E9AE75 /* Pods-ReadingPiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.release.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.release.xcconfig"; sourceTree = "<group>"; };
 		5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
@@ -238,6 +244,7 @@
 				0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */,
 				0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */,
 				0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */,
+				005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -249,6 +256,8 @@
 				0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */,
 				0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */,
 				0026127125FB244C000B40D1 /* DaillyReadingTableViewCell.xib */,
+				00C3418625FD1873009B2A34 /* Firecracker.sks */,
+				00C3418725FD1873009B2A34 /* Assets.xcassets */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -584,6 +593,7 @@
 				D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */,
 				59F4F27425F7858700E82417 /* FullJournalCell.xib in Resources */,
 				59F4F26B25F657A600E82417 /* ReviewDropDownCell.xib in Resources */,
+				00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
 				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
@@ -607,6 +617,7 @@
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				0026127325FB244C000B40D1 /* DaillyReadingTableViewCell.xib in Resources */,
 				5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */,
+				00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */,
 				5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,6 +724,7 @@
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */,
+				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,

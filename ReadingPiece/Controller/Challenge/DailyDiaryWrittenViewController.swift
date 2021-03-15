@@ -85,9 +85,9 @@ class DailyDiaryWrittenViewController: UIViewController {
     }
     
     @IBAction func percentSelect(_ sender: UIButton) {
-        let inputReadingStatusVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingStatusPopupViewController.storyobardId)
-        inputReadingStatusVC?.modalTransitionStyle = .crossDissolve
-        self.present(inputReadingStatusVC!, animated: true, completion: nil)
+        let inputReadingPercentVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingPercentPopupViewController.storyobardId)
+        inputReadingPercentVC?.modalTransitionStyle = .crossDissolve
+        self.present(inputReadingPercentVC!, animated: true, completion: nil)
     }
     
     @IBAction func makePublicPost(_ sender: UIButton) {
