@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DailyDiaryWrittenViewController: UIViewController {
+class DaillyReadingWritenViewController: UIViewController {
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var bookInfoView: UIView!
     @IBOutlet weak var bookThumbnailImage: UIImageView!

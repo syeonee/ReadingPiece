@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DailyReadingCompletionViewController: UIViewController {
+class DailyReadingWrittenViewController: UIViewController {
     
     @IBOutlet weak var readingTargetTimeLabel: UILabel!
     @IBOutlet weak var daillyTotalReadingTimeLabel: UILabel!
@@ -59,7 +59,7 @@ class DailyReadingCompletionViewController: UIViewController {
     }
     
     @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
-        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DailyDiaryWrittenViewController
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
         self.navigationController?.pushViewController(writeDiaryVC, animated: true)
     }
     
