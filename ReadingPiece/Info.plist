@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>User Interface Style</key>
+	<string>Light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ko_KR</string>
 	<key>CFBundleDisplayName</key>
@@ -32,7 +34,7 @@
 		<string>NotoSansCJKkr-Regular.otf</string>
 		<string>NotoSansCJKkr-Thin.otf</string>
 		<string>GmarketSans-Medium.otf</string>
-        <string>NotoSans-SemiBold.ttf</string>
+		<string>NotoSans-SemiBold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

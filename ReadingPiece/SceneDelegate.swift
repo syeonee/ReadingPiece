@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+        window?.overrideUserInterfaceStyle = .light
 
         
         guard let _ = (scene as? UIWindowScene) else { return }
