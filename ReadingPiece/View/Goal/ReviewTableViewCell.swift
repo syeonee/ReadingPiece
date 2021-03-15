@@ -32,6 +32,7 @@ class ReviewTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         bookImageView.layer.cornerRadius = bookImageView.frame.height/2
         bookImageView.clipsToBounds = true
         drawStars(rating: 3)

@@ -15,11 +15,13 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
+    @IBOutlet weak var reviewCellHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    
+    var isExpanded : Bool = false
     
     var book : Book?
     
@@ -31,6 +33,8 @@ class BookDetailViewController: UIViewController {
         reviewTableView.separatorStyle = .none
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")
         reviewTableView.rowHeight = 189.5
+        
+        reviewTableView.estimatedRowHeight = 189.5
     }
     
     func setUI(){
@@ -39,8 +43,7 @@ class BookDetailViewController: UIViewController {
         titleLabel.text = book?.title
         authorsLabel.text = book?.authors.joined(separator: ",")
         publisherLabel.text = book?.publisher
-        let year = book?.publicationDate.components(separatedBy: "-")[0]
-        yearLabel.text = "\(year ?? "")년"
+        summaryLabel.text = book?.summary
     }
     
     @IBAction func moreReviewTapped(_ sender: Any) {
@@ -76,9 +79,63 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = reviewTableView.dequeueReusableCell(withIdentifier: "bookReviewCell", for: indexPath) as? ReviewTableViewCell else {
             return UITableViewCell()
         }
- 
+        
+        cell.reviewCellDelegate = self
+        
+        if isExpanded {// 더보기 버튼을 누른 셀인 경우
+            cell.reviewLabel.numberOfLines = 0
+            cell.moreReadButton.isHidden = true
+        } else {
+            cell.reviewLabel.numberOfLines = 2
+            cell.moreReadButton.isHidden = false
+        }
+        
         return cell
     }
     
+    
+    
+}
+
+extension BookDetailViewController: ReviewTableViewCellDelegate {
+    func moreTextButtonTapped(cell: ReviewTableViewCell) {
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("more button tapped at row-\(String(indexPath.row))")
+            isExpanded = true
+            reviewTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func editReviewButtonTapped(cell: ReviewTableViewCell) {
+        let indexPath = reviewTableView.indexPath(for: cell)
+        showAlert(indexPath: indexPath!)
+    }
+    
+    func likeButtonTapped(cell: ReviewTableViewCell) {
+        let indexPath = reviewTableView.indexPath(for: cell)
+        print("like button tapped at row-\(String(describing: indexPath?.row))")
+    }
+    
+    func commentButtonTapped(cell: ReviewTableViewCell) {
+        let indexPath = reviewTableView.indexPath(for: cell)
+        print("comment button tapped at row-\(String(describing: indexPath?.row))")
+    }
+    
+    func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+            print("리뷰 수정 row-\(indexPath.row)")
+        }
+        let remove = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+            print("리뷰 삭제 row-\(indexPath.row)")
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(modify)
+        alert.addAction(remove)
+        alert.addAction(cancel)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
 }
