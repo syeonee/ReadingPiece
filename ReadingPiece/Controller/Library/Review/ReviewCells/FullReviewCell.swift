@@ -14,7 +14,16 @@ class FullReviewCell: UITableViewCell {
     var likeDelegate: ReviewFullLikeDelegate?
     var commentsDelegate: ReviewFullCommentsDelegate?
     
-    var likeState: Bool = false
+    var index: Int?
+    var likeState: Bool = false {
+        didSet {
+            if likeState == true {
+                likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            } else {
+                likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            }
+        }
+    }
 
     @IBOutlet weak var reviewTextLabel: UILabel!
     
@@ -40,27 +49,21 @@ class FullReviewCell: UITableViewCell {
         ratingLabel.textColor = .melon
         
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        editDelegate?.didTapFullEditButton(cell: self)
+        guard let idx = index else {return}
+        editDelegate?.didTapFullEditButton(index: idx)
     }
     
     @IBAction func likeButtonTapped(_ sender: Any) {
+        guard let idx = index else {return}
         if likeState == false {
-            likeDelegate?.didTapFullLikeButton(cell: self)
-            //self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
             self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            likeDelegate?.didTapFullLikeButton(index: idx, like: true)
             self.likeState = true
         } else {
-            likeDelegate?.deselectFullLikeButton(cell: self)
-            //self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
             self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            likeDelegate?.didTapFullLikeButton(index: idx, like: false)
             self.likeState = false
         }
     }
@@ -72,11 +75,10 @@ class FullReviewCell: UITableViewCell {
 }
 
 protocol ReviewFullEditDelegate {
-    func didTapFullEditButton(cell: FullReviewCell)
+    func didTapFullEditButton(index: Int)
 }
 protocol ReviewFullLikeDelegate {
-    func didTapFullLikeButton(cell: FullReviewCell)
-    func deselectFullLikeButton(cell: FullReviewCell)
+    func didTapFullLikeButton(index: Int, like: Bool)
 }
 protocol ReviewFullCommentsDelegate {
     func didTapFullCommentButton()

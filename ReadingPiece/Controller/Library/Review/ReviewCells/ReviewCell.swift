@@ -15,7 +15,16 @@ class ReviewCell: UITableViewCell {
     var likeDelegate: ReviewLikeDelegate?
     var commentsDelegate: ReviewCommentsDelegate?
     
-    var likeState: Bool = false
+    var index: Int?
+    var likeState: Bool = false {
+        didSet {
+            if likeState == true {
+                likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            } else {
+                likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            }
+        }
+    }
     
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var bookImageView: UIImageView!
@@ -44,24 +53,25 @@ class ReviewCell: UITableViewCell {
     }
     
     @IBAction func moreButtonTapped(_ sender: UIButton) {
-        moreDelegate?.didTapMoreButton(cell: self)
+        guard let idx = index else {return}
+        moreDelegate?.didTapMoreButton(index: idx)
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        editDelegate?.didTapEditButton(cell: self)
+        guard let idx = index else {return}
+        editDelegate?.didTapEditButton(index: idx)
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
+        guard let idx = index else {return}
         if likeState == false {
-            likeDelegate?.didTapLikeButton(cell: self)
-            //self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
-            self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
-            self.likeState = true
+            likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
+            likeDelegate?.didTapLikeButton(index: idx, like: true)
+            likeState = true
         } else {
-            likeDelegate?.deselectLikeButton(cell: self)
-            //self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
-            self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
-            self.likeState = false
+            likeButton.setImage(UIImage(named: "like icon"), for: .normal)
+            likeDelegate?.didTapLikeButton(index: idx, like: false)
+            likeState = false
         }
     }
     @IBAction func commentsButtonTapped(_ sender: Any) {
@@ -73,14 +83,13 @@ class ReviewCell: UITableViewCell {
 }
 
 protocol ReviewMoreDelegate {
-    func didTapMoreButton(cell: ReviewCell)
+    func didTapMoreButton(index: Int)
 }
 protocol ReviewEditDelegate {
-    func didTapEditButton(cell: ReviewCell)
+    func didTapEditButton(index: Int)
 }
 protocol ReviewLikeDelegate {
-    func didTapLikeButton(cell: ReviewCell)
-    func deselectLikeButton(cell: ReviewCell)
+    func didTapLikeButton(index: Int, like: Bool)
 }
 protocol ReviewCommentsDelegate {
     func didTapCommentButton()
