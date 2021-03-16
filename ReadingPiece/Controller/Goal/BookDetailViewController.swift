@@ -18,11 +18,13 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var reviewCellHeight: NSLayoutConstraint!
+    @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
     var isExpanded : Bool = false
+    var observerExist : Bool = false
     
+    var initHeight : NSLayoutConstraint?
     var book : Book?
     
     override func viewDidLoad() {
@@ -35,6 +37,25 @@ class BookDetailViewController: UIViewController {
         reviewTableView.rowHeight = 189.5
         
         reviewTableView.estimatedRowHeight = 189.5
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if observerExist {
+            reviewTableView.removeObserver(self, forKeyPath: "contentSize")
+            observerExist = false
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize" {
+            if object is UITableView {
+                if let newValue = change?[.newKey]{
+                    let newSize = newValue as! CGSize
+                    reviewTableViewHeight.constant = newSize.width
+                    
+                }
+            }
+        }
     }
     
     func setUI(){
@@ -83,6 +104,7 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         cell.reviewCellDelegate = self
         
         if isExpanded {// 더보기 버튼을 누른 셀인 경우
+            print("is Expand")
             cell.reviewLabel.numberOfLines = 0
             cell.moreReadButton.isHidden = true
         } else {
@@ -93,7 +115,13 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }
 
@@ -102,7 +130,9 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
         if let indexPath = reviewTableView.indexPath(for: cell) {
             print("more button tapped at row-\(String(indexPath.row))")
             isExpanded = true
-            reviewTableView.reloadRows(at: [indexPath], with: .automatic)
+            reviewTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+            observerExist = true
+            reviewTableView.reloadData()
         }
     }
     
