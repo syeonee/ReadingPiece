@@ -9,13 +9,17 @@ import UIKit
 import PanModal
 
 class CommentViewController: UIViewController {
-
+    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 extension CommentViewController: UITableViewDelegate, UITableViewDataSource {

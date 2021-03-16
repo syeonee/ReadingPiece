@@ -130,25 +130,40 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
         if let indexPath = reviewTableView.indexPath(for: cell) {
             print("more button tapped at row-\(String(indexPath.row))")
             isExpanded = true
-            reviewTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+            reviewTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)//테이블 뷰 높이 바꾸기 위해서
             observerExist = true
             reviewTableView.reloadData()
         }
     }
     
     func editReviewButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        showAlert(indexPath: indexPath!)
+        if let indexPath = reviewTableView.indexPath(for: cell){
+            showAlert(indexPath: indexPath)
+        }
     }
     
     func likeButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        print("like button tapped at row-\(String(describing: indexPath?.row))")
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("like button tapped at row-\(String(indexPath.row))")
+            if let cell = reviewTableView.cellForRow(at: indexPath) as? ReviewTableViewCell {
+                if cell.likeButton.isSelected { // 좋아요 누른 경우
+                    
+                } else { // 좋아요 안누른 경우
+                    
+                }
+                cell.likeButton.isSelected = !cell.likeButton.isSelected
+            }
+        }
     }
     
     func commentButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        print("comment button tapped at row-\(String(describing: indexPath?.row))")
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("comment button tapped at row-\(String(indexPath.row))")
+            let storyboard = UIStoryboard(name: "Goal", bundle: nil)
+            if let myViewController = storyboard.instantiateViewController(withIdentifier: "CommentController") as? CommentViewController {
+                presentPanModal(myViewController)
+            }
+        }
     }
     
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
@@ -158,6 +173,9 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
         }
         let remove = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             print("리뷰 삭제 row-\(indexPath.row)")
+            //TODO : 데이터 삭제
+            //self.reviewTableView.deleteRows(at: [indexPath], with: .automatic)//삭제 후 다른 사람의 리뷰로 대체??
+            
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
