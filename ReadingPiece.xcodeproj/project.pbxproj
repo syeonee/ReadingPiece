@@ -24,6 +24,9 @@
 		00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD025F3640500340AE0 /* TimerStopViewController.swift */; };
 		00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FDB25F3659700340AE0 /* DaillyReadingWritenViewController.swift */; };
 		00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FF025F5017200340AE0 /* IndicatorView.swift */; };
+		009250052602587100A930DD /* PurpleFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250032602587000A930DD /* PurpleFirecracker.sks */; };
+		009250062602587100A930DD /* RedFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250042602587000A930DD /* RedFirecracker.sks */; };
+		009250092602588B00A930DD /* FireCrackerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250082602588B00A930DD /* FireCrackerScene.swift */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
@@ -127,6 +130,9 @@
 		00838FE525F4EEE600340AE0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		00838FE825F4FD5B00340AE0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		00838FF025F5017200340AE0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
+		009250032602587000A930DD /* PurpleFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PurpleFirecracker.sks; sourceTree = "<group>"; };
+		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
+		009250082602588B00A930DD /* FireCrackerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCrackerScene.swift; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 				0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */,
 				00D8633625FF8ADD00E9EFF9 /* DaillyReading */,
 				00D8633525FF8AB300E9EFF9 /* Timer */,
+				009250082602588B00A930DD /* FireCrackerScene.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -256,6 +263,8 @@
 		00838FD325F3645200340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				009250032602587000A930DD /* PurpleFirecracker.sks */,
+				009250042602587000A930DD /* RedFirecracker.sks */,
 				00C3418625FD1873009B2A34 /* Firecracker.sks */,
 				00C3418725FD1873009B2A34 /* Assets.xcassets */,
 				00C3419825FF2CBB009B2A34 /* Cell */,
@@ -655,6 +664,7 @@
 				5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */,
 				59F4F2F625F9B9A300E82417 /* ReviewBookInfoCell.xib in Resources */,
 				D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */,
+				009250052602587100A930DD /* PurpleFirecracker.sks in Resources */,
 				599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */,
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
 				59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */,
@@ -665,6 +675,7 @@
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
+				009250062602587100A930DD /* RedFirecracker.sks in Resources */,
 				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				0026127325FB244C000B40D1 /* DaillyReadingTableViewCell.xib in Resources */,
@@ -731,6 +742,7 @@
 				00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */,
 				59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */,
 				00D8632B25FF77D200E9EFF9 /* Stopwatch.swift in Sources */,
+				009250092602588B00A930DD /* FireCrackerScene.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,

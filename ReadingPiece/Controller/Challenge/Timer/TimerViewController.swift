@@ -37,6 +37,12 @@ class TimerViewController: UIViewController {
         stopwatch.toggle()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "시간 기록"
+    }
+
+    
     @objc func skipTimeRecoding(sender: UIBarButtonItem) {
         // 목표시간 미달 안내 씬으로 이동
         stopwatch.stop()
@@ -60,7 +66,7 @@ class TimerViewController: UIViewController {
         startPauseRadingButton.isSelected = false
         let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyReadingWrittenViewController
         let savedTime = defaults.integer(forKey: Constants().USERDEFAULT_KEY_CURRENT_TIMER_TIME) 
-        print("LOGT", savedTime)
+        print("LOG TIME", savedTime)
         self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
     }
 

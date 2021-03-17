@@ -33,6 +33,11 @@ class DaillyReadingWritenViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "독서 일지"
+    }
 
     private func setupUI() {
         setNavBar()
@@ -67,7 +72,8 @@ class DaillyReadingWritenViewController: UIViewController {
     }
     
     @objc func postDiary(sender: UIBarButtonItem) {
-        let writeReviewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
+        // 챌린지 달성 여부에 따른 화면 분기 필요
+        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
         self.navigationController?.pushViewController(writeReviewVC, animated: true)
     }
     

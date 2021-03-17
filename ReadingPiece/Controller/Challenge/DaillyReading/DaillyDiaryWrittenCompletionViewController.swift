@@ -80,30 +80,3 @@ extension DaillyDiaryWrittenCompletionViewController: UIScrollViewDelegate {
         scrollView.backgroundColor = .systemGray6
     }
 }
-
-
-class SnowScene: SKScene {
-
-    // MARK: Lifecycle
-
-    override func didMove(to view: SKView) {
-        setScene(view)
-        setNode()
-    }
-
-    override func didApplyConstraints() {
-        guard let view = view else { return }
-        scene?.size = view.frame.size
-    }
-    private func setScene(_ view: SKView) {
-         backgroundColor = .clear
-         scene?.anchorPoint = CGPoint(x: 0.5, y: 1)
-         scene?.scaleMode = .aspectFill
-     }
-
-     private func setNode() {
-         guard let greenFireNode = SKEmitterNode(fileNamed: "Firecracker") else { return }
-        greenFireNode.position = .zero
-         scene?.addChild(greenFireNode)
-     }
- }

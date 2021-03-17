@@ -29,9 +29,9 @@ class ChallengeCompletionViewController: UIViewController {
     }
     
     func setFireCracker() {
-        fireCrackerView.backgroundColor = .clear
-        let scene = SnowScene()
-        fireCrackerView.presentScene(scene)
+        self.fireCrackerView.backgroundColor = .clear
+        let scene = FireCrackerScene()
+        self.fireCrackerView.presentScene(scene)
     }
     
     private func setNavBar() {
