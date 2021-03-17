@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,7 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        IQKeyboardManager.shared.enable = true
+        // 키보드 상단에 dismiss하는 버튼을 자동 배치하는 코드
+        IQKeyboardManager.shared.enableAutoToolbar = true
+        // 키보드 높이에 맞게 텍스트 필드 위치를 자동으로 올려주는 코드
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+
         return true
     }
 
