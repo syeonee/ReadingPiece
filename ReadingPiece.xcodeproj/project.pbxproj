@@ -54,6 +54,7 @@
 		599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */; };
 		599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3ACE25F26EC00085F134 /* FullReviewCell.swift */; };
 		599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACF25F26EC00085F134 /* FullReviewCell.xib */; };
+		59A967B82601C996000EE89F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967B72601C996000EE89F /* UILabel.swift */; };
 		59F4F22125F5C05000E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22025F5C05000E82417 /* UIFont.swift */; };
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
@@ -157,6 +158,7 @@
 		599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalHeaderCell.xib; sourceTree = "<group>"; };
 		599D3ACE25F26EC00085F134 /* FullReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullReviewCell.swift; sourceTree = "<group>"; };
 		599D3ACF25F26EC00085F134 /* FullReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReviewCell.xib; sourceTree = "<group>"; };
+		59A967B72601C996000EE89F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		59F4F22025F5C05000E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = ReadingPiece/Extensions/UIFont.swift; sourceTree = "<group>"; };
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				599D3AD325F26EC90085F134 /* ReviewCells */,
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
 				59F4F2C225F9031700E82417 /* CreateReview */,
+				59A967B72601C996000EE89F /* UILabel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -576,7 +579,7 @@
 				D6288D2025E2B5DB00D73A61 /* Sources */,
 				D6288D2125E2B5DB00D73A61 /* Frameworks */,
 				D6288D2225E2B5DB00D73A61 /* Resources */,
-				FE92420FCFFAA71B7D177355 /* [CP] Embed Pods Frameworks */,
+				1F5A2ACCD00996B300937833 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -688,7 +691,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FE92420FCFFAA71B7D177355 /* [CP] Embed Pods Frameworks */ = {
+		1F5A2ACCD00996B300937833 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -748,6 +751,7 @@
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
+				59A967B82601C996000EE89F /* UILabel.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */,

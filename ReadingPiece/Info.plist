@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>일지 작성을 위해 카메라 접근 권한을 허용해주시겠어요?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>일지 작성을 위해 갤러리 접근 권한을 허용해주시겠어요?</string>
+	<key>NSPrincipalClass</key>
+	<string></string>
+	<key>User Interface Style</key>
+	<string>Light</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>ko_KR</string>
 	<key>CFBundleDisplayName</key>
