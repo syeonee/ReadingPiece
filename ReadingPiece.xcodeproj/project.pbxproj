@@ -525,12 +525,12 @@
 		D6A255F925E4255000731B10 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D6CA16EC260240C70031259F /* My */,
 				00838FD325F3645200340AE0 /* Challenge */,
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657525E566C600F15290 /* Library.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
-				D67C657B25E5717300F15290 /* My.storyboard */,
 				D6509DE625EAC87F000D7160 /* Login.storyboard */,
 			);
 			path = View;
@@ -550,6 +550,14 @@
 				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D6CA16EC260240C70031259F /* My */ = {
+			isa = PBXGroup;
+			children = (
+				D67C657B25E5717300F15290 /* My.storyboard */,
+			);
+			path = My;
 			sourceTree = "<group>";
 		};
 		D6F153E425F9158C0044900E /* Goal */ = {

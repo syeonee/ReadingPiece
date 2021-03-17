@@ -682,16 +682,6 @@
             </objects>
             <point key="canvasLocation" x="1979.7101449275365" y="1013.8392857142857"/>
         </scene>
-        <!--TabController-->
-        <scene sceneID="RXJ-Il-Rih">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="TabController" id="FJb-Uf-div" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="TXb-cT-EN8"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dIA-IJ-a9g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2759" y="602"/>
-        </scene>
         <!--리뷰-->
         <scene sceneID="PmJ-ag-8EZ">
             <objects>
