@@ -225,7 +225,7 @@ extension JournalViewController {
     }
     
     @objc func buttonAction (_ sender: UIButton!) {
-        print("독서 시작 - 메인 VC로 이동 후 타이머 VC로 이동해야 함")
+        print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
         
         //let homeNavigationVC = MyNavViewController()
         //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController

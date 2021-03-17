@@ -139,10 +139,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yvx-PQ-9wd">
-                        <rect key="frame" x="21" y="229" width="16.5" height="14"/>
+                        <rect key="frame" x="21" y="228" width="19" height="16"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="16.5" id="ApJ-o3-9ab"/>
-                            <constraint firstAttribute="height" constant="14" id="kP3-LN-Odg"/>
+                            <constraint firstAttribute="width" constant="19" id="AbX-Gw-Y7k"/>
+                            <constraint firstAttribute="height" constant="16.100000000000001" id="IuQ-hG-yNo"/>
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="like icon"/>
@@ -151,22 +151,22 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMe-OY-5eu">
-                        <rect key="frame" x="42" y="227" width="20" height="18"/>
+                        <rect key="frame" x="44.5" y="227" width="20" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJV-fC-giN">
-                        <rect key="frame" x="106" y="227" width="14" height="18"/>
+                        <rect key="frame" x="110.5" y="227" width="14" height="18"/>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pif-eQ-IXi">
-                        <rect key="frame" x="84.5" y="229.5" width="17" height="13"/>
+                        <rect key="frame" x="87" y="228.5" width="19" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="12.9" id="T2V-e3-wqO"/>
-                            <constraint firstAttribute="width" constant="17" id="Va3-ZO-fX4"/>
+                            <constraint firstAttribute="height" constant="15" id="06B-7w-Zhy"/>
+                            <constraint firstAttribute="width" constant="19" id="PsY-Bk-jDq"/>
                         </constraints>
                         <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="comment icon"/>
@@ -218,12 +218,12 @@
                     <constraint firstItem="OMe-OY-5eu" firstAttribute="centerY" secondItem="Yvx-PQ-9wd" secondAttribute="centerY" id="CiJ-jO-lvB"/>
                     <constraint firstAttribute="bottomMargin" secondItem="OMe-OY-5eu" secondAttribute="bottom" constant="21.800000000000001" id="D0g-SM-fLm"/>
                     <constraint firstAttribute="trailing" secondItem="WP2-ea-NgX" secondAttribute="trailing" constant="20" id="DdL-T2-Z74"/>
-                    <constraint firstItem="Yvx-PQ-9wd" firstAttribute="top" secondItem="Q99-TO-tYk" secondAttribute="bottom" constant="22" id="Ijx-RG-0j8"/>
+                    <constraint firstItem="Yvx-PQ-9wd" firstAttribute="top" secondItem="Q99-TO-tYk" secondAttribute="bottom" constant="21" id="Ijx-RG-0j8"/>
                     <constraint firstItem="EJV-fC-giN" firstAttribute="centerY" secondItem="Pif-eQ-IXi" secondAttribute="centerY" id="QkV-UR-JrI"/>
                     <constraint firstItem="Q99-TO-tYk" firstAttribute="leading" secondItem="WP2-ea-NgX" secondAttribute="leading" constant="1" id="Sr7-db-efP"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Q99-TO-tYk" secondAttribute="trailing" constant="16" id="XBJ-IQ-W7d"/>
                     <constraint firstItem="OMe-OY-5eu" firstAttribute="leading" secondItem="Yvx-PQ-9wd" secondAttribute="trailing" constant="4.5" id="ZUI-Gf-aQg"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Yvx-PQ-9wd" secondAttribute="bottom" constant="20.699999999999999" id="b7J-xw-P38"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Yvx-PQ-9wd" secondAttribute="bottom" constant="18.600000000000001" id="b7J-xw-P38"/>
                     <constraint firstItem="WP2-ea-NgX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lUq-1c-kYs"/>
                     <constraint firstItem="Pif-eQ-IXi" firstAttribute="leading" secondItem="OMe-OY-5eu" secondAttribute="trailing" constant="22.5" id="pDK-Cb-M1T"/>
                     <constraint firstItem="wUz-tq-hFB" firstAttribute="trailing" secondItem="Q99-TO-tYk" secondAttribute="trailing" id="sfI-Pg-Uba"/>
