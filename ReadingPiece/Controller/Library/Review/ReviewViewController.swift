@@ -70,7 +70,8 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = review.bookTitle
             cell.authorLabel.text = review.author
             cell.ratingLabel.text = review.rating
-            cell.reviewTextLabel.text = String(review.reviewText.prefix(60))
+            //cell.reviewTextLabel.text = String(review.reviewText.prefix(52))
+            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.reviewText, newEllipsis: "..더보기", maxLines: 2)
             cell.likeCount.text = String(review.liked)
             cell.likeState = review.like
             cell.commentCount.text = String(review.comments)
