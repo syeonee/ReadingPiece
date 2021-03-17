@@ -6,6 +6,7 @@ target 'ReadingPiece' do
   use_frameworks!
 
   # Pods for ReadingPiece
+  pod 'IQKeyboardManagerSwift', '6.3.0'
   pod "PagingKit"
   pod "SnapKit", '~> 5.0.0'
   pod 'Toast-Swift', '~> 5.0.1'
@@ -14,5 +15,6 @@ target 'ReadingPiece' do
   pod 'DropDown', '~> 2.3.2'
   pod 'PanModal'
   pod 'Cosmos', '~> 23.0'
+
 
 end
