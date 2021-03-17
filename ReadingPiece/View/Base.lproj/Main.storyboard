@@ -489,10 +489,10 @@
             </objects>
             <point key="canvasLocation" x="1830.7692307692307" y="526.77725118483409"/>
         </scene>
-        <!--MyController-->
+        <!--MyViewController-->
         <scene sceneID="i9v-Uk-B2E">
             <objects>
-                <viewControllerPlaceholder storyboardName="My" referencedIdentifier="MyController" id="EDX-i2-ITA" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="My" referencedIdentifier="MyViewController" id="EDX-i2-ITA" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="bcs-Vd-Bmp"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uee-NL-5zP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

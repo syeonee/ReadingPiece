@@ -12,7 +12,7 @@
         <!--My-->
         <scene sceneID="7vA-Qk-gFW">
             <objects>
-                <viewController storyboardIdentifier="MyController" title="My" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qB7-cY-ACQ" customClass="MyViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyViewController" title="My" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qB7-cY-ACQ" customClass="MyViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zed-n5-Ewb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
