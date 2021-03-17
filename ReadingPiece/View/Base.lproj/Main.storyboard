@@ -229,7 +229,7 @@
                                                         </constraints>
                                                     </imageView>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.94901960780000005" green="0.90588235289999997" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="obc-FS-LUZ" secondAttribute="bottom" constant="20" id="0Zg-lq-3Aq"/>
                                                     <constraint firstAttribute="height" constant="291" id="3i7-Os-ydD"/>
@@ -988,11 +988,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SF4-2p-ZfC">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SF4-2p-ZfC">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-Nr-Xmh" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYB-hm-scj">
                                                 <rect key="frame" x="0.0" y="28" width="404" height="106"/>
@@ -1171,7 +1171,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pYB-hm-scj" secondAttribute="trailing" constant="10" id="6cP-qe-kkw"/>
-                                            <constraint firstAttribute="height" constant="1000" id="CC3-Hb-7Vg"/>
+                                            <constraint firstAttribute="height" constant="700" id="CC3-Hb-7Vg"/>
                                             <constraint firstItem="s6h-FA-ZVM" firstAttribute="top" secondItem="VhQ-Jg-76O" secondAttribute="bottom" constant="56" id="GoK-fO-bjz"/>
                                             <constraint firstItem="s6h-FA-ZVM" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="20" id="JS6-XA-T22"/>
                                             <constraint firstItem="iur-C6-IHE" firstAttribute="leading" secondItem="pYB-hm-scj" secondAttribute="leading" constant="22" id="Jp7-VB-neS"/>
@@ -1200,9 +1200,9 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="YoJ-Nr-Xmh" secondAttribute="trailing" id="0TL-sh-0f9"/>
                                     <constraint firstItem="YoJ-Nr-Xmh" firstAttribute="width" secondItem="SF4-2p-ZfC" secondAttribute="width" id="GxI-io-KMB"/>
-                                    <constraint firstItem="YoJ-Nr-Xmh" firstAttribute="top" secondItem="SF4-2p-ZfC" secondAttribute="top" id="av8-pe-3yU"/>
-                                    <constraint firstAttribute="bottom" secondItem="YoJ-Nr-Xmh" secondAttribute="bottom" id="kwV-gf-yQZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="YoJ-Nr-Xmh" secondAttribute="bottom" constant="18" id="SdJ-fh-VHD"/>
                                     <constraint firstItem="YoJ-Nr-Xmh" firstAttribute="leading" secondItem="SF4-2p-ZfC" secondAttribute="leading" id="uNd-40-vOr"/>
+                                    <constraint firstItem="YoJ-Nr-Xmh" firstAttribute="top" secondItem="SF4-2p-ZfC" secondAttribute="top" id="whR-Dh-Lh0"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -1317,7 +1317,7 @@
                                 </connections>
                             </button>
                             <skView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-fP-V8F">
-                                <rect key="frame" x="0.0" y="110" width="414" height="207"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </skView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dvd-sT-Rms"/>
@@ -1331,11 +1331,12 @@
                             <constraint firstItem="Jzj-Nt-zh4" firstAttribute="centerX" secondItem="S23-QA-XZ3" secondAttribute="centerX" id="OzI-vV-stQ"/>
                             <constraint firstItem="S23-QA-XZ3" firstAttribute="height" secondItem="EyO-8M-NjP" secondAttribute="width" multiplier="0.5" id="Tbv-ko-qPJ"/>
                             <constraint firstItem="hyY-Et-MAc" firstAttribute="centerX" secondItem="S23-QA-XZ3" secondAttribute="centerX" id="Vda-bQ-Yue"/>
-                            <constraint firstItem="OA2-fP-V8F" firstAttribute="top" secondItem="S23-QA-XZ3" secondAttribute="top" id="YhA-PF-lBV"/>
+                            <constraint firstItem="OA2-fP-V8F" firstAttribute="top" secondItem="Dvd-sT-Rms" secondAttribute="top" id="YhA-PF-lBV"/>
                             <constraint firstItem="Jzj-Nt-zh4" firstAttribute="top" secondItem="hyY-Et-MAc" secondAttribute="bottom" constant="8" id="ayD-vA-d7l"/>
                             <constraint firstItem="S23-QA-XZ3" firstAttribute="centerX" secondItem="Dvd-sT-Rms" secondAttribute="centerX" id="k4X-Qz-Ee0"/>
+                            <constraint firstItem="OA2-fP-V8F" firstAttribute="height" secondItem="Dvd-sT-Rms" secondAttribute="height" id="kGx-Pl-imT"/>
                             <constraint firstItem="S23-QA-XZ3" firstAttribute="top" secondItem="Dvd-sT-Rms" secondAttribute="top" constant="110" id="l2C-5b-QXE"/>
-                            <constraint firstItem="OA2-fP-V8F" firstAttribute="bottom" secondItem="S23-QA-XZ3" secondAttribute="bottom" id="rut-Mw-k1Y"/>
+                            <constraint firstItem="OA2-fP-V8F" firstAttribute="bottom" secondItem="Dvd-sT-Rms" secondAttribute="bottom" id="rut-Mw-k1Y"/>
                             <constraint firstItem="2LM-42-FPB" firstAttribute="top" secondItem="Jzj-Nt-zh4" secondAttribute="bottom" constant="20" id="rzv-ce-6QB"/>
                             <constraint firstItem="2LM-42-FPB" firstAttribute="centerX" secondItem="S23-QA-XZ3" secondAttribute="centerX" id="tra-bd-DBu"/>
                             <constraint firstItem="Dvd-sT-Rms" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="L1h-ZI-g5n" secondAttribute="bottom" constant="10" id="vVp-LK-Kir"/>
