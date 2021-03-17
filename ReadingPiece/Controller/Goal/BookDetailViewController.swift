@@ -18,11 +18,13 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var summaryLabel: UILabel!
     
     @IBOutlet weak var reviewTableView: UITableView!
-    @IBOutlet weak var reviewCellHeight: NSLayoutConstraint!
+    @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     
     var isExpanded : Bool = false
+    var observerExist : Bool = false
     
+    var initHeight : NSLayoutConstraint?
     var book : Book?
     
     override func viewDidLoad() {
@@ -35,6 +37,25 @@ class BookDetailViewController: UIViewController {
         reviewTableView.rowHeight = 189.5
         
         reviewTableView.estimatedRowHeight = 189.5
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if observerExist {
+            reviewTableView.removeObserver(self, forKeyPath: "contentSize")
+            observerExist = false
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize" {
+            if object is UITableView {
+                if let newValue = change?[.newKey]{
+                    let newSize = newValue as! CGSize
+                    reviewTableViewHeight.constant = newSize.width
+                    
+                }
+            }
+        }
     }
     
     func setUI(){
@@ -83,6 +104,7 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         cell.reviewCellDelegate = self
         
         if isExpanded {// 더보기 버튼을 누른 셀인 경우
+            print("is Expand")
             cell.reviewLabel.numberOfLines = 0
             cell.moreReadButton.isHidden = true
         } else {
@@ -93,7 +115,13 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }
 
@@ -102,23 +130,40 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
         if let indexPath = reviewTableView.indexPath(for: cell) {
             print("more button tapped at row-\(String(indexPath.row))")
             isExpanded = true
-            reviewTableView.reloadRows(at: [indexPath], with: .automatic)
+            reviewTableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)//테이블 뷰 높이 바꾸기 위해서
+            observerExist = true
+            reviewTableView.reloadData()
         }
     }
     
     func editReviewButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        showAlert(indexPath: indexPath!)
+        if let indexPath = reviewTableView.indexPath(for: cell){
+            showAlert(indexPath: indexPath)
+        }
     }
     
     func likeButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        print("like button tapped at row-\(String(describing: indexPath?.row))")
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("like button tapped at row-\(String(indexPath.row))")
+            if let cell = reviewTableView.cellForRow(at: indexPath) as? ReviewTableViewCell {
+                if cell.likeButton.isSelected { // 좋아요 누른 경우
+                    
+                } else { // 좋아요 안누른 경우
+                    
+                }
+                cell.likeButton.isSelected = !cell.likeButton.isSelected
+            }
+        }
     }
     
     func commentButtonTapped(cell: ReviewTableViewCell) {
-        let indexPath = reviewTableView.indexPath(for: cell)
-        print("comment button tapped at row-\(String(describing: indexPath?.row))")
+        if let indexPath = reviewTableView.indexPath(for: cell) {
+            print("comment button tapped at row-\(String(indexPath.row))")
+            let storyboard = UIStoryboard(name: "Goal", bundle: nil)
+            if let myViewController = storyboard.instantiateViewController(withIdentifier: "CommentController") as? CommentViewController {
+                presentPanModal(myViewController)
+            }
+        }
     }
     
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
@@ -128,6 +173,9 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
         }
         let remove = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             print("리뷰 삭제 row-\(indexPath.row)")
+            //TODO : 데이터 삭제
+            //self.reviewTableView.deleteRows(at: [indexPath], with: .automatic)//삭제 후 다른 사람의 리뷰로 대체??
+            
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
