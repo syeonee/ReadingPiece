@@ -237,6 +237,7 @@
 				00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */,
 				0026127525FB24E7000B40D1 /* UIButton.swift */,
 				0026127825FB2501000B40D1 /* CALayer.swift */,
+				59A967B72601C996000EE89F /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,7 +311,6 @@
 				599D3AD325F26EC90085F134 /* ReviewCells */,
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
 				59F4F2C225F9031700E82417 /* CreateReview */,
-				59A967B72601C996000EE89F /* UILabel.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
