@@ -1153,13 +1153,6 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dBW-fU-gRt">
-                                                <rect key="frame" x="30" y="429" width="75" height="0.0"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="75" id="Se7-R5-mOO"/>
-                                                    <constraint firstAttribute="height" id="uwW-EX-LvU"/>
-                                                </constraints>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6h-FA-ZVM">
                                                 <rect key="frame" x="20" y="541" width="374" height="38"/>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="17"/>
@@ -1177,6 +1170,24 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DIT-SX-ugs">
+                                                <rect key="frame" x="20" y="429" width="75" height="0.0"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" id="lHP-qy-FX7"/>
+                                                    <constraint firstAttribute="width" constant="75" id="m4u-fB-VBR"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Er7-9U-nTX">
+                                                <rect key="frame" x="87" y="420" width="17" height="17"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="17" id="7IF-vf-bsG"/>
+                                                    <constraint firstAttribute="width" constant="17" id="eVG-Gx-1Co"/>
+                                                </constraints>
+                                                <state key="normal" image="clearGlyphSearchBar"/>
+                                                <connections>
+                                                    <action selector="popImage:" destination="snK-Qc-9UX" eventType="touchUpInside" id="Vq0-yv-IEM"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1185,22 +1196,24 @@
                                             <constraint firstItem="s6h-FA-ZVM" firstAttribute="top" secondItem="VhQ-Jg-76O" secondAttribute="bottom" constant="56" id="GoK-fO-bjz"/>
                                             <constraint firstItem="s6h-FA-ZVM" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="20" id="JS6-XA-T22"/>
                                             <constraint firstItem="iur-C6-IHE" firstAttribute="leading" secondItem="pYB-hm-scj" secondAttribute="leading" constant="22" id="Jp7-VB-neS"/>
-                                            <constraint firstItem="dBW-fU-gRt" firstAttribute="top" secondItem="LX1-sn-zQ4" secondAttribute="bottom" constant="14" id="Pqh-Ss-UeI"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="s6h-FA-ZVM" secondAttribute="bottom" constant="10" id="QF3-uC-oXu"/>
                                             <constraint firstItem="dBd-5q-QRy" firstAttribute="leading" secondItem="pYB-hm-scj" secondAttribute="leading" constant="22" id="R98-y2-mhI"/>
                                             <constraint firstItem="LX1-sn-zQ4" firstAttribute="top" secondItem="iur-C6-IHE" secondAttribute="bottom" constant="16" id="SYS-Un-hfW"/>
                                             <constraint firstItem="VhQ-Jg-76O" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="22" id="SqP-Ta-FBv"/>
                                             <constraint firstItem="iur-C6-IHE" firstAttribute="top" secondItem="dBd-5q-QRy" secondAttribute="bottom" constant="36" id="TDc-5h-T2B"/>
-                                            <constraint firstItem="VhQ-Jg-76O" firstAttribute="top" secondItem="dBW-fU-gRt" secondAttribute="bottom" constant="20" id="Ybs-lL-ugW"/>
                                             <constraint firstAttribute="trailing" secondItem="jau-hN-NKd" secondAttribute="trailing" constant="22" id="cB0-Ac-VEE"/>
+                                            <constraint firstItem="DIT-SX-ugs" firstAttribute="top" secondItem="LX1-sn-zQ4" secondAttribute="bottom" constant="14" id="cRE-nq-7Or"/>
                                             <constraint firstItem="pYB-hm-scj" firstAttribute="top" secondItem="YoJ-Nr-Xmh" secondAttribute="top" constant="28" id="dGo-Y4-Ac0"/>
                                             <constraint firstAttribute="trailing" secondItem="s6h-FA-ZVM" secondAttribute="trailing" constant="20" id="ePW-cX-0cp"/>
                                             <constraint firstItem="LX1-sn-zQ4" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="20" id="fHg-ls-N6Q"/>
+                                            <constraint firstItem="Er7-9U-nTX" firstAttribute="leading" secondItem="DIT-SX-ugs" secondAttribute="trailing" constant="-8" id="fw1-1V-p8S"/>
                                             <constraint firstItem="dBd-5q-QRy" firstAttribute="top" secondItem="pYB-hm-scj" secondAttribute="bottom" constant="20" id="gLR-No-arv"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VhQ-Jg-76O" secondAttribute="trailing" constant="10" id="hR3-aQ-pPE"/>
+                                            <constraint firstItem="Er7-9U-nTX" firstAttribute="bottom" secondItem="DIT-SX-ugs" secondAttribute="top" constant="8" id="hdq-yp-eNT"/>
                                             <constraint firstItem="pYB-hm-scj" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" id="heC-N2-ibX"/>
+                                            <constraint firstItem="VhQ-Jg-76O" firstAttribute="top" secondItem="DIT-SX-ugs" secondAttribute="bottom" constant="20" id="j2M-RS-gtk"/>
                                             <constraint firstItem="jau-hN-NKd" firstAttribute="top" secondItem="LX1-sn-zQ4" secondAttribute="bottom" constant="4" id="jGr-Lj-fV0"/>
-                                            <constraint firstItem="dBW-fU-gRt" firstAttribute="leading" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="30" id="mzs-nO-YWM"/>
+                                            <constraint firstItem="DIT-SX-ugs" firstAttribute="leading" secondItem="LX1-sn-zQ4" secondAttribute="leading" id="jL7-IT-0ql"/>
                                             <constraint firstItem="jau-hN-NKd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="10" id="omW-6G-8iR"/>
                                             <constraint firstAttribute="trailing" secondItem="iur-C6-IHE" secondAttribute="trailing" constant="24" id="wV6-eS-GYQ"/>
                                             <constraint firstAttribute="trailing" secondItem="LX1-sn-zQ4" secondAttribute="trailing" constant="20" id="yhC-9n-8SI"/>
@@ -1241,8 +1254,9 @@
                         <outlet property="readingPageInputButton" destination="Ldn-An-0CQ" id="K0b-Ll-n4r"/>
                         <outlet property="readingPercentInputButton" destination="9BG-4l-S3J" id="ImI-Si-hVe"/>
                         <outlet property="readingStatusButton" destination="WSw-m5-8Ki" id="hVB-Y5-xHd"/>
-                        <outlet property="reviewImageHeight" destination="uwW-EX-LvU" id="UJq-ap-XIP"/>
-                        <outlet property="reviewImageView" destination="dBW-fU-gRt" id="9Ck-d9-vFd"/>
+                        <outlet property="reviewImageHeight" destination="lHP-qy-FX7" id="zlu-uY-LPu"/>
+                        <outlet property="reviewImagePopButton" destination="Er7-9U-nTX" id="6Ub-A7-yAk"/>
+                        <outlet property="reviewImageView" destination="DIT-SX-ugs" id="B0D-NF-DCv"/>
                         <outlet property="totalReadingTimeButton" destination="VqH-Fd-N4E" id="pod-QQ-pG3"/>
                     </connections>
                 </viewController>
@@ -1386,6 +1400,7 @@
         <image name="addPictureIcon" width="19" height="19"/>
         <image name="challenge" width="25" height="25"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
+        <image name="clearGlyphSearchBar" width="17" height="17"/>
         <image name="daily" width="15" height="15"/>
         <image name="minuteArrow" width="7" height="12.5"/>
         <image name="pauseIcon" width="13" height="15"/>

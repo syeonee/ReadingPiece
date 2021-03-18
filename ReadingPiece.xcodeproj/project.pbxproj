@@ -18,6 +18,8 @@
 		0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */; };
 		0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
+		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
+		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
 		00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FCD25F362DD00340AE0 /* TimerViewController.swift */; };
 		00838FD125F3640500340AE0 /* TimerStopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FD025F3640500340AE0 /* TimerStopViewController.swift */; };
@@ -32,6 +34,8 @@
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
+		00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F5526032AF1002848AB /* ReviewImageCell.swift */; };
+		00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C55F5626032AF1002848AB /* ReviewImageCell.xib */; };
 		00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8632225FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift */; };
 		00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */; };
 		00D8632B25FF77D200E9EFF9 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8632A25FF77D200E9EFF9 /* Stopwatch.swift */; };
@@ -124,6 +128,8 @@
 		0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCompletionViewController.swift; sourceTree = "<group>"; };
 		0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingStatusPopupViewController.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
+		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
+		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		00838FCD25F362DD00340AE0 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		00838FD025F3640500340AE0 /* TimerStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		00C55F5526032AF1002848AB /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
+		00C55F5626032AF1002848AB /* ReviewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageCell.xib; sourceTree = "<group>"; };
 		00D8632225FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadingBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		00D8632A25FF77D200E9EFF9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -236,6 +244,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		007CF5F626031C0800F530AD /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				007CF5F22603192800F530AD /* ReviewImageView.xib */,
+				007CF5F7260321E800F530AD /* ReviewImageView.swift */,
+				00C55F5526032AF1002848AB /* ReviewImageCell.swift */,
+				00C55F5626032AF1002848AB /* ReviewImageCell.xib */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
 		00838FC425F3607100340AE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +285,7 @@
 		00838FD325F3645200340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				007CF5F626031C0800F530AD /* Review */,
 				009250032602587000A930DD /* PurpleFirecracker.sks */,
 				009250042602587000A930DD /* RedFirecracker.sks */,
 				00C3418625FD1873009B2A34 /* Firecracker.sks */,
@@ -318,9 +338,9 @@
 		00D8633625FF8ADD00E9EFF9 /* DaillyReading */ = {
 			isa = PBXGroup;
 			children = (
+				00838FDB25F3659700340AE0 /* DaillyReadingWritenViewController.swift */,
 				0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */,
 				005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */,
-				00838FDB25F3659700340AE0 /* DaillyReadingWritenViewController.swift */,
 				0026127B25FB2547000B40D1 /* DailyGoalCompletionViewController.swift */,
 				0026127E25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift */,
 			);
@@ -672,6 +692,7 @@
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
 				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
+				00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
 				599D3AC225F1E32B0085F134 /* ReviewHeaderCell.xib in Resources */,
 				5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */,
@@ -689,6 +710,7 @@
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
+				007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */,
 				009250062602587100A930DD /* RedFirecracker.sks in Resources */,
 				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
@@ -779,6 +801,7 @@
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
+				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
@@ -801,6 +824,7 @@
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				D6F153E625F9159C0044900E /* Book.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
+				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
