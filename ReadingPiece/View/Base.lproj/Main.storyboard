@@ -1153,7 +1153,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="postDiary:" destination="snK-Qc-9UX" eventType="touchUpInside" id="kqH-ID-UAs"/>
-                                                    <segue destination="32d-bw-EHK" kind="show" id="vbF-Ug-dli"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ 100" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jau-hN-NKd">
@@ -1270,11 +1269,11 @@
             <objects>
                 <viewController id="32d-bw-EHK" customClass="DaillyDiaryWrittenCompletionViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaC-3d-Dkl">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="if5-uA-aIM">
-                                <rect key="frame" x="20" y="27" width="374" height="781"/>
+                                <rect key="frame" x="20" y="71" width="374" height="791"/>
                                 <color key="sectionIndexBackgroundColor" systemColor="systemGray6Color"/>
                             </tableView>
                         </subviews>

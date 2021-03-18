@@ -49,11 +49,20 @@ class DaillyReadingWritenViewController: UIViewController {
         setupUI()
         picker.delegate = self
         commentTextView.delegate = self
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangePublicOption), name: nil, object: isPublic)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "독서 일지"
+    }
+    
+    @objc func didChangePublicOption() {
+        if isValidatePost() && isPublic != nil {
+            postDairyButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+        } else {
+            postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
+        }
     }
 
     @objc func postDiary(sender: UIBarButtonItem) {
@@ -87,20 +96,22 @@ class DaillyReadingWritenViewController: UIViewController {
     
     @IBAction func makePublicPost(_ sender: UIButton) {
         isPublic = true
-        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
-        privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
+        DispatchQueue.main.async {
+            self.publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
+            self.privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
+        }
     }
         
     @IBAction func makePrivatePost(_ sender: UIButton) {
-        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
-        privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
+        isPublic = false
+        DispatchQueue.main.async {
+            self.publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
+            self.privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
+        }
     }
     
     @IBAction func postDiary(_ sender: UIButton) {
         if isValidatePost() == true {
-            postDairyButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
-        } else {
-            postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         }
     }
 
@@ -134,9 +145,10 @@ class DaillyReadingWritenViewController: UIViewController {
     
     func isValidatePost() -> Bool {
         var validationResult = false
-        
-        if commentTextView.text.count > 1 && readingPercent != 0 && readingPage + readingPercent > 2 && pickedImage != nil  {
-            validationResult = true
+        DispatchQueue.main.async {
+            if self.commentTextView.text.count > 1 && self.readingPage > 1 && self.readingPercent > 1 {
+                validationResult = true
+            }
         }
         
         return validationResult
