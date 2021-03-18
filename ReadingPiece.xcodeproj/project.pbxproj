@@ -27,6 +27,9 @@
 		009250052602587100A930DD /* PurpleFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250032602587000A930DD /* PurpleFirecracker.sks */; };
 		009250062602587100A930DD /* RedFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250042602587000A930DD /* RedFirecracker.sks */; };
 		009250092602588B00A930DD /* FireCrackerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250082602588B00A930DD /* FireCrackerScene.swift */; };
+		0092500D2602605400A930DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092500C2602605400A930DD /* NetworkManager.swift */; };
+		009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250142602DE2A00A930DD /* BithumbRequest.swift */; };
+		009250182602E08300A930DD /* BithumbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250172602E08300A930DD /* BithumbResponse.swift */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
@@ -133,6 +136,9 @@
 		009250032602587000A930DD /* PurpleFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PurpleFirecracker.sks; sourceTree = "<group>"; };
 		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
 		009250082602588B00A930DD /* FireCrackerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCrackerScene.swift; sourceTree = "<group>"; };
+		0092500C2602605400A930DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		009250142602DE2A00A930DD /* BithumbRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BithumbRequest.swift; sourceTree = "<group>"; };
+		009250172602E08300A930DD /* BithumbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BithumbResponse.swift; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -270,6 +276,16 @@
 				00C3419825FF2CBB009B2A34 /* Cell */,
 			);
 			path = Challenge;
+			sourceTree = "<group>";
+		};
+		0092500B2602604300A930DD /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				0092500C2602605400A930DD /* NetworkManager.swift */,
+				009250142602DE2A00A930DD /* BithumbRequest.swift */,
+				009250172602E08300A930DD /* BithumbResponse.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 		00C3419825FF2CBB009B2A34 /* Cell */ = {
@@ -548,6 +564,7 @@
 		D6A255FA25E4256000731B10 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				0092500B2602604300A930DD /* NetworkManager */,
 				00838FCC25F362CD00340AE0 /* Challenge */,
 				D60B364225EE2E5A000E949D /* Library */,
 				D60B364025EE2E45000E949D /* My */,
@@ -746,8 +763,10 @@
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				0026127625FB24E7000B40D1 /* UIButton.swift in Sources */,
+				0092500D2602605400A930DD /* NetworkManager.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
+				009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
@@ -755,6 +774,7 @@
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
+				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
 				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,

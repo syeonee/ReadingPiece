@@ -15,11 +15,25 @@ class ViewController: UIViewController {
     @IBOutlet weak var daillyReadingDiaryCountLabel: UILabel!
     @IBOutlet weak var radingBooksCollectionView: UICollectionView!
     @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
-    
+    let orderCurrency = "ALL"
+    let paymentCurrency = "KRW"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        _ = Network.request(req: BithumbRequest(order: orderCurrency, payment: paymentCurrency)) { (result) in
+                
+                switch result {
+                case .success(let userResponse):
+                    print(userResponse)
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    print(error!)
+            }
+        }
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {
