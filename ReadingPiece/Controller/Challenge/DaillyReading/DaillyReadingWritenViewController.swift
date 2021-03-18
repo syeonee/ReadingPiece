@@ -73,8 +73,8 @@ class DaillyReadingWritenViewController: UIViewController {
     
     @objc func postDiary(sender: UIBarButtonItem) {
         // 챌린지 달성 여부에 따른 화면 분기 필요
-        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
-        self.navigationController?.pushViewController(writeReviewVC, animated: true)
+//        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
+//        self.navigationController?.pushViewController(writeReviewVC, animated: true)
     }
     
     @IBAction func addImage(_ sender: UIButton) {
@@ -97,7 +97,8 @@ class DaillyReadingWritenViewController: UIViewController {
     }
     
     @IBAction func makePublicPost(_ sender: UIButton) {
-        print("pageSelect")
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func makePrivatePost(_ sender: UIButton) {

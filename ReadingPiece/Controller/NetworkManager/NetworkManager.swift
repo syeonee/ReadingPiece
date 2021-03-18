@@ -24,7 +24,6 @@ extension Requestable {
     }
 }
 
-
 enum NetworkResult<T> {
     case success(T)
     case cancel(Error?)

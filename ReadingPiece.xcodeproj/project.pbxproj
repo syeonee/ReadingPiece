@@ -13,10 +13,9 @@
 		0026127325FB244C000B40D1 /* DaillyReadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0026127125FB244C000B40D1 /* DaillyReadingTableViewCell.xib */; };
 		0026127625FB24E7000B40D1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127525FB24E7000B40D1 /* UIButton.swift */; };
 		0026127925FB2501000B40D1 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127825FB2501000B40D1 /* CALayer.swift */; };
-		0026127C25FB2547000B40D1 /* DailyReadingWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127B25FB2547000B40D1 /* DailyReadingWrittenViewController.swift */; };
+		0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127B25FB2547000B40D1 /* DailyGoalCompletionViewController.swift */; };
 		0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127E25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift */; };
 		0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */; };
-		0026128525FB25A3000B40D1 /* ReviewWrittenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */; };
 		0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
@@ -120,10 +119,9 @@
 		0026127125FB244C000B40D1 /* DaillyReadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DaillyReadingTableViewCell.xib; sourceTree = "<group>"; };
 		0026127525FB24E7000B40D1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		0026127825FB2501000B40D1 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
-		0026127B25FB2547000B40D1 /* DailyReadingWrittenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReadingWrittenViewController.swift; sourceTree = "<group>"; };
+		0026127B25FB2547000B40D1 /* DailyGoalCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyGoalCompletionViewController.swift; sourceTree = "<group>"; };
 		0026127E25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaillyDiaryWrittenCompletionViewController.swift; sourceTree = "<group>"; };
 		0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCompletionViewController.swift; sourceTree = "<group>"; };
-		0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewWrittenViewController.swift; sourceTree = "<group>"; };
 		0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingStatusPopupViewController.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -258,10 +256,9 @@
 			isa = PBXGroup;
 			children = (
 				0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */,
-				0026128425FB25A3000B40D1 /* ReviewWrittenViewController.swift */,
+				009250082602588B00A930DD /* FireCrackerScene.swift */,
 				00D8633625FF8ADD00E9EFF9 /* DaillyReading */,
 				00D8633525FF8AB300E9EFF9 /* Timer */,
-				009250082602588B00A930DD /* FireCrackerScene.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -324,7 +321,7 @@
 				0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */,
 				005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */,
 				00838FDB25F3659700340AE0 /* DaillyReadingWritenViewController.swift */,
-				0026127B25FB2547000B40D1 /* DailyReadingWrittenViewController.swift */,
+				0026127B25FB2547000B40D1 /* DailyGoalCompletionViewController.swift */,
 				0026127E25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift */,
 			);
 			path = DaillyReading;
@@ -795,7 +792,6 @@
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */,
-				0026128525FB25A3000B40D1 /* ReviewWrittenViewController.swift in Sources */,
 				0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */,
 				00D8632F25FF867F00E9EFF9 /* Constants.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
@@ -805,7 +801,7 @@
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				D6F153E625F9159C0044900E /* Book.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
-				0026127C25FB2547000B40D1 /* DailyReadingWrittenViewController.swift in Sources */,
+				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,

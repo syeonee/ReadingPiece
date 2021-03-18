@@ -64,7 +64,7 @@ class TimerViewController: UIViewController {
     @IBAction func stopTimer(_ sender: UIButton) {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
-        let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyReadingWrittenViewController
+        let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
         let savedTime = defaults.integer(forKey: Constants().USERDEFAULT_KEY_CURRENT_TIMER_TIME) 
         print("LOG TIME", savedTime)
         self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)

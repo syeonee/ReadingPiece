@@ -7,8 +7,9 @@
 
 import UIKit
 
-class DailyReadingWrittenViewController: UIViewController {
+class DailyGoalCompletionViewController: UIViewController {
     
+    @IBOutlet weak var DailyGoalResultView: UIView!
     @IBOutlet weak var readingTargetTimeLabel: UILabel!
     @IBOutlet weak var daillyTotalReadingTimeLabel: UILabel!
 
@@ -54,9 +55,19 @@ class DailyReadingWrittenViewController: UIViewController {
     }
     
     @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
-        let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
-        self.navigationController?.pushViewController(timerStopVC, animated: true)
+        shareResult()
     }
+    
+    func shareResult() {
+        let image = DailyGoalResultView.captureScreenToImage()
+        let imageToShare = [ image ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
     
     @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
         let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
