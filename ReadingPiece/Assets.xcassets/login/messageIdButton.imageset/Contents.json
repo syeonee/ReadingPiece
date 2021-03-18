@@ -1,16 +1,17 @@
 {
   "images" : [
     {
+      "filename" : "messageIdButton.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "id@2x.png",
+      "filename" : "messageIdButton@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "id@3x.png",
+      "filename" : "messageIdButton@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
