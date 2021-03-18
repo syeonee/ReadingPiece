@@ -38,9 +38,19 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     }
     
     @objc func shareDaillyReadingResult(sender: UIBarButtonItem){
-        let challengeCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
-        self.navigationController?.pushViewController(challengeCompletionVC, animated: true)
+        shareResult()
     }
+    
+    func shareResult() {
+        let image = daillyDiaryWrittenTableView.visibleCells.first?.captureScreenToImage()
+        let imageToShare = [ image ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
 }
 
 extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITableViewDataSource {

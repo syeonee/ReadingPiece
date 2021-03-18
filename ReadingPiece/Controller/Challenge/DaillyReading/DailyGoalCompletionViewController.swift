@@ -7,8 +7,9 @@
 
 import UIKit
 
-class DailyReadingWrittenViewController: UIViewController {
+class DailyGoalCompletionViewController: UIViewController {
     
+    @IBOutlet weak var DailyGoalResultView: UIView!
     @IBOutlet weak var readingTargetTimeLabel: UILabel!
     @IBOutlet weak var daillyTotalReadingTimeLabel: UILabel!
 
@@ -54,9 +55,31 @@ class DailyReadingWrittenViewController: UIViewController {
     }
     
     @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
-        let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
-        self.navigationController?.pushViewController(timerStopVC, animated: true)
+        shareResult()
     }
+    
+    func shareResult() {
+        let image = DailyGoalResultView.captureScreenToImage()
+        let waterMardkedImage = addWaterMark(image: image!)
+        let imageToShare = [ waterMardkedImage ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+    
+    func addWaterMark(image: UIImage) -> UIImage {
+            let backgroundImage = image//UII
+            let watermarkImage = UIImage(named: "waterMark.png")
+
+            UIGraphicsBeginImageContextWithOptions(backgroundImage.size, false, 0.0)
+            backgroundImage.draw(in: CGRect(x: 0.0, y: 0.0, width: backgroundImage.size.width, height: backgroundImage.size.height))
+            watermarkImage!.draw(in: CGRect(x: backgroundImage.size.width - watermarkImage!.size.width, y: 0, width: watermarkImage!.size.width, height: watermarkImage!.size.height))
+            let result = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return result!
+        }
     
     @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
         let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
