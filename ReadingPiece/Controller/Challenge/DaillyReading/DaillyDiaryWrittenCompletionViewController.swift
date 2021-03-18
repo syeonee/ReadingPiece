@@ -15,6 +15,10 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        // 완료한 챌린지가 있으면 챌린지 축하화면으로 이동
+//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     private func setupUI() {
