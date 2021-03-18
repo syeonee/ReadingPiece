@@ -9,8 +9,10 @@ import UIKit
 
 class InputReadingStatusPopupViewController: UIViewController {
     
-    @IBOutlet weak var popupView: UIView!
     static var storyobardId: String = "InputReadingStatusPopupVC"
+    var readingStatusDelegate: ReadingStatusDelegate?
+    
+    @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var closePopupButton: UIButton!
     @IBOutlet weak var popupTitleLabel: UILabel!
     @IBOutlet weak var popupSubtitleLabel: UILabel!
@@ -19,6 +21,7 @@ class InputReadingStatusPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        inputTextField.delegate = self
         setupUI()
     }
     
@@ -39,7 +42,24 @@ class InputReadingStatusPopupViewController: UIViewController {
     }
     
     @IBAction func donePopup(_ sender: UIButton) {
-        
-        
+        if let text = inputTextField.text {
+            readingStatusDelegate?.setReadingPage(Int(text) ?? 0)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
+    
+}
+
+extension InputReadingStatusPopupViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let text = textField.text else {return false}
+            
+            if text.count >= 1 {
+                doneButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+            } else {
+                doneButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.middlegrey2.cgColor, backgroundColor: .middlegrey2)
+            }
+
+            return true
+        }
 }
