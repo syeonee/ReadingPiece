@@ -69,6 +69,7 @@
 		59A967D0260333BC000EE89F /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967CF260333BC000EE89F /* LoginSplashViewController.swift */; };
 		59A967D42603484C000EE89F /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D32603484C000EE89F /* JoinViewController.swift */; };
 		59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D926036CC9000EE89F /* LoginNavViewController.swift */; };
+		59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FE82604D2A000D07656 /* UIViewController.swift */; };
 		59F4F22125F5C05000E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22025F5C05000E82417 /* UIFont.swift */; };
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
@@ -140,7 +141,6 @@
 		00838FD025F3640500340AE0 /* TimerStopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStopViewController.swift; sourceTree = "<group>"; };
 		00838FDB25F3659700340AE0 /* DaillyReadingWritenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaillyReadingWritenViewController.swift; sourceTree = "<group>"; };
 		00838FE525F4EEE600340AE0 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		00838FE825F4FD5B00340AE0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		00838FF025F5017200340AE0 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		009250032602587000A930DD /* PurpleFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PurpleFirecracker.sks; sourceTree = "<group>"; };
 		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
@@ -187,6 +187,7 @@
 		59A967CF260333BC000EE89F /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
 		59A967D32603484C000EE89F /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		59A967D926036CC9000EE89F /* LoginNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavViewController.swift; sourceTree = "<group>"; };
+		59E18FE82604D2A000D07656 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		59F4F22025F5C05000E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = ReadingPiece/Extensions/UIFont.swift; sourceTree = "<group>"; };
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -270,13 +271,13 @@
 			children = (
 				00838FC525F3607A00340AE0 /* Colors.swift */,
 				00838FE525F4EEE600340AE0 /* UIView.swift */,
-				00838FE825F4FD5B00340AE0 /* UIViewController.swift */,
 				59F4F22325F5C09500E82417 /* UIFont.swift */,
 				00838FF025F5017200340AE0 /* IndicatorView.swift */,
 				00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */,
 				0026127525FB24E7000B40D1 /* UIButton.swift */,
 				0026127825FB2501000B40D1 /* CALayer.swift */,
 				59A967B72601C996000EE89F /* UILabel.swift */,
+				59E18FE82604D2A000D07656 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -435,6 +436,7 @@
 		59A967D726034961000EE89F /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				D67C657525E566C600F15290 /* Library.storyboard */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -618,7 +620,6 @@
 				00838FD325F3645200340AE0 /* Challenge */,
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
-				D67C657525E566C600F15290 /* Library.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
 				D67C657B25E5717300F15290 /* My.storyboard */,
 			);
@@ -875,6 +876,7 @@
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */,
 				D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */,
+				59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */,
 				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
