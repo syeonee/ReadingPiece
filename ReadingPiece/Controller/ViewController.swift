@@ -41,8 +41,15 @@ class ViewController: UIViewController {
         self.navigationController?.pushViewController(TimerVC, animated: true)
     }
     
+    @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
+        let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+        self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+    }
+    
     @IBAction func addReadingBookAction(_ sender: UIButton) {
-        // 목표 설정, 책 검색 씬으로 추후 연결
+        let searchBookVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
+//        vc.initializer = 1
+        self.navigationController?.pushViewController(searchBookVC, animated: true)
     }
     
     private func setupUI() {

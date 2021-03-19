@@ -14,9 +14,13 @@ class DaillyReadingWritenViewController: UIViewController {
     let cellId = ReviewImageCell.identifier
     let picker = UIImagePickerController()
     var pickedImage : UIImage?
-    var isPublic: Bool?
     var readingPercent: Int = 0
     var readingPage: Int = 0
+    var isPublic: Bool? {
+        didSet {
+            isValidatePost()
+        }
+    }
 
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var bookInfoView: UIView!
@@ -49,20 +53,11 @@ class DaillyReadingWritenViewController: UIViewController {
         setupUI()
         picker.delegate = self
         commentTextView.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(didChangePublicOption), name: nil, object: isPublic)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "독서 일지"
-    }
-    
-    @objc func didChangePublicOption() {
-        if isValidatePost() && isPublic != nil {
-            postDairyButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
-        } else {
-            postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
-        }
     }
 
     @objc func postDiary(sender: UIBarButtonItem) {
@@ -112,6 +107,7 @@ class DaillyReadingWritenViewController: UIViewController {
     
     @IBAction func postDiary(_ sender: UIButton) {
         if isValidatePost() == true {
+            // API 호출
         }
     }
 
@@ -145,15 +141,21 @@ class DaillyReadingWritenViewController: UIViewController {
     
     func isValidatePost() -> Bool {
         var validationResult = false
-        DispatchQueue.main.async {
-            if self.commentTextView.text.count > 1 && self.readingPage > 1 && self.readingPercent > 1 {
-                validationResult = true
+        if self.commentTextView.text.count > 1 && self.readingPage > 1 && self.readingPercent > 1 && isPublic != nil {
+            validationResult = true
+            DispatchQueue.main.async {
+                self.postDairyButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
             }
         }
         
         return validationResult
     }
 }
+
 
 extension DaillyReadingWritenViewController: ReadingStatusDelegate {
     func setReadingPage(_ page: Int) {
