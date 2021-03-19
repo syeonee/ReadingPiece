@@ -38,7 +38,6 @@ class LibraryViewController: UIViewController {
         menuViewController.registerFocusView(nib: UINib(nibName: "FocusView", bundle: nil))
         menuViewController.cellAlignment = .center
         
-        
         dataSource = makeDataSource()
     }
     

@@ -48,6 +48,8 @@
 		5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */; };
 		5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */; };
 		5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */; };
+		5997296A26039D5000573B9A /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997296926039D5000573B9A /* JoinRequest.swift */; };
+		5997296D26039D8400573B9A /* JoinResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997296C26039D8400573B9A /* JoinResponse.swift */; };
 		599D3A9825F08A690085F134 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3A9725F08A690085F134 /* MenuCell.swift */; };
 		599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9A25F08A9F0085F134 /* MenuCell.xib */; };
 		599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9E25F08BFF0085F134 /* FocusView.xib */; };
@@ -64,6 +66,9 @@
 		599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3ACE25F26EC00085F134 /* FullReviewCell.swift */; };
 		599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3ACF25F26EC00085F134 /* FullReviewCell.xib */; };
 		59A967B82601C996000EE89F /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967B72601C996000EE89F /* UILabel.swift */; };
+		59A967D0260333BC000EE89F /* LoginSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967CF260333BC000EE89F /* LoginSplashViewController.swift */; };
+		59A967D42603484C000EE89F /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D32603484C000EE89F /* JoinViewController.swift */; };
+		59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D926036CC9000EE89F /* LoginNavViewController.swift */; };
 		59F4F22125F5C05000E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22025F5C05000E82417 /* UIFont.swift */; };
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
@@ -161,6 +166,8 @@
 		5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
 		5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		5997296926039D5000573B9A /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
+		5997296C26039D8400573B9A /* JoinResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinResponse.swift; sourceTree = "<group>"; };
 		599D3A9725F08A690085F134 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		599D3A9A25F08A9F0085F134 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
 		599D3A9E25F08BFF0085F134 /* FocusView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FocusView.xib; sourceTree = "<group>"; };
@@ -177,6 +184,9 @@
 		599D3ACE25F26EC00085F134 /* FullReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullReviewCell.swift; sourceTree = "<group>"; };
 		599D3ACF25F26EC00085F134 /* FullReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullReviewCell.xib; sourceTree = "<group>"; };
 		59A967B72601C996000EE89F /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		59A967CF260333BC000EE89F /* LoginSplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSplashViewController.swift; sourceTree = "<group>"; };
+		59A967D32603484C000EE89F /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
+		59A967D926036CC9000EE89F /* LoginNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavViewController.swift; sourceTree = "<group>"; };
 		59F4F22025F5C05000E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = ReadingPiece/Extensions/UIFont.swift; sourceTree = "<group>"; };
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -347,6 +357,15 @@
 			path = DaillyReading;
 			sourceTree = "<group>";
 		};
+		5997296826039D1D00573B9A /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				5997296926039D5000573B9A /* JoinRequest.swift */,
+				5997296C26039D8400573B9A /* JoinResponse.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
 		599D3AA125F0907D0085F134 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +411,32 @@
 				599D3ACA25F240A60085F134 /* JournalHeaderCell.xib */,
 			);
 			path = JournalCells;
+			sourceTree = "<group>";
+		};
+		59A967CD26032BF1000EE89F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5997296826039D1D00573B9A /* NetworkManager */,
+				59A967CF260333BC000EE89F /* LoginSplashViewController.swift */,
+				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
+				59A967D32603484C000EE89F /* JoinViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		59A967D626034956000EE89F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D6509DE625EAC87F000D7160 /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		59A967D726034961000EE89F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		59F4F21E25F5BE4E00E82417 /* Recovered References */ = {
@@ -545,6 +590,7 @@
 		D67C658F25E5BE8600F15290 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				59A967D926036CC9000EE89F /* LoginNavViewController.swift */,
 				D67C658C25E5B08300F15290 /* MyNavViewController.swift */,
 				D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */,
 				D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */,
@@ -567,13 +613,14 @@
 		D6A255F925E4255000731B10 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59A967D626034956000EE89F /* Login */,
+				59A967D726034961000EE89F /* Library */,
 				00838FD325F3645200340AE0 /* Challenge */,
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657525E566C600F15290 /* Library.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
 				D67C657B25E5717300F15290 /* My.storyboard */,
-				D6509DE625EAC87F000D7160 /* Login.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -582,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				0092500B2602604300A930DD /* NetworkManager */,
+				59A967CD26032BF1000EE89F /* Login */,
 				00838FCC25F362CD00340AE0 /* Challenge */,
 				D60B364225EE2E5A000E949D /* Library */,
 				D60B364025EE2E45000E949D /* My */,
@@ -590,7 +638,6 @@
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
-				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -762,6 +809,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
@@ -780,6 +828,7 @@
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
+				59A967D42603484C000EE89F /* JoinViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				0026127625FB24E7000B40D1 /* UIButton.swift in Sources */,
 				0092500D2602605400A930DD /* NetworkManager.swift in Sources */,
@@ -798,6 +847,7 @@
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
 				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,
+				5997296A26039D5000573B9A /* JoinRequest.swift in Sources */,
 				0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */,
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
@@ -814,6 +864,7 @@
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
+				5997296D26039D8400573B9A /* JoinResponse.swift in Sources */,
 				D6F153E625F9159C0044900E /* Book.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
@@ -827,6 +878,7 @@
 				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
+				59A967D0260333BC000EE89F /* LoginSplashViewController.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
 				D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */,
 			);
@@ -978,7 +1030,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K437BLHFS;
+				DEVELOPMENT_TEAM = 9S4MGTSS3Y;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1000,7 +1052,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K437BLHFS;
+				DEVELOPMENT_TEAM = 9S4MGTSS3Y;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

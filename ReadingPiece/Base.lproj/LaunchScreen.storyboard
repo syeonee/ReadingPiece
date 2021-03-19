@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,13 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="Z5i-zB-TtO">
-                                <rect key="frame" x="138.5" y="326" width="137" height="105"/>
+                                <rect key="frame" x="138.5" y="395.5" width="137" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="uTP-97-P0R"/>
+                                    <constraint firstAttribute="height" constant="105" id="wXp-aY-bz9"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.98792845009999997" green="0.94130581619999998" blue="0.93333202599999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Z5i-zB-TtO" secondAttribute="bottom" multiplier="2" id="6Vf-8E-d7v"/>
+                            <constraint firstItem="Z5i-zB-TtO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="C4O-c7-P7T"/>
                             <constraint firstItem="Z5i-zB-TtO" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LVB-al-i5K"/>
                         </constraints>
                     </view>
@@ -36,8 +39,5 @@
     </scenes>
     <resources>
         <image name="launch" width="137" height="105"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

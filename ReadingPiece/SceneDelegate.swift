@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginController")
+            let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
             
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = LoginViewController
