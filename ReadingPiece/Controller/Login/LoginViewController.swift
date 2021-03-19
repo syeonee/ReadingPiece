@@ -25,8 +25,11 @@ class LoginViewController: UIViewController {
         
         IDTextField.delegate = self
         passwordTextField.delegate = self
-        self.IDTextField.font = .NotoSans(.regular, size: 14)
-        self.passwordTextField.font = .NotoSans(.regular, size: 14)
+        IDTextField.font = .NotoSans(.regular, size: 14)
+        passwordTextField.font = .NotoSans(.regular, size: 14)
+        loginButton.makeRoundedButtnon("로그인", titleColor: #colorLiteral(red: 0.7097406387, green: 0.7098445296, blue: 0.7097179294, alpha: 1) , borderColor: #colorLiteral(red: 0.8548267484, green: 0.8549502492, blue: 0.8547996879, alpha: 1), backgroundColor: #colorLiteral(red: 0.8548267484, green: 0.8549502492, blue: 0.8547996879, alpha: 1))
+        loginButton.titleLabel?.font = .NotoSans(.medium, size: 16)
+        loginButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,5 +66,15 @@ extension LoginViewController: UITextFieldDelegate {
             passwordTextField.resignFirstResponder()
         }
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if IDTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false {
+            loginButton.makeRoundedButtnon("로그인", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+            loginButton.isEnabled = true
+        } else {
+            loginButton.isEnabled = false
+        }
+        
     }
 }

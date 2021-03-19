@@ -273,7 +273,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="H9L-cV-dPm" secondAttribute="height" multiplier="156:23" id="f6h-Z0-lBi"/>
                                 </constraints>
-                                <state key="normal" image="login"/>
+                                <state key="normal" title="로그인"/>
                                 <connections>
                                     <segue destination="MAH-q9-Jlq" kind="show" id="7sh-NY-hgR"/>
                                 </connections>
@@ -678,7 +678,6 @@
         <image name="checkedID" width="100.5" height="25.5"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>
         <image name="email" width="19" height="12"/>
-        <image name="login" width="312" height="46"/>
         <image name="messageIcon" width="19" height="12"/>
         <image name="messageIdButton" width="326.5" height="46"/>
         <image name="navBack" width="11" height="19"/>

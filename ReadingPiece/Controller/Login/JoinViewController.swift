@@ -46,7 +46,18 @@ class JoinViewController: UIViewController {
     }
     
     @IBAction func joinComplete(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        Network.request(req: JoinRequest(userInfo: ["email": self.emailTextField.text!, "password": self.pwConfirmTextField.text!])) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                self.navigationController?.popViewController(animated: true)
+            case .cancel(let cancelError):
+                print(cancelError)
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
     }
     
 }
