@@ -9,17 +9,26 @@ import UIKit
 
 class JoinViewController: UIViewController {
     
+    var saveID: Bool = false {
+        didSet {
+            if saveID == true {
+                saveIDButton.setImage(UIImage(named: "checkedID"), for: .normal) // 이미지 받아서 배경 있는걸로 바꿔놓기
+            } else {
+                saveIDButton.setImage(UIImage(named: "uncheckedIdGrey"), for: .normal)
+            }
+        }
+    }
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var pwConfirmTextField: UITextField!
     
+    @IBOutlet weak var saveIDButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         emailTextField.delegate = self
         passwordTextField.delegate = self
         pwConfirmTextField.delegate = self
@@ -45,22 +54,44 @@ class JoinViewController: UIViewController {
         pwConfirmTextField.text = ""
     }
     
+    @IBAction func saveIDButtonTapped(_ sender: Any) {
+        if saveID == true {
+            saveID = false
+        } else {
+            saveID = true
+        }
+    }
+    
+    
     @IBAction func joinComplete(_ sender: Any) {
-        Network.request(req: JoinRequest(userInfo: ["email": self.emailTextField.text!, "password": self.pwConfirmTextField.text!])) { result in
+        Network.request(req: JoinRequest(email: self.emailTextField.text!, password: self.pwConfirmTextField.text!)) { result in
             switch result {
             case .success(let response):
                 print(response)
                 self.navigationController?.popViewController(animated: true)
             case .cancel(let cancelError):
-                print(cancelError)
+                print(cancelError as Any)
             case .failure(let error):
-                print(error)
+                print(error as Any)
                 
             }
         }
     }
     
+    @IBAction func pwConfirmEditingChanged(_ sender: UITextField) {
+        if sender.text != self.passwordTextField.text {
+            print(sender.text ?? "")
+        } else {
+            print("password confirmed")
+        }
+        
+    }
+    
+    
+    
 }
+
+// TextField Delegate
 extension JoinViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
@@ -82,4 +113,6 @@ extension JoinViewController: UITextFieldDelegate {
         }
         
     }
+    
+    
 }

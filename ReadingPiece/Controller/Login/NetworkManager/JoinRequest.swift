@@ -10,18 +10,20 @@ import Foundation
 final class JoinRequest: Requestable {
     typealias ResponseType = JoinResponse
     
-    private var userInfo: [String : String]
+    private var email: String
+    private var password: String
     
-    init(userInfo: [String : String]) {
-        self.userInfo = userInfo
+    init(email: String, password: String) {
+        self.email = email
+        self.password = password
     }
     
     var baseUrl: URL {
-        return  URL(string: "dev.maekuswant.shop")!
+        return  URL(string: "https://dev.maekuswant.shop/")!
     }
     
     var endpoint: String {
-        return "/signUp"
+        return "signUp"
     }
     
     var method: Network.Method {
@@ -29,11 +31,11 @@ final class JoinRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     var parameters: [String : Any]? {
-        return userInfo
+        return ["email": self.email, "password": self.password]
     }
     
     var headers: [String : String]? {

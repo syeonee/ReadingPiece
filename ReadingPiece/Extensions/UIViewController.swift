@@ -1,8 +1,8 @@
 //
 //  UIViewController.swift
-//  EduTemplate
+//  ReadingPiece
 //
-//  Created by Zero Yoon on 2020/10/08.
+//  Created by 정지현 on 2021/03/19.
 //
 
 import UIKit
@@ -10,7 +10,7 @@ import SnapKit
 import Toast_Swift
 import Network
 
-extension UIViewController {    
+extension UIViewController {
     func checkNetworkConnectivity() {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue.global(qos: .background)
@@ -33,7 +33,7 @@ extension UIViewController {
         self.view.makeToast(title, duration: 2.0, position: .top)
     }
     
-    // MARK: 공통 네비게이션바 디자인 적용    
+    // MARK: 공통 네비게이션바 디자인 적용
     func setupMyPageNavigationBar(_ leftButtonTitle: String?, _ rightButtonTitle: String, _ barTitle: String, buttonImage: UIImage? ) {
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevorn.left"),
                                             style: .plain,
