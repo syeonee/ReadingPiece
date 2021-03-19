@@ -15,6 +15,10 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        // 완료한 챌린지가 있으면 챌린지 축하화면으로 이동
+//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
+
     }
     
     private func setupUI() {
@@ -38,9 +42,19 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     }
     
     @objc func shareDaillyReadingResult(sender: UIBarButtonItem){
-        let challengeCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
-        self.navigationController?.pushViewController(challengeCompletionVC, animated: true)
+        shareResult()
     }
+    
+    func shareResult() {
+        let image = daillyDiaryWrittenTableView.visibleCells.first?.captureScreenToImage()
+        let imageToShare = [ image ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+
+        self.present(activityViewController, animated: true, completion: nil)
+    }
+
 }
 
 extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITableViewDataSource {
