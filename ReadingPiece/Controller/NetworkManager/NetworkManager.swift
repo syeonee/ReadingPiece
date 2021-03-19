@@ -48,9 +48,7 @@ class Network {
         
         let url = req.baseUrl.appendingPathComponent(req.endpoint)
         let request = prepareRequest(for: url, req: req)
-        
         return AF.request(request).responseJSON { (response) in
-            
             if let err = response.error {
                 
                 if let urlError = err as? URLError, urlError.code == URLError.cancelled {
