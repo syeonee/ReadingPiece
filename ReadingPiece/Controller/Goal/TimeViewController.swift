@@ -8,7 +8,10 @@
 import UIKit
 
 class TimeViewController: UIViewController {
-
+    // Term VC에서 옵셔널 검사를 하고, 값을 넘겨줄 것 이기 때문에 편의상 논-옵셔널 변수로 생성
+    var time: Int = 0
+    var period: String = ""
+    
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var timeSelectButton: UIButton!
     @IBOutlet weak var arrowButton: UIButton!
@@ -19,6 +22,23 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
+    }
+    
+    // Delegate 패턴으로 전달받은 Goal 값을 이용해 목표 설정
+    func setReadingGoal() {
+        let req = ReadingGoalRequest(Goal(period: "D", amount: 1, time: 1))
+                                
+        _ = Network.request(req: req) { (result) in
+                
+                switch result {
+                case .success(let userResponse):
+                    print(userResponse)
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    print(error!)
+            }
+        }
     }
     
     func createDatePicker() {
