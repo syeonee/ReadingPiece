@@ -70,6 +70,8 @@
 		59A967D42603484C000EE89F /* JoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D32603484C000EE89F /* JoinViewController.swift */; };
 		59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D926036CC9000EE89F /* LoginNavViewController.swift */; };
 		59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FE82604D2A000D07656 /* UIViewController.swift */; };
+		59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEC2604EA3100D07656 /* LoginRequest.swift */; };
+		59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEF2604EA7100D07656 /* LoginResponse.swift */; };
 		59F4F22125F5C05000E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22025F5C05000E82417 /* UIFont.swift */; };
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
@@ -188,6 +190,8 @@
 		59A967D32603484C000EE89F /* JoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinViewController.swift; sourceTree = "<group>"; };
 		59A967D926036CC9000EE89F /* LoginNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavViewController.swift; sourceTree = "<group>"; };
 		59E18FE82604D2A000D07656 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		59E18FEC2604EA3100D07656 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		59E18FEF2604EA7100D07656 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		59F4F22025F5C05000E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = ReadingPiece/Extensions/UIFont.swift; sourceTree = "<group>"; };
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 			children = (
 				5997296926039D5000573B9A /* JoinRequest.swift */,
 				5997296C26039D8400573B9A /* JoinResponse.swift */,
+				59E18FEC2604EA3100D07656 /* LoginRequest.swift */,
+				59E18FEF2604EA7100D07656 /* LoginResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -824,6 +830,7 @@
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
+				59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
@@ -853,6 +860,7 @@
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
+				59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
 				59A967B82601C996000EE89F /* UILabel.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,

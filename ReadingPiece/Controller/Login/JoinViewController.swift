@@ -23,6 +23,11 @@ class JoinViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var pwConfirmTextField: UITextField!
     
+    @IBOutlet weak var emailImageView: UIImageView!
+    @IBOutlet weak var pwImageView: UIImageView!
+    @IBOutlet weak var pwConfirmImageView: UIImageView!
+    
+    
     @IBOutlet weak var saveIDButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
     
@@ -42,6 +47,8 @@ class JoinViewController: UIViewController {
         
         joinButton.makeRoundedButtnon("가입 완료", titleColor: .grey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         joinButton.isEnabled = false
+        
+        self.dismissKeyboardWhenTappedAround()
     }
     
     @IBAction func emailCancel(_ sender: Any) {
@@ -67,12 +74,21 @@ class JoinViewController: UIViewController {
         Network.request(req: JoinRequest(email: self.emailTextField.text!, password: self.pwConfirmTextField.text!)) { result in
             switch result {
             case .success(let response):
-                print(response)
-                self.navigationController?.popViewController(animated: true)
+                let result = response.code
+                if result == 1000 {
+                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: {_ in
+                        self.navigationController?.popViewController(animated: true) // api 수정되면 jwt 토큰 저장한 뒤 바로 책추가 화면으로 넘어가기
+                    })
+                } else {
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false, handler: {_ in
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
                 print(error as Any)
+                self.presentAlert(title: "회원가입에 실패하였습니다. ", isCancelActionIncluded: false)
                 
             }
         }
@@ -102,6 +118,19 @@ extension JoinViewController: UITextFieldDelegate {
             pwConfirmTextField.resignFirstResponder()
         }
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailImageView.image = UIImage(named: "messageIconBlack")
+            emailTextField.textColor = .black
+        } else if textField == passwordTextField {
+            pwImageView.image = UIImage(named: "passwordIconBlack")
+            passwordTextField.textColor = .black
+        } else {
+            pwConfirmImageView.image = UIImage(named: "passwordIconMelon")
+            pwConfirmTextField.textColor = .melon
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

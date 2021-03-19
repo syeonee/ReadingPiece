@@ -1,16 +1,16 @@
 //
-//  JoinRequest.swift
+//  LoginRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/18.
+//  Created by 정지현 on 2021/03/19.
 //
 
 import Foundation
 
-// 회원가입 api 호출 클래스
+// 로그인 api 호출 클래스
 
-final class JoinRequest: Requestable {
-    typealias ResponseType = JoinResponse
+final class LoginRequest: Requestable {
+    typealias ResponseType = LoginResponse
     
     private var email: String
     private var password: String
@@ -25,7 +25,7 @@ final class JoinRequest: Requestable {
     }
     
     var endpoint: String {
-        return "signUp"
+        return "signIn"
     }
     
     var method: Network.Method {

@@ -12,7 +12,8 @@ class LoginSplashViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let ud = UserDefaults.standard
+        print("로그인 여부: ", ud.bool(forKey: "loginConnected"))
         // Do any additional setup after loading the view.
     }
     

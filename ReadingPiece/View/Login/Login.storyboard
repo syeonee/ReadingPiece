@@ -275,7 +275,7 @@
                                 </constraints>
                                 <state key="normal" title="로그인"/>
                                 <connections>
-                                    <segue destination="MAH-q9-Jlq" kind="show" id="7sh-NY-hgR"/>
+                                    <action selector="loginButtonTapped:" destination="Ged-PO-BSZ" eventType="touchUpInside" id="qLw-DS-bqi"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="6Ng-Oc-Z5s">
@@ -647,10 +647,13 @@
                         <barButtonItem key="backBarButtonItem" title="   " id="Qqa-d5-sy2"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailImageView" destination="7IF-mJ-iL7" id="fud-Ml-ZkN"/>
                         <outlet property="emailTextField" destination="iHe-vv-ux3" id="lzZ-sd-DNw"/>
                         <outlet property="joinButton" destination="ipb-kT-uFM" id="6am-Dx-NO0"/>
                         <outlet property="passwordTextField" destination="pdj-Rd-TJn" id="QGv-BU-vKK"/>
+                        <outlet property="pwConfirmImageView" destination="xHC-tm-g5u" id="BzC-dg-rJU"/>
                         <outlet property="pwConfirmTextField" destination="RWr-0L-6cb" id="cea-kL-8N9"/>
+                        <outlet property="pwImageView" destination="liz-TC-MPZ" id="2G3-qZ-j7R"/>
                         <outlet property="saveIDButton" destination="Kqg-K1-2E5" id="qT2-zp-rxy"/>
                     </connections>
                 </viewController>
