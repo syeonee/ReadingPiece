@@ -36,6 +36,11 @@
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
 		00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F5526032AF1002848AB /* ReviewImageCell.swift */; };
 		00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00C55F5626032AF1002848AB /* ReviewImageCell.xib */; };
+		00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F6A26048AA0002848AB /* SignUpRequest.swift */; };
+		00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F6D26048AC6002848AB /* SignUpResponse.swift */; };
+		00C55F732604F9CE002848AB /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F722604F9CE002848AB /* Goal.swift */; };
+		00C55F772604FB0B002848AB /* ReadingGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F762604FB0B002848AB /* ReadingGoalRequest.swift */; };
+		00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F792604FB16002848AB /* ReadingGoalResponse.swift */; };
 		00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8632225FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift */; };
 		00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */; };
 		00D8632B25FF77D200E9EFF9 /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D8632A25FF77D200E9EFF9 /* Stopwatch.swift */; };
@@ -154,6 +159,11 @@
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00C55F5526032AF1002848AB /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
 		00C55F5626032AF1002848AB /* ReviewImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageCell.xib; sourceTree = "<group>"; };
+		00C55F6A26048AA0002848AB /* SignUpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpRequest.swift; sourceTree = "<group>"; };
+		00C55F6D26048AC6002848AB /* SignUpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpResponse.swift; sourceTree = "<group>"; };
+		00C55F722604F9CE002848AB /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		00C55F762604FB0B002848AB /* ReadingGoalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingGoalRequest.swift; sourceTree = "<group>"; };
+		00C55F792604FB16002848AB /* ReadingGoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingGoalResponse.swift; sourceTree = "<group>"; };
 		00D8632225FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingBookCollectionViewCell.swift; sourceTree = "<group>"; };
 		00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadingBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		00D8632A25FF77D200E9EFF9 /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
@@ -314,6 +324,8 @@
 				0092500C2602605400A930DD /* NetworkManager.swift */,
 				009250142602DE2A00A930DD /* BithumbRequest.swift */,
 				009250172602E08300A930DD /* BithumbResponse.swift */,
+				00C55F6A26048AA0002848AB /* SignUpRequest.swift */,
+				00C55F6D26048AC6002848AB /* SignUpResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -329,6 +341,23 @@
 				00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		00C55F702604F998002848AB /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				00C55F762604FB0B002848AB /* ReadingGoalRequest.swift */,
+				00C55F792604FB16002848AB /* ReadingGoalResponse.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		00C55F712604F9A6002848AB /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				00C55F722604F9CE002848AB /* Goal.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		00D8632925FF77C600E9EFF9 /* Challenge */ = {
@@ -497,6 +526,8 @@
 		D60B363F25EE2E3B000E949D /* Goal */ = {
 			isa = PBXGroup;
 			children = (
+				00C55F712604F9A6002848AB /* Entity */,
+				00C55F702604F998002848AB /* NetworkManager */,
 				D60B364925EE300D000E949D /* TermViewController.swift */,
 				D6FF1B6B25F219F000A0B980 /* TimeViewController.swift */,
 				59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */,
@@ -823,6 +854,7 @@
 				59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */,
 				00D8632B25FF77D200E9EFF9 /* Stopwatch.swift in Sources */,
 				009250092602588B00A930DD /* FireCrackerScene.swift in Sources */,
+				00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
@@ -845,6 +877,7 @@
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
+				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
@@ -856,6 +889,7 @@
 				0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */,
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
+				00C55F732604F9CE002848AB /* Goal.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
@@ -873,6 +907,7 @@
 				D6F153E625F9159C0044900E /* Book.swift in Sources */,
 				D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */,
 				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
+				00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
@@ -885,6 +920,7 @@
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				59A967D0260333BC000EE89F /* LoginSplashViewController.swift in Sources */,
+				00C55F772604FB0B002848AB /* ReadingGoalRequest.swift in Sources */,
 				D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */,
 				D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */,
 			);
