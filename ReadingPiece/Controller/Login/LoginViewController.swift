@@ -67,11 +67,14 @@ class LoginViewController: UIViewController {
                     print("로그인 성공")
                     let ud = UserDefaults.standard
                     ud.setValue(response.jwt, forKey: "jwtToken")
-                    ud.setValue(true, forKey: "loginConnected") // 자동로그인 체크했을때만 실행되도록 로직 수정하기 
+                    ud.setValue(true, forKey: "loginConnected")
                     let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
-                    self.presentAlert(title: response.message, isCancelActionIncluded: false)
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        self.IDTextField.text = ""
+                        self.passwordTextField.text = ""
+                    }
                 }
             case .cancel(let cancelError):
                 print(cancelError as Any)

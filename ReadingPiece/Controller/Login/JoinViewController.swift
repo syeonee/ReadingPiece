@@ -9,6 +9,7 @@ import UIKit
 
 class JoinViewController: UIViewController {
     
+    // 자동로그인 여부 체크
     var saveID: Bool = false {
         didSet {
             if saveID == true {
@@ -18,10 +19,25 @@ class JoinViewController: UIViewController {
             }
         }
     }
+    
+    // 가입 완료 버튼 활성화여부 체크
+    var joinActivated: Bool = false {
+        didSet {
+            if joinActivated == true {
+                joinButton.isEnabled = true
+                joinButton.makeRoundedButtnon("가입 완료", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+            } else {
+                joinButton.isEnabled = false
+                joinButton.makeRoundedButtnon("가입 완료", titleColor: .grey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
+            }
+        }
+    }
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var pwConfirmTextField: UITextField!
+    @IBOutlet weak var pwConfirmLabel: UILabel!
+    
     
     @IBOutlet weak var emailImageView: UIImageView!
     @IBOutlet weak var pwImageView: UIImageView!
@@ -44,6 +60,9 @@ class JoinViewController: UIViewController {
         passwordTextField.textColor = .black
         pwConfirmTextField.font = .NotoSans(.regular, size: 14)
         pwConfirmTextField.textColor = .black
+        pwConfirmLabel.font = .NotoSans(.regular, size: 12)
+        pwConfirmLabel.textColor = .red
+        pwConfirmLabel.isHidden = true
         
         joinButton.makeRoundedButtnon("가입 완료", titleColor: .grey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         joinButton.isEnabled = false
@@ -77,11 +96,27 @@ class JoinViewController: UIViewController {
                 let result = response.code
                 if result == 1000 {
                     self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: {_ in
-                        self.navigationController?.popViewController(animated: true) // api 수정되면 jwt 토큰 저장한 뒤 바로 책추가 화면으로 넘어가기
+                        // jwt 토큰 저장한 뒤 책추가 화면으로 이동
+                        let ud = UserDefaults.standard
+                        ud.setValue(response.jwt, forKey: "jwtToken")
+                        ud.setValue(true, forKey: "loginConnected")
+                        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
                     })
-                } else {
+                } else if result == 2001 && result == 2002 {  // 이메일 입력 관련 오류
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        self.emailTextField.text = ""
+                    }
+                } else if result == 2003 && result == 2004 {  // 비밀번호 입력 관련 오류
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        self.passwordTextField.text = ""
+                        self.pwConfirmTextField.text = ""
+                    }
+                } else { // 중복된 이메일인 경우
                     self.presentAlert(title: response.message, isCancelActionIncluded: false, handler: {_ in
-                        self.navigationController?.popViewController(animated: true)
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
+                        self.pwConfirmTextField.text = ""
                     })
                 }
             case .cancel(let cancelError):
@@ -94,10 +129,14 @@ class JoinViewController: UIViewController {
         }
     }
     
+    // 비밀번호 일치여부 검사
     @IBAction func pwConfirmEditingChanged(_ sender: UITextField) {
         if sender.text != self.passwordTextField.text {
-            print(sender.text ?? "")
+            pwConfirmLabel.isHidden = false
+            pwConfirmLabel.text = "비밀번호가 일치하지 않습니다."
+            joinActivated = false
         } else {
+            pwConfirmLabel.isHidden = true
             print("password confirmed")
         }
         
@@ -130,15 +169,28 @@ extension JoinViewController: UITextFieldDelegate {
         } else {
             pwConfirmImageView.image = UIImage(named: "passwordIconMelon")
             pwConfirmTextField.textColor = .melon
+            pwConfirmLabel.isHidden = false
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if emailTextField.text?.isEmpty == true {
+            emailImageView.image = UIImage(named: "messageIcon")
+            emailTextField.textColor = .grey
+        }
+        if passwordTextField.text?.isEmpty == true {
+            pwImageView.image = UIImage(named: "passwordIcon")
+            passwordTextField.textColor = .grey
+        }
+        if pwConfirmTextField.text?.isEmpty == true {
+            pwConfirmImageView.image = UIImage(named: "passwordIcon2")
+            pwConfirmTextField.textColor = .grey
+        }
+        
         if emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false && pwConfirmTextField.text?.isEmpty == false {
-            joinButton.isEnabled = true
-            joinButton.makeRoundedButtnon("가입 완료", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+            joinActivated = true
         } else {
-            joinButton.isEnabled = false
+            joinActivated = false
         }
         
     }

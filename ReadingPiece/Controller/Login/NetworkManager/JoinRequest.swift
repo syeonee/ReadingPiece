@@ -10,7 +10,7 @@ import Foundation
 // 회원가입 api 호출 클래스
 
 final class JoinRequest: Requestable {
-    typealias ResponseType = JoinResponse
+    typealias ResponseType = LoginResponse
     
     private var email: String
     private var password: String
