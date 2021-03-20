@@ -543,6 +543,7 @@
 		D60B364025EE2E45000E949D /* My */ = {
 			isa = PBXGroup;
 			children = (
+				D67C658425E572FA00F15290 /* MyViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -649,13 +650,13 @@
 		D6A255F925E4255000731B10 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D6A7D3DA260603130098EA03 /* My */,
 				59A967D626034956000EE89F /* Login */,
 				59A967D726034961000EE89F /* Library */,
 				00838FD325F3645200340AE0 /* Challenge */,
 				D678693225F541B200DBB59C /* Goal */,
 				D6288D2D25E2B5DB00D73A61 /* Main.storyboard */,
 				D67C657825E5715F00F15290 /* Community.storyboard */,
-				D67C657B25E5717300F15290 /* My.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -672,9 +673,16 @@
 				D67C658F25E5BE8600F15290 /* Navigation */,
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
-				D67C658425E572FA00F15290 /* MyViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		D6A7D3DA260603130098EA03 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				D67C657B25E5717300F15290 /* My.storyboard */,
+			);
+			path = My;
 			sourceTree = "<group>";
 		};
 		D6F153E425F9158C0044900E /* Goal */ = {
