@@ -59,9 +59,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        self.showIndicator()
         Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
             switch result {
             case .success(let response):
+                self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
                     print("로그인 성공")
@@ -77,12 +79,20 @@ class LoginViewController: UIViewController {
                     }
                 }
             case .cancel(let cancelError):
+                self.dismissIndicator()
                 print(cancelError as Any)
             case .failure(let error):
+                self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "로그인에 실패하였습니다. ", isCancelActionIncluded: false)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
+    }
+    
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        let popupVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "PasswordResetViewController") as! PasswordResetViewController
+        popupVC.modalPresentationStyle = .overCurrentContext
+        self.present(popupVC, animated: true, completion: nil)
     }
     
     

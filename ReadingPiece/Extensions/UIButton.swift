@@ -16,7 +16,7 @@ extension UIButton {
         self.layer.borderWidth = 1
         self.layer.borderColor = borderColor
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 24
+        self.layer.cornerRadius = self.frame.height / 2
     }
 
     func makeSmallRoundedButtnon(_ title: String, titleColor: UIColor , borderColor: CGColor, backgroundColor: UIColor) {
