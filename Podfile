@@ -15,6 +15,6 @@ target 'ReadingPiece' do
   pod 'DropDown', '~> 2.3.2'
   pod 'PanModal'
   pod 'Cosmos', '~> 23.0'
-
+  pod 'Charts'
 
 end

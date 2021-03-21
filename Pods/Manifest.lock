@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (5.4.1)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - Cosmos (23.0.0)
   - DropDown (2.3.13)
   - IQKeyboardManagerSwift (6.3.0)
@@ -11,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - Charts
   - Cosmos (~> 23.0)
   - DropDown (~> 2.3.2)
   - IQKeyboardManagerSwift (= 6.3.0)
@@ -23,6 +27,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Charts
     - Cosmos
     - DropDown
     - IQKeyboardManagerSwift
@@ -34,6 +39,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
@@ -43,6 +49,6 @@ SPEC CHECKSUMS:
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 6b7e84e920506e25429a80adb8766ef614e3e2da
+PODFILE CHECKSUM: c6c7fea8c591d99fed7e868d87e444a4e3db221b
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

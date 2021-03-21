@@ -32,6 +32,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Roboto-Medium.ttf</string>
+		<string>Roboto-Regular.ttf</string>
 		<string>NotoSansCJKkr-Black.otf</string>
 		<string>NotoSansCJKkr-Bold.otf</string>
 		<string>NotoSansCJKkr-DemiLight.otf</string>
@@ -84,7 +86,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>User Interface Style</key>
-	<string>Light</string>
 </dict>
 </plist>
