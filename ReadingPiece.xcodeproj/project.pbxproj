@@ -254,6 +254,8 @@
 		D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
 		D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceViewController.swift; sourceTree = "<group>"; };
 		D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		D6A7D3EC26061E040098EA03 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../../../../Downloads/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		D6A7D3ED26061E040098EA03 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../../../Downloads/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
 		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
@@ -621,6 +623,8 @@
 		D67C655F25E4EFB200F15290 /* font */ = {
 			isa = PBXGroup;
 			children = (
+				D6A7D3EC26061E040098EA03 /* Roboto-Medium.ttf */,
+				D6A7D3ED26061E040098EA03 /* Roboto-Regular.ttf */,
 				59F4F2ED25F9A5FA00E82417 /* NotoSans-SemiBold.ttf */,
 				5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */,
 				5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */,
