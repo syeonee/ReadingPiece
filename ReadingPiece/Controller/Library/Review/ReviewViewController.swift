@@ -44,7 +44,9 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         let count = Review.dummyData.count
         if count == 0 {
             let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            self.setEmptyView(image: UIImage(named: "recordIcon")!, message: message)
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") { [self] in
+                buttonAction()
+            }
         }
         return count
     }
@@ -258,52 +260,9 @@ extension ReviewViewController: ReviewLatestDelegate, ReviewOldestDelegate {
     }
 }
 
-// 데이터가 없을 경우 표시되는 Placeholder
+// 데이터가 없을 경우 표시되는 Placeholder의 버튼 이벤트 처리
 extension ReviewViewController {
-    func setEmptyView(image: UIImage, message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        let imageView = UIImageView()
-        let messageLabel = UILabel()
-        let button = UIButton()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        messageLabel.font = .NotoSans(.medium, size: 15)
-        messageLabel.textColor = .charcoal
-        button.titleLabel?.font = .NotoSans(.medium, size: 15)
-        button.makeRoundedButtnon("평가/리뷰 작성하기", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
-        
-        emptyView.addSubview(imageView)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(button)
-        emptyView.backgroundColor = #colorLiteral(red: 0.9646214843, green: 0.9647600055, blue: 0.9645912051, alpha: 1)
-        
-        imageView.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 42).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 57).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 60).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -60).isActive = true
-        button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 65).isActive = true
-        button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
-        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
-        
-        imageView.image = image
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        
-        self.tableView.backgroundView = emptyView
-        self.tableView.separatorStyle = .none
-    }
-    
-    @objc func buttonAction (_ sender: UIButton!) {
+    func buttonAction () {
         print("평가/리뷰 작성")
         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
         vc.initializer = 1
