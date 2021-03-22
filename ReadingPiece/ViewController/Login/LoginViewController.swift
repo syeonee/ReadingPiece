@@ -95,7 +95,11 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                    // 서버 불안정할 시 테스트용 (삭제 예정)
+                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
     }
