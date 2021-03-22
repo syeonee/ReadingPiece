@@ -127,6 +127,8 @@
 		D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */; };
 		D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */; };
 		D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */; };
+		D6D088EB260885790093EC2E /* MyEditNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D088EA260885790093EC2E /* MyEditNavViewController.swift */; };
+		D6D088EE260887EE0093EC2E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D088ED260887EE0093EC2E /* ProfileEditViewController.swift */; };
 		D6F153E625F9159C0044900E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E525F9159C0044900E /* Book.swift */; };
 		D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E825F9395B0044900E /* NetworkAPI.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
@@ -261,6 +263,8 @@
 		D6A7D3EC26061E040098EA03 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../../../../Downloads/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		D6A7D3ED26061E040098EA03 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../../../Downloads/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		D6D088EA260885790093EC2E /* MyEditNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditNavViewController.swift; sourceTree = "<group>"; };
+		D6D088ED260887EE0093EC2E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -562,6 +566,7 @@
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
 				D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */,
 				D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */,
+				D6D088ED260887EE0093EC2E /* ProfileEditViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -653,6 +658,7 @@
 				D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */,
 				D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */,
 				D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */,
+				D6D088EA260885790093EC2E /* MyEditNavViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -889,6 +895,7 @@
 				00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
+				D6D088EB260885790093EC2E /* MyEditNavViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
@@ -910,6 +917,7 @@
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
+				D6D088EE260887EE0093EC2E /* ProfileEditViewController.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,

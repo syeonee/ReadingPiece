@@ -48,9 +48,9 @@ extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         let width = collectionView.bounds.width
         let insetSum = width - (151*2)
-        let inset = insetSum/7
+        let inset = insetSum/8
         print("inset is \(inset)")
-        return UIEdgeInsets(top: 0, left: inset*2, bottom: 0, right: inset*2)
+        return UIEdgeInsets(top: 0, left: (inset*1.5), bottom: 0, right: (inset*1.5))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
