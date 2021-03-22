@@ -15,6 +15,7 @@ class TermViewController: UIViewController {
     @IBOutlet weak var weekButton: UIButton!
     @IBOutlet weak var monthButton: UIButton!
     @IBOutlet weak var yearButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class TermViewController: UIViewController {
     @objc func donePressed() {
         self.view.endEditing(true)
         amount = Int(bookQuantityTextField.text ?? "0")
+        changeNextButtonColorByValidcation()
     }
     
     @IBAction func termButtonTapped(_ sender: UIButton) {
@@ -65,9 +67,12 @@ class TermViewController: UIViewController {
     }
     
     @IBAction func nextButtonAction(_ sender: UIButton) {
-        if let readingAmount = amount, let readingPeriod = period {
-            let TimeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as! TimeViewController
-            self.navigationController?.pushViewController(TimeVC, animated: true)
+        if changeNextButtonColorByValidcation() == true {
+            if let readingAmount = amount, let readingPeriod = period {
+                guard let timeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return }
+                timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount)
+                self.navigationController?.pushViewController(timeVC, animated: true)
+            }
         }
     }
     
@@ -82,5 +87,16 @@ class TermViewController: UIViewController {
         default:
             period = nil
         }
+    }
+    
+    func changeNextButtonColorByValidcation() -> Bool {
+        var result = false
+        if period != nil && amount != nil {
+            nextButton.setImage(UIImage(named: "selectedNext"), for: .normal)
+            result = true
+        } else {
+            nextButton.setImage(UIImage(named: "next"), for: .normal)
+        }
+        return result
     }
 }
