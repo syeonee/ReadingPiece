@@ -249,9 +249,9 @@
 		D6288D3325E2B5DD00D73A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6288D3525E2B5DD00D73A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D642423626090A1800E732D4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		D6424239260916E000E732D4 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "NotoSans-Medium.ttf"; path = "../../../../../../Downloads/NotoSans-unhinted/NotoSans-Medium.ttf"; sourceTree = "<group>"; };
-		D642423A260916F200E732D4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../../../../../Downloads/Roboto/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		D642423B260916F200E732D4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../../../../../Downloads/Roboto/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		D6424239260916E000E732D4 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
+		D642423A260916F200E732D4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		D642423B260916F200E732D4 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		D642423D26091D9F00E732D4 /* AccountInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoViewController.swift; sourceTree = "<group>"; };
 		D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Goal.storyboard; sourceTree = "<group>"; };
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
