@@ -104,7 +104,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2I2-0c-WDs">
                                 <rect key="frame" x="51" y="706" width="312" height="46"/>
-                                <state key="normal" image="selectedNext"/>
+                                <state key="normal" image="next"/>
                                 <state key="disabled" image="next"/>
                                 <connections>
                                     <action selector="nextButtonAction:" destination="Sde-1m-S2c" eventType="touchUpInside" id="q99-SR-PFz"/>
@@ -134,9 +134,6 @@
                             <constraint firstItem="ZNo-To-Mru" firstAttribute="leading" secondItem="dQW-mt-Bxs" secondAttribute="leading" constant="32" id="t4b-US-NsE"/>
                             <constraint firstItem="AIf-17-HaS" firstAttribute="centerY" secondItem="ZNo-To-Mru" secondAttribute="centerY" id="vkA-Re-FmK"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Iix-iq-5V4" appends="YES" id="3sB-yJ-ddj"/>
-                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="목표 추가" id="c1X-br-5Nx">
                         <barButtonItem key="backBarButtonItem" title=" " id="V0O-0y-oHg"/>
@@ -150,6 +147,7 @@
                     <connections>
                         <outlet property="bookQuantityTextField" destination="ZNo-To-Mru" id="rqp-jz-S3O"/>
                         <outlet property="monthButton" destination="5Zk-DH-a4A" id="bWj-O9-ISd"/>
+                        <outlet property="nextButton" destination="2I2-0c-WDs" id="0pJ-yX-zc2"/>
                         <outlet property="weekButton" destination="4wg-hs-nce" id="iOy-U6-4HO"/>
                         <outlet property="yearButton" destination="EJj-DG-v36" id="uzC-d4-yen"/>
                     </connections>
@@ -200,9 +198,9 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLd-zd-Fe3">
                                 <rect key="frame" x="51" y="504" width="312" height="46"/>
-                                <state key="normal" image="selectedNext"/>
+                                <state key="normal" image="next"/>
                                 <connections>
-                                    <segue destination="znP-37-YL6" kind="show" id="doF-iz-ilm"/>
+                                    <action selector="addGoalAction:" destination="sME-ys-cfE" eventType="touchUpInside" id="zEc-jV-rgZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYh-t9-aLx">
@@ -258,8 +256,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addGoalButton" destination="PLd-zd-Fe3" id="djm-cY-7AF"/>
                         <outlet property="arrowButton" destination="VYh-t9-aLx" id="HEK-4j-D3K"/>
                         <outlet property="minuteLabel" destination="lZe-rX-FXC" id="AC9-Av-0SL"/>
+                        <outlet property="readingTimeLabel" destination="U2t-eJ-Upo" id="LLN-Ap-m3i"/>
                         <outlet property="timeSelectButton" destination="j4t-rw-XrO" id="BkO-Od-cha"/>
                         <outlet property="timeTextField" destination="vlg-oH-MBp" id="D3f-ca-Jol"/>
                     </connections>
@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="책 이름, 작가, 출판사" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-hg-tpY">
-                                        <rect key="frame" x="18" y="18" width="299" height="18"/>
+                                        <rect key="frame" x="18" y="16.5" width="299" height="21"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -317,13 +317,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총 123권의 검색 결과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0x-qi-ItU">
-                                <rect key="frame" x="20" y="114" width="111.5" height="15.5"/>
+                                <rect key="frame" x="20" y="114" width="116" height="19.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3No-EK-nBn">
-                                <rect key="frame" x="0.0" y="142.5" width="414" height="753.5"/>
+                                <rect key="frame" x="0.0" y="146.5" width="414" height="749.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="bookCell" rowHeight="130" id="GCH-Ek-SWM" customClass="BookCell" customModule="ReadingPiece" customModuleProvider="target">
@@ -349,19 +349,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgu-3q-cyJ">
-                                                    <rect key="frame" x="119" y="10" width="40.5" height="16.5"/>
+                                                    <rect key="frame" x="119" y="10" width="43" height="21"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3E-Te-LBK">
-                                                    <rect key="frame" x="119" y="27.5" width="36.5" height="16.5"/>
+                                                    <rect key="frame" x="119" y="32" width="39" height="21"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="출판사" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIF-bE-lT4">
-                                                    <rect key="frame" x="119" y="58" width="36.5" height="16.5"/>
+                                                    <rect key="frame" x="119" y="67" width="39" height="21"/>
                                                     <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                                     <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -865,7 +865,7 @@
         <!--책 추가-->
         <scene sceneID="lzx-vv-T1z">
             <objects>
-                <viewController id="znP-37-YL6" customClass="SearchBookViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchBookViewController" id="znP-37-YL6" customClass="SearchBookViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aJf-Je-X0K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -942,9 +942,6 @@
             <point key="canvasLocation" x="247.82608695652175" y="144.64285714285714"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="doF-iz-ilm"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="XButton" width="15.5" height="15"/>
         <image name="arrow" width="6" height="10"/>
@@ -962,7 +959,6 @@
         <image name="reviewArrow" width="7" height="12.5"/>
         <image name="selectedMY" width="25" height="25"/>
         <image name="selectedMonth" width="86" height="36"/>
-        <image name="selectedNext" width="312" height="46"/>
         <image name="selectedPlusButton" width="25" height="25"/>
         <image name="selectedWeek" width="86" height="36"/>
         <image name="selectedYear" width="86" height="36"/>
