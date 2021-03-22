@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class JoinViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     // 자동로그인 여부 체크
     var saveID: Bool = false {
@@ -95,11 +98,19 @@ class JoinViewController: UIViewController {
             case .success(let response):
                 let result = response.code
                 if result == 1000 {
-                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: {_ in
+                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { [self]_ in
                         // jwt 토큰 저장한 뒤 책추가 화면으로 이동
                         let ud = UserDefaults.standard
                         ud.setValue(response.jwt, forKey: "jwtToken")
                         ud.setValue(true, forKey: "loginConnected")
+                        
+                        // 키체인에 토큰 등록
+                        guard let token = response.jwt else { return }
+                        if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                            print("Keychain setting success.")
+                        } else {
+                            print("Failed to set on Keychain")
+                        }
                         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                     })
