@@ -53,6 +53,7 @@
 		5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */; };
 		5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */; };
 		5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */; };
+		596D4D5C2608C8BE00E137F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D5B2608C8BE00E137F3 /* User.swift */; };
 		5997296A26039D5000573B9A /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997296926039D5000573B9A /* JoinRequest.swift */; };
 		599D3A9825F08A690085F134 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3A9725F08A690085F134 /* MenuCell.swift */; };
 		599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9A25F08A9F0085F134 /* MenuCell.xib */; };
@@ -78,7 +79,8 @@
 		59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEF2604EA7100D07656 /* LoginResponse.swift */; };
 		59E18FFC26060FFB00D07656 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FFB26060FFB00D07656 /* UITableView.swift */; };
 		59E18FFF2606242500D07656 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FFE2606242500D07656 /* UIControl.swift */; };
-		59F4F22125F5C05000E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22025F5C05000E82417 /* UIFont.swift */; };
+		59E190252607823A00D07656 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E190242607823900D07656 /* PasswordResetViewController.swift */; };
+		59E1904026084CB000D07656 /* AppleLoginNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1903F26084CB000D07656 /* AppleLoginNetworkManager.swift */; };
 		59F4F22425F5C09500E82417 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22325F5C09500E82417 /* UIFont.swift */; };
 		59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22B25F5C0AB00E82417 /* Review.swift */; };
 		59F4F22F25F5C0B400E82417 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F22E25F5C0B400E82417 /* Review.swift */; };
@@ -185,6 +187,7 @@
 		5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
 		5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		596D4D5B2608C8BE00E137F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5997296926039D5000573B9A /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
 		599D3A9725F08A690085F134 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		599D3A9A25F08A9F0085F134 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
@@ -210,7 +213,9 @@
 		59E18FEF2604EA7100D07656 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		59E18FFB26060FFB00D07656 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		59E18FFE2606242500D07656 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
-		59F4F22025F5C05000E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFont.swift; path = ReadingPiece/Extensions/UIFont.swift; sourceTree = "<group>"; };
+		59E190242607823900D07656 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		59E1903F26084CB000D07656 /* AppleLoginNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginNetworkManager.swift; sourceTree = "<group>"; };
+		59E190492608803C00D07656 /* ReadingPiece.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReadingPiece.entitlements; sourceTree = "<group>"; };
 		59F4F22325F5C09500E82417 /* UIFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		59F4F22B25F5C0AB00E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		59F4F22E25F5C0B400E82417 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = ReadingPiece/Model/Library/Review.swift; sourceTree = "<group>"; };
@@ -409,12 +414,21 @@
 			path = DaillyReading;
 			sourceTree = "<group>";
 		};
+		596D4D5A2608C89A00E137F3 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				596D4D5B2608C8BE00E137F3 /* User.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		5997296826039D1D00573B9A /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
 				5997296926039D5000573B9A /* JoinRequest.swift */,
 				59E18FEC2604EA3100D07656 /* LoginRequest.swift */,
 				59E18FEF2604EA7100D07656 /* LoginResponse.swift */,
+				59E1903F26084CB000D07656 /* AppleLoginNetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -473,6 +487,7 @@
 				59A967CF260333BC000EE89F /* LoginSplashViewController.swift */,
 				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 				59A967D32603484C000EE89F /* JoinViewController.swift */,
+				59E190242607823900D07656 /* PasswordResetViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -493,10 +508,19 @@
 			path = Library;
 			sourceTree = "<group>";
 		};
+		59E1904B2608848500D07656 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				00D8632E25FF867F00E9EFF9 /* Constants.swift */,
+				00838FC425F3607100340AE0 /* Extensions */,
+				D67C655F25E4EFB200F15290 /* Font */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		59F4F21E25F5BE4E00E82417 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				59F4F22025F5C05000E82417 /* UIFont.swift */,
 				59F4F22E25F5C0B400E82417 /* Review.swift */,
 			);
 			name = "Recovered References";
@@ -606,10 +630,9 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
-				00D8632E25FF867F00E9EFF9 /* Constants.swift */,
-				00838FC425F3607100340AE0 /* Extensions */,
-				D67C655F25E4EFB200F15290 /* font */,
-				D6A255FA25E4256000731B10 /* Controller */,
+				59E190492608803C00D07656 /* ReadingPiece.entitlements */,
+				59E1904B2608848500D07656 /* Configuration */,
+				D6A255FA25E4256000731B10 /* ViewController */,
 				D6A255F925E4255000731B10 /* View */,
 				D6A255F825E4254A00731B10 /* Model */,
 				D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */,
@@ -631,7 +654,7 @@
 			path = Goal;
 			sourceTree = "<group>";
 		};
-		D67C655F25E4EFB200F15290 /* font */ = {
+		D67C655F25E4EFB200F15290 /* Font */ = {
 			isa = PBXGroup;
 			children = (
 				D6A7D3EC26061E040098EA03 /* Roboto-Medium.ttf */,
@@ -646,7 +669,7 @@
 				5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */,
 				5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */,
 			);
-			path = font;
+			path = Font;
 			sourceTree = "<group>";
 		};
 		D67C658F25E5BE8600F15290 /* Navigation */ = {
@@ -666,6 +689,7 @@
 		D6A255F825E4254A00731B10 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				596D4D5A2608C89A00E137F3 /* User */,
 				00D8632925FF77C600E9EFF9 /* Challenge */,
 				D6F153E425F9158C0044900E /* Goal */,
 				59F4F22A25F5C0AB00E82417 /* Library */,
@@ -687,7 +711,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		D6A255FA25E4256000731B10 /* Controller */ = {
+		D6A255FA25E4256000731B10 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				0092500B2602604300A930DD /* NetworkManager */,
@@ -700,7 +724,7 @@
 				D6288D2B25E2B5DB00D73A61 /* ViewController.swift */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
 			);
-			path = Controller;
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		D6A7D3DA260603130098EA03 /* My */ = {
@@ -904,6 +928,7 @@
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
+				59E190252607823A00D07656 /* PasswordResetViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
 				59A967D42603484C000EE89F /* JoinViewController.swift in Sources */,
@@ -924,6 +949,7 @@
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
+				596D4D5C2608C8BE00E137F3 /* User.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
 				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,
@@ -933,6 +959,7 @@
 				59E18FFF2606242500D07656 /* UIControl.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				00C55F732604F9CE002848AB /* Goal.swift in Sources */,
+				59E1904026084CB000D07656 /* AppleLoginNetworkManager.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
@@ -953,7 +980,6 @@
 				00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
-				59F4F22125F5C05000E82417 /* UIFont.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */,
@@ -1114,16 +1140,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K437BLHFS;
+				DEVELOPMENT_TEAM = 69F5355JYF;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = makeus.ReadingPiece;
+				PRODUCT_BUNDLE_IDENTIFIER = makeus.team.want.ReadingPiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1137,15 +1164,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8K437BLHFS;
+				DEVELOPMENT_TEAM = 69F5355JYF;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = makeus.ReadingPiece;
+				PRODUCT_BUNDLE_IDENTIFIER = makeus.team.want.ReadingPiece;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

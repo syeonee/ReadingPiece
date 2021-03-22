@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class LoginViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -59,15 +62,25 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
+        self.showIndicator()
+        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { [self] result in
             switch result {
             case .success(let response):
+                self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
                     print("로그인 성공")
                     let ud = UserDefaults.standard
-                    ud.setValue(response.jwt, forKey: "jwtToken")
-                    ud.setValue(true, forKey: "loginConnected")
+                    ud.setValue(response.jwt, forKey: "jwtToken") // 삭제 예정
+                    ud.setValue(true, forKey: "loginConnected") // 삭제 예정
+                    
+                    // 키체인에 토큰 등록
+                    guard let token = response.jwt else { return }
+                    if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                        print("Keychain setting success.")
+                    } else {
+                        print("Failed to set on Keychain")
+                    }
                     let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {
@@ -77,12 +90,20 @@ class LoginViewController: UIViewController {
                     }
                 }
             case .cancel(let cancelError):
+                self.dismissIndicator()
                 print(cancelError as Any)
             case .failure(let error):
+                self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "로그인에 실패하였습니다. ", isCancelActionIncluded: false)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
+    }
+    
+    @IBAction func resetPasswordButtonTapped(_ sender: Any) {
+        let popupVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "PasswordResetViewController") as! PasswordResetViewController
+        popupVC.modalPresentationStyle = .overCurrentContext
+        self.present(popupVC, animated: true, completion: nil)
     }
     
     
