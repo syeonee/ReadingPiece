@@ -16,5 +16,6 @@ target 'ReadingPiece' do
   pod 'PanModal'
   pod 'Cosmos', '~> 23.0'
   pod 'Charts'
+  pod 'KeychainSwift', '~> 19.0'
 
 end

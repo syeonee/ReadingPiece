@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class LoginViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -60,7 +63,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.showIndicator()
-        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
+        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { [self] result in
             switch result {
             case .success(let response):
                 self.dismissIndicator()
@@ -68,8 +71,16 @@ class LoginViewController: UIViewController {
                 if result == 1000 {
                     print("로그인 성공")
                     let ud = UserDefaults.standard
-                    ud.setValue(response.jwt, forKey: "jwtToken")
-                    ud.setValue(true, forKey: "loginConnected")
+                    ud.setValue(response.jwt, forKey: "jwtToken") // 삭제 예정
+                    ud.setValue(true, forKey: "loginConnected") // 삭제 예정
+                    
+                    // 키체인에 토큰 등록
+                    guard let token = response.jwt else { return }
+                    if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                        print("Keychain setting success.")
+                    } else {
+                        print("Failed to set on Keychain")
+                    }
                     let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                     self.navigationController?.pushViewController(vc, animated: true)
                 } else {

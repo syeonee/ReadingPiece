@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import KeychainSwift
 import AuthenticationServices
 
 class LoginSplashViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet weak var emailLoginButton: UIButton!
@@ -58,11 +61,13 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
             let email = appleIDCredential.email
             
             print("userIdentifier: \(userIdentifier), fullName: \(String(describing: fullName)), email: \(email ?? "no data")")
-            // For the purpose of this demo app, store the `userIdentifier` in the keychain.
-            //self.saveUserInKeychain(userIdentifier)
-            
-            // For the purpose of this demo app, show the Apple ID credential information in the `ResultViewController`.
-            //self.showResultViewController(userIdentifier: userIdentifier, fullName: fullName, email: email)
+            // 키체인에 userIdentifier 저장
+            let identifier = userIdentifier
+            if keychain.set(identifier, forKey: Keys.userIdentifier, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                print("Keychain setting success.")
+            } else {
+                print("Failed to set on Keychain")
+            }
         
         case let passwordCredential as ASPasswordCredential:
         
@@ -71,10 +76,6 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
             let password = passwordCredential.password
             
             print("username: \(username), password: \(password)")
-            // For the purpose of this demo app, show the password credential as an alert.
-            DispatchQueue.main.async {
-                //self.showPasswordCredentialAlert(username: username, password: password)
-            }
             
         default:
             break
