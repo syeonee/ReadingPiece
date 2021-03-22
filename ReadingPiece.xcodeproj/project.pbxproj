@@ -101,6 +101,8 @@
 		59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */; };
 		8BADC36FB9E62C9C754143FE /* Pods_ReadingPiece.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E33DB0BA56DAAD9787144444 /* Pods_ReadingPiece.framework */; };
 		D60B364A25EE300D000E949D /* TermViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60B364925EE300D000E949D /* TermViewController.swift */; };
+		D615DF8E2608F0D2006021C4 /* MyEditNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615DF8D2608F0D2006021C4 /* MyEditNavViewController.swift */; };
+		D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D615DF912608F0E8006021C4 /* ProfileEditViewController.swift */; };
 		D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */; };
 		D6288D2A25E2B5DB00D73A61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */; };
 		D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6288D2B25E2B5DB00D73A61 /* ViewController.swift */; };
@@ -234,6 +236,8 @@
 		59F4F32725F9F0B200E82417 /* SearchBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBookViewController.swift; sourceTree = "<group>"; };
 		B14B5E8417CEC3FBF46E4B54 /* Pods-ReadingPiece.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.debug.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.debug.xcconfig"; sourceTree = "<group>"; };
 		D60B364925EE300D000E949D /* TermViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermViewController.swift; sourceTree = "<group>"; };
+		D615DF8D2608F0D2006021C4 /* MyEditNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEditNavViewController.swift; sourceTree = "<group>"; };
+		D615DF912608F0E8006021C4 /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		D6288D2425E2B5DB00D73A61 /* ReadingPiece.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadingPiece.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6288D2725E2B5DB00D73A61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6288D2925E2B5DB00D73A61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
 				D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */,
 				D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */,
+				D615DF912608F0E8006021C4 /* ProfileEditViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -676,6 +681,7 @@
 				D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */,
 				D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */,
 				D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */,
+				D615DF8D2608F0D2006021C4 /* MyEditNavViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -931,6 +937,7 @@
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */,
+				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
 				00838FC625F3607A00340AE0 /* Colors.swift in Sources */,
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
@@ -964,6 +971,7 @@
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
+				D615DF8E2608F0D2006021C4 /* MyEditNavViewController.swift in Sources */,
 				D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */,
 				599D3AB625F11AB30085F134 /* ReviewCell.swift in Sources */,
 				D6F153E625F9159C0044900E /* Book.swift in Sources */,
