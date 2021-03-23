@@ -12,17 +12,6 @@ class JoinViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
-    // 자동로그인 여부 체크
-    var saveID: Bool = false {
-        didSet {
-            if saveID == true {
-                saveIDButton.setImage(UIImage(named: "checkedID"), for: .normal) // 이미지 받아서 배경 있는걸로 바꿔놓기
-            } else {
-                saveIDButton.setImage(UIImage(named: "uncheckedIdGrey"), for: .normal)
-            }
-        }
-    }
-    
     // 가입 완료 버튼 활성화여부 체크
     var joinActivated: Bool = false {
         didSet {
@@ -46,8 +35,6 @@ class JoinViewController: UIViewController {
     @IBOutlet weak var pwImageView: UIImageView!
     @IBOutlet weak var pwConfirmImageView: UIImageView!
     
-    
-    @IBOutlet weak var saveIDButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
     
     
@@ -81,14 +68,6 @@ class JoinViewController: UIViewController {
     }
     @IBAction func pwConfifmCancel(_ sender: Any) {
         pwConfirmTextField.text = ""
-    }
-    
-    @IBAction func saveIDButtonTapped(_ sender: Any) {
-        if saveID == true {
-            saveID = false
-        } else {
-            saveID = true
-        }
     }
     
     
