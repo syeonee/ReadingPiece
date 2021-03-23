@@ -56,7 +56,10 @@ class BookDetailViewController: UIViewController {
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
         if initNumber == 0 {
-            postBook(isbn: self.book?.isbn ?? "")
+//            postBook(isbn: self.book?.isbn ?? "")
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabController") as! UITabBarController
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
         } else if initNumber == 1 {
             let reviewVC = CreateReviewViewController()
             reviewVC.book = self.book
@@ -67,7 +70,7 @@ class BookDetailViewController: UIViewController {
     
     func postBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
-        let req = AddBookRequest(goalId: goalId, isbn: isbn)
+        let req = AddChallengeBookRequest(goalId: goalId, isbn: isbn)
         
         _ = Network.request(req: req) { (result) in
                 

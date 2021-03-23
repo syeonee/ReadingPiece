@@ -1,8 +1,8 @@
 import Foundation
 
 // API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=182560157
-// 책 추가 API
-final class AddBookRequest: Requestable {
+// 챌린지에 사용할 책 추가 API
+final class AddChallengeBookRequest: Requestable {
     typealias ResponseType = BookResponse
     private var goalId: Int
     private var isbn: String

@@ -345,6 +345,7 @@
                         <outlet property="daillyReadingDiaryCountLabel" destination="fUA-0e-a2M" id="HNf-0k-XXK"/>
                         <outlet property="daillyReadingTimeLabel" destination="3aE-Vk-MWc" id="SVw-Ac-V1a"/>
                         <outlet property="dailyReadingView" destination="QTG-j3-4a3" id="PtM-7H-DyB"/>
+                        <outlet property="goalStatusBarWidth" destination="ZbF-tY-0HH" id="mVn-gj-UOL"/>
                         <outlet property="radingBooksCollectionView" destination="jfz-8u-eZu" id="74I-Pr-tZS"/>
                     </connections>
                 </viewController>
