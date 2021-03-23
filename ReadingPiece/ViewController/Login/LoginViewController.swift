@@ -63,7 +63,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.showIndicator()
-        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { [self] result in
+        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
             switch result {
             case .success(let response):
                 self.dismissIndicator()
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController {
                     
                     // 키체인에 토큰 등록
                     guard let token = response.jwt else { return }
-                    if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                    if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                         print("Keychain setting success.")
                     } else {
                         print("Failed to set on Keychain")
@@ -95,11 +95,7 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
-                    // 서버 불안정할 시 테스트용 (삭제 예정)
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) 
             }
         }
     }

@@ -12,17 +12,6 @@ class JoinViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
-    // 자동로그인 여부 체크
-    var saveID: Bool = false {
-        didSet {
-            if saveID == true {
-                saveIDButton.setImage(UIImage(named: "checkedID"), for: .normal) // 이미지 받아서 배경 있는걸로 바꿔놓기
-            } else {
-                saveIDButton.setImage(UIImage(named: "uncheckedIdGrey"), for: .normal)
-            }
-        }
-    }
-    
     // 가입 완료 버튼 활성화여부 체크
     var joinActivated: Bool = false {
         didSet {
@@ -46,8 +35,6 @@ class JoinViewController: UIViewController {
     @IBOutlet weak var pwImageView: UIImageView!
     @IBOutlet weak var pwConfirmImageView: UIImageView!
     
-    
-    @IBOutlet weak var saveIDButton: UIButton!
     @IBOutlet weak var joinButton: UIButton!
     
     
@@ -81,14 +68,6 @@ class JoinViewController: UIViewController {
     }
     @IBAction func pwConfifmCancel(_ sender: Any) {
         pwConfirmTextField.text = ""
-    }
-    
-    @IBAction func saveIDButtonTapped(_ sender: Any) {
-        if saveID == true {
-            saveID = false
-        } else {
-            saveID = true
-        }
     }
     
     
@@ -134,12 +113,7 @@ class JoinViewController: UIViewController {
                 print(cancelError as Any)
             case .failure(let error):
                 print(error as Any)
-                self.presentAlert(title: "회원가입에 실패하였습니다. ", isCancelActionIncluded: false) {_ in
-                    // 서버 불안정할 시 테스트용 (삭제 예정)
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                
+                self.presentAlert(title: "회원가입에 실패하였습니다. ", isCancelActionIncluded: false) 
             }
         }
     }
