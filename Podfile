@@ -17,5 +17,6 @@ target 'ReadingPiece' do
   pod 'Cosmos', '~> 23.0'
   pod 'Charts'
   pod 'KeychainSwift', '~> 19.0'
+  pod 'Firebase/Analytics'
 
 end
