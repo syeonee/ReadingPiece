@@ -45,8 +45,7 @@ final class JoinRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 5 // 테스트용
-        //return 30.0
+        return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

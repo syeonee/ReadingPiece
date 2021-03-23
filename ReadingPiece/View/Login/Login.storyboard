@@ -83,13 +83,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리딩 피스" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-q4-nyd">
-                                <rect key="frame" x="154.5" y="310" width="105" height="33"/>
+                                <rect key="frame" x="149" y="310" width="116" height="28.5"/>
                                 <fontDescription key="fontDescription" name="GmarketSansMedium" family="Gmarket Sans" pointSize="28"/>
                                 <color key="textColor" red="0.396078431372549" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 읽는 습관을 만드는 독서 챌린지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-aG-seH">
-                                <rect key="frame" x="112.5" y="351" width="189" height="16.5"/>
+                                <rect key="frame" x="107" y="346.5" width="200" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                 <color key="textColor" red="0.3960812688" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -687,7 +687,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-8Q-Mof">
-                                <rect key="frame" x="21" y="260" width="372" height="257"/>
+                                <rect key="frame" x="21" y="258.5" width="372" height="249"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 재설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-gy-CFj">
                                         <rect key="frame" x="16" y="26" width="340" height="27"/>
@@ -695,12 +695,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="이메일 입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ed9-8d-HIR">
-                                        <rect key="frame" x="25" y="121" width="322" height="34"/>
+                                        <rect key="frame" x="25" y="113" width="322" height="34"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-Yj-Rmq">
-                                        <rect key="frame" x="20" y="187" width="332" height="44"/>
+                                        <rect key="frame" x="20" y="179" width="332" height="44"/>
                                         <color key="backgroundColor" red="0.96471232179999999" green="0.96469432119999998" blue="0.96470648049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="pa9-y2-Qxd"/>
@@ -740,6 +740,7 @@
                                     <constraint firstItem="5dG-Yj-Rmq" firstAttribute="leading" secondItem="CRi-8Q-Mof" secondAttribute="leading" constant="20" id="QRc-uc-3pb"/>
                                     <constraint firstAttribute="trailing" secondItem="EEU-gy-CFj" secondAttribute="trailing" constant="16" id="Rfh-TT-0uj"/>
                                     <constraint firstAttribute="trailing" secondItem="rL6-sF-EBk" secondAttribute="trailing" constant="19" id="Usk-vq-5A9"/>
+                                    <constraint firstAttribute="height" constant="249" id="arX-yH-BLe"/>
                                     <constraint firstItem="5jb-Jd-UY8" firstAttribute="top" secondItem="EEU-gy-CFj" secondAttribute="bottom" constant="6" id="bfX-zd-miO"/>
                                     <constraint firstAttribute="trailing" secondItem="5dG-Yj-Rmq" secondAttribute="trailing" constant="20" id="eFa-kf-g45"/>
                                     <constraint firstItem="5jb-Jd-UY8" firstAttribute="leading" secondItem="CRi-8Q-Mof" secondAttribute="leading" constant="16" id="gZH-g4-Ng7"/>
@@ -752,10 +753,9 @@
                         <viewLayoutGuide key="safeArea" id="7ia-fq-e2p"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CRi-8Q-Mof" firstAttribute="centerY" secondItem="r63-9J-AKC" secondAttribute="centerY" constant="-65" id="3tX-2h-h2K"/>
                             <constraint firstItem="CRi-8Q-Mof" firstAttribute="leading" secondItem="7ia-fq-e2p" secondAttribute="leading" constant="21" id="BEs-lp-J0v"/>
                             <constraint firstItem="7ia-fq-e2p" firstAttribute="trailing" secondItem="CRi-8Q-Mof" secondAttribute="trailing" constant="21" id="RMn-fA-Cek"/>
-                            <constraint firstItem="CRi-8Q-Mof" firstAttribute="top" secondItem="7ia-fq-e2p" secondAttribute="top" constant="216" id="XDN-GK-MFS"/>
-                            <constraint firstItem="7ia-fq-e2p" firstAttribute="bottom" secondItem="CRi-8Q-Mof" secondAttribute="bottom" constant="345" id="lsn-ym-VKs"/>
                         </constraints>
                     </view>
                     <connections>
