@@ -56,6 +56,7 @@
 		00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3774260A678200529570 /* PostReadingBookRequest.swift */; };
 		00FF3779260A67EC00529570 /* GetBookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */; };
 		00FF377D260A685700529570 /* ReportNegativeReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */; };
+		00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00FF3781260A730100529570 /* GoogleService-Info.plist */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
 		5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */; };
@@ -198,6 +199,7 @@
 		00FF3774260A678200529570 /* PostReadingBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReadingBookRequest.swift; sourceTree = "<group>"; };
 		00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookReviewRequest.swift; sourceTree = "<group>"; };
 		00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNegativeReviewRequest.swift; sourceTree = "<group>"; };
+		00FF3781260A730100529570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		049711AD81EEFAB3F8E9AE75 /* Pods-ReadingPiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.release.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.release.xcconfig"; sourceTree = "<group>"; };
 		5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
+				00FF3781260A730100529570 /* GoogleService-Info.plist */,
 				59E190492608803C00D07656 /* ReadingPiece.entitlements */,
 				59E1904B2608848500D07656 /* Configuration */,
 				D6A255FA25E4256000731B10 /* ViewController */,
@@ -876,6 +879,7 @@
 				00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
+				00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */,
 				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
 				00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
