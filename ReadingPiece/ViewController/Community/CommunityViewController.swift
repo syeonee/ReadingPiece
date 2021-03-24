@@ -70,7 +70,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
             cell.dateLabel.text = dateFormatter.string(from: journal.date)
             cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
             cell.readingTimeLabel.text = journal.time
-            
+            cell.index = indexPath.row
             cell.editDelegate = self
             return cell
         } else if more[indexPath.row] == 0 {
@@ -81,7 +81,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
             cell.dateLabel.text = dateFormatter.string(from: journal.date)
             cell.readingPercentLabel.text = "\(journal.readingPercentage)% 읽음"
             cell.readingTimeLabel.text = journal.time
-            
+            cell.index = indexPath.row
             cell.moreDelegate = self
             cell.editDelegate = self
             return cell
@@ -93,7 +93,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
             cell.dateLabel.text = dateFormatter.string(from: journal.date)
             cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
             cell.readingTimeLabel.text = journal.time
-            
+            cell.index = indexPath.row
             cell.editDelegate = self
             return cell
         }
@@ -102,39 +102,32 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension CommunityViewController: JournalMoreDelegate {
-    func didTapMoreButton(cell: JournalCell) {
-        let indexPath = self.journalTableView.indexPath(for: cell)
-        print("JournalViewController - didTapMoreButton() called. indexPath: \(String(describing: indexPath))")
-        self.more[indexPath![1]] = 1
-        
-        self.journalTableView.reloadRows(at: [IndexPath(row: indexPath![1], section: 0)], with: .fade)
+    func didTapMoreButton(index: Int) {
+        self.more[index] = 1
+        self.journalTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
     }
 }
 
 // 수정 기능 관련
 extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate {
-    func didTapFullEditButton(cell: FullJournalCell) {
-        let indexPath = self.journalTableView.indexPath(for: cell)
-        print("JournalViewController - didTapFullEditButton() called. indexPath: \(String(describing: indexPath))")
-        showAlert(indexPath: indexPath!)
+    func didTapEditButton(index: Int) {
+        showAlert(index: index)
     }
     
-    func didTapEditButton(cell: JournalCell) {
-        let indexPath = self.journalTableView.indexPath(for: cell)
-        print("JournalViewController - didTapEditButton() called. indexPath: \(String(describing: indexPath))")
-        showAlert(indexPath: indexPath!)
+    func didTapFullEditButton(index: Int) {
+        showAlert(index: index)
     }
     
-    func showAlert(indexPath: IndexPath) {
+    func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "수정", style: .default) { (action) in
             print("게시글 작성자만 게시글 수정")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Journal.dummyData.remove(at: indexPath[1])
-            self.more.remove(at: indexPath[1])
-            self.journalTableView.deleteRows(at: [IndexPath(row: indexPath[1], section: 0)], with: .left)
+            Journal.dummyData.remove(at: index)
+            self.more.remove(at: index)
+            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
             self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
