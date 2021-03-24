@@ -89,13 +89,11 @@ extension LibraryViewController: PagingMenuViewControllerDataSource {
     }
         
     func menuViewController(viewController: PagingMenuViewController, widthForItemAt index: Int) -> CGFloat {
-        //return 100
         return (view.frame.width/2)
     }
         
     func menuViewController(viewController: PagingMenuViewController, cellForItemAt index: Int) -> PagingMenuViewCell {
         let cell = viewController.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: index) as! MenuCell
-        //let cell = viewController.dequeueReusableCell(withReuseIdentifier: "titleLabelMenuCell", for: index) as! TitleLabelMenuViewCell
         cell.titleLabel.text = dataSource[index].menu
         return cell
     }

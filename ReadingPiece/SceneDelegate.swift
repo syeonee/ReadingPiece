@@ -21,12 +21,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             // 유저 identifier, 토큰 유무에 따른 루트 뷰 전환
             
-            let userIdentifier = keychain.get(Keys.userIdentifier)
             let token = keychain.get(Keys.token)
             
-            if userIdentifier != nil {
+            if let userIdentifier = keychain.get(Keys.userIdentifier) {
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
-                appleIDProvider.getCredentialState(forUserID: userIdentifier!) { (credentialState, error) in
+                appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
                     switch credentialState {
                     case .authorized:
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
