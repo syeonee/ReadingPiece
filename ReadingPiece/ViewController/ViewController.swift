@@ -14,28 +14,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var daillyReadingTimeLabel: UILabel!
     @IBOutlet weak var daillyReadingDiaryCountLabel: UILabel!
     @IBOutlet weak var radingBooksCollectionView: UICollectionView!
-    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
-    let orderCurrency = "ALL"
-    let paymentCurrency = "KRW"
-
-    
+    // 목표 진행 현황(%) 에 따라 width 변경
+    @IBOutlet weak var goalStatusBarWidth: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        let req = SignUpRequest(email: "yshan4329@gmail.com", password: "test")
-                                
-        _ = Network.request(req: req) { (result) in
-                
-                switch result {
-                case .success(let userResponse):
-                    print(userResponse)
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    print(error!)
-            }
-        }
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {
