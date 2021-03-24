@@ -1,23 +1,22 @@
 //
-//  LoginRequest.swift
+//  DeleteReviewRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/19.
+//  Created by 정지현 on 2021/03/24.
 //
 
 import Foundation
 
-// 로그인 api 호출 클래스
+// 리뷰 삭제 API
 
-final class LoginRequest: Requestable {
-    typealias ResponseType = LoginResponse
+final class DeleteReviewRequest: Requestable {
+    typealias ResponseType = GetJournalResponse
     
-    private var email: String
-    private var password: String
-    
-    init(email: String, password: String) {
-        self.email = email
-        self.password = password
+    private var token: String
+    private var reviewID: Int
+    init(token: String, reviewID: Int) {
+        self.token = token
+        self.reviewID = reviewID
     }
     
     var baseUrl: URL {
@@ -25,31 +24,34 @@ final class LoginRequest: Requestable {
     }
     
     var endpoint: String {
-        return "signIn"
+        return "/review/\(reviewID)"
     }
     
     var method: Network.Method {
-        return .post
+        return .delete
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["email": self.email, "password": self.password]
+        return nil
     }
     
     var headers: [String : String]? {
-        return defaultJSONHeader
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {
+        // 테스트용
         return 5.0
-        //return 30.0 
+        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
+
+

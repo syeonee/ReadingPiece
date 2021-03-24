@@ -1,23 +1,22 @@
 //
-//  JoinRequest.swift
+//  GetJournalRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/18.
+//  Created by 정지현 on 2021/03/23.
 //
 
 import Foundation
 
-// 회원가입 api 호출 클래스
+// 작성한 일지 조회 api 호출
 
-final class JoinRequest: Requestable {
-    typealias ResponseType = LoginResponse
+final class GetJournalRequest: Requestable {
+    typealias ResponseType = GetJournalResponse
     
-    private var email: String
-    private var password: String
-    
-    init(email: String, password: String) {
-        self.email = email
-        self.password = password
+    private var token: String
+    private var align: String
+    init(token: String, align: String) {
+        self.token = token
+        self.align = align
     }
     
     var baseUrl: URL {
@@ -25,26 +24,27 @@ final class JoinRequest: Requestable {
     }
     
     var endpoint: String {
-        return "signUp"
+        return "/journals"
     }
     
     var method: Network.Method {
-        return .post
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["email": self.email, "password": self.password]
+        return ["align": align] 
     }
     
     var headers: [String : String]? {
-        return defaultJSONHeader
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {
+        // 테스트용
         return 5.0
         //return 30.0
     }
