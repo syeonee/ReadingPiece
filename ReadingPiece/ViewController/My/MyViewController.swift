@@ -7,6 +7,7 @@
 
 import UIKit
 import PagingKit
+import KeychainSwift
 
 class MyViewController: UIViewController {
 
@@ -18,6 +19,8 @@ class MyViewController: UIViewController {
     
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     var userProfile: Profile?
     
@@ -58,7 +61,8 @@ class MyViewController: UIViewController {
     
     func setProfile(){
         self.showIndicator()
-        Network.request(req: UserProfileRequest()) { [self] result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: UserProfileRequest(token: token)) { [self] result in
             self.dismissIndicator()
             switch result {
             case .success(let response):
@@ -67,6 +71,7 @@ class MyViewController: UIViewController {
                 if result == 1000 {
                     userProfile = response.profile
                     if userProfile?.profileImagePath != "사진이 없습니다." {
+                        print("no profile is \(String(describing: userProfile))")
                         let url = URL(string: (userProfile?.profileImagePath)!)
                         profileImageView.kf.setImage(with: url)
                     }

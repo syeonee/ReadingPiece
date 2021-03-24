@@ -8,13 +8,10 @@
 import Foundation
 
 public struct Piece: Codable {
-    public let name: String?
-    public let resolution: String?
-    public let profileImagePath: String?
-
-    enum CodingKeys: String, CodingKey {
-        case name
-        case resolution = "vow"
-        case profileImagePath = "profilePictureURL"
-    }
+    public let goalId: Int
+    public let isComplete: String
+    public let cake: String
+    public let challengeName: String
+    public let challengePeriod: String
+    public let wholeCake: String
 }

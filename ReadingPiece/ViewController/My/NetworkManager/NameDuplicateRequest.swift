@@ -11,8 +11,10 @@ final class NameDuplicateRequest: Requestable {
     typealias ResponseType = NameDuplicateResponse
     
     private var name: String
+    private var token: String
     
-    init(name: String) {
+    init(token: String, name: String) {
+        self.token = token
         self.name = name
     }
     
@@ -37,7 +39,7 @@ final class NameDuplicateRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().testAccessTokenHeader
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {

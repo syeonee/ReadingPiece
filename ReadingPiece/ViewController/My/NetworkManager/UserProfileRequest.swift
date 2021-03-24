@@ -13,7 +13,10 @@ import Foundation
 final class UserProfileRequest: Requestable {
     typealias ResponseType = UserProfileResponse
     
-    init() {
+    private var token: String
+    
+    init(token: String) {
+        self.token = token
     }
     
     var baseUrl: URL {
@@ -37,7 +40,7 @@ final class UserProfileRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().testAccessTokenHeader
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {

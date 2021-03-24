@@ -162,6 +162,8 @@
 		D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */; };
 		D6C1C007260B0EC6008EE7FE /* EditProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */; };
 		D6C1C00E260B765D008EE7FE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C00D260B765D008EE7FE /* Piece.swift */; };
+		D6C1C028260B9812008EE7FE /* MyPieceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C027260B9812008EE7FE /* MyPieceRequest.swift */; };
+		D6C1C02B260B9828008EE7FE /* MyPieceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C02A260B9828008EE7FE /* MyPieceResponse.swift */; };
 		D6F153E625F9159C0044900E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E525F9159C0044900E /* Book.swift */; };
 		D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E825F9395B0044900E /* NetworkAPI.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
@@ -333,6 +335,8 @@
 		D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
 		D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileResponse.swift; sourceTree = "<group>"; };
 		D6C1C00D260B765D008EE7FE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		D6C1C027260B9812008EE7FE /* MyPieceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceRequest.swift; sourceTree = "<group>"; };
+		D6C1C02A260B9828008EE7FE /* MyPieceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceResponse.swift; sourceTree = "<group>"; };
 		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -789,6 +793,8 @@
 				D66CE6ED260A7A67003BB131 /* NameDuplicateResponse.swift */,
 				D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */,
 				D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */,
+				D6C1C027260B9812008EE7FE /* MyPieceRequest.swift */,
+				D6C1C02A260B9828008EE7FE /* MyPieceResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1116,6 +1122,7 @@
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
+				D6C1C02B260B9828008EE7FE /* MyPieceResponse.swift in Sources */,
 				596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */,
 				596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
@@ -1132,6 +1139,7 @@
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
 				59F4F27325F7858700E82417 /* FullJournalCell.swift in Sources */,
 				5997296A26039D5000573B9A /* JoinRequest.swift in Sources */,
+				D6C1C028260B9812008EE7FE /* MyPieceRequest.swift in Sources */,
 				0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */,
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				59E18FFF2606242500D07656 /* UIControl.swift in Sources */,

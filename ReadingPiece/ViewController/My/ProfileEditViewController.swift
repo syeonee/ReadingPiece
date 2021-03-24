@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ProfileEditViewController: UIViewController {
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
@@ -21,6 +22,8 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet weak var resolutionTextField: UITextField!
     @IBOutlet weak var resolutionRemoveButton: UIButton!
     @IBOutlet weak var resolutionCountLabel: UILabel!
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     let picker = UIImagePickerController()
     var pickedImage : UIImage?
@@ -47,9 +50,12 @@ class ProfileEditViewController: UIViewController {
     }
     
     @IBAction func editCompleteButtonTapped(_ sender: Any) {
+        isNameCheck = true
+        
         if isNameCheck {
             self.showIndicator()
-            Network.request(req: EditProfileRequest(name: nameTextField.text!, profileImage: pickedImage?.pngData()?.base64EncodedString() ?? "", resolution: resolutionTextField.text ?? "")) { [self] result in
+            guard let token = keychain.get(Keys.token) else { return }
+            Network.request(req: EditProfileRequest(token: token, name: nameTextField.text!, profileImage: pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? "", resolution: resolutionTextField.text ?? "")) { [self] result in
                 self.dismissIndicator()
                 switch result {
                 case .success(let response):
@@ -87,7 +93,8 @@ class ProfileEditViewController: UIViewController {
         if let nameText = nameTextField.text, nameText != "" {
             isNameCheck = false
             self.showIndicator()
-            Network.request(req: NameDuplicateRequest(name: nameTextField.text!)) { [self] result in
+            guard let token = keychain.get(Keys.token) else { return }
+            Network.request(req: NameDuplicateRequest(token: token, name: nameTextField.text!)) { [self] result in
                 self.dismissIndicator()
                 switch result {
                 case .success(let response):
@@ -180,13 +187,23 @@ class ProfileEditViewController: UIViewController {
         }
     }
     
+    func resizeImage(image: UIImage, newHeight: CGFloat) -> UIImage {
+        let scale = newHeight / image.size.height // 새 이미지 확대/축소 비율
+        let newWidth = image.size.width * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage(named: "defaultProfile")! }
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
 }
 
 extension ProfileEditViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            setSelectedImage(image)
+            setSelectedImage(resizeImage(image: image, newHeight: 330))
         }
         dismiss(animated: true, completion: nil)
     }
@@ -212,6 +229,3 @@ extension ProfileEditViewController: UITextFieldDelegate {
     }
 }
 
-extension UIImage {
-    
-}

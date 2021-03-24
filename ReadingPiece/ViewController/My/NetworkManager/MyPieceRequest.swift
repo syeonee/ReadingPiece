@@ -1,25 +1,19 @@
 //
-//  EditProfileRequest.swift
+//  MyPieceRequest.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/03/24.
+//  Created by SYEON on 2021/03/25.
 //
 
 import Foundation
 
-final class EditProfileRequest: Requestable {
-    typealias ResponseType = EditProfileResponse
+final class MyPieceRequest: Requestable {
+    typealias ResponseType = MyPieceResponse
     
     private var token: String
-    private var name: String
-    private var profileImage: String
-    private var resolution: String
     
-    init(token: String, name: String, profileImage: String, resolution: String) {
+    init(token: String) {
         self.token = token
-        self.name = name
-        self.profileImage = profileImage
-        self.resolution = resolution
     }
     
     var baseUrl: URL {
@@ -27,11 +21,11 @@ final class EditProfileRequest: Requestable {
     }
     
     var endpoint: String {
-        return "profile"
+        return "rewards"
     }
     
     var method: Network.Method {
-        return .post
+        return .get
     }
     
     var query: Network.QueryType {
@@ -39,7 +33,7 @@ final class EditProfileRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["name": self.name,"profilePictureURL": self.profileImage, "vow":self.resolution]
+        return nil
     }
     
     var headers: [String : String]? {
