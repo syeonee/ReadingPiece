@@ -44,8 +44,7 @@ final class GetJournalRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        // 테스트용
-        return 5.0
+        return 10.0
         //return 30.0
     }
     

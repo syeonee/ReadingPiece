@@ -11,6 +11,7 @@ class FullJournalCell: UITableViewCell {
     
     let cellID = "FullJournalCell"
     var editDelegate: FullJournalEditDelegate?
+    var index: Int?
 
     @IBOutlet weak var mainBackgroundView: UIView!
     @IBOutlet weak var firstContainerView: UIView!
@@ -36,10 +37,11 @@ class FullJournalCell: UITableViewCell {
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        editDelegate?.didTapFullEditButton(cell: self)
+        guard let idx = index else {return}
+        editDelegate?.didTapFullEditButton(index: idx)
     }
     
 }
 protocol FullJournalEditDelegate {
-    func didTapFullEditButton(cell: FullJournalCell)
+    func didTapFullEditButton(index: Int)
 }

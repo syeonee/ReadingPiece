@@ -12,6 +12,7 @@ class JournalCell: UITableViewCell {
     let cellID = "JournalCell"
     var moreDelegate: JournalMoreDelegate?
     var editDelegate: JournalEditDelegate?
+    var index: Int?
     
     @IBOutlet weak var mainBackgoundView: UIView!
     @IBOutlet weak var firstContainerView: UIView!
@@ -38,18 +39,20 @@ class JournalCell: UITableViewCell {
     }
 
     @IBAction func moreButtonTapped(_ sender: Any) {
-        moreDelegate?.didTapMoreButton(cell: self)
+        guard let idx = index else {return}
+        moreDelegate?.didTapMoreButton(index: idx)
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
-        editDelegate?.didTapEditButton(cell: self)
+        guard let idx = index else {return}
+        editDelegate?.didTapEditButton(index: idx)
     }
     
 }
 
 protocol JournalMoreDelegate {
-    func didTapMoreButton(cell: JournalCell)
+    func didTapMoreButton(index: Int)
 }
 protocol JournalEditDelegate {
-    func didTapEditButton(cell: JournalCell)
+    func didTapEditButton(index: Int)
 }

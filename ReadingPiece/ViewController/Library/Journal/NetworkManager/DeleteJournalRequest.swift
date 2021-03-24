@@ -12,8 +12,8 @@ final class DeleteJournalRequest: Requestable {
     typealias ResponseType = GetJournalResponse
     
     private var token: String
-    private var journalID: String
-    init(token: String, journalID: String) {
+    private var journalID: Int
+    init(token: String, journalID: Int) {
         self.token = token
         self.journalID = journalID
     }
