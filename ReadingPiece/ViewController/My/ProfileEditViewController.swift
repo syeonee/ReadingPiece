@@ -15,8 +15,8 @@ class ProfileEditViewController: UIViewController {
     @IBOutlet weak var profileEditButton: UIButton!
     
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameRemoveButton: UIButton!
     @IBOutlet weak var nameCountLabel: UILabel!
+    @IBOutlet weak var nameDuplicateCheckButton: UIButton!
     
     @IBOutlet weak var resolutionTextField: UITextField!
     @IBOutlet weak var resolutionRemoveButton: UIButton!
@@ -26,6 +26,7 @@ class ProfileEditViewController: UIViewController {
     var pickedImage : UIImage?
     
     let maxLength = 30
+    var isNameCheck: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class ProfileEditViewController: UIViewController {
         resolutionTextField.delegate = self
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        print("image == \(String(describing: profileImageView.image))")
         
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nameTextField)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: resolutionTextField)
@@ -45,15 +47,75 @@ class ProfileEditViewController: UIViewController {
     }
     
     @IBAction func editCompleteButtonTapped(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        if isNameCheck {
+            self.showIndicator()
+            Network.request(req: EditProfileRequest(name: nameTextField.text!, profileImage: pickedImage?.pngData()?.base64EncodedString() ?? "", resolution: resolutionTextField.text ?? "")) { [self] result in
+                self.dismissIndicator()
+                switch result {
+                case .success(let response):
+                    self.dismissIndicator()
+                    let result = response.code
+                    if result == 1000 {
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        }
+                    }
+                case .cancel(let cancelError):
+                    self.dismissIndicator()
+                    print(cancelError as Any)
+                case .failure(let error):
+                    self.dismissIndicator()
+                    print(error as Any)
+                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                    }
+                }
+            }
+        } else {
+            self.presentAlert(title: "닉네임 중복체크를 해주세요.", isCancelActionIncluded: false) {_ in
+            }
+
+        }
+        
+        
     }
     @IBAction func profileEditButtonTapped(_ sender: Any) {
         addImageAlertAction()
     }
     
-    @IBAction func nameRemoveButtonTapped(_ sender: Any) {
-        nameTextField.text = ""
+    @IBAction func nameDuplicateCheckButtonTapped(_ sender: Any) {
+        if let nameText = nameTextField.text, nameText != "" {
+            isNameCheck = false
+            self.showIndicator()
+            Network.request(req: NameDuplicateRequest(name: nameTextField.text!)) { [self] result in
+                self.dismissIndicator()
+                switch result {
+                case .success(let response):
+                    self.dismissIndicator()
+                    let result = response.code
+                    if result == 1000 {
+                        isNameCheck = true
+                    } else {
+                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        }
+                    }
+                case .cancel(let cancelError):
+                    self.dismissIndicator()
+                    print(cancelError as Any)
+                case .failure(let error):
+                    self.dismissIndicator()
+                    print(error as Any)
+                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                    }
+                }
+            }
+        }else{
+            self.presentAlert(title: "닉네임을 입력해주세요", isCancelActionIncluded: false) {_ in
+            }
+        }
+        
     }
+    
     
     @IBAction func resolutionRemoveButtonTapped(_ sender: Any) {
         resolutionTextField.text = ""
@@ -147,8 +209,9 @@ extension ProfileEditViewController: UITextFieldDelegate {
         }
         
         return true
-        if textField == nameTextField {
-            
-        }
     }
+}
+
+extension UIImage {
+    
 }

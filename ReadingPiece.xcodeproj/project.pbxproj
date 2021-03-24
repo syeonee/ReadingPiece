@@ -116,6 +116,13 @@
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
 		D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C7BFA25F6761700944094 /* BookReviewViewController.swift */; };
+		D66CE6D92609C6A1003BB131 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */; };
+		D66CE6DC2609D3BD003BB131 /* PieceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */; };
+		D66CE6E02609E87C003BB131 /* UserProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6DF2609E87C003BB131 /* UserProfileRequest.swift */; };
+		D66CE6E32609E8CE003BB131 /* UserProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6E22609E8CE003BB131 /* UserProfileResponse.swift */; };
+		D66CE6E8260A396E003BB131 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6E7260A396E003BB131 /* Profile.swift */; };
+		D66CE6EB260A7A51003BB131 /* NameDuplicateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6EA260A7A51003BB131 /* NameDuplicateRequest.swift */; };
+		D66CE6EE260A7A67003BB131 /* NameDuplicateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6ED260A7A67003BB131 /* NameDuplicateResponse.swift */; };
 		D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678692C25F53B5900DBB59C /* BookDetailViewController.swift */; };
 		D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D678693425F5426400DBB59C /* ReviewTableViewCell.swift */; };
 		D678693725F5426400DBB59C /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D678693525F5426400DBB59C /* ReviewTableViewCell.xib */; };
@@ -133,6 +140,9 @@
 		D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */; };
 		D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */; };
 		D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */; };
+		D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */; };
+		D6C1C007260B0EC6008EE7FE /* EditProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */; };
+		D6C1C00E260B765D008EE7FE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C00D260B765D008EE7FE /* Piece.swift */; };
 		D6F153E625F9159C0044900E /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E525F9159C0044900E /* Book.swift */; };
 		D6F153E925F9395B0044900E /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F153E825F9395B0044900E /* NetworkAPI.swift */; };
 		D6FDB2F925EBC2B600F129B3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */; };
@@ -258,6 +268,13 @@
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D65C7BFA25F6761700944094 /* BookReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewViewController.swift; sourceTree = "<group>"; };
+		D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
+		D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceInfoViewController.swift; sourceTree = "<group>"; };
+		D66CE6DF2609E87C003BB131 /* UserProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileRequest.swift; sourceTree = "<group>"; };
+		D66CE6E22609E8CE003BB131 /* UserProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileResponse.swift; sourceTree = "<group>"; };
+		D66CE6E7260A396E003BB131 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D66CE6EA260A7A51003BB131 /* NameDuplicateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDuplicateRequest.swift; sourceTree = "<group>"; };
+		D66CE6ED260A7A67003BB131 /* NameDuplicateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDuplicateResponse.swift; sourceTree = "<group>"; };
 		D678692C25F53B5900DBB59C /* BookDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailViewController.swift; sourceTree = "<group>"; };
 		D678693425F5426400DBB59C /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		D678693525F5426400DBB59C /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
@@ -275,6 +292,9 @@
 		D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceViewController.swift; sourceTree = "<group>"; };
 		D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
+		D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileResponse.swift; sourceTree = "<group>"; };
+		D6C1C00D260B765D008EE7FE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		D6F153E525F9159C0044900E /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		D6F153E825F9395B0044900E /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -592,12 +612,16 @@
 		D60B364025EE2E45000E949D /* My */ = {
 			isa = PBXGroup;
 			children = (
+				D66CE6E6260A38F5003BB131 /* Entity */,
+				D66CE6DE2609E84E003BB131 /* NetworkManager */,
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
 				D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */,
 				D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */,
 				D615DF912608F0E8006021C4 /* ProfileEditViewController.swift */,
 				D642423626090A1800E732D4 /* SettingViewController.swift */,
 				D642423D26091D9F00E732D4 /* AccountInfoViewController.swift */,
+				D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */,
+				D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -649,6 +673,28 @@
 				D6288D3525E2B5DD00D73A61 /* Info.plist */,
 			);
 			path = ReadingPiece;
+			sourceTree = "<group>";
+		};
+		D66CE6DE2609E84E003BB131 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				D66CE6DF2609E87C003BB131 /* UserProfileRequest.swift */,
+				D66CE6E22609E8CE003BB131 /* UserProfileResponse.swift */,
+				D66CE6EA260A7A51003BB131 /* NameDuplicateRequest.swift */,
+				D66CE6ED260A7A67003BB131 /* NameDuplicateResponse.swift */,
+				D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */,
+				D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		D66CE6E6260A38F5003BB131 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D66CE6E7260A396E003BB131 /* Profile.swift */,
+				D6C1C00D260B765D008EE7FE /* Piece.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		D678693225F541B200DBB59C /* Goal */ = {
@@ -916,6 +962,7 @@
 				59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				599D3ACB25F240A60085F134 /* JournalHeaderCell.swift in Sources */,
+				D66CE6E32609E8CE003BB131 /* UserProfileResponse.swift in Sources */,
 				D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */,
 				599D3AD025F26EC00085F134 /* FullReviewCell.swift in Sources */,
 				59F4F2FA25F9BD8600E82417 /* ReviewRatingCell.swift in Sources */,
@@ -924,10 +971,12 @@
 				59F4F2FF25F9C38200E82417 /* ReviewWritingCell.swift in Sources */,
 				00D8632B25FF77D200E9EFF9 /* Stopwatch.swift in Sources */,
 				009250092602588B00A930DD /* FireCrackerScene.swift in Sources */,
+				D6C1C00E260B765D008EE7FE /* Piece.swift in Sources */,
 				00C55F6E26048AC6002848AB /* SignUpResponse.swift in Sources */,
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
+				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
 				59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */,
@@ -937,8 +986,10 @@
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				59E190252607823A00D07656 /* PasswordResetViewController.swift in Sources */,
+				D66CE6EB260A7A51003BB131 /* NameDuplicateRequest.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
+				D66CE6D92609C6A1003BB131 /* PasswordChangeViewController.swift in Sources */,
 				59A967D42603484C000EE89F /* JoinViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				0026127625FB24E7000B40D1 /* UIButton.swift in Sources */,
@@ -956,7 +1007,9 @@
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
+				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
+				D66CE6DC2609D3BD003BB131 /* PieceInfoViewController.swift in Sources */,
 				596D4D5C2608C8BE00E137F3 /* User.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
 				59F4F2BF25F902B200E82417 /* CreateReviewViewController.swift in Sources */,
@@ -972,12 +1025,14 @@
 				59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */,
 				D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */,
 				59A967B82601C996000EE89F /* UILabel.swift in Sources */,
+				D66CE6E02609E87C003BB131 /* UserProfileRequest.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */,
 				0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */,
 				00D8632F25FF867F00E9EFF9 /* Constants.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
+				D66CE6EE260A7A67003BB131 /* NameDuplicateResponse.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
 				D615DF8E2608F0D2006021C4 /* MyEditNavViewController.swift in Sources */,
@@ -996,6 +1051,7 @@
 				D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */,
 				59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */,
 				005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */,
+				D6C1C007260B0EC6008EE7FE /* EditProfileResponse.swift in Sources */,
 				D60B364A25EE300D000E949D /* TermViewController.swift in Sources */,
 				599D3A9825F08A690085F134 /* MenuCell.swift in Sources */,
 				59A967D0260333BC000EE89F /* LoginSplashViewController.swift in Sources */,

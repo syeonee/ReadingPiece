@@ -19,6 +19,8 @@ class MyViewController: UIViewController {
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
     
+    var userProfile: Profile?
+    
     static var contentView: (String) -> UIViewController = { (menu) in
         let sb = UIStoryboard(name: "My", bundle: nil)
         var vc = UIViewController()
@@ -36,6 +38,7 @@ class MyViewController: UIViewController {
         super.viewDidLoad()
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
+        setProfile()
         menuViewController.register(nib: UINib(nibName: "MyMenuCell", bundle: nil), forCellWithReuseIdentifier: "MyMenuCell")
         menuViewController.reloadData()
         contentViewController.reloadData()
@@ -50,6 +53,38 @@ class MyViewController: UIViewController {
             contentViewController = vc
             contentViewController.dataSource = self
             contentViewController.delegate = self
+        }
+    }
+    
+    func setProfile(){
+        self.showIndicator()
+        Network.request(req: UserProfileRequest()) { [self] result in
+            self.dismissIndicator()
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    userProfile = response.profile
+                    if userProfile?.profileImagePath != "사진이 없습니다." {
+                        let url = URL(string: (userProfile?.profileImagePath)!)
+                        profileImageView.kf.setImage(with: url)
+                    }
+                    nameLabel.text = userProfile?.name
+                    resolutionLabel.text = userProfile?.resolution
+                } else {
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                }
+            }
         }
     }
     

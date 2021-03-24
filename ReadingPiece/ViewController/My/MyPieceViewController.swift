@@ -8,14 +8,21 @@
 import UIKit
 
 class MyPieceViewController: UIViewController {
-
+    @IBOutlet weak var infoButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
+    @IBAction func infoButtonTapped(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "My", bundle: nil)
+        if let myViewController = storyboard.instantiateViewController(withIdentifier: "PieceInfoController") as? PieceInfoViewController {
+            presentPanModal(myViewController)
+        }
+    }
     
-
+    
 }
 
 extension MyPieceViewController: UICollectionViewDataSource {
@@ -31,13 +38,9 @@ extension MyPieceViewController: UICollectionViewDataSource {
         return cell
     }
     
-    
-    
 }
 
 extension MyPieceViewController: UICollectionViewDelegate {
-    
-    
 }
 
 extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
@@ -60,5 +63,9 @@ extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
 }
 
 class PieceCell: UICollectionViewCell {
-    
+    @IBOutlet weak var completeImageView: UIImageView!
+    @IBOutlet weak var cakeImageVIew: UIImageView!
+    @IBOutlet weak var challengeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var wholecakeImageView: UIImageView!
 }
