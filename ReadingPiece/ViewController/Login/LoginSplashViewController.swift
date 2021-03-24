@@ -34,15 +34,6 @@ class LoginSplashViewController: UIViewController {
         authorizationController.performRequests()
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -60,7 +51,26 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             
+            if let authorizationCode = appleIDCredential.authorizationCode,
+               let identityToken = appleIDCredential.identityToken,
+               let authString = String(data: authorizationCode, encoding: .utf8),
+               let tokenString = String(data: identityToken, encoding: .utf8) {
+                print("authorizationCode: \(authorizationCode)")
+                print("identityToken: \(identityToken)")
+                print("authString: \(authString)")
+                print("tokenString: \(tokenString)")
+                
+                // 키체인에 토큰 저장
+                if keychain.set(tokenString, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                    print("Keychain setting success.")
+                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "GoalNavController") as! GoalNavViewController
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+            }
+            
             print("userIdentifier: \(userIdentifier), fullName: \(String(describing: fullName)), email: \(email ?? "no data")")
+            
             // 키체인에 userIdentifier 저장
             let identifier = userIdentifier
             if keychain.set(identifier, forKey: Keys.userIdentifier, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
@@ -68,6 +78,10 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
             } else {
                 print("Failed to set on Keychain")
             }
+        
+            // 회원가입 여부 검사한 뒤
+            // 회원이 아니면 회원가입
+            // 회원이면 로그인 진행
         
         case let passwordCredential as ASPasswordCredential:
         
@@ -80,6 +94,10 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
         default:
             break
         }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        self.presentAlert(title: "애플 계정 연동에 실패하였습니다. ")
     }
     
 }

@@ -19,7 +19,7 @@ class TimeViewController: UIViewController {
     @IBOutlet weak var arrowButton: UIButton!
     @IBOutlet weak var minuteLabel: UILabel!
     @IBOutlet weak var addGoalButton: UIButton!
-    
+    let usderDefaults = UserDefaults.standard
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
@@ -62,13 +62,14 @@ class TimeViewController: UIViewController {
     
     func postUserReadingGoal() {
         print("LOG - 목표설정 완료", amount, period, time)
-        let req = ReadingGoalRequest(Goal(period: period, amount: amount, time: time))
+        let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
                                 
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
                 case .success(let userResponse):
                     guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+                    self.usderDefaults.set(userResponse.goalId, forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
                     self.navigationController?.pushViewController(searchVC, animated: true)
                 case .cancel(let cancelError):
                     print(cancelError!)

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 import IQKeyboardManagerSwift
+import KeychainSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         IQKeyboardManager.shared.enable = true
@@ -19,7 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enableAutoToolbar = true
         // 키보드 높이에 맞게 텍스트 필드 위치를 자동으로 올려주는 코드
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-
+        // Firebase Analytics 설정
+        FirebaseApp.configure()
+        // 키체인 삭제 테스트
+        //if keychain.clear() {
+        //    print("cleared keychain")
+        //}
         return true
     }
 
