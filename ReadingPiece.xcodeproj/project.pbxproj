@@ -70,6 +70,9 @@
 		596D4D73260A1F3800E137F3 /* Get+Patch+DeleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D72260A1F3800E137F3 /* Get+Patch+DeleteResponse.swift */; };
 		596D4D76260ACD0E00E137F3 /* DeleteJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */; };
 		596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */; };
+		596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */; };
+		596D4D9E260AD97D00E137F3 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D9D260AD97D00E137F3 /* PatchReviewRequest.swift */; };
+		596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */; };
 		5997296A26039D5000573B9A /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997296926039D5000573B9A /* JoinRequest.swift */; };
 		599D3A9825F08A690085F134 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3A9725F08A690085F134 /* MenuCell.swift */; };
 		599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9A25F08A9F0085F134 /* MenuCell.xib */; };
@@ -222,6 +225,9 @@
 		596D4D72260A1F3800E137F3 /* Get+Patch+DeleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Get+Patch+DeleteResponse.swift"; sourceTree = "<group>"; };
 		596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJournalRequest.swift; sourceTree = "<group>"; };
 		596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchJournalRequest.swift; sourceTree = "<group>"; };
+		596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
+		596D4D9D260AD97D00E137F3 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
+		596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReviewRequest.swift; sourceTree = "<group>"; };
 		5997296926039D5000573B9A /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
 		599D3A9725F08A690085F134 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		599D3A9A25F08A9F0085F134 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
@@ -497,10 +503,27 @@
 		596D4D6D260A1BEC00E137F3 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */,
 				596D4D72260A1F3800E137F3 /* Get+Patch+DeleteResponse.swift */,
+				596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */,
 				596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */,
 				596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		596D4D97260AD7C400E137F3 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				596D4D9D260AD97D00E137F3 /* PatchReviewRequest.swift */,
+				596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		596D4D98260AD80B00E137F3 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -519,6 +542,7 @@
 		599D3AA125F0907D0085F134 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				596D4D97260AD7C400E137F3 /* NetworkManager */,
 				599D3AD325F26EC90085F134 /* ReviewCells */,
 				599D3AA325F0909B0085F134 /* ReviewViewController.swift */,
 				59F4F2C225F9031700E82417 /* CreateReview */,
@@ -622,6 +646,7 @@
 		59F4F2C225F9031700E82417 /* CreateReview */ = {
 			isa = PBXGroup;
 			children = (
+				596D4D98260AD80B00E137F3 /* NetworkManager */,
 				59F4F2F225F9B86600E82417 /* CreateReviewCells */,
 				59F4F2BD25F902B200E82417 /* CreateReviewViewController.swift */,
 				59F4F2BE25F902B200E82417 /* CreateReviewViewController.xib */,
@@ -1020,6 +1045,7 @@
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
 				D642423E26091D9F00E732D4 /* AccountInfoViewController.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
+				596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */,
 				D6288D2C25E2B5DB00D73A61 /* ViewController.swift in Sources */,
 				59E190252607823A00D07656 /* PasswordResetViewController.swift in Sources */,
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
@@ -1039,9 +1065,11 @@
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
+				596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */,
 				596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
+				596D4D9E260AD97D00E137F3 /* PatchReviewRequest.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,

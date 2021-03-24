@@ -38,7 +38,6 @@ class Network {
         case put = "PUT"
         case patch = "PATCH"
         case delete = "DELETE"
-        case patch = "PATCH"
     }
     
     public enum QueryType {
