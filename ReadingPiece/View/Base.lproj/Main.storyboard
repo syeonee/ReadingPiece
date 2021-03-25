@@ -773,6 +773,114 @@
             </objects>
             <point key="canvasLocation" x="3153.6231884057975" y="932.8125"/>
         </scene>
+        <!--Restart Challenge View Controller-->
+        <scene sceneID="JPQ-Nu-xe5">
+            <objects>
+                <viewController storyboardIdentifier="restartChallengeVC" id="GRb-mC-ehu" customClass="RestartChallengeViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wyl-ed-kUb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGC-9u-yFL">
+                                <rect key="frame" x="41.5" y="134.5" width="331" height="358.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몇 페이지 읽으셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MyQ-Rg-Tgu">
+                                        <rect key="frame" x="81.5" y="26" width="168.5" height="27"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="마지막으로 읽은 페이지를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWw-2r-nn9">
+                                        <rect key="frame" x="62.5" y="59" width="206" height="20"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="숫자 입력" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jh0-fR-PWF">
+                                        <rect key="frame" x="82.5" y="106" width="166" height="34"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euG-J0-y1u">
+                                        <rect key="frame" x="20" y="177" width="291" height="35"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="15"/>
+                                        <state key="normal" title="완료"/>
+                                        <connections>
+                                            <action selector="donePopup:" destination="g74-OS-KiZ" eventType="touchUpInside" id="TSD-Af-ROK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r8n-dF-j72">
+                                        <rect key="frame" x="294" y="19" width="18" height="22"/>
+                                        <state key="normal" image="xmark" catalog="system"/>
+                                        <connections>
+                                            <action selector="closePopup:" destination="g74-OS-KiZ" eventType="touchUpInside" id="kl2-g6-1AY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="euG-J0-y1u" firstAttribute="leading" secondItem="wGC-9u-yFL" secondAttribute="leading" constant="20" id="F2i-VW-HqH"/>
+                                    <constraint firstItem="gWw-2r-nn9" firstAttribute="top" secondItem="MyQ-Rg-Tgu" secondAttribute="bottom" constant="6" id="G8h-M4-9Xk"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="euG-J0-y1u" secondAttribute="bottom" constant="25" id="IKS-M1-z1Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="r8n-dF-j72" secondAttribute="trailing" constant="19" id="OcB-2g-mpj"/>
+                                    <constraint firstItem="MyQ-Rg-Tgu" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="SQu-Wi-HtU"/>
+                                    <constraint firstItem="MyQ-Rg-Tgu" firstAttribute="top" secondItem="wGC-9u-yFL" secondAttribute="top" constant="26" id="XnM-vo-bxh"/>
+                                    <constraint firstItem="gWw-2r-nn9" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="cVt-zt-wWi"/>
+                                    <constraint firstItem="Jh0-fR-PWF" firstAttribute="width" secondItem="wGC-9u-yFL" secondAttribute="width" multiplier="0.5" id="cam-pU-Lim"/>
+                                    <constraint firstItem="Jh0-fR-PWF" firstAttribute="centerX" secondItem="wGC-9u-yFL" secondAttribute="centerX" id="dzG-em-7Og"/>
+                                    <constraint firstItem="r8n-dF-j72" firstAttribute="top" secondItem="wGC-9u-yFL" secondAttribute="top" constant="19" id="scd-GA-NSp"/>
+                                    <constraint firstAttribute="trailing" secondItem="euG-J0-y1u" secondAttribute="trailing" constant="20" id="wPu-4z-rVa"/>
+                                    <constraint firstItem="Jh0-fR-PWF" firstAttribute="top" secondItem="gWw-2r-nn9" secondAttribute="bottom" constant="27" id="yuk-TJ-RaP"/>
+                                    <constraint firstItem="euG-J0-y1u" firstAttribute="top" secondItem="Jh0-fR-PWF" secondAttribute="bottom" constant="37" id="zC0-so-aDt"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ET6-4G-Lfq"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                        <constraints>
+                            <constraint firstItem="wGC-9u-yFL" firstAttribute="centerX" secondItem="wyl-ed-kUb" secondAttribute="centerX" id="19y-Hj-Sa4"/>
+                            <constraint firstItem="wGC-9u-yFL" firstAttribute="centerY" secondItem="wyl-ed-kUb" secondAttribute="centerY" multiplier="0.7" id="68a-vc-XDi"/>
+                            <constraint firstItem="wGC-9u-yFL" firstAttribute="width" secondItem="wyl-ed-kUb" secondAttribute="width" multiplier="0.8" id="85e-vv-ivS"/>
+                            <constraint firstItem="wGC-9u-yFL" firstAttribute="height" secondItem="wyl-ed-kUb" secondAttribute="height" multiplier="0.4" id="Ubn-fD-ITi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aK8-W3-tmy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="939" y="1612"/>
+        </scene>
+        <!--Book Setting View Controller-->
+        <scene sceneID="FGu-zq-9QP">
+            <objects>
+                <viewController storyboardIdentifier="bookSettingVC" id="JJx-2L-Mrw" customClass="BookSettingViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vBf-qr-2g8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fB1-e6-eeB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2Lb-l1-kpN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fB1-e6-eeB" firstAttribute="top" secondItem="2Lb-l1-kpN" secondAttribute="top" id="GbI-x9-aKx"/>
+                            <constraint firstItem="2Lb-l1-kpN" firstAttribute="bottom" secondItem="fB1-e6-eeB" secondAttribute="bottom" id="HcF-9K-uFe"/>
+                            <constraint firstItem="2Lb-l1-kpN" firstAttribute="trailing" secondItem="fB1-e6-eeB" secondAttribute="trailing" id="OLQ-39-y7f"/>
+                            <constraint firstItem="fB1-e6-eeB" firstAttribute="leading" secondItem="2Lb-l1-kpN" secondAttribute="leading" id="qNw-Az-Gvc"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="readingBookTableView" destination="fB1-e6-eeB" id="GSg-bw-cCh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b38-Dt-1xG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1665" y="1612"/>
+        </scene>
         <!--InputReadingStatusPopupVC-->
         <scene sceneID="RyQ-Xr-ndL">
             <objects>
