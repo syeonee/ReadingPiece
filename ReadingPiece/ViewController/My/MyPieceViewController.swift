@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class MyPieceViewController: UIViewController {
     @IBOutlet weak var infoButton: UIButton!
+    @IBOutlet weak var myPieceCollectionView: UICollectionView!
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    
+    var myPieces: [Piece] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        setPiece()
     }
     @IBAction func infoButtonTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "My", bundle: nil)
@@ -22,17 +27,80 @@ class MyPieceViewController: UIViewController {
         }
     }
     
+    func setPiece(){
+        self.showIndicator()
+        guard let token = keychain.get(Keys.token) else { return }
+        print("token is \(token)")
+        Network.request(req: MyPieceRequest(token: token)) { [self] result in
+            self.dismissIndicator()
+            print("set piece = \(result)")
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    if response.message == "나의 피스 조회 성공"{
+                        DispatchQueue.main.async {
+                            myPieces = response.pieces!
+                            myPieceCollectionView.reloadData()
+                        }
+                    }else{
+                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                        }
+                    }
+                } else {
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                }
+            }
+        }
+    }
     
 }
 
 extension MyPieceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return myPieces.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pieceCell", for: indexPath) as? PieceCell else {
             return UICollectionViewCell()
+        }
+        
+        let piece = myPieces[indexPath.item]
+        cell.challengeLabel.text = piece.challengeName
+        cell.durationLabel.text = piece.challengePeriod
+        
+        if piece.isComplete == "달성" {
+            cell.completeImageView.image = UIImage(named: "complete")
+        } else {
+            cell.completeImageView.image = UIImage(named: "ongoing")
+        }
+        
+        switch piece.cake {
+        case "cream":
+            cell.cakeImageVIew.image = UIImage(named: "cream")
+        case "choco":
+            cell.cakeImageVIew.image = UIImage(named: "choco")
+        case "berry":
+            cell.cakeImageVIew.image = UIImage(named: "blueberry")
+        default:
+            cell.cakeImageVIew.image = UIImage(named: "cream")
+        }
+        
+        if piece.wholeCake == "홀케이크" {
+            cell.wholecakeImageView.image = UIImage(named: "wholeCake")
+        } else {
+            cell.wholecakeImageView.isHidden = true
         }
         
         return cell
@@ -52,7 +120,6 @@ extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
         let width = collectionView.bounds.width
         let insetSum = width - (151*2)
         let inset = insetSum/8
-        print("inset is \(inset)")
         return UIEdgeInsets(top: 0, left: (inset*1.5), bottom: 0, right: (inset*1.5))
     }
     

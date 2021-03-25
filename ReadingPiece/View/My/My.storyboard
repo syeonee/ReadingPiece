@@ -38,7 +38,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6q-or-I0x">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedMY" translatesAutoresizingMaskIntoConstraints="NO" id="3cI-8m-RKh">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedMY" translatesAutoresizingMaskIntoConstraints="NO" id="3cI-8m-RKh">
                                         <rect key="frame" x="21" y="60" width="58" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="1yJ-H4-VVb"/>
@@ -1151,6 +1151,7 @@
                     <size key="freeformSize" width="414" height="599"/>
                     <connections>
                         <outlet property="infoButton" destination="sVu-6I-LSa" id="ra8-Jb-OI1"/>
+                        <outlet property="myPieceCollectionView" destination="HWa-KQ-Qph" id="HA2-y2-TTl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j5H-lQ-Hfx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

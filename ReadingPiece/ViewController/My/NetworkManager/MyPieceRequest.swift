@@ -41,7 +41,7 @@ final class MyPieceRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 5.0
+        return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

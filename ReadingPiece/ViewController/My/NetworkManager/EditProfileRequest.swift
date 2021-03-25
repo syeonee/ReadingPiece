@@ -12,13 +12,17 @@ final class EditProfileRequest: Requestable {
     
     private var token: String
     private var name: String
-    private var profileImage: String
+    private var profileImage: String?
     private var resolution: String
     
-    init(token: String, name: String, profileImage: String, resolution: String) {
+    init(token: String, name: String, profileImage: String?, resolution: String) {
         self.token = token
         self.name = name
-        self.profileImage = profileImage
+        if let profile = profileImage {
+            self.profileImage = profile
+        }else{
+            self.profileImage = nil
+        }
         self.resolution = resolution
     }
     
@@ -39,11 +43,11 @@ final class EditProfileRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["name": self.name,"profilePictureURL": self.profileImage, "vow":self.resolution]
+        return ["name": self.name, "profilePictureURL": self.profileImage, "vow":self.resolution]
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

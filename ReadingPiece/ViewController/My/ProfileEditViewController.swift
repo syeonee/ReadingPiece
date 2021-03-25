@@ -39,7 +39,6 @@ class ProfileEditViewController: UIViewController {
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
         print("image == \(String(describing: profileImageView.image))")
-        
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nameTextField)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: resolutionTextField)
         
@@ -50,12 +49,11 @@ class ProfileEditViewController: UIViewController {
     }
     
     @IBAction func editCompleteButtonTapped(_ sender: Any) {
-        isNameCheck = true
-        
         if isNameCheck {
             self.showIndicator()
             guard let token = keychain.get(Keys.token) else { return }
-            Network.request(req: EditProfileRequest(token: token, name: nameTextField.text!, profileImage: pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? "", resolution: resolutionTextField.text ?? "")) { [self] result in
+            print("name = \(nameTextField.text!), resolution = \(resolutionTextField.text!) img = \(pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)")
+            Network.request(req: EditProfileRequest(token: token, name: nameTextField.text!, profileImage: pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil, resolution: resolutionTextField.text!)) { [self] result in
                 self.dismissIndicator()
                 switch result {
                 case .success(let response):
@@ -96,15 +94,15 @@ class ProfileEditViewController: UIViewController {
             guard let token = keychain.get(Keys.token) else { return }
             Network.request(req: NameDuplicateRequest(token: token, name: nameTextField.text!)) { [self] result in
                 self.dismissIndicator()
+                print("network is \(result)")
                 switch result {
                 case .success(let response):
                     self.dismissIndicator()
                     let result = response.code
                     if result == 1000 {
                         isNameCheck = true
-                    } else {
-                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
-                        }
+                    }
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                     }
                 case .cancel(let cancelError):
                     self.dismissIndicator()

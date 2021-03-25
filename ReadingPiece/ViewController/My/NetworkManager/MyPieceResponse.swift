@@ -11,7 +11,7 @@ public struct MyPieceResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let pieces: [Piece]
+    public let pieces: [Piece]?
     
     enum CodingKeys: String, CodingKey {
         case isSuccess

@@ -10,7 +10,7 @@ import PagingKit
 import KeychainSwift
 
 class MyViewController: UIViewController {
-
+    
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var resolutionLabel: UILabel!
@@ -69,14 +69,22 @@ class MyViewController: UIViewController {
                 self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
-                    userProfile = response.profile
-                    if userProfile?.profileImagePath != "사진이 없습니다." {
-                        print("no profile is \(String(describing: userProfile))")
-                        let url = URL(string: (userProfile?.profileImagePath)!)
-                        profileImageView.kf.setImage(with: url)
+                    DispatchQueue.main.async {
+                        userProfile = response.profile
+                        if userProfile?.profileImagePath != "사진이 없습니다." {
+                            let decodedData = NSData(base64Encoded: (userProfile?.profileImagePath)!, options: [])
+                            if let data = decodedData {
+                                let decodedimage = UIImage(data: data as Data)
+                                profileImageView.image = decodedimage
+                            }else{
+                                profileImageView.image = UIImage(named: "selectedMY")
+                            }
+                        }else{
+                            profileImageView.image = UIImage(named: "selectedMY")
+                        }
+                        nameLabel.text = userProfile?.name
+                        resolutionLabel.text = userProfile?.resolution
                     }
-                    nameLabel.text = userProfile?.name
-                    resolutionLabel.text = userProfile?.resolution
                 } else {
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                     }
@@ -106,8 +114,8 @@ extension MyViewController: PagingMenuViewControllerDataSource, PagingMenuViewCo
     
     func menuViewController(viewController: PagingMenuViewController, cellForItemAt index: Int) -> PagingMenuViewCell {
         let cell = viewController.dequeueReusableCell(withReuseIdentifier: "MyMenuCell", for: index) as! MyMenuCell
-            cell.menuLabel.text = dataSource[index].menuTitle
-            return cell
+        cell.menuLabel.text = dataSource[index].menuTitle
+        return cell
     }
     
     func menuViewController(viewController: PagingMenuViewController, widthForItemAt index: Int) -> CGFloat {
@@ -125,6 +133,6 @@ extension MyViewController: PagingContentViewControllerDataSource, PagingContent
     }
     
     func contentViewController(viewController: PagingContentViewController, didManualScrollOn index: Int, percent: CGFloat) {
-            menuViewController.scroll(index: index, percent: percent, animated: false)
-        }
+        menuViewController.scroll(index: index, percent: percent, animated: false)
+    }
 }
