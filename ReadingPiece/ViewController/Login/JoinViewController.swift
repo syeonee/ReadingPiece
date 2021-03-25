@@ -11,6 +11,8 @@ import KeychainSwift
 class JoinViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    let emailValidityType: String.ValidityType = .email  // 이메일 형식 체크용
+    let passwordValidityType: String.ValidityType = .password  // 비밀번호 형식 체크용
     
     // 가입 완료 버튼 활성화여부 체크
     var joinActivated: Bool = false {
@@ -28,6 +30,9 @@ class JoinViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var pwConfirmTextField: UITextField!
+    
+    @IBOutlet weak var emailVerifyLabel: UILabel!
+    @IBOutlet weak var pwVerifyLabel: UILabel!
     @IBOutlet weak var pwConfirmLabel: UILabel!
     
     
@@ -37,27 +42,39 @@ class JoinViewController: UIViewController {
     
     @IBOutlet weak var joinButton: UIButton!
     
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
         emailTextField.delegate = self
         passwordTextField.delegate = self
         pwConfirmTextField.delegate = self
         
+        self.setupLabelTap()
+        self.dismissKeyboardWhenTappedAround()
+    }
+    
+    private func setupUI() {
         emailTextField.font = .NotoSans(.regular, size: 14)
         emailTextField.textColor = .black
         passwordTextField.font = .NotoSans(.regular, size: 14)
         passwordTextField.textColor = .black
         pwConfirmTextField.font = .NotoSans(.regular, size: 14)
         pwConfirmTextField.textColor = .black
+        emailVerifyLabel.font = .NotoSans(.regular, size: 12)
+        emailVerifyLabel.textColor = .red
+        emailVerifyLabel.isHidden = true
+        pwVerifyLabel.font = .NotoSans(.regular, size: 12)
+        pwVerifyLabel.textColor = .red
+        pwVerifyLabel.isHidden = true
         pwConfirmLabel.font = .NotoSans(.regular, size: 12)
         pwConfirmLabel.textColor = .red
         pwConfirmLabel.isHidden = true
         
         joinButton.makeRoundedButtnon("가입 완료", titleColor: .grey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         joinButton.isEnabled = false
-        
-        self.dismissKeyboardWhenTappedAround()
     }
     
     @IBAction func emailCancel(_ sender: Any) {
@@ -78,10 +95,6 @@ class JoinViewController: UIViewController {
                 let result = response.code
                 if result == 1000 {
                     self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { [self]_ in
-                        // jwt 토큰 저장한 뒤 책추가 화면으로 이동
-                        let ud = UserDefaults.standard
-                        ud.setValue(response.jwt, forKey: "jwtToken")
-                        ud.setValue(true, forKey: "loginConnected")
                         
                         // 키체인에 토큰 등록
                         guard let token = response.jwt else { return }
@@ -118,6 +131,28 @@ class JoinViewController: UIViewController {
         }
     }
     
+    @IBAction func emailEditingChanged(_ sender: Any) {
+        if let text = emailTextField.text {
+            if text.isValid(emailValidityType) {
+                emailVerifyLabel.isHidden = true
+            } else {
+                emailVerifyLabel.isHidden = false
+                emailVerifyLabel.text = "유효하지 않은 형식입니다. "
+            }
+        }
+    }
+    
+    @IBAction func passwordEditingChanged(_ sender: Any) {
+        if let text = passwordTextField.text {
+            if text.isValid(passwordValidityType) {
+                pwVerifyLabel.isHidden = true
+            } else {
+                pwVerifyLabel.isHidden = false
+                pwVerifyLabel.text = "유효하지 않은 형식입니다. "
+            }
+        }
+    }
+    
     // 비밀번호 일치여부 검사
     @IBAction func pwConfirmEditingChanged(_ sender: UITextField) {
         if sender.text != self.passwordTextField.text {
@@ -129,6 +164,17 @@ class JoinViewController: UIViewController {
             print("password confirmed")
         }
         
+    }
+    
+    func setupLabelTap() {
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.policyLabelTapped(_:)))
+        self.privacyPolicyLabel.isUserInteractionEnabled = true
+        self.privacyPolicyLabel.addGestureRecognizer(labelTap)
+    }
+    
+    @objc func policyLabelTapped(_ sender: UITapGestureRecognizer) {
+        let vc = PrivacyPolicyViewController()
+        self.present(vc, animated: true, completion: nil)
     }
     
     

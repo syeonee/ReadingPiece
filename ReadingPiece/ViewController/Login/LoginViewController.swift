@@ -19,9 +19,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var IDCancelButton: UIButton!
     @IBOutlet weak var passwordCancelButton: UIButton!
-    
-    var isIDEditing : Bool = false
-    var isPWEditing : Bool = false
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +32,7 @@ class LoginViewController: UIViewController {
         loginButton.titleLabel?.font = .NotoSans(.medium, size: 16)
         loginButton.isEnabled = false
         
+        self.setupLabelTap()
         self.dismissKeyboardWhenTappedAround()
     }
     
@@ -51,14 +50,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func PWCancelButtonTapped(_ sender: Any) {
         passwordTextField.text = ""
-    }
-    
-    @IBAction func tapBackground(_ sender: Any) {
-        if isIDEditing {
-            IDTextField.resignFirstResponder()
-        }else if isPWEditing {
-            passwordTextField.resignFirstResponder()
-        }
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -108,6 +99,18 @@ class LoginViewController: UIViewController {
         let popupVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "PasswordResetViewController") as! PasswordResetViewController
         popupVC.modalPresentationStyle = .overCurrentContext
         self.present(popupVC, animated: true, completion: nil)
+    }
+    
+    // 개인정보 처리방침 웹뷰
+    func setupLabelTap() {
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.policyLabelTapped(_:)))
+        self.privacyPolicyLabel.isUserInteractionEnabled = true
+        self.privacyPolicyLabel.addGestureRecognizer(labelTap)
+    }
+    
+    @objc func policyLabelTapped(_ sender: UITapGestureRecognizer) {
+        let vc = PrivacyPolicyViewController()
+        self.present(vc, animated: true, completion: nil)
     }
     
     

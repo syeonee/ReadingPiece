@@ -17,10 +17,11 @@ class LoginSplashViewController: UIViewController {
     @IBOutlet weak var emailLoginButton: UIButton!
     @IBOutlet weak var appleLoginButton: UIButton!
     
+    @IBOutlet weak var privacyPolicyLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.setupLabelTap()
     }
     
     @IBAction func appleLoginButtonTapped(_ sender: Any) {
@@ -32,6 +33,18 @@ class LoginSplashViewController: UIViewController {
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
+    }
+    
+    // 개인정보 처리방침 웹뷰
+    func setupLabelTap() {
+        let labelTap = UITapGestureRecognizer(target: self, action: #selector(self.policyLabelTapped(_:)))
+        self.privacyPolicyLabel.isUserInteractionEnabled = true
+        self.privacyPolicyLabel.addGestureRecognizer(labelTap)
+    }
+    
+    @objc func policyLabelTapped(_ sender: UITapGestureRecognizer) {
+        let vc = PrivacyPolicyViewController()
+        self.present(vc, animated: true, completion: nil)
     }
     
 
@@ -59,25 +72,9 @@ extension LoginSplashViewController: ASAuthorizationControllerDelegate, ASAuthor
                 print("identityToken: \(identityToken)")
                 print("authString: \(authString)")
                 print("tokenString: \(tokenString)")
-                
-                // 키체인에 토큰 저장
-                if keychain.set(tokenString, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
-                    print("Keychain setting success.")
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "GoalNavController") as! GoalNavViewController
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
-                }
             }
             
             print("userIdentifier: \(userIdentifier), fullName: \(String(describing: fullName)), email: \(email ?? "no data")")
-            
-            // 키체인에 userIdentifier 저장
-            let identifier = userIdentifier
-            if keychain.set(identifier, forKey: Keys.userIdentifier, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
-                print("Keychain setting success.")
-            } else {
-                print("Failed to set on Keychain")
-            }
         
             // 회원가입 여부 검사한 뒤
             // 회원이 아니면 회원가입

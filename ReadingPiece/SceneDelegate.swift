@@ -21,6 +21,41 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             // 토큰 유무에 따른 루트 뷰 전환
             
+            if let token = keychain.get(Keys.token) {
+                Network.request(req: CheckTokenRequest(token: token)) { result in
+                    switch result {
+                    case .success(let response):
+                        if response.code == 1000 {
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                            let window = UIWindow(windowScene: windowScene)
+                            window.rootViewController = tabBarController
+                            self.window = window
+                            window.makeKeyAndVisible()
+                            window.overrideUserInterfaceStyle = .light
+                        }
+                    case .cancel, .failure:
+                        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                        let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
+                        
+                        let window = UIWindow(windowScene: windowScene)
+                        window.rootViewController = LoginViewController
+                        self.window = window
+                        window.makeKeyAndVisible()
+                        window.overrideUserInterfaceStyle = .light
+                    }
+                }
+            } else {
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
+                
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = LoginViewController
+                self.window = window
+                window.makeKeyAndVisible()
+                window.overrideUserInterfaceStyle = .light
+            }
+            /*
             let token = keychain.get(Keys.token)
             if token != nil {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -39,37 +74,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self.window = window
                 window.makeKeyAndVisible()
                 window.overrideUserInterfaceStyle = .light
-            }
-            /*
-            if let userIdentifier = keychain.get(Keys.userIdentifier) {
-                let appleIDProvider = ASAuthorizationAppleIDProvider()
-                appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
-                    switch credentialState {
-                    case .authorized:
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        DispatchQueue.main.async {
-                            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
-                            let window = UIWindow(windowScene: windowScene)
-                            window.rootViewController = tabBarController
-                            self.window = window
-                            window.makeKeyAndVisible()
-                            window.overrideUserInterfaceStyle = .light
-                        }
-                    case .revoked, .notFound:
-                        // 증명을 취소(revoked)했거나 증명이 존재하지 않을 경우(was not found)
-                        DispatchQueue.main.async {
-                            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                            let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
-                            let window = UIWindow(windowScene: windowScene)
-                            window.rootViewController = LoginViewController
-                            self.window = window
-                            window.makeKeyAndVisible()
-                            window.overrideUserInterfaceStyle = .light
-                        }
-                    default:
-                        break
-                    }
-                }
             }
             */
         }

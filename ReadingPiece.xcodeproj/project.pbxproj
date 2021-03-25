@@ -77,6 +77,10 @@
 		596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */; };
 		596D4D9E260AD97D00E137F3 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D9D260AD97D00E137F3 /* PatchReviewRequest.swift */; };
 		596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */; };
+		597F82B5260C7EED00777A92 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82B4260C7EED00777A92 /* String.swift */; };
+		597F82B9260C8FEE00777A92 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */; };
+		597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */; };
+		597F82C1260C9D4800777A92 /* CheckTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82C0260C9D4800777A92 /* CheckTokenResponse.swift */; };
 		5997296A26039D5000573B9A /* JoinRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5997296926039D5000573B9A /* JoinRequest.swift */; };
 		599D3A9825F08A690085F134 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599D3A9725F08A690085F134 /* MenuCell.swift */; };
 		599D3A9B25F08A9F0085F134 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 599D3A9A25F08A9F0085F134 /* MenuCell.xib */; };
@@ -236,6 +240,10 @@
 		596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
 		596D4D9D260AD97D00E137F3 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
 		596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReviewRequest.swift; sourceTree = "<group>"; };
+		597F82B4260C7EED00777A92 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenRequest.swift; sourceTree = "<group>"; };
+		597F82C0260C9D4800777A92 /* CheckTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenResponse.swift; sourceTree = "<group>"; };
 		5997296926039D5000573B9A /* JoinRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRequest.swift; sourceTree = "<group>"; };
 		599D3A9725F08A690085F134 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		599D3A9A25F08A9F0085F134 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
@@ -366,6 +374,7 @@
 				59E18FE82604D2A000D07656 /* UIViewController.swift */,
 				59E18FFB26060FFB00D07656 /* UITableView.swift */,
 				59E18FFE2606242500D07656 /* UIControl.swift */,
+				597F82B4260C7EED00777A92 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,6 +556,8 @@
 				5997296926039D5000573B9A /* JoinRequest.swift */,
 				59E18FEC2604EA3100D07656 /* LoginRequest.swift */,
 				59E18FEF2604EA7100D07656 /* LoginResponse.swift */,
+				597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */,
+				597F82C0260C9D4800777A92 /* CheckTokenResponse.swift */,
 				59E1903F26084CB000D07656 /* AppleLoginNetworkManager.swift */,
 			);
 			path = NetworkManager;
@@ -609,6 +620,7 @@
 				D6FDB2F825EBC2B600F129B3 /* LoginViewController.swift */,
 				59A967D32603484C000EE89F /* JoinViewController.swift */,
 				59E190242607823900D07656 /* PasswordResetViewController.swift */,
+				597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1033,6 +1045,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				596D4D76260ACD0E00E137F3 /* DeleteJournalRequest.swift in Sources */,
+				597F82C1260C9D4800777A92 /* CheckTokenResponse.swift in Sources */,
 				59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */,
 				59F4F2F525F9B9A300E82417 /* ReviewBookInfoCell.swift in Sources */,
 				00FF3762260A2FBF00529570 /* PatchReadingGoalRequest.swift in Sources */,
@@ -1056,6 +1069,7 @@
 				59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
+				597F82B5260C7EED00777A92 /* String.swift in Sources */,
 				D642423E26091D9F00E732D4 /* AccountInfoViewController.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
 				596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */,
@@ -1069,6 +1083,7 @@
 				0026127625FB24E7000B40D1 /* UIButton.swift in Sources */,
 				0092500D2602605400A930DD /* NetworkManager.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
+				597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */,
 				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
@@ -1099,6 +1114,7 @@
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				00C55F732604F9CE002848AB /* Goal+Book.swift in Sources */,
 				59E1904026084CB000D07656 /* AppleLoginNetworkManager.swift in Sources */,
+				597F82B9260C8FEE00777A92 /* PrivacyPolicyViewController.swift in Sources */,
 				00FF3752260915BF00529570 /* BookResponse.swift in Sources */,
 				00FF374F2609157300529570 /* PostChallengeBookRequest.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
