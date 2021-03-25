@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 Network.request(req: CheckTokenRequest(token: token)) { result in
                     switch result {
                     case .success(let response):
+                        debugPrint(response)
                         if response.code == 1000 {
                             let storyboard = UIStoryboard(name: "Main", bundle: nil)
                             let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
@@ -55,27 +56,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 window.makeKeyAndVisible()
                 window.overrideUserInterfaceStyle = .light
             }
-            /*
-            let token = keychain.get(Keys.token)
-            if token != nil {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = tabBarController
-                self.window = window
-                window.makeKeyAndVisible()
-                window.overrideUserInterfaceStyle = .light
-            } else {
-                let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
-                
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = LoginViewController
-                self.window = window
-                window.makeKeyAndVisible()
-                window.overrideUserInterfaceStyle = .light
-            }
-            */
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }
