@@ -27,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //if keychain.clear() {
         //    print("cleared keychain")
         //}
+        if let token = keychain.get(Keys.token) {
+            print("token: \(token)")
+        }
+        if let userIdentifier = keychain.get(Keys.userIdentifier) {
+            print("userIdentifier: \(userIdentifier)")
+        }
         return true
     }
 

@@ -19,10 +19,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             
-            // 유저 identifier, 토큰 유무에 따른 루트 뷰 전환
+            // 토큰 유무에 따른 루트 뷰 전환
             
             let token = keychain.get(Keys.token)
-            
+            if token != nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = tabBarController
+                self.window = window
+                window.makeKeyAndVisible()
+                window.overrideUserInterfaceStyle = .light
+            } else {
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
+                
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = LoginViewController
+                self.window = window
+                window.makeKeyAndVisible()
+                window.overrideUserInterfaceStyle = .light
+            }
+            /*
             if let userIdentifier = keychain.get(Keys.userIdentifier) {
                 let appleIDProvider = ASAuthorizationAppleIDProvider()
                 appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
@@ -52,26 +70,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         break
                     }
                 }
-            } else {
-                if token != nil {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
-                    let window = UIWindow(windowScene: windowScene)
-                    window.rootViewController = tabBarController
-                    self.window = window
-                    window.makeKeyAndVisible()
-                    window.overrideUserInterfaceStyle = .light
-                } else {
-                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
-                    let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
-                    
-                    let window = UIWindow(windowScene: windowScene)
-                    window.rootViewController = LoginViewController
-                    self.window = window
-                    window.makeKeyAndVisible()
-                    window.overrideUserInterfaceStyle = .light
-                }
             }
+            */
         }
         
         guard let _ = (scene as? UIWindowScene) else { return }
