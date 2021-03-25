@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "clearGlyphSearchBar.png",
       "idiom" : "universal",
+      "filename" : "clearGlyphSearchBar.png",
       "scale" : "1x"
     },
     {
@@ -11,13 +11,13 @@
       "scale" : "2x"
     },
     {
+      "scale" : "3x",
       "filename" : "clearGlyphSearchBar@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }

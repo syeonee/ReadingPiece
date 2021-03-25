@@ -16,14 +16,49 @@ class MyPieceViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension MyPieceViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pieceCell", for: indexPath) as? PieceCell else {
+            return UICollectionViewCell()
+        }
+        
+        return cell
+    }
+    
+    
+    
+}
 
+extension MyPieceViewController: UICollectionViewDelegate {
+    
+    
+}
+
+extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let width = collectionView.bounds.width
+        let insetSum = width - (151*2)
+        let inset = insetSum/8
+        print("inset is \(inset)")
+        return UIEdgeInsets(top: 0, left: (inset*1.5), bottom: 0, right: (inset*1.5))
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 151, height: 206)
+    }
+    
+}
+
+class PieceCell: UICollectionViewCell {
+    
 }

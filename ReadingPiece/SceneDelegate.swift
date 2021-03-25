@@ -6,28 +6,73 @@
 //
 
 import UIKit
+import KeychainSwift
+import AuthenticationServices
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     var window: UIWindow?
-
+    
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
         if let windowScene = scene as? UIWindowScene {
-            let storyboard = UIStoryboard(name: "Login", bundle: nil)
-            let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
             
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = LoginViewController
-            self.window = window
-            window.makeKeyAndVisible()
+            // 유저 identifier, 토큰 유무에 따른 루트 뷰 전환
+            
+            let token = keychain.get(Keys.token)
+            
+            if let userIdentifier = keychain.get(Keys.userIdentifier) {
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+                    switch credentialState {
+                    case .authorized:
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        DispatchQueue.main.async {
+                            let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                            let window = UIWindow(windowScene: windowScene)
+                            window.rootViewController = tabBarController
+                            self.window = window
+                            window.makeKeyAndVisible()
+                            window.overrideUserInterfaceStyle = .light
+                        }
+                    case .revoked, .notFound:
+                        // 증명을 취소(revoked)했거나 증명이 존재하지 않을 경우(was not found)
+                        DispatchQueue.main.async {
+                            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                            let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
+                            let window = UIWindow(windowScene: windowScene)
+                            window.rootViewController = LoginViewController
+                            self.window = window
+                            window.makeKeyAndVisible()
+                            window.overrideUserInterfaceStyle = .light
+                        }
+                    default:
+                        break
+                    }
+                }
+            } else {
+                if token != nil {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                    let window = UIWindow(windowScene: windowScene)
+                    window.rootViewController = tabBarController
+                    self.window = window
+                    window.makeKeyAndVisible()
+                    window.overrideUserInterfaceStyle = .light
+                } else {
+                    let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                    let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
+                    
+                    let window = UIWindow(windowScene: windowScene)
+                    window.rootViewController = LoginViewController
+                    self.window = window
+                    window.makeKeyAndVisible()
+                    window.overrideUserInterfaceStyle = .light
+                }
+            }
         }
-        window?.overrideUserInterfaceStyle = .light
-
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }

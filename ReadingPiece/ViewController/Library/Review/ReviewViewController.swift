@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ReviewViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     let reviewCell = ReviewCell()
     let fullReviewCell = FullReviewCell()
@@ -44,8 +47,8 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         let count = Review.dummyData.count
         if count == 0 {
             let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") { [self] in
-                buttonAction()
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") {
+                self.buttonAction()
             }
         }
         return count
@@ -267,5 +270,44 @@ extension ReviewViewController {
         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
         vc.initializer = 1
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// API 호출 메소드
+extension ReviewViewController {
+    
+    // 리뷰 조회
+    private func getReviewData() {
+        
+    }
+    
+    // 리뷰 수정
+    private func patchReview(reviewID: Int, star: Int, text: String, isPublic: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PatchReviewRequest(token: token, reviewID: reviewID, star: star, text: text, isPublic: isPublic)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .cancel(let cancelError):
+                print(cancelError as Any)
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
+            }
+        }
+    }
+    
+    // 리뷰 삭제
+    private func deleteReview(reviewID: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: DeleteReviewRequest(token: token, reviewID: reviewID)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .cancel(let cancelError):
+                print(cancelError as Any)
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
+            }
+        }
     }
 }

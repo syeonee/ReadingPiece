@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoo-Kf-yA7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,42 +33,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cba-mo-Bbc">
                                 <rect key="frame" x="104" y="814.5" width="206" height="31.5"/>
                                 <attributedString key="attributedText">
-                                    <fragment content="계정을">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="만드는">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="것은">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
+                                    <fragment content="계정을 만드는 것은 ">
                                         <attributes>
                                             <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" metaFont="system"/>
@@ -79,21 +43,13 @@
                                     <fragment content="개인정보취급방침">
                                         <attributes>
                                             <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="과">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
                                     <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
+                                        <string key="content">과
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -104,61 +60,12 @@ Cg
                                     <fragment content="이용약관">
                                         <attributes>
                                             <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
+                                            <font key="NSFont" metaFont="system"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             <integer key="NSUnderline" value="1"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content="에">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="동의하는">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="것으로">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="간주합니다">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" size="13" name=".AppleSDGothicNeoI-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=".">
+                                    <fragment content="에 동의하는 것으로 간주합니다.">
                                         <attributes>
                                             <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <font key="NSFont" metaFont="system"/>

@@ -30,6 +30,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NotoSans-Medium.ttf</string>
 		<string>Roboto-Medium.ttf</string>
 		<string>Roboto-Regular.ttf</string>
 		<string>NotoSansCJKkr-Black.otf</string>
