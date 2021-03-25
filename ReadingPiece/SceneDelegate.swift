@@ -19,9 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             
-            // 토큰 유무에 따른 루트 뷰 전환
+            // 토큰 유무, 검증 결과 따른 루트 뷰 전환
             
             if let token = keychain.get(Keys.token) {
+                /*
                 Network.request(req: CheckTokenRequest(token: token)) { result in
                     switch result {
                     case .success(let response):
@@ -46,6 +47,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                         window.overrideUserInterfaceStyle = .light
                     }
                 }
+                */
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                let window = UIWindow(windowScene: windowScene)
+                window.rootViewController = tabBarController
+                self.window = window
+                window.makeKeyAndVisible()
+                window.overrideUserInterfaceStyle = .light
             } else {
                 let storyboard = UIStoryboard(name: "Login", bundle: nil)
                 let LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginSplash")
