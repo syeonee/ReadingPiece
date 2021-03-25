@@ -11,8 +11,8 @@ import KeychainSwift
 class JoinViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
-    let emailValidityType: String.ValidityType = .email  // 이메일 형식 체크용
-    let passwordValidityType: String.ValidityType = .password  // 비밀번호 형식 체크용
+    let emailValidityType: String.ValidityType = .email  // 이메일 형식
+    let passwordValidityType: String.ValidityType = .password  // 비밀번호 형식
     
     // 가입 완료 버튼 활성화여부 체크
     var joinActivated: Bool = false {
@@ -223,7 +223,12 @@ extension JoinViewController: UITextFieldDelegate {
         }
         
         if emailTextField.text?.isEmpty == false && passwordTextField.text?.isEmpty == false && pwConfirmTextField.text?.isEmpty == false {
-            joinActivated = true
+            if emailVerifyLabel.isHidden == true && pwVerifyLabel.isHidden == true && pwConfirmLabel.isHidden == true {
+                joinActivated = true
+            } else {
+                joinActivated = false
+            }
+            
         } else {
             joinActivated = false
         }

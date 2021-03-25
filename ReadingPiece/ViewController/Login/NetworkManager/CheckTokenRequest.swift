@@ -32,15 +32,15 @@ final class CheckTokenRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["x-access-token" : token]
+        return nil
     }
     
     var headers: [String : String]? {
-        return defaultJSONHeader
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {
