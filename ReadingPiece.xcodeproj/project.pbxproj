@@ -57,6 +57,10 @@
 		00FF3779260A67EC00529570 /* GetBookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */; };
 		00FF377D260A685700529570 /* ReportNegativeReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */; };
 		00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00FF3781260A730100529570 /* GoogleService-Info.plist */; };
+		00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF379B260C613200529570 /* RestartChallengeViewController.swift */; };
+		00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF379E260C615F00529570 /* BookSettingViewController.swift */; };
+		00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF37A3260C688B00529570 /* ReadingBookTableViewCell.swift */; };
+		00FF37A6260C688B00529570 /* ReadingBookTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37A4260C688B00529570 /* ReadingBookTableViewCell.xib */; };
 		5913B22F25EF2E0C002AAA8C /* GmarketSansMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */; };
 		5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */; };
 		5913B23925EF2E4D002AAA8C /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23225EF2E49002AAA8C /* NotoSansCJKkr-Bold.otf */; };
@@ -200,6 +204,10 @@
 		00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookReviewRequest.swift; sourceTree = "<group>"; };
 		00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNegativeReviewRequest.swift; sourceTree = "<group>"; };
 		00FF3781260A730100529570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00FF379B260C613200529570 /* RestartChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartChallengeViewController.swift; sourceTree = "<group>"; };
+		00FF379E260C615F00529570 /* BookSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSettingViewController.swift; sourceTree = "<group>"; };
+		00FF37A3260C688B00529570 /* ReadingBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingBookTableViewCell.swift; sourceTree = "<group>"; };
+		00FF37A4260C688B00529570 /* ReadingBookTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadingBookTableViewCell.xib; sourceTree = "<group>"; };
 		049711AD81EEFAB3F8E9AE75 /* Pods-ReadingPiece.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadingPiece.release.xcconfig"; path = "Target Support Files/Pods-ReadingPiece/Pods-ReadingPiece.release.xcconfig"; sourceTree = "<group>"; };
 		5913B22E25EF2E0C002AAA8C /* GmarketSansMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansMedium.otf; sourceTree = "<group>"; };
 		5913B23125EF2E47002AAA8C /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
@@ -342,12 +350,14 @@
 		00838FCC25F362CD00340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				00D8633525FF8AB300E9EFF9 /* Timer */,
+				00D8633625FF8ADD00E9EFF9 /* DaillyReading */,
 				00FF3756260A286800529570 /* NetworkManager */,
 				00FF3755260A286200529570 /* Entity */,
 				0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */,
+				00FF379B260C613200529570 /* RestartChallengeViewController.swift */,
+				00FF379E260C615F00529570 /* BookSettingViewController.swift */,
 				009250082602588B00A930DD /* FireCrackerScene.swift */,
-				00D8633625FF8ADD00E9EFF9 /* DaillyReading */,
-				00D8633525FF8AB300E9EFF9 /* Timer */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -386,6 +396,8 @@
 				0026127125FB244C000B40D1 /* DaillyReadingTableViewCell.xib */,
 				00D8632225FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift */,
 				00D8632325FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib */,
+				00FF37A3260C688B00529570 /* ReadingBookTableViewCell.swift */,
+				00FF37A4260C688B00529570 /* ReadingBookTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -393,6 +405,7 @@
 		00C55F702604F998002848AB /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				D6F153E825F9395B0044900E /* NetworkAPI.swift */,
 				00C55F762604FB0B002848AB /* PostReadingGoalRequest.swift */,
 				00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */,
 				00FF374E2609157300529570 /* PostChallengeBookRequest.swift */,
@@ -633,7 +646,6 @@
 				D6FF1B7025F2408700A0B980 /* SearchViewController.swift */,
 				D678692C25F53B5900DBB59C /* BookDetailViewController.swift */,
 				D65C7BFA25F6761700944094 /* BookReviewViewController.swift */,
-				D6F153E825F9395B0044900E /* NetworkAPI.swift */,
 				D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */,
 			);
 			path = Goal;
@@ -902,6 +914,7 @@
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
 				007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */,
 				009250062602587100A930DD /* RedFirecracker.sks in Resources */,
+				00FF37A6260C688B00529570 /* ReadingBookTableViewCell.xib in Resources */,
 				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,
 				599D3AC725F236510085F134 /* JournalCell.xib in Resources */,
 				0026127325FB244C000B40D1 /* DaillyReadingTableViewCell.xib in Resources */,
@@ -1005,6 +1018,7 @@
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
+				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
 				00FF377D260A685700529570 /* ReportNegativeReviewRequest.swift in Sources */,
 				596D4D5C2608C8BE00E137F3 /* User.swift in Sources */,
 				D67C657F25E571A100F15290 /* LibraryViewController.swift in Sources */,
@@ -1042,7 +1056,9 @@
 				00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */,
 				00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
+				00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
+				00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
 				00FF3767260A30DA00529570 /* GetTodayChallengeRequest.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,

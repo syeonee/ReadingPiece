@@ -12,7 +12,7 @@ class TimeViewController: UIViewController {
     var time: Int = 0
     var period: String = ""
     var amount: Int = 0
-    
+
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
     @IBOutlet weak var timeSelectButton: UIButton!
@@ -61,13 +61,13 @@ class TimeViewController: UIViewController {
     }
     
     func postUserReadingGoal() {
-        print("LOG - 목표설정 완료", amount, period, time)
         let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
                                 
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
                 case .success(let userResponse):
+                    print("LOG - 목표설정 완료", self.amount, self.period, self.time, userResponse.message, userResponse.goalId)
                     guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
                     self.usderDefaults.set(userResponse.goalId, forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
                     self.navigationController?.pushViewController(searchVC, animated: true)

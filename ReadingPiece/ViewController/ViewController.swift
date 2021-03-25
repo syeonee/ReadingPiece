@@ -32,9 +32,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
-        let searchBookVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
-//        vc.initializer = 1
-        self.navigationController?.pushViewController(searchBookVC, animated: true)
+        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "bookSettingVC") as! BookSettingViewController
+        self.navigationController?.pushViewController(bookSettingVC, animated: true)
     }
     
     private func setupUI() {
@@ -63,6 +62,18 @@ class ViewController: UIViewController {
         flowLayout.minimumLineSpacing = 5.0
         flowLayout.minimumInteritemSpacing = 10.0
         radingBooksCollectionView.collectionViewLayout = flowLayout
+    }
+    
+    // 챌린지 진행 중, 챌린지 조기 달성, 챌린지 기간 만료에 따른 화면 처리 진행
+    func getChallengeData() {
+        // 챌린지 진해 중인 경우(일반 상황)
+        
+        // 챌린지 기간내에 목표를 조기 달성한 경우
+        
+        // 챌린지 기간이 만료된 경우
+        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
+        self.navigationController?.pushViewController(bookSettingVC, animated: true)
+
     }
 }
 
