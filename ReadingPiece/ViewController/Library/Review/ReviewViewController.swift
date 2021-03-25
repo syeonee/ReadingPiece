@@ -16,11 +16,14 @@ class ReviewViewController: UIViewController {
     let fullReviewCell = FullReviewCell()
     let headerView = ReviewHeaderCell()
     
+    // 리뷰 리스트
+    var reviewList = [GetReviewResult]()
+    
     // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
     var more: [Int] = []
     
-    // 기본 데이터 리스트는 최신순으로 자동으로 추가되어 있어야 함
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,26 +39,32 @@ class ReviewViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
         
-        // 더보기 값 배열 초기화
-        self.more = Array<Int>(repeating: 0, count: Review.dummyData.count)
+        
+    }
+    
+    func didRetrieveData() {
+        self.more = Array<Int>(repeating: 0, count: reviewList.count)  // 더보기 값 배열 초기화
+        tableView.reloadData()
     }
 
 }
 
 extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = Review.dummyData.count
+        let count = reviewList.count
         if count == 0 {
             let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
             tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") {
                 self.buttonAction()
             }
+        } else {
+            tableView.restoreWithLine()
         }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let length = Review.dummyData[0].reviewText.utf8.count
+        let length = 110
         let review = Review.dummyData[indexPath.row]
         if Review.dummyData[indexPath.row].reviewText.utf8.count <= length {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
@@ -278,7 +287,23 @@ extension ReviewViewController {
     
     // 리뷰 조회
     private func getReviewData() {
-        
+        self.spinner.startAnimating()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
+            switch result {
+            case .success(let response):
+                self.spinner.stopAnimating()
+                guard let result = response.results else { return }
+                self.reviewList = result
+                //self.didRetrieveData()
+            case .cancel(let cancel):
+                self.spinner.stopAnimating()
+                print(cancel as Any)
+            case .failure(let error):
+                self.spinner.stopAnimating()
+                print(error as Any)
+            }
+        }
     }
     
     // 리뷰 수정
