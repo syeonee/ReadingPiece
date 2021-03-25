@@ -57,7 +57,7 @@ class PasswordResetViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func submitButtonTapped(_ sender: Any) {
-        // api 호출하기
+        // 비밀번호 재설정 api 호출
         
         self.dismiss(animated: true, completion: nil)
     }

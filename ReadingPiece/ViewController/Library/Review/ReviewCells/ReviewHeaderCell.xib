@@ -44,9 +44,6 @@
                                 <rect key="frame" x="65" y="0.0" width="10" height="22"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrowButtonSmall"/>
-                                <connections>
-                                    <action selector="alignButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CXN-vN-znU"/>
-                                </connections>
                             </button>
                         </subviews>
                     </stackView>

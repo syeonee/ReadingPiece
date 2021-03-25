@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoo-Kf-yA7">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cba-mo-Bbc">
-                                <rect key="frame" x="104" y="814.5" width="206" height="31.5"/>
+                                <rect key="frame" x="104" y="814.66666666666663" width="206" height="31.333333333333371"/>
                                 <attributedString key="attributedText">
                                     <fragment content="계정을 만드는 것은 ">
                                         <attributes>
@@ -83,13 +83,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리딩 피스" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-q4-nyd">
-                                <rect key="frame" x="149" y="310" width="116" height="28.5"/>
+                                <rect key="frame" x="149" y="310" width="116" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" name="GmarketSansMedium" family="Gmarket Sans" pointSize="28"/>
                                 <color key="textColor" red="0.396078431372549" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 읽는 습관을 만드는 독서 챌린지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-aG-seH">
-                                <rect key="frame" x="107" y="346.5" width="200" height="21"/>
+                                <rect key="frame" x="107" y="346.66666666666669" width="200" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                 <color key="textColor" red="0.3960812688" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -102,7 +102,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUf-Ae-yX9">
-                                <rect key="frame" x="0.0" y="617.5" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="617.66666666666663" width="414" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="bHj-NR-icX"/>
                                 </constraints>
@@ -114,7 +114,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-ey-N89">
-                                <rect key="frame" x="0.0" y="679.5" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="679.66666666666663" width="414" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="HkS-LU-OaK"/>
                                 </constraints>
@@ -153,6 +153,7 @@
                         <outlet property="appleLoginButton" destination="O8P-ey-N89" id="w2s-z2-jp8"/>
                         <outlet property="backgroundImageView" destination="Eqe-lz-sNr" id="d61-Kg-Fbr"/>
                         <outlet property="emailLoginButton" destination="lUf-Ae-yX9" id="3kX-S2-AYh"/>
+                        <outlet property="privacyPolicyLabel" destination="cba-mo-Bbc" id="3uD-Pz-3n8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tMf-2R-HhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -186,19 +187,19 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리딩 피스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztT-4d-L4e">
-                                <rect key="frame" x="165.5" y="275" width="83" height="20"/>
+                                <rect key="frame" x="169.66666666666666" y="275" width="75" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="GmarketSansMedium" family="Gmarket Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 읽는 습관을 만드는 독서 챌린지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXe-Vf-IRq">
-                                <rect key="frame" x="121.5" y="303" width="171.5" height="18"/>
+                                <rect key="frame" x="126" y="306.33333333333331" width="162" height="14"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                 <color key="textColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ1-RZ-Wdt">
-                                <rect key="frame" x="104" y="814.5" width="206" height="31.5"/>
+                                <rect key="frame" x="104" y="814.66666666666663" width="206" height="31.333333333333371"/>
                                 <attributedString key="attributedText">
                                     <fragment content="계정을 만드는 것은 ">
                                         <attributes>
@@ -243,7 +244,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZAr-lV-YX9">
-                                <rect key="frame" x="168.5" y="754" width="77" height="28.5"/>
+                                <rect key="frame" x="168.66666666666666" y="754.33333333333337" width="77" height="28.333333333333371"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="회원 가입하기">
@@ -260,7 +261,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4eE-Bd-e1X">
-                                <rect key="frame" x="147" y="716.5" width="120" height="28.5"/>
+                                <rect key="frame" x="147" y="716.66666666666663" width="120" height="28.666666666666629"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="비밀번호를 잊었나요?">
@@ -277,7 +278,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9L-cV-dPm">
-                                <rect key="frame" x="51" y="650.5" width="312" height="46"/>
+                                <rect key="frame" x="51" y="650.66666666666663" width="312" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="H9L-cV-dPm" secondAttribute="height" multiplier="156:23" id="f6h-Z0-lBi"/>
                                 </constraints>
@@ -294,7 +295,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UK2-RO-Y4t">
-                                <rect key="frame" x="80" y="486.5" width="240" height="20.5"/>
+                                <rect key="frame" x="80" y="486.66666666666669" width="240" height="20.333333333333314"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -305,14 +306,14 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pw" translatesAutoresizingMaskIntoConstraints="NO" id="cBp-Iu-Hg7">
-                                <rect key="frame" x="51" y="544" width="17" height="18.5"/>
+                                <rect key="frame" x="51" y="544" width="17" height="18.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="17" id="MV1-dH-jGl"/>
                                     <constraint firstAttribute="height" constant="18.600000000000001" id="V1z-zL-BiD"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (8자 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-n5-bIf">
-                                <rect key="frame" x="78" y="545" width="240" height="16"/>
+                                <rect key="frame" x="78" y="545.33333333333337" width="240" height="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
@@ -323,17 +324,17 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ri-si-Gbf">
-                                <rect key="frame" x="328" y="542" width="16" height="22"/>
+                                <rect key="frame" x="328" y="542.33333333333337" width="16" height="22"/>
                                 <state key="normal" image="cancel"/>
                                 <connections>
                                     <action selector="PWCancelButtonTapped:" destination="Ged-PO-BSZ" eventType="touchUpInside" id="Esh-54-CPz"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="email" translatesAutoresizingMaskIntoConstraints="NO" id="RH8-8A-c9q">
-                                <rect key="frame" x="51" y="490.5" width="19" height="12"/>
+                                <rect key="frame" x="51" y="490.66666666666669" width="19" height="12"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XTo-4M-13W">
-                                <rect key="frame" x="328" y="485.5" width="16" height="22"/>
+                                <rect key="frame" x="328" y="485.66666666666669" width="16" height="22"/>
                                 <state key="normal" image="cancel"/>
                                 <connections>
                                     <action selector="IDCancelButtonTapped:" destination="Ged-PO-BSZ" eventType="touchUpInside" id="vtp-sF-M49"/>
@@ -397,14 +398,11 @@
                         <outlet property="loginButton" destination="H9L-cV-dPm" id="YK2-9E-BOO"/>
                         <outlet property="passwordCancelButton" destination="4Ri-si-Gbf" id="aoa-3B-ht9"/>
                         <outlet property="passwordTextField" destination="eAS-n5-bIf" id="0DR-Za-WrV"/>
+                        <outlet property="privacyPolicyLabel" destination="EZ1-RZ-Wdt" id="pg2-fI-SaX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EcC-lB-67W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="bRU-Dq-jcL">
-                    <connections>
-                        <action selector="tapBackground:" destination="Ged-PO-BSZ" id="fXj-Sl-BMY"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bRU-Dq-jcL"/>
             </objects>
             <point key="canvasLocation" x="1292.753623188406" y="152.67857142857142"/>
         </scene>
@@ -427,7 +425,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="messageIcon" translatesAutoresizingMaskIntoConstraints="NO" id="7IF-mJ-iL7">
-                                <rect key="frame" x="33" y="157" width="19" height="12"/>
+                                <rect key="frame" x="33" y="157" width="19" height="11.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="19" id="K75-VB-Wje"/>
                                     <constraint firstAttribute="height" constant="11.800000000000001" id="u86-Hk-WSV"/>
@@ -437,10 +435,10 @@
                                 <rect key="frame" x="33" y="223" width="17" height="19"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="passwordIcon2" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-tm-g5u">
-                                <rect key="frame" x="33" y="293.5" width="17" height="19"/>
+                                <rect key="frame" x="33" y="293.33333333333331" width="17" height="19"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="이메일" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iHe-vv-ux3">
-                                <rect key="frame" x="60" y="153.5" width="314" height="18.5"/>
+                                <rect key="frame" x="60" y="153.66666666666666" width="314" height="18.333333333333343"/>
                                 <color key="textColor" red="0.66669440270000002" green="0.66660028699999996" blue="0.67058920860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -449,8 +447,11 @@
                                         <color key="value" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="emailEditingChanged:" destination="xAE-IS-MWa" eventType="editingChanged" id="6te-GD-jyj"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (8자 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Rd-TJn">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (6~20자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Rd-TJn">
                                 <rect key="frame" x="60" y="224" width="314" height="17"/>
                                 <color key="textColor" red="0.66669440270000002" green="0.66660028699999996" blue="0.67058920860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -460,9 +461,12 @@
                                         <color key="value" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="passwordEditingChanged:" destination="xAE-IS-MWa" eventType="editingDidEnd" id="jSz-FP-riu"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 재입력" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RWr-0L-6cb">
-                                <rect key="frame" x="60" y="294.5" width="314" height="17"/>
+                                <rect key="frame" x="60" y="294.33333333333331" width="314" height="17"/>
                                 <color key="textColor" red="0.66669440270000002" green="0.66660028699999996" blue="0.67058920860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -476,7 +480,7 @@
                                 </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sL6-O7-wNy">
-                                <rect key="frame" x="32" y="182.5" width="350" height="1"/>
+                                <rect key="frame" x="32" y="182.66666666666666" width="350" height="1"/>
                                 <color key="backgroundColor" red="0.85100930929999996" green="0.85091197490000003" blue="0.85490310189999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="JmG-J2-pDf"/>
@@ -490,7 +494,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FpE-Ue-wwQ">
-                                <rect key="frame" x="32" y="323.5" width="350" height="1"/>
+                                <rect key="frame" x="32" y="323.33333333333331" width="350" height="1"/>
                                 <color key="backgroundColor" red="0.85100930929999996" green="0.85091197490000003" blue="0.85490310189999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="YIi-2M-o2v"/>
@@ -505,7 +509,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgH-D0-S7v">
-                                <rect key="frame" x="358" y="221.5" width="16" height="22"/>
+                                <rect key="frame" x="358" y="221.66666666666666" width="16" height="22"/>
                                 <state key="normal" image="clearGlyphSearchBar"/>
                                 <connections>
                                     <action selector="IDCancelButtonTapped:" destination="Ged-PO-BSZ" eventType="touchUpInside" id="tLu-wa-ii5"/>
@@ -535,7 +539,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nFW-pi-TPB">
-                                <rect key="frame" x="104" y="808.5" width="206" height="31.5"/>
+                                <rect key="frame" x="104" y="808.66666666666663" width="206" height="31.333333333333371"/>
                                 <attributedString key="attributedText">
                                     <fragment content="계정을 만드는 것은 ">
                                         <attributes>
@@ -580,7 +584,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호가 일치하지 않습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQf-Wn-k3p">
-                                <rect key="frame" x="60" y="332" width="145" height="14"/>
+                                <rect key="frame" x="60" y="331.66666666666669" width="145" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유효하지 않은 형식입니다. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdh-XA-dpg">
+                                <rect key="frame" x="60.000000000000007" y="191" width="127.66666666666669" height="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="유효하지 않은 형식입니다. " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RK6-TK-8Zw">
+                                <rect key="frame" x="60.000000000000007" y="261.33333333333331" width="127.66666666666669" height="14"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
@@ -595,6 +611,7 @@
                             <constraint firstItem="xHC-tm-g5u" firstAttribute="top" secondItem="Ic4-lX-IJz" secondAttribute="bottom" constant="39.5" id="7gH-BC-TCR"/>
                             <constraint firstItem="9ug-GB-5Yv" firstAttribute="trailing" secondItem="iHe-vv-ux3" secondAttribute="trailing" constant="40" id="8kD-JO-o1j"/>
                             <constraint firstItem="TID-cw-MwO" firstAttribute="centerX" secondItem="ydt-ad-3wY" secondAttribute="centerX" id="9yQ-sv-DiS"/>
+                            <constraint firstItem="Sdh-XA-dpg" firstAttribute="top" secondItem="sL6-O7-wNy" secondAttribute="bottom" constant="7.5" id="AFT-Bx-3kY"/>
                             <constraint firstItem="ipb-kT-uFM" firstAttribute="centerY" secondItem="A5c-4v-J6y" secondAttribute="centerY" constant="20" id="AQH-eZ-UOr"/>
                             <constraint firstItem="RWr-0L-6cb" firstAttribute="leading" secondItem="iHe-vv-ux3" secondAttribute="leading" id="EqC-0A-1su"/>
                             <constraint firstItem="tQf-Wn-k3p" firstAttribute="top" secondItem="FpE-Ue-wwQ" secondAttribute="bottom" constant="7.5" id="G5N-vB-qxh"/>
@@ -606,6 +623,7 @@
                             <constraint firstItem="xHC-tm-g5u" firstAttribute="leading" secondItem="liz-TC-MPZ" secondAttribute="leading" id="QaM-L1-48h"/>
                             <constraint firstItem="RWr-0L-6cb" firstAttribute="centerY" secondItem="xHC-tm-g5u" secondAttribute="centerY" id="Qef-TI-CU3"/>
                             <constraint firstItem="TID-cw-MwO" firstAttribute="centerY" secondItem="xHC-tm-g5u" secondAttribute="centerY" id="RLe-gS-MSy"/>
+                            <constraint firstItem="RK6-TK-8Zw" firstAttribute="top" secondItem="Ic4-lX-IJz" secondAttribute="bottom" constant="7.5" id="Rq4-6g-KB2"/>
                             <constraint firstItem="Ic4-lX-IJz" firstAttribute="top" secondItem="liz-TC-MPZ" secondAttribute="bottom" constant="10.9" id="UOw-g9-zz2"/>
                             <constraint firstItem="iHe-vv-ux3" firstAttribute="leading" secondItem="7IF-mJ-iL7" secondAttribute="trailing" constant="8" id="VOH-0H-Pwe"/>
                             <constraint firstItem="9ug-GB-5Yv" firstAttribute="bottom" secondItem="nFW-pi-TPB" secondAttribute="bottom" constant="22" id="Xon-ww-gYC"/>
@@ -613,11 +631,13 @@
                             <constraint firstItem="pdj-Rd-TJn" firstAttribute="leading" secondItem="iHe-vv-ux3" secondAttribute="leading" id="Zbk-dN-LBK"/>
                             <constraint firstItem="iHe-vv-ux3" firstAttribute="centerY" secondItem="7IF-mJ-iL7" secondAttribute="centerY" id="aIr-fR-Db7"/>
                             <constraint firstItem="Ic4-lX-IJz" firstAttribute="leading" secondItem="sL6-O7-wNy" secondAttribute="leading" id="aaW-cZ-Gvp"/>
+                            <constraint firstItem="RK6-TK-8Zw" firstAttribute="leading" secondItem="9ug-GB-5Yv" secondAttribute="leading" constant="60" id="bLR-Ob-paN"/>
                             <constraint firstItem="Ic4-lX-IJz" firstAttribute="trailing" secondItem="sL6-O7-wNy" secondAttribute="trailing" id="dv2-Ob-jdy"/>
                             <constraint firstItem="ipb-kT-uFM" firstAttribute="leading" secondItem="9ug-GB-5Yv" secondAttribute="leading" constant="31" id="fB5-pf-O34"/>
                             <constraint firstItem="pdj-Rd-TJn" firstAttribute="centerY" secondItem="liz-TC-MPZ" secondAttribute="centerY" id="fT8-yG-Z3D"/>
                             <constraint firstItem="tQf-Wn-k3p" firstAttribute="leading" secondItem="9ug-GB-5Yv" secondAttribute="leading" constant="60" id="h7Q-yH-cZn"/>
                             <constraint firstItem="FpE-Ue-wwQ" firstAttribute="trailing" secondItem="sL6-O7-wNy" secondAttribute="trailing" id="hNC-p1-bb3"/>
+                            <constraint firstItem="Sdh-XA-dpg" firstAttribute="leading" secondItem="9ug-GB-5Yv" secondAttribute="leading" constant="60" id="hcX-Rb-GXk"/>
                             <constraint firstItem="SgH-D0-S7v" firstAttribute="centerY" secondItem="liz-TC-MPZ" secondAttribute="centerY" id="hmg-jb-L6G"/>
                             <constraint firstItem="SgH-D0-S7v" firstAttribute="centerX" secondItem="ydt-ad-3wY" secondAttribute="centerX" id="ijm-nC-o4D"/>
                             <constraint firstItem="7IF-mJ-iL7" firstAttribute="top" secondItem="9ug-GB-5Yv" secondAttribute="top" constant="69" id="jKa-7i-AXV"/>
@@ -634,12 +654,15 @@
                     <connections>
                         <outlet property="emailImageView" destination="7IF-mJ-iL7" id="fud-Ml-ZkN"/>
                         <outlet property="emailTextField" destination="iHe-vv-ux3" id="lzZ-sd-DNw"/>
+                        <outlet property="emailVerifyLabel" destination="Sdh-XA-dpg" id="UnZ-Rb-OjD"/>
                         <outlet property="joinButton" destination="ipb-kT-uFM" id="6am-Dx-NO0"/>
                         <outlet property="passwordTextField" destination="pdj-Rd-TJn" id="QGv-BU-vKK"/>
+                        <outlet property="privacyPolicyLabel" destination="nFW-pi-TPB" id="mU4-X8-kKZ"/>
                         <outlet property="pwConfirmImageView" destination="xHC-tm-g5u" id="BzC-dg-rJU"/>
                         <outlet property="pwConfirmLabel" destination="tQf-Wn-k3p" id="YMo-jk-TLx"/>
                         <outlet property="pwConfirmTextField" destination="RWr-0L-6cb" id="cea-kL-8N9"/>
                         <outlet property="pwImageView" destination="liz-TC-MPZ" id="2G3-qZ-j7R"/>
+                        <outlet property="pwVerifyLabel" destination="RK6-TK-8Zw" id="4ZM-Ks-fAK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zT4-7T-C6H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -655,7 +678,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRi-8Q-Mof">
-                                <rect key="frame" x="21" y="258.5" width="372" height="249"/>
+                                <rect key="frame" x="21" y="258.66666666666669" width="372" height="249"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="비밀번호 재설정" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEU-gy-CFj">
                                         <rect key="frame" x="16" y="26" width="340" height="27"/>
@@ -692,7 +715,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가입하신 이메일을 입력해주세요. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jb-Jd-UY8">
-                                        <rect key="frame" x="16" y="59" width="340" height="20.5"/>
+                                        <rect key="frame" x="16" y="59.000000000000007" width="340" height="20.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -759,19 +782,19 @@
         </scene>
     </scenes>
     <resources>
-        <image name="XButton" width="15.5" height="15"/>
-        <image name="appleIdButtonApple" width="326.5" height="46"/>
+        <image name="XButton" width="15.333333015441895" height="15"/>
+        <image name="appleIdButtonApple" width="326.33334350585938" height="46"/>
         <image name="background" width="375" height="812"/>
         <image name="cake" width="82" height="63"/>
         <image name="cancel" width="16" height="16"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>
         <image name="email" width="19" height="12"/>
         <image name="messageIcon" width="19" height="12"/>
-        <image name="messageIdButton" width="326.5" height="46"/>
-        <image name="navBack" width="11" height="19"/>
-        <image name="passwordIcon" width="17" height="19"/>
-        <image name="passwordIcon2" width="17" height="19"/>
-        <image name="pw" width="17" height="19"/>
+        <image name="messageIdButton" width="326.33334350585938" height="46"/>
+        <image name="navBack" width="11" height="19.333333969116211"/>
+        <image name="passwordIcon" width="17" height="18.666666030883789"/>
+        <image name="passwordIcon2" width="17" height="18.666666030883789"/>
+        <image name="pw" width="17" height="18.666666030883789"/>
         <image name="splashBackground" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

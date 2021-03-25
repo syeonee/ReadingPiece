@@ -15,13 +15,12 @@ class MenuCell: PagingMenuViewCell {
     override public var isSelected: Bool {
         didSet {
             if isSelected {
-                //titleLabel.textColor = #colorLiteral(red: 1, green: 0.4199270606, blue: 0.3739868402, alpha: 1)
                 titleLabel.textColor = .melon
                 titleLabel.font = .NotoSans(.bold, size: 16)
             } else {
                 titleLabel.textColor = .darkgrey
                 titleLabel.font = .NotoSans(.regular, size: 16)
-                underlineView.backgroundColor = .darkgrey
+                underlineView.backgroundColor = #colorLiteral(red: 0.7097821832, green: 0.7097831368, blue: 0.7140277028, alpha: 1)
             }
         }
     }

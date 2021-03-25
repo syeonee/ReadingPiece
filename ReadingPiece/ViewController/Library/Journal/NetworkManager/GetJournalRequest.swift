@@ -24,7 +24,7 @@ final class GetJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "/journals"
+        return "journals"
     }
     
     var method: Network.Method {

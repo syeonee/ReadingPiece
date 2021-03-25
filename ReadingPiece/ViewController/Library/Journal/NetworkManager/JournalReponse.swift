@@ -7,7 +7,7 @@
 
 import Foundation
 
-// 일지 GET, PATCH, DELETE Response
+// 일지 GET, PATCH, Response
 
 struct GetJournalResponse: Codable {
     let isSuccess: Bool
@@ -16,7 +16,6 @@ struct GetJournalResponse: Codable {
     let result: [GetJournalResponseResult]?
 }
 
-// MARK: - Result
 struct GetJournalResponseResult: Codable {
     let title, text, postAt: String
         let percent, time, page, bookID: Int
@@ -27,4 +26,12 @@ struct GetJournalResponseResult: Codable {
             case bookID = "bookId"
             case journalID = "journalId"
         }
+}
+
+// 일지 DELETE Response
+
+struct DeleteJournalResponse: Codable {
+    let isSuccess: Bool
+    let code: Int
+    let message: String
 }

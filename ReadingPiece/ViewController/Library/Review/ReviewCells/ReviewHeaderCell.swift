@@ -27,13 +27,20 @@ class ReviewHeaderCell: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setupAlignTap()
         dropDown.anchorView = alignStackView
         dropDown.bottomOffset = CGPoint(x: 0, y: alignStackView.bounds.height)
         dropDown.backgroundColor = .white
         dropDown.cornerRadius = 5
     }
     
-    @IBAction func alignButtonTapped(_ sender: Any) {
+    func setupAlignTap() {
+        let alignTap = UITapGestureRecognizer(target: self, action: #selector(self.alignViewTapped(_:)))
+        self.alignStackView.isUserInteractionEnabled = true
+        self.alignStackView.addGestureRecognizer(alignTap)
+    }
+    
+    @objc func alignViewTapped(_ sender: UITapGestureRecognizer) {
         dropDown.show()
         dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
             self.alignStatusLabel.text = "\(item)"

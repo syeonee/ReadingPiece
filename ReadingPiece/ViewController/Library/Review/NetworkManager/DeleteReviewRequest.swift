@@ -10,7 +10,7 @@ import Foundation
 // 리뷰 삭제 API
 
 final class DeleteReviewRequest: Requestable {
-    typealias ResponseType = GetJournalResponse
+    typealias ResponseType = GetReviewResponse
     
     private var token: String
     private var reviewID: Int
