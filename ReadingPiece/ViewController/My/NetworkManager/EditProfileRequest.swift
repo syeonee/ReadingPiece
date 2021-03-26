@@ -49,7 +49,7 @@ final class EditProfileRequest: Requestable {
     var headers: [String : String]? {
         return ["Content-Type": "application/json", "x-access-token": self.token]
     }
-    
+                      
     var timeout: TimeInterval {
         return 5.0
     }

@@ -38,7 +38,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J6q-or-I0x">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="164"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedMY" translatesAutoresizingMaskIntoConstraints="NO" id="3cI-8m-RKh">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="3cI-8m-RKh">
                                         <rect key="frame" x="21" y="60" width="58" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="1yJ-H4-VVb"/>
@@ -46,7 +46,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmC-6f-6lX">
-                                        <rect key="frame" x="98" y="65" width="70" height="30"/>
+                                        <rect key="frame" x="98" y="65" width="270" height="30"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                             <color key="titleColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ox9-WS-1Hp" kind="show" id="1rB-xV-BTo"/>
+                                            <segue destination="ox9-WS-1Hp" kind="show" identifier="presentEditNav" id="1rB-xV-BTo"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한 줄 다짐을 설정해주세요." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A2P-9Y-8nA">
@@ -90,6 +90,7 @@
                                     <constraint firstItem="mYU-xb-0d7" firstAttribute="centerY" secondItem="pB9-vj-l6N" secondAttribute="centerY" id="7bP-tg-kml"/>
                                     <constraint firstItem="A2P-9Y-8nA" firstAttribute="top" secondItem="UmC-6f-6lX" secondAttribute="bottom" constant="3" id="7fl-s9-Rei"/>
                                     <constraint firstItem="A2P-9Y-8nA" firstAttribute="leading" secondItem="UmC-6f-6lX" secondAttribute="leading" id="KpY-P7-7hU"/>
+                                    <constraint firstItem="pB9-vj-l6N" firstAttribute="leading" secondItem="UmC-6f-6lX" secondAttribute="trailing" constant="5" id="Kr4-sX-oVN"/>
                                     <constraint firstItem="3cI-8m-RKh" firstAttribute="leading" secondItem="J6q-or-I0x" secondAttribute="leading" constant="21" id="RAE-IR-Ldb"/>
                                     <constraint firstItem="3cI-8m-RKh" firstAttribute="top" secondItem="J6q-or-I0x" secondAttribute="top" constant="60" id="mOf-9X-eUn"/>
                                     <constraint firstAttribute="height" constant="164" id="nc6-SP-tpG"/>
@@ -703,7 +704,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="기존 비밀번호" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMl-8O-uEF">
-                                <rect key="frame" x="60" y="132" width="288" height="21"/>
+                                <rect key="frame" x="60" y="131" width="288" height="22.5"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -731,7 +732,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="새 비밀번호 (8자 이상)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qT4-a3-wGs">
-                                <rect key="frame" x="60" y="189" width="288" height="21"/>
+                                <rect key="frame" x="60" y="188" width="288" height="22.5"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -759,7 +760,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="새 비밀번호 재입력" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xge-Vz-l3c">
-                                <rect key="frame" x="60" y="249" width="288" height="21"/>
+                                <rect key="frame" x="60" y="248" width="288" height="22.5"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
