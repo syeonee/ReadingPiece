@@ -79,11 +79,11 @@ class TermViewController: UIViewController {
     func setReadingTermByBtnClicked(tag: Int) {
         switch tag {
         case 1:
-            period = "W"
+            period = "D"
         case 2:
             period = "M"
         case 3:
-            period = "D"
+            period = "Y"
         default:
             period = nil
         }

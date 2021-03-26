@@ -17,6 +17,7 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
+    @IBOutlet weak var totalReviewLabel: UILabel!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
@@ -56,10 +57,7 @@ class BookDetailViewController: UIViewController {
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
         if initNumber == 0 {
-//            postBook(isbn: self.book?.isbn ?? "")
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabController") as! UITabBarController
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true, completion: nil)
+            postChallengeBook(isbn: self.book?.isbn ?? "")
         } else if initNumber == 1 {
             let reviewVC = CreateReviewViewController()
             reviewVC.book = self.book
@@ -107,6 +105,7 @@ class BookDetailViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
+                        print("LOG - 챌린지할 책 추가 완료")
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabController") as! UITabBarController
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)

@@ -67,10 +67,17 @@ class TimeViewController: UIViewController {
                 
                 switch result {
                 case .success(let userResponse):
-                    print("LOG - 목표설정 완료", self.amount, self.period, self.time, userResponse.message, userResponse.goalId)
-                    guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
-                    self.usderDefaults.set(userResponse.goalId, forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
-                    self.navigationController?.pushViewController(searchVC, animated: true)
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 목표설정 완료", self.amount, self.period, self.time, userResponse.message, userResponse.goalId)
+                        guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+                        self.usderDefaults.set(userResponse.goalId, forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
+                        self.navigationController?.pushViewController(searchVC, animated: true)
+                    case 2122:
+                        self.presentAlert(title: "이미 목표가 설정되어 있어요!", isCancelActionIncluded: false)
+                    default:
+                        self.presentAlert(title: "목표 입력값을 다시 확인해주세요.", isCancelActionIncluded: false)
+                    }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):

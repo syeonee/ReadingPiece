@@ -25,7 +25,7 @@ final class GetBookReviewRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     

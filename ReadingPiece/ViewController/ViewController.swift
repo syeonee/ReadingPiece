@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-//            self.getChallengeData()
+            self.getChallengeData()
         }
     }
 
@@ -37,6 +37,10 @@ class ViewController: UIViewController {
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
         let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
         self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+    }
+    
+    func postUserReadingGoal() {
+
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
@@ -72,17 +76,31 @@ class ViewController: UIViewController {
         radingBooksCollectionView.collectionViewLayout = flowLayout
     }
     
+    // 챌린지 현황 조회 결과, 목표가 있으면 [수정], 없으면 [추가로 버튼 UI 변경
     // 챌린지 진행 중, 챌린지 조기 달성, 챌린지 기간 만료에 따른 화면 처리 진행
     func getChallengeData() {
-        // 챌린지 진해 중인 경우(일반 상황)
-        
+        let req = GetChallengeRequest()
+                                
+        _ = Network.request(req: req) { (result) in
+                
+                switch result {
+                case .success(let userResponse):
+                    debugPrint("LOG",userResponse)
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
+            }
+        }
+
         
         // 챌린지 기간내에 목표를 조기 달성한 경우
         
         // 챌린지 기간이 만료된 경우
-        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
-        bookSettingVC.modalTransitionStyle = .crossDissolve
-        self.present(bookSettingVC, animated: true, completion: nil)
+//        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
+//        bookSettingVC.modalTransitionStyle = .crossDissolve
+//        self.present(bookSettingVC, animated: true, completion: nil)
     }
 }
 

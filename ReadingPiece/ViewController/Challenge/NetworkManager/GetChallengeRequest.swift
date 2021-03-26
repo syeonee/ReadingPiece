@@ -19,7 +19,7 @@ final class GetChallengeRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {

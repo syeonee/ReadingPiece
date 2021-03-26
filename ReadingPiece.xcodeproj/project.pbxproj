@@ -48,7 +48,7 @@
 		00FF374F2609157300529570 /* PostChallengeBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF374E2609157300529570 /* PostChallengeBookRequest.swift */; };
 		00FF3752260915BF00529570 /* BookResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3751260915BF00529570 /* BookResponse.swift */; };
 		00FF3758260A292000529570 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3757260A292000529570 /* Challenge.swift */; };
-		00FF375B260A292E00529570 /* ChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF375A260A292E00529570 /* ChallengeRequest.swift */; };
+		00FF375B260A292E00529570 /* GetChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF375A260A292E00529570 /* GetChallengeRequest.swift */; };
 		00FF375E260A293B00529570 /* ChallengeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF375D260A293B00529570 /* ChallengeResponse.swift */; };
 		00FF3762260A2FBF00529570 /* PatchReadingGoalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */; };
 		00FF3767260A30DA00529570 /* GetTodayChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */; };
@@ -206,7 +206,7 @@
 		00FF374E2609157300529570 /* PostChallengeBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostChallengeBookRequest.swift; sourceTree = "<group>"; };
 		00FF3751260915BF00529570 /* BookResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResponse.swift; sourceTree = "<group>"; };
 		00FF3757260A292000529570 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
-		00FF375A260A292E00529570 /* ChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeRequest.swift; sourceTree = "<group>"; };
+		00FF375A260A292E00529570 /* GetChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChallengeRequest.swift; sourceTree = "<group>"; };
 		00FF375D260A293B00529570 /* ChallengeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeResponse.swift; sourceTree = "<group>"; };
 		00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReadingGoalRequest.swift; sourceTree = "<group>"; };
 		00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayChallengeRequest.swift; sourceTree = "<group>"; };
@@ -489,7 +489,7 @@
 		00FF3756260A286800529570 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
-				00FF375A260A292E00529570 /* ChallengeRequest.swift */,
+				00FF375A260A292E00529570 /* GetChallengeRequest.swift */,
 				00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */,
 				00FF376A260A3DD200529570 /* GetBookReadingTimeRequest.swift */,
 				00FF375D260A293B00529570 /* ChallengeResponse.swift */,
@@ -1111,7 +1111,7 @@
 				0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */,
 				00D8632F25FF867F00E9EFF9 /* Constants.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
-				00FF375B260A292E00529570 /* ChallengeRequest.swift in Sources */,
+				00FF375B260A292E00529570 /* GetChallengeRequest.swift in Sources */,
 				00FF375E260A293B00529570 /* ChallengeResponse.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				00FF376B260A3DD200529570 /* GetBookReadingTimeRequest.swift in Sources */,

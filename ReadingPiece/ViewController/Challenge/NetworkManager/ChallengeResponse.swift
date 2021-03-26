@@ -4,9 +4,10 @@ public struct ChallengeResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let getchallenge1Rows: [Challenge]?
-    public let getchallenge2Rows: [ReadingGoal]?
-    public let getchallenge3Rows: TodayGoal?
+    public let getchallenge1Rows: [ReadingBook]? // 읽고있는 책 정보
+    public let getchallenge2Rows: [ReadingGoal]? // 읽고있는 책별 읽기 현황
+    public let getchallenge3Rows: [Challenge]? // 전체 챌린지 진행상황
+    public let isExpired: Bool? // 챌린지 만료 여부 
 }
 
 public struct TodayReadingResponse: Codable {
