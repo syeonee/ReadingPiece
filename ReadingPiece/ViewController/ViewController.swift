@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            self.getChallengeData()
+//            self.getChallengeData()
         }
     }
 

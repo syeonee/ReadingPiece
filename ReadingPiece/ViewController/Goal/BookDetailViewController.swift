@@ -10,6 +10,7 @@ import UIKit
 class BookDetailViewController: UIViewController {
     
     var initializer: Int?
+    var userReview: [UserBookReview] = []
 
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,6 +28,7 @@ class BookDetailViewController: UIViewController {
     
     var initHeight : NSLayoutConstraint?
     var book : Book?
+    var bookId: Int?
     let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
@@ -39,6 +41,10 @@ class BookDetailViewController: UIViewController {
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")
         reviewTableView.rowHeight = 189.5
         reviewTableView.estimatedRowHeight = 189.5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +67,7 @@ class BookDetailViewController: UIViewController {
         } else if initNumber == 1 {
             let reviewVC = CreateReviewViewController()
             reviewVC.book = self.book
+            reviewVC.bookId = self.bookId
             self.navigationController?.pushViewController(reviewVC, animated: true)
         }
         
@@ -75,11 +82,16 @@ class BookDetailViewController: UIViewController {
             _ = Network.request(req: addBookReq) { (result) in
                     switch result {
                     case .success(let userResponse):
+                        let isbn = bookData.publishNumber
+                        let bookId = String(userResponse.bookId)
+                        self.bookId = userResponse.bookId
                         switch userResponse.code {
                         case 1000:
                             print("LOG 책 정보 DB추가 완료", bookData)
+                            self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
-                            print("LOG 책 정보 DB추가 실패 - \(userResponse.code)")
+                            print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
+                            self.getUserRewview(isbn: isbn, bookId: bookId)
                         }
                     case .cancel(let cancelError):
                         print(cancelError!)
@@ -92,6 +104,38 @@ class BookDetailViewController: UIViewController {
             self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
             navigationController?.popViewController(animated: true)
         }
+    }
+    
+    // 불러온 유저 리뷰 정보를 바탕으로 하단 테이블뷰 리로드
+    func getUserRewview(isbn: String, bookId: String) {
+        let getReviewReq = GetUserBookReviewRequest(isbn: isbn, bookId: bookId)
+        _ = Network.request(req: getReviewReq) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 리뷰 정보 조회 완료", userResponse)
+                        if let userReview = userResponse.userBookReview, let totalReader = userResponse.totalReadingUser?.first?.currentRead {
+                            self.setTableViewDataSource(review: userReview, totalReader: totalReader)
+
+                        }
+                    default:
+                        print("LOG 리뷰 정보 조회 실패 \(userResponse.code)")
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "리뷰 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                    self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    func setTableViewDataSource(review: [UserBookReview], totalReader: Int) {
+        self.userReview = review
+        self.reviewTableView.reloadData()
+        self.totalReviewLabel.text = "\(totalReader)"
     }
     
     // 사용자가 챌린지 목표로 설정한 책 등록
@@ -155,6 +199,10 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        if let review = userReview.first {
+            // 리뷰데이터를 받아서, cell에 적용하는 함수
+            cell.configure(reviewData: review)
+        }
         cell.reviewCellDelegate = self
         
         if isExpanded {// 더보기 버튼을 누른 셀인 경우

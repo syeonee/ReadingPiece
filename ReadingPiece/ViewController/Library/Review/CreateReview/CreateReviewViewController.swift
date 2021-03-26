@@ -14,6 +14,7 @@ class CreateReviewViewController: UIViewController {
     let writingCell = ReviewWritingCell()
     
     var book : Book?
+    var bookId: Int?
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIButton!

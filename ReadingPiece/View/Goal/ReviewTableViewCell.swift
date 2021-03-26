@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReviewTableViewCell: UITableViewCell {
 
@@ -16,6 +17,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var star3ImageView: UIImageView!
     @IBOutlet weak var star4ImageView: UIImageView!
     @IBOutlet weak var star5ImageView: UIImageView!
+    @IBOutlet weak var isCompletedImage: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -41,6 +43,29 @@ class ReviewTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func setupUI() {
+        likeButton.isHidden = true
+        commentButton.isHidden = true
+        isCompletedImage.isHidden = true
+    }
+    
+    func configure(reviewData: UserBookReview) {
+        let stars = [star1ImageView, star2ImageView, star3ImageView, star4ImageView, star5ImageView]
+
+        nameLabel.text = reviewData.name
+        dateLabel.text = reviewData.postAt
+        reviewLabel.text = reviewData.contents
+        let imgUrl = URL(string: reviewData.imageURL!)
+        bookImageView.kf.setImage(with: imgUrl)
+        
+//        // 리뷰 별점에 따른 별 이미지 적용
+//        var looper = reviewData.star!
+//        while looper < stars.count {
+//            stars[looper]?.image = UIImage(named: "selectedStar")
+//            looper += 1
+//        }
     }
     
     @IBAction func textExpandButtonTapped(_ sender: Any) {

@@ -13,6 +13,7 @@ public struct PatchReadingGoalResponse: Codable {
     public let message: String?
 }
 
+// 카카오 API + 일반 책추가용 Response
 public struct BookReviewResponse: Codable {
     public let isSuccess: Bool
     public let code: Int

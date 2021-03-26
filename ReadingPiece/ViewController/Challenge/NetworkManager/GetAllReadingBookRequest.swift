@@ -1,23 +1,17 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1168939781
-// 각 책에대한 상세 정보, 리뷰 조회 API
-final class GetBookReviewRequest: Requestable {
-    typealias ResponseType = BookReviewResponse
-    private var isbn: String
-    private var goalBookId: String
-    
-    init(isbn: String, goalBookId: String) {
-        self.isbn = isbn
-        self.goalBookId = goalBookId
-    }
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=1091617957
+// 유저가 읽고 있는 모든 책 현황 조회 API
+
+final class GetAllReadingBookRequest: Requestable {
+    typealias ResponseType = ChallengeResponse
     
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
     
     var endpoint: String {
-        return "book/\(self.goalBookId)"
+        return "challenge/goal/book"
     }
     
     var method: Network.Method {
@@ -28,9 +22,8 @@ final class GetBookReviewRequest: Requestable {
         return .path
     }
     
-    
     var parameters: [String : Any]? {
-        return ["publishNumber": self.isbn]
+        return defaultJSONHeader
     }
     
     var headers: [String : String]? {

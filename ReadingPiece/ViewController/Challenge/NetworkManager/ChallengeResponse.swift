@@ -31,3 +31,24 @@ public struct ReadingBookTime: Codable {
     public let title: String
     public let sumtime: String // 오늘 책 읽은 시간 합계
 }
+
+public struct AllReadingBookResponse: Codable {
+    public let isSuccess: Bool
+    public let code: Int
+    public let message: String
+    public let getbookListRows: [AllReadingBook]?
+}
+
+public struct AllReadingBook: Codable {
+    public let title : String // 제목
+    public let imageURL: String // 책 썸네일
+    public let writer: String // 저자
+    public let goalBookId: Int
+    public let reading: String // 현재 도전중 여부
+}
+
+public struct DeleteChallengeBook: Codable {
+    public let isSuccess: Bool
+    public let code: Int
+    public let message: String
+}

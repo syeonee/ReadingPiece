@@ -20,6 +20,10 @@ class BookSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(3000)) {
+            self.deleteBook()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,6 +34,53 @@ class BookSettingViewController: UIViewController {
     func setupUI() {
         setNavBar()
         setTableView()
+    }
+    
+    func deleteBook() {
+        let deleteReq = DeleteChallengeBookRequest(goalbookId: 29)
+        _ = Network.request(req: deleteReq) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 읽고 있는 책 삭제 완료")
+                        self.getAllBooks()
+                    default:
+                        self.presentAlert(title: "책 삭제 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        print("LOG - 책 삭제 실패 \(userResponse.message)")
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "읽고 있는 책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                    self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    func getAllBooks() {
+        let req = GetAllReadingBookRequest()
+        _ = Network.request(req: req) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 읽고 있는 책 정보 조회 완료", userResponse)
+                    case 2221:
+                        self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+                    default:
+                        self.presentAlert(title: "책 정보 조회 실패 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        print("LOG 읽고 있는 책 정보 조회 실패 \(userResponse.message)")
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "읽고 있는 책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                    self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func setTableView() {
