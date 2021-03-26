@@ -7,8 +7,8 @@ public struct BookResponse: Codable {
 }
 
 
-public struct BookResponse: Codable {
-    public let isSuccess: Bool?
-    public let code: Int?
-    public let message: String?
-}
+//public struct BookResponse: Codable {
+//    public let isSuccess: Bool?
+//    public let code: Int?
+//    public let message: String?
+//}
