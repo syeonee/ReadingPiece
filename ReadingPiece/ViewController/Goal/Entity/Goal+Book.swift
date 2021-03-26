@@ -25,5 +25,22 @@ struct GeneralBook {
     var publisher: String // 출판사
 }
 
+//struct BookReview: Codable {
+//    var title: String
+//    var imageURL: String
+//    var writer: String
+//    var publisher: String
+//    var publishDate: String
+//    var contents: String
+//    var reviewSum: Int
+//    var userId: Int
+//    var name: String
+//    var profilePictureURL: String
+//    var postAt: String
+//    var star: Int
+//    var reviewId: Int
+//    var text: String
+//    var status: String
+//}
 
 

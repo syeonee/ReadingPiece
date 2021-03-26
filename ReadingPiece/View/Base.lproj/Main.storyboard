@@ -167,7 +167,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표  30분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTO-V9-1OQ">
-                                                        <rect key="frame" x="248.5" y="18.5" width="56.5" height="26"/>
+                                                        <rect key="frame" x="248.5" y="8.5" width="56.5" height="46"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                                         <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -251,7 +251,7 @@
                                                     <constraint firstItem="bq6-JX-M7i" firstAttribute="centerY" secondItem="g0K-iI-aRM" secondAttribute="centerY" id="RT0-69-cu2"/>
                                                     <constraint firstItem="g0K-iI-aRM" firstAttribute="leading" secondItem="QTG-j3-4a3" secondAttribute="leading" constant="24.5" id="VQr-2k-Fre"/>
                                                     <constraint firstItem="73k-s0-M86" firstAttribute="leading" secondItem="ISI-E6-NF9" secondAttribute="leading" id="aCy-YH-Xgu"/>
-                                                    <constraint firstItem="m76-UD-ZCa" firstAttribute="top" secondItem="YTO-V9-1OQ" secondAttribute="bottom" constant="28" id="cKw-kO-4eZ"/>
+                                                    <constraint firstItem="m76-UD-ZCa" firstAttribute="top" secondItem="YTO-V9-1OQ" secondAttribute="bottom" constant="18" id="cKw-kO-4eZ"/>
                                                     <constraint firstItem="bq6-JX-M7i" firstAttribute="leading" secondItem="YTO-V9-1OQ" secondAttribute="trailing" constant="5" id="d8N-I7-GsG"/>
                                                     <constraint firstItem="m76-UD-ZCa" firstAttribute="leading" secondItem="3aE-Vk-MWc" secondAttribute="trailing" constant="21.5" id="dzl-Uv-S6N"/>
                                                     <constraint firstItem="obc-FS-LUZ" firstAttribute="width" secondItem="QTG-j3-4a3" secondAttribute="width" multiplier="0.880597" id="fqs-ic-vUa"/>
