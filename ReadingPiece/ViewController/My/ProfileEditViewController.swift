@@ -149,7 +149,8 @@ class ProfileEditViewController: UIViewController {
             self.openCamera()
         }
         let deleteImage =  UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            
+            self.pickedImage = nil
+            self.profileImageView.image = UIImage(named: "defaultProfile")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(camera)

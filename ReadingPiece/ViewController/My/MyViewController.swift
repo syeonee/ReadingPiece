@@ -3,7 +3,7 @@
 //  ReadingPiece
 //
 //  Created by SYEON on 2021/02/24.
-//
+//  [] 설정해놨던 프로필 이미지 받아오기
 
 import UIKit
 import PagingKit

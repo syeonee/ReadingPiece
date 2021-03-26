@@ -9,6 +9,8 @@ import UIKit
 
 class PasswordChangeViewController: UIViewController {
     
+    @IBOutlet weak var editCancelButton: UIBarButtonItem!
+    @IBOutlet weak var editCompleteButton: UIBarButtonItem!
     
     @IBOutlet weak var originPasswordTextField: UITextField!
     @IBOutlet weak var originPasswordRemoveButton: UIButton!
@@ -24,7 +26,13 @@ class PasswordChangeViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    @IBAction func editCancelButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
-
+    @IBAction func editCompleteButtonTapped(_ sender: Any) {
+        
+    }
+    
 
 }

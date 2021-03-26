@@ -138,6 +138,7 @@
 		D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D2D25E2B5DB00D73A61 /* Main.storyboard */; };
 		D6288D3125E2B5DD00D73A61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3025E2B5DD00D73A61 /* Assets.xcassets */; };
 		D6288D3425E2B5DD00D73A61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6288D3225E2B5DD00D73A61 /* LaunchScreen.storyboard */; };
+		D636A8F7260D10D400ED31D9 /* PieceEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D636A8F6260D10D400ED31D9 /* PieceEmptyView.xib */; };
 		D642423726090A1800E732D4 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642423626090A1800E732D4 /* SettingViewController.swift */; };
 		D642423E26091D9F00E732D4 /* AccountInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D642423D26091D9F00E732D4 /* AccountInfoViewController.swift */; };
 		D649DDAB25E67A9E00C6CD5B /* Goal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D649DDAA25E67A9E00C6CD5B /* Goal.storyboard */; };
@@ -318,6 +319,7 @@
 		D6288D3025E2B5DD00D73A61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6288D3325E2B5DD00D73A61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D6288D3525E2B5DD00D73A61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D636A8F6260D10D400ED31D9 /* PieceEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieceEmptyView.xib; sourceTree = "<group>"; };
 		D642423626090A1800E732D4 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D6424239260916E000E732D4 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
 		D642423A260916F200E732D4 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
@@ -928,6 +930,7 @@
 				D67C657B25E5717300F15290 /* My.storyboard */,
 				D6A7D3DE260606650098EA03 /* MyMenuCell.xib */,
 				D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */,
+				D636A8F6260D10D400ED31D9 /* PieceEmptyView.xib */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -1042,6 +1045,7 @@
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
 				007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */,
+				D636A8F7260D10D400ED31D9 /* PieceEmptyView.xib in Resources */,
 				009250062602587100A930DD /* RedFirecracker.sks in Resources */,
 				00FF37A6260C688B00529570 /* ReadingBookTableViewCell.xib in Resources */,
 				59F4F30025F9C38200E82417 /* ReviewWritingCell.xib in Resources */,

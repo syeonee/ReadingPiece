@@ -68,6 +68,12 @@ class MyPieceViewController: UIViewController {
 
 extension MyPieceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if myPieces.count == 0 {
+            let bundle = Bundle(for: type(of: self))
+            let nib = UINib(nibName: "PieceEmptyView", bundle: bundle)
+                    
+            collectionView.backgroundView = nib.instantiate(withOwner: self, options: nil).first as? UIView
+        }
         return myPieces.count
     }
     
