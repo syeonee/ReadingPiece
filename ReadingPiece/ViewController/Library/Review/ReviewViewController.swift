@@ -27,6 +27,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        getReviewData()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -65,17 +66,19 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let length = 110
-        let review = Review.dummyData[indexPath.row]
-        if Review.dummyData[indexPath.row].reviewText.utf8.count <= length {
+        let review = reviewList[indexPath.row]
+        if reviewList[indexPath.row].text.utf8.count <= length {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            cell.reviewTextLabel.text = review.reviewText
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            let rating = Double(review.star)
+            cell.ratingLabel.text = String(rating)
+            cell.reviewTextLabel.text = review.text
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
             cell.likeDelegate = self
@@ -85,15 +88,15 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else if more[indexPath.row] == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            //cell.reviewTextLabel.text = String(review.reviewText.prefix(52))
-            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.reviewText, newEllipsis: "..더보기", maxLines: 2)
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            cell.ratingLabel.text = String(review.star)
+            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -104,14 +107,15 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            cell.reviewTextLabel.text = review.reviewText
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            cell.ratingLabel.text = String(review.star)
+            cell.reviewTextLabel.text = review.text
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
             cell.likeDelegate = self
@@ -124,18 +128,18 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if Review.dummyData.count == 0 {
+        if reviewList.count == 0 {
             return nil
         } else {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerView.identifier) as! ReviewHeaderCell
-            cell.count.text = String(Review.dummyData.count)
+            cell.count.text = String(reviewList.count)
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if Review.dummyData.count == 0 {
+        if reviewList.count == 0 {
             return 0
         } else {
             return 45
@@ -194,7 +198,7 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Review.dummyData.remove(at: indexPath[1])
+            self.reviewList.remove(at: indexPath[1])
             self.more.remove(at: indexPath[1])
             self.tableView.deleteRows(at: [IndexPath(row: indexPath[1], section: 0)], with: .left)
             self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
@@ -287,20 +291,22 @@ extension ReviewViewController {
     
     // 리뷰 조회
     private func getReviewData() {
-        self.spinner.startAnimating()
+        //self.spinner.startAnimating()
+        self.showWhiteIndicator()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
-                self.spinner.stopAnimating()
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
                 guard let result = response.results else { return }
                 self.reviewList = result
-                //self.didRetrieveData()
+                self.didRetrieveData()
             case .cancel(let cancel):
-                self.spinner.stopAnimating()
+                self.dismissIndicator()
                 print(cancel as Any)
             case .failure(let error):
-                self.spinner.stopAnimating()
+                self.dismissIndicator()
                 print(error as Any)
             }
         }
