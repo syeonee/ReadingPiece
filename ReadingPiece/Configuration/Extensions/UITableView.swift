@@ -42,8 +42,13 @@ extension UITableView {
         messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 60).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -60).isActive = true
-        //button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 65).isActive = true
-        button.bottomAnchor.constraint(equalTo: emptyView.bottomAnchor, constant: 314).isActive = true
+        
+        if buttonType == "review" {
+            button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 65).isActive = true
+        } else {
+            button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 40).isActive = true
+        }
+        
         button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
         button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -71,5 +76,16 @@ extension UITableView {
         self.backgroundView = nil
         self.separatorStyle = .none
     }
+    
+    // MARK: 흰배경 인디케이터 표시
+    func showWhiteIndicator() {
+        IndicatorView.shared.show()
+        IndicatorView.shared.showWhiteIndicator()
+    }
+    // MARK: 인디케이터 숨김
+    func dismissIndicator() {
+        IndicatorView.shared.dismiss()
+    }
+
     
 }

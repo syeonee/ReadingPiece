@@ -27,7 +27,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadReviewData()
+        //loadReviewData()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -40,6 +40,10 @@ class ReviewViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadReviewData()
     }
     
     func didRetrieveData() {
@@ -237,12 +241,12 @@ extension ReviewViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData() {
-        self.showWhiteIndicator()
+        tableView.showWhiteIndicator()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
-                self.dismissIndicator()
+                self.tableView.dismissIndicator()
                 if response.code == 1000 {
                     guard let result = response.results else { return }
                     self.reviewList = result
@@ -255,10 +259,10 @@ extension ReviewViewController {
                 }
                 
             case .cancel(let cancel):
-                self.dismissIndicator()
+                self.tableView.dismissIndicator()
                 print(cancel as Any)
             case .failure(let error):
-                self.dismissIndicator()
+                self.tableView.dismissIndicator()
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)
             }
@@ -293,11 +297,6 @@ extension ReviewViewController {
                 print(error as Any)
             }
         }
-    }
-    
-    // 리뷰 생성
-    private func postReview() {
-        
     }
     
     // 리뷰 수정
