@@ -10,7 +10,7 @@ import Foundation
 // 평가 리뷰 별점, 내용, 공개여부 수정 API
 
 final class PatchReviewRequest: Requestable {
-    typealias ResponseType = GetJournalResponse
+    typealias ResponseType = GetReviewResponse
     
     private var token: String
     private var reviewID: Int

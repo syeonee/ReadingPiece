@@ -16,14 +16,18 @@ class ReviewViewController: UIViewController {
     let fullReviewCell = FullReviewCell()
     let headerView = ReviewHeaderCell()
     
+    // 리뷰 리스트
+    var reviewList = [GetReviewResult]()
+    
     // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
     var more: [Int] = []
     
-    // 기본 데이터 리스트는 최신순으로 자동으로 추가되어 있어야 함
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        getReviewData()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -36,37 +40,45 @@ class ReviewViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
         
-        // 더보기 값 배열 초기화
-        self.more = Array<Int>(repeating: 0, count: Review.dummyData.count)
+        
+    }
+    
+    func didRetrieveData() {
+        self.more = Array<Int>(repeating: 0, count: reviewList.count)  // 더보기 값 배열 초기화
+        tableView.reloadData()
     }
 
 }
 
 extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = Review.dummyData.count
+        let count = reviewList.count
         if count == 0 {
             let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
             tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") {
                 self.buttonAction()
             }
+        } else {
+            tableView.restoreWithLine()
         }
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let length = Review.dummyData[0].reviewText.utf8.count
-        let review = Review.dummyData[indexPath.row]
-        if Review.dummyData[indexPath.row].reviewText.utf8.count <= length {
+        let length = 110
+        let review = reviewList[indexPath.row]
+        if reviewList[indexPath.row].text.utf8.count <= length {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            cell.reviewTextLabel.text = review.reviewText
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            let rating = Double(review.star)
+            cell.ratingLabel.text = String(rating)
+            cell.reviewTextLabel.text = review.text
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
             cell.likeDelegate = self
@@ -76,15 +88,15 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else if more[indexPath.row] == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            //cell.reviewTextLabel.text = String(review.reviewText.prefix(52))
-            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.reviewText, newEllipsis: "..더보기", maxLines: 2)
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            cell.ratingLabel.text = String(review.star)
+            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -95,14 +107,15 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
-            cell.bookImageView.image = review.thumbnailImage
-            cell.bookTitleLabel.text = review.bookTitle
-            cell.authorLabel.text = review.author
-            cell.ratingLabel.text = review.rating
-            cell.reviewTextLabel.text = review.reviewText
-            cell.likeCount.text = String(review.liked)
-            cell.likeState = review.like
-            cell.commentCount.text = String(review.comments)
+            let url = URL(string: review.imageURL)
+            cell.bookImageView.kf.setImage(with: url)
+            cell.bookTitleLabel.text = review.title
+            cell.authorLabel.text = review.writer
+            cell.ratingLabel.text = String(review.star)
+            cell.reviewTextLabel.text = review.text
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
             cell.likeDelegate = self
@@ -115,18 +128,18 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if Review.dummyData.count == 0 {
+        if reviewList.count == 0 {
             return nil
         } else {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerView.identifier) as! ReviewHeaderCell
-            cell.count.text = String(Review.dummyData.count)
+            cell.count.text = String(reviewList.count)
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
         }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if Review.dummyData.count == 0 {
+        if reviewList.count == 0 {
             return 0
         } else {
             return 45
@@ -185,7 +198,7 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Review.dummyData.remove(at: indexPath[1])
+            self.reviewList.remove(at: indexPath[1])
             self.more.remove(at: indexPath[1])
             self.tableView.deleteRows(at: [IndexPath(row: indexPath[1], section: 0)], with: .left)
             self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
@@ -278,7 +291,25 @@ extension ReviewViewController {
     
     // 리뷰 조회
     private func getReviewData() {
-        
+        //self.spinner.startAnimating()
+        self.showWhiteIndicator()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
+            switch result {
+            case .success(let response):
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+                guard let result = response.results else { return }
+                self.reviewList = result
+                self.didRetrieveData()
+            case .cancel(let cancel):
+                self.dismissIndicator()
+                print(cancel as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+            }
+        }
     }
     
     // 리뷰 수정

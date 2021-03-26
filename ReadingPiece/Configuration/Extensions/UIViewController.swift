@@ -116,6 +116,12 @@ extension UIViewController {
         IndicatorView.shared.showIndicator()
     }
     
+    // MARK: 흰배경 인디케이터 표시
+    func showWhiteIndicator() {
+        IndicatorView.shared.show()
+        IndicatorView.shared.showWhiteIndicator()
+    }
+    
     // MARK: 인디케이터 숨김
     @objc func dismissIndicator() {
         IndicatorView.shared.dismiss()

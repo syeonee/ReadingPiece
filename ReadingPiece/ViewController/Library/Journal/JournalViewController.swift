@@ -29,6 +29,7 @@ class JournalViewController: UIViewController {
     var more: [Int] = []
     
 
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,11 @@ class JournalViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .lightgrey2
         
-        // 더보기 값 배열 초기화
-        self.more = Array<Int>(repeating: 0, count: journalList.count)
+    }
+    
+    func didRetrieveData() {
+        self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
+        self.tableView.reloadData()
     }
 }
 
@@ -59,6 +63,8 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "독서 시작하기") {
                 self.buttonAction()
             }
+        } else {
+            tableView.restoreWithoutLine()
         }
         return count
     }
@@ -151,13 +157,12 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
-            DispatchQueue.global().async {
-                self.deleteJournal(journalID: self.journalList[index].journalID)
-            }
+            self.deleteJournal(journalID: self.journalList[index].journalID)
+            
             self.journalList.remove(at: index)
             self.more.remove(at: index)
             self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -166,19 +171,54 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func didDeleteData() {
+        //self.journalList.remove(at: index)
+        //self.more.remove(at: index)
+        //self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+        self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+    }
 }
 
 // 정렬 기능
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
-        
-        //Journal.dummyData.sort(by: { $0.date < $1.date })
-        //tableView.reloadData()
+        //self.spinner.startAnimating()
+        self.showWhiteIndicator()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: "asc")) { result in
+            switch result {
+            case .success(let response):
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+                guard let result = response.result else { return }
+                self.journalList = result
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .cancel, .failure:
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+            }
+        }
     }
     
     func sortRecentFirst() {
-        //Journal.dummyData.sort(by: { $0.date > $1.date })
-        //tableView.reloadData()
+        self.spinner.startAnimating()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: "desc")) { result in
+            switch result {
+            case .success(let response):
+                self.spinner.stopAnimating()
+                guard let result = response.result else { return }
+                self.journalList = result
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .cancel, .failure:
+                self.spinner.stopAnimating()
+            }
+        }
     }
 }
 
@@ -215,24 +255,17 @@ extension JournalViewController {
 extension JournalViewController {
     // 내가 쓴 일지 조회
     private func getJournalData() {
-        self.showIndicator()
+        self.spinner.startAnimating()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: GetJournalRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
-                debugPrint(response)
-                self.dismissIndicator()
+                self.spinner.stopAnimating()
                 guard let result = response.result else { return }
                 self.journalList = result
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            case .cancel(let cancelError):
-                print(cancelError as Any)
-                self.dismissIndicator()
-            case .failure(let error):
-                print(error?.localizedDescription as Any)
-                self.dismissIndicator()
+                self.didRetrieveData()
+            case .cancel, .failure:
+                self.spinner.stopAnimating()
             }
         }
     }
@@ -244,10 +277,11 @@ extension JournalViewController {
             switch result {
             case .success(let response):
                 print(response)
+                self.didDeleteData()
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
-                print(error?.localizedDescription as Any)
+                print(error as Any)
             }
         }
     }

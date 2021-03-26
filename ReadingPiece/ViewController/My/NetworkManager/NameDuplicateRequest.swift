@@ -1,34 +1,33 @@
 //
-//  DeleteReviewRequest.swift
+//  NameDuplicateRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by SYEON on 2021/03/23.
 //
 
 import Foundation
 
-// 리뷰 삭제 API
-
-final class DeleteReviewRequest: Requestable {
-    typealias ResponseType = GetReviewResponse
+final class NameDuplicateRequest: Requestable {
+    typealias ResponseType = NameDuplicateResponse
     
+    private var name: String
     private var token: String
-    private var reviewID: Int
-    init(token: String, reviewID: Int) {
+    
+    init(token: String, name: String) {
         self.token = token
-        self.reviewID = reviewID
+        self.name = name
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.DEV_BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review/\(reviewID)"
+        return "name"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
@@ -36,7 +35,7 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return nil
+        return ["name": self.name]
     }
     
     var headers: [String : String]? {
@@ -44,14 +43,10 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        // 테스트용
         return 5.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
-
-

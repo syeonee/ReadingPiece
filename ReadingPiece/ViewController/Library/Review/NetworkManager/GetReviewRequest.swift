@@ -1,45 +1,46 @@
 //
-//  DeleteJournalRequest.swift
+//  GetReviewRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by 정지현 on 2021/03/25.
 //
 
 import Foundation
-// 일지 삭제 api 호출 클래스
 
-final class DeleteJournalRequest: Requestable {
-    typealias ResponseType = DeleteJournalResponse
+
+// 내 평가/리뷰 조회 요청
+
+final class GetReviewRequest: Requestable {
+    typealias ResponseType = GetReviewResponse
     
     private var token: String
-    private var journalID: Int
-    init(token: String, journalID: Int) {
+    private var align: String
+    init(token: String, align: String) {
         self.token = token
-        self.journalID = journalID
+        self.align = align
     }
-    
     var baseUrl: URL {
         return  URL(string: "https://dev.maekuswant.shop/")!
     }
     
     var endpoint: String {
-        return "journals"
+        return "my-review"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return ["align": align]
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token, "Content-Type": "application/json"]
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {
@@ -51,3 +52,5 @@ final class DeleteJournalRequest: Requestable {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
+
+

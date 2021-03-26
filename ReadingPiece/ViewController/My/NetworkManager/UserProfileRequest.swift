@@ -1,38 +1,38 @@
 //
-//  DeleteReviewRequest.swift
+//  UserProfileRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by SYEON on 2021/03/23.
 //
 
 import Foundation
 
-// 리뷰 삭제 API
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1844912744
+// 내 프로필 조회 API
 
-final class DeleteReviewRequest: Requestable {
-    typealias ResponseType = GetReviewResponse
+final class UserProfileRequest: Requestable {
+    typealias ResponseType = UserProfileResponse
     
     private var token: String
-    private var reviewID: Int
-    init(token: String, reviewID: Int) {
+    
+    init(token: String) {
         self.token = token
-        self.reviewID = reviewID
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.DEV_BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review/\(reviewID)"
+        return "profile"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     var parameters: [String : Any]? {
@@ -44,14 +44,10 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        // 테스트용
         return 5.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
-
-

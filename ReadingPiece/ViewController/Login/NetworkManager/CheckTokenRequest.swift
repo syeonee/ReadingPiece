@@ -1,21 +1,22 @@
 //
-//  DeleteJournalRequest.swift
+//  CheckTokenRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by 정지현 on 2021/03/25.
 //
 
 import Foundation
-// 일지 삭제 api 호출 클래스
+import Alamofire
 
-final class DeleteJournalRequest: Requestable {
-    typealias ResponseType = DeleteJournalResponse
+// 토큰 유효성 검사
+
+final class CheckTokenRequest: Requestable {
+    typealias ResponseType = CheckTokenResponse
     
     private var token: String
-    private var journalID: Int
-    init(token: String, journalID: Int) {
+    
+    init(token: String) {
         self.token = token
-        self.journalID = journalID
     }
     
     var baseUrl: URL {
@@ -23,23 +24,23 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals"
+        return "check"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token, "Content-Type": "application/json"]
+        return ["x-access-token" : self.token]
     }
     
     var timeout: TimeInterval {
