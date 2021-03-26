@@ -6,15 +6,25 @@
 //
 
 import UIKit
+import Toast_Swift
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
     var books : [Book] = []
+    let toastMessage = """
+                        목록을 밀어서 도전할 책을
+                        변경, 삭제할 수 있어요!
+                       """
     @IBOutlet weak var readingBookTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.makeToast(toastMessage, duration: 2, position: .center, title: nil, image: nil, completion: nil)
     }
     
     func setupUI() {
@@ -45,6 +55,9 @@ class BookSettingViewController: UIViewController {
 }
 
 extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        110
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
@@ -52,9 +65,12 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReadingBookTableViewCell.identifier, for: indexPath) as? ReadingBookTableViewCell
             else { return UITableViewCell() }
-        if indexPath.row == 2 {
-            cell.readingBookStatusView.backgroundColor = .sub2
-        }
+        cell.separatorInset = UIEdgeInsets.zero
+
+        // 읽는 중인 책만 핑크색 인디케이터 색깔 추가
+//        if indexPath.row == 2 {
+//            cell.readingBookStatusView.backgroundColor = .sub2
+//        }
         return cell
     }
     

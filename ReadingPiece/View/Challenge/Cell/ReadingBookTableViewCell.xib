@@ -19,7 +19,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReadingBookTableViewCell" rowHeight="314" id="KGk-i7-Jjw" customClass="ReadingBookTableViewCell" customModule="ReadingPiece" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="377" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="377" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -42,8 +42,8 @@
                             <constraint firstAttribute="height" constant="79" id="ozg-f5-XyV"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-RT-cbW">
-                        <rect key="frame" x="0.0" y="11" width="6" height="89"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-RT-cbW">
+                        <rect key="frame" x="0.0" y="0.0" width="6" height="110"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="uX4-ym-dJd"/>
@@ -67,7 +67,9 @@
                     <constraint firstItem="Qgl-Z2-Te0" firstAttribute="leading" secondItem="OI8-Hr-qDt" secondAttribute="trailing" constant="12" id="Pnj-yT-lcl"/>
                     <constraint firstItem="IyW-Bm-lfF" firstAttribute="top" secondItem="Qgl-Z2-Te0" secondAttribute="bottom" constant="12" id="S5F-Mk-KfN"/>
                     <constraint firstItem="pfT-s0-e8o" firstAttribute="leading" secondItem="Qgl-Z2-Te0" secondAttribute="leading" id="W03-T0-LGb"/>
+                    <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="pfT-s0-e8o" secondAttribute="bottom" constant="17" id="YpO-hM-RDS"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="beH-Qu-jwM"/>
+                    <constraint firstAttribute="bottom" secondItem="OI8-Hr-qDt" secondAttribute="bottom" constant="15" id="gPK-RZ-B1C"/>
                     <constraint firstAttribute="bottom" secondItem="OI8-Hr-qDt" secondAttribute="bottom" constant="15" id="ggk-bj-SEe"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tbI-nE-neI"/>
                     <constraint firstItem="IyW-Bm-lfF" firstAttribute="leading" secondItem="Qgl-Z2-Te0" secondAttribute="leading" id="zET-xk-rlh"/>
