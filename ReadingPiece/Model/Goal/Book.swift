@@ -15,6 +15,7 @@ struct Book: Codable {
     let thumbnailPath: String
     let summary: String
     let isbn : String
+    let datetime: String
 
     enum CodingKeys: String, CodingKey {
         case title
@@ -23,6 +24,7 @@ struct Book: Codable {
         case thumbnailPath = "thumbnail"
         case summary = "contents"
         case isbn
+        case datetime
     }
 }
 
