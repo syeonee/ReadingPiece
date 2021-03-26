@@ -68,8 +68,6 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
             cell.titleLabel.text = book?.title
             cell.authorLabel.text = book?.authors.joined(separator: ",")
             cell.publisherLabel.text = book?.publisher
-            //let year = book?.publicationDate.components(separatedBy: "-")[0]
-            //cell.yearLabel.text = "\(year ?? "")년"
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ratingCell.cellID) as! ReviewRatingCell
