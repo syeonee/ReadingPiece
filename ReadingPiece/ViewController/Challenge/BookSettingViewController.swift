@@ -52,6 +52,9 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReadingBookTableViewCell.identifier, for: indexPath) as? ReadingBookTableViewCell
             else { return UITableViewCell() }
+        if indexPath.row == 2 {
+            cell.readingBookStatusView.backgroundColor = .sub2
+        }
         return cell
     }
     
@@ -70,8 +73,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
 
         }
         
-        modifiyAction.backgroundColor = .blue
-        deleteAction.backgroundColor = .red
+        modifiyAction.backgroundColor = .darkgrey
+        deleteAction.backgroundColor = .fillDisabled
         return [modifiyAction, deleteAction]
     }
 

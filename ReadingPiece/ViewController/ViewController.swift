@@ -16,9 +16,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var radingBooksCollectionView: UICollectionView!
     // 목표 진행 현황(%) 에 따라 width 변경
     @IBOutlet weak var goalStatusBarWidth: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+//            self.getChallengeData()
+        }
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {
@@ -68,12 +76,13 @@ class ViewController: UIViewController {
     func getChallengeData() {
         // 챌린지 진해 중인 경우(일반 상황)
         
+        
         // 챌린지 기간내에 목표를 조기 달성한 경우
         
         // 챌린지 기간이 만료된 경우
         let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
-        self.navigationController?.pushViewController(bookSettingVC, animated: true)
-
+        bookSettingVC.modalTransitionStyle = .crossDissolve
+        self.present(bookSettingVC, animated: true, completion: nil)
     }
 }
 
