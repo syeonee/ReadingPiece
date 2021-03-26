@@ -11,19 +11,8 @@ class FullReviewCell: UITableViewCell {
     
     let cellID = "FullReviewCell"
     var editDelegate: ReviewFullEditDelegate?
-    var likeDelegate: ReviewFullLikeDelegate?
-    var commentsDelegate: ReviewFullCommentsDelegate?
     
     var index: Int?
-    var likeState: Bool = false {
-        didSet {
-            if likeState == true {
-                likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
-            } else {
-                likeButton.setImage(UIImage(named: "like icon"), for: .normal)
-            }
-        }
-    }
 
     @IBOutlet weak var reviewTextLabel: UILabel!
     
@@ -34,10 +23,10 @@ class FullReviewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var isCompletedLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
-    @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet weak var likeCount: UILabel!
-    @IBOutlet weak var commentCount: UILabel!
+    @IBOutlet weak var isPublicLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,7 +36,8 @@ class FullReviewCell: UITableViewCell {
         ratingView.layer.borderWidth = 0.3
         ratingView.layer.borderColor = UIColor.melon.cgColor
         ratingLabel.textColor = .melon
-        
+        isPublicLabel.font = .NotoSans(.regular, size: 12)
+        isPublicLabel.textColor = .grey
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -55,31 +45,9 @@ class FullReviewCell: UITableViewCell {
         editDelegate?.didTapFullEditButton(index: idx)
     }
     
-    @IBAction func likeButtonTapped(_ sender: Any) {
-        guard let idx = index else {return}
-        if likeState == false {
-            self.likeButton.setImage(UIImage(named: "like icon_fill"), for: .normal)
-            likeDelegate?.didTapFullLikeButton(index: idx, like: true)
-            self.likeState = true
-        } else {
-            self.likeButton.setImage(UIImage(named: "like icon"), for: .normal)
-            likeDelegate?.didTapFullLikeButton(index: idx, like: false)
-            self.likeState = false
-        }
-    }
-    @IBAction func commentsButtonTapped(_ sender: Any) {
-        commentsDelegate?.didTapFullCommentButton()
-    }
-    
     
 }
 
 protocol ReviewFullEditDelegate {
     func didTapFullEditButton(index: Int)
-}
-protocol ReviewFullLikeDelegate {
-    func didTapFullLikeButton(index: Int, like: Bool)
-}
-protocol ReviewFullCommentsDelegate {
-    func didTapFullCommentButton()
 }

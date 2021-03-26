@@ -10,7 +10,7 @@ import UIKit
 class ReviewWritingCell: UITableViewCell {
     
     let cellID = "ReviewWritingCell"
-    var isPublic: Bool?
+    var isPublic: Int? // 전체공개가 1, 나만보기가 0
     var delegate: ReviewWritingCellDelegate?
 
     @IBOutlet weak var reviewInputTextView: UITextView!
@@ -41,11 +41,11 @@ class ReviewWritingCell: UITableViewCell {
     
     @IBAction func publicButtonTapped(_ sender: Any) {
         publicButton.makeSmallRoundedButtnon("전체 공개", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
-        if self.isPublic == false {
+        if self.isPublic == 0 {
             privateButton.makeSmallRoundedButtnon("나만 보기", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
-            self.isPublic = true
+            self.isPublic = 1
         } else {
-            self.isPublic = true
+            self.isPublic = 1
         }
         if reviewInputTextView.text.isEmpty == false {
             delegate?.activateDoneButton()
@@ -53,11 +53,11 @@ class ReviewWritingCell: UITableViewCell {
     }
     @IBAction func privateButtonTapped(_ sender: Any) {
         privateButton.makeSmallRoundedButtnon("나만 보기", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
-        if self.isPublic == true {
+        if self.isPublic == 1 {
             publicButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
-            self.isPublic = false
+            self.isPublic = 0
         } else {
-            self.isPublic = true
+            self.isPublic = 0
         }
         if reviewInputTextView.text.isEmpty == false {
             delegate?.activateDoneButton()

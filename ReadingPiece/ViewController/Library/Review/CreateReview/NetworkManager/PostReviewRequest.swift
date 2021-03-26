@@ -10,15 +10,13 @@ import Foundation
 // 리뷰 생성 api 호출
 
 final class PostReviewRequest: Requestable {
-    typealias ResponseType = GetJournalResponse
+    typealias ResponseType = GetReviewResponse
     
-    private var token: String
     private var bookID: Int
     private var star: Int
     private var text: String
     private var isPublic: Int
-    init(token: String, bookID: Int, star: Int, text: String, isPublic: Int) {
-        self.token = token
+    init(bookID: Int, star: Int, text: String, isPublic: Int) {
         self.bookID = bookID
         self.star = star
         self.text = text
@@ -46,12 +44,11 @@ final class PostReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {
-        // 테스트용
-        return 5.0
+        return 10.0
         //return 30.0
     }
     
