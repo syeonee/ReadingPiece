@@ -31,12 +31,12 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        postBookInfo()
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.separatorStyle = .none
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")
         reviewTableView.rowHeight = 189.5
-        
         reviewTableView.estimatedRowHeight = 189.5
     }
     
@@ -68,11 +68,40 @@ class BookDetailViewController: UIViewController {
         
     }
     
-    func postBook(isbn: String) {
+    // DB에 사용자가 조회한 책 정보 등록 : 챌린지 진행할 책이 아니더라도, 무조건 호출해서 책 정보 등록
+    func postBookInfo() {
+        if let bookData = book {
+            let bookData = GeneralBook(writer: bookData.authors.joined(separator: ",") , publishDate: bookData.datetime, publishNumber: bookData.isbn, contents: bookData.summary, imageURL: bookData.thumbnailPath, title: bookData.title, publisher: bookData.publisher)
+            let addBookReq = AddBookRequest(book: bookData)
+            
+            _ = Network.request(req: addBookReq) { (result) in
+                    switch result {
+                    case .success(let userResponse):
+                        switch userResponse.code {
+                        case 1000:
+                            print("LOG 책 정보 DB추가 완료", bookData)
+                        default:
+                            print("LOG 책 정보 DB추가 실패 - \(userResponse.code)")
+                        }
+                    case .cancel(let cancelError):
+                        print(cancelError!)
+                    case .failure(let error):
+                        self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    // 사용자가 챌린지 목표로 설정한 책 등록
+    func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
-        let req = AddChallengeBookRequest(goalId: goalId, isbn: isbn)
+        let addChallengeBookReq = AddChallengeBookRequest(goalId: goalId, isbn: isbn)
         
-        _ = Network.request(req: req) { (result) in
+        _ = Network.request(req: addChallengeBookReq) { (result) in
                 
                 switch result {
                 case .success(let userResponse):
@@ -148,7 +177,6 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
 }
 
 extension BookDetailViewController: ReviewTableViewCellDelegate {

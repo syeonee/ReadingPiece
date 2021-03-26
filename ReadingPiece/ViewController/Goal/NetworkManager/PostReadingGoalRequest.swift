@@ -31,7 +31,7 @@ final class PostReadingGoalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().testAccessTokenHeader
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {

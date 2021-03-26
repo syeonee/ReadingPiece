@@ -24,3 +24,6 @@ struct GeneralBook {
     var title: String // 제목
     var publisher: String // 출판사
 }
+
+
+

@@ -15,6 +15,5 @@ struct Constants {
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let USERDEFAULT_KEY_CURRENT_TIMER_TIME = "savedTimeInt"
     let USERDEFAULT_KEY_GOAL_ID = "goalId"
-    // jwtToken은 추후 userDefualt에 저장한 값을 불러오는 것으로 수정 필요
-    let testAccessTokenHeader: [String : String] = ["Content-Type": "application/json", "x-access-token": KEYCHAIN_TOKEN ?? ""]
+    let ACCESS_TOKEN_HEADER: [String : String] = ["Content-Type": "application/json", "x-access-token": KEYCHAIN_TOKEN ?? ""]
 }
