@@ -4,7 +4,7 @@ import Foundation
 // 유저가 읽고 있는 책 삭제 API
 
 final class DeleteChallengeBookRequest: Requestable {
-    typealias ResponseType = DeleteChallengeBook
+    typealias ResponseType = DeleteChallengeResponse
     
     private var goalbookId: Int
     

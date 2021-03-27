@@ -57,7 +57,7 @@ public struct AllReadingBook: Codable {
     public let reading: String // 현재 도전중 여부
 }
 
-public struct DeleteChallengeBook: Codable {
+public struct DeleteChallengeResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String

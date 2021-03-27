@@ -4,7 +4,7 @@ import Foundation
 // 부적절한 리뷰 신고 API
 
 final class PostReportReviewRequest: Requestable {
-    typealias ResponseType = DeleteChallengeBook // 응답코드가 같아서 재활용
+    typealias ResponseType = DeleteChallengeResponse // 응답코드가 같아서 재활용
     
     private var reviewId: Int
     

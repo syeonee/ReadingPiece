@@ -24,7 +24,7 @@ public struct ReadingGoal: Codable {
     public let goalBookId: Int?
     public let page: Int?
     public let percent: Int?
-    public let totalTime: Int?
+    public let totalTime: String?
     public let isReading: String? // N or Y로 구분
     
     enum CodingKeys: String, CodingKey {

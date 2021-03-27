@@ -4,7 +4,7 @@ import Foundation
 // 유저가 읽고 있는 책 변경 API
 
 final class PatchChallengeBookRequest: Requestable {
-    typealias ResponseType = DeleteChallengeBook // 삭제와 응답코드가 같아서 재활용
+    typealias ResponseType = DeleteChallengeResponse // 삭제와 응답코드가 같아서 재활용
     
     private var goalbookId: Int
     

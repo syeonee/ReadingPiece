@@ -4,7 +4,7 @@ import Foundation
 // 유저가 읽고 있는 모든 책 현황 조회 API
 
 final class GetAllReadingBookRequest: Requestable {
-    typealias ResponseType = ChallengeResponse
+    typealias ResponseType = AllReadingBookResponse
     
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
