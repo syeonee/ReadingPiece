@@ -35,3 +35,13 @@ struct DeleteJournalResponse: Codable {
     let code: Int
     let message: String
 }
+
+// 선택한 일지 이미지 GET
+/*
+struct GetJournalImageResponse: Codable {
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: String
+}
+*/

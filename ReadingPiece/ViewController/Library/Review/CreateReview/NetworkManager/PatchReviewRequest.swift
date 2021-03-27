@@ -2,35 +2,33 @@
 //  PatchReviewRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by 정지현 on 2021/03/27.
 //
 
 import Foundation
 
-// 평가 리뷰 별점, 내용, 공개여부 수정 API
+// 리뷰 수정 리퀘스트
 
 final class PatchReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
-    private var token: String
     private var reviewID: Int
     private var star: Int
     private var text: String
     private var isPublic: Int
-    init(token: String, reviewID: Int, star: Int, text: String, isPublic: Int) {
-        self.token = token
+    init(reviewID: Int, star: Int, text: String, isPublic: Int) {
         self.reviewID = reviewID
         self.star = star
         self.text = text
         self.isPublic = isPublic
-    }
+    } 
     
     var baseUrl: URL {
         return  URL(string: "https://dev.maekuswant.shop/")!
     }
     
     var endpoint: String {
-        return "/review/\(reviewID)"
+        return "/review/\(self.reviewID)"
     }
     
     var method: Network.Method {
@@ -46,12 +44,11 @@ final class PatchReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {
-        // 테스트용
-        return 5.0
+        return 10.0
         //return 30.0
     }
     

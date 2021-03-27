@@ -28,6 +28,8 @@ class ReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadReviewData()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewData), name: Notification.Name("GetReviewData"), object: nil)
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -42,13 +44,13 @@ class ReviewViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        //loadReviewData()
-    }
-    
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: reviewList.count)  // 더보기 값 배열 초기화
         tableView.reloadData()
+    }
+    
+    @objc func reloadReviewData(notification: NSNotification) {
+        getReviewData(align: "desc")
     }
 
 }
@@ -209,20 +211,15 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "수정", style: .default) { (action) in
             print("수정하기")
+            let reviewID = self.reviewList[index].reviewID
             let reviewVC = CreateReviewViewController()
-            //reviewVC.book = self.book
-            //reviewVC.bookID = self.bookId
+            reviewVC.reviewID = reviewID
             self.navigationController?.pushViewController(reviewVC, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 리뷰 삭제 api 호출
             self.deleteReview(reviewID: self.reviewList[index].reviewID, index: index)
-            
-            //self.reviewList.remove(at: index)
-            //self.more.remove(at: index)
-            //self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -324,22 +321,6 @@ extension ReviewViewController {
         }
     }
     
-    // 리뷰 수정
-    private func patchReview(reviewID: Int, star: Int, text: String, isPublic: Int) {
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: PatchReviewRequest(token: token, reviewID: reviewID, star: star, text: text, isPublic: isPublic)) { result in
-            switch result {
-            case .success(let response):
-                print(response)
-            case .cancel(let cancelError):
-                print(cancelError as Any)
-            case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
-                print(error?.localizedDescription as Any)
-            }
-        }
-    }
-    
     // 리뷰 삭제
     private func deleteReview(reviewID: Int, index: Int) {
         guard let token = keychain.get(Keys.token) else { return }
@@ -347,6 +328,7 @@ extension ReviewViewController {
             switch result {
             case .success(let response):
                 print(response)
+                print("reviewID:", reviewID)
                 if response.code == 1000 {
                     self.didDeleteData(index: index)
                 } else {

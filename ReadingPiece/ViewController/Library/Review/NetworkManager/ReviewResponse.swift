@@ -34,3 +34,26 @@ struct GetReviewResult: Codable {
         case star, text, isPublic, postAt, timeSum
     }
 }
+
+// 리뷰 수정 시 데이터 조회 응답구조
+struct GetReviewEditResponse: Codable {
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: GetReviewEditResponseResult
+}
+
+struct GetReviewEditResponseResult: Codable {
+    let bookID: Int
+    let title, writer, publisher, publishAt: String
+    let imageURL: String
+    let reviewID, star: Int
+    let text, isPublic, postAt: String
+
+    enum CodingKeys: String, CodingKey {
+        case bookID = "bookId"
+        case title, writer, publisher, publishAt, imageURL
+        case reviewID = "reviewId"
+        case star, text, isPublic, postAt
+    }
+}

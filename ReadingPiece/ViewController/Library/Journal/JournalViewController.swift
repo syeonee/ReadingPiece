@@ -273,4 +273,9 @@ extension JournalViewController {
             }
         }
     }
+    
+    // 선택된 일지 정보 불러오기(사진 조회용)
+    private func getSelectedJournal(journalID: Int) {
+        
+    }
 }
