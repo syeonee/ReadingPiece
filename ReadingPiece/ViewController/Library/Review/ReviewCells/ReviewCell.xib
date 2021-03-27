@@ -198,6 +198,7 @@
                 <outlet property="ratingLabel" destination="vc2-II-gDY" id="BJd-Ol-Tis"/>
                 <outlet property="ratingView" destination="vMG-DP-7ZJ" id="ncM-tG-8wN"/>
                 <outlet property="reviewTextLabel" destination="Q99-TO-tYk" id="4lm-ne-b9n"/>
+                <outlet property="timeImageView" destination="cyi-VL-4hQ" id="Ak3-LT-au2"/>
                 <outlet property="timeLabel" destination="oGo-rg-5lM" id="MsE-7d-Yc6"/>
                 <outlet property="upperView" destination="WP2-ea-NgX" id="P2n-uk-0YZ"/>
             </connections>

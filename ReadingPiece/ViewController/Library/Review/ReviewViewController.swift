@@ -80,7 +80,12 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = review.text
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.time {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
             
             cell.editDelegate = self
             cell.index = indexPath.row
@@ -96,7 +101,12 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.time {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
             
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -113,7 +123,12 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = review.text
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.time {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
             
             cell.editDelegate = self
             cell.index = indexPath.row

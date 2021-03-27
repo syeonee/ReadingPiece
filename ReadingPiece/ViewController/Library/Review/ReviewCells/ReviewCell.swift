@@ -22,6 +22,7 @@ class ReviewCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var isCompletedLabel: UILabel!
+    @IBOutlet weak var timeImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var reviewTextLabel: UILabel!

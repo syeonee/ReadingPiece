@@ -18,7 +18,7 @@ struct GetReviewResponse: Codable {
 struct GetReviewResult: Codable {
     let userID: Int
     let isCompleted: String
-    let time: String
+    let time: String?
     let bookID: Int
     let title, writer, imageURL: String
     let reviewID, star: Int

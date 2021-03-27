@@ -75,7 +75,6 @@ class CreateReviewViewController: UIViewController {
     }
     
     private func didSuccessToPost() {
-        // reviewList 업데이트하기
         self.navigationController?.popToRootViewController(animated: true)
     }
     
