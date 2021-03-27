@@ -54,7 +54,7 @@
 		00FF3767260A30DA00529570 /* GetTodayChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */; };
 		00FF376B260A3DD200529570 /* GetBookReadingTimeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF376A260A3DD200529570 /* GetBookReadingTimeRequest.swift */; };
 		00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3774260A678200529570 /* PostReadingBookRequest.swift */; };
-		00FF3779260A67EC00529570 /* GetBookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */; };
+		00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */; };
 		00FF377D260A685700529570 /* ReportNegativeReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */; };
 		00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00FF3781260A730100529570 /* GoogleService-Info.plist */; };
 		00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF379B260C613200529570 /* RestartChallengeViewController.swift */; };
@@ -231,7 +231,7 @@
 		00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTodayChallengeRequest.swift; sourceTree = "<group>"; };
 		00FF376A260A3DD200529570 /* GetBookReadingTimeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookReadingTimeRequest.swift; sourceTree = "<group>"; };
 		00FF3774260A678200529570 /* PostReadingBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReadingBookRequest.swift; sourceTree = "<group>"; };
-		00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBookReviewRequest.swift; sourceTree = "<group>"; };
+		00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewRequest.swift; sourceTree = "<group>"; };
 		00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportNegativeReviewRequest.swift; sourceTree = "<group>"; };
 		00FF3781260A730100529570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00FF379B260C613200529570 /* RestartChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartChallengeViewController.swift; sourceTree = "<group>"; };
@@ -472,7 +472,7 @@
 				00FF3761260A2FBF00529570 /* PatchReadingGoalRequest.swift */,
 				00FF374E2609157300529570 /* PostChallengeBookRequest.swift */,
 				00FF3774260A678200529570 /* PostReadingBookRequest.swift */,
-				00FF3778260A67EC00529570 /* GetBookReviewRequest.swift */,
+				00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */,
 				00FF377C260A685700529570 /* ReportNegativeReviewRequest.swift */,
 				00C55F792604FB16002848AB /* ReadingGoalResponse.swift */,
 				00FF3751260915BF00529570 /* BookResponse.swift */,
@@ -1128,7 +1128,7 @@
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
 				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
-				00FF3779260A67EC00529570 /* GetBookReviewRequest.swift in Sources */,
+				00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */,
 				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
 				00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */,
 				59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */,
