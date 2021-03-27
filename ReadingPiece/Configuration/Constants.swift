@@ -17,3 +17,4 @@ struct Constants {
     let USERDEFAULT_KEY_GOAL_ID = "goalId"
     let ACCESS_TOKEN_HEADER: [String : String] = ["Content-Type": "application/json", "x-access-token": KEYCHAIN_TOKEN ?? ""]
 }
+

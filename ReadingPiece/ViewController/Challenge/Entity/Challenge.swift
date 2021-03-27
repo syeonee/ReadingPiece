@@ -9,14 +9,14 @@ import Foundation
 
 // 진행 중인 챌린지 정보 : API의 getchallenge1Rows Response에 해당되는 부분
 public struct ReadingBook: Codable {
-    public let goalId: Int?
-    public let bookId: Int?
+    public let goalId: Int
+    public let bookId: Int
     public let title: String?
     public let writer: String?
     public let imageURL: String?
     public let publishNumber: String?
-    public let goalBookId: Int?
-    public let isComplete: Int?
+    public let goalBookId: Int
+    public let isComplete: Int
 }
 
 // 진행 중인 챌린지 정보 : API의 getchallenge2Rows Response에 해당되는 부분
@@ -25,7 +25,7 @@ public struct ReadingGoal: Codable {
     public let page: Int?
     public let percent: Int?
     public let totalTime: String?
-    public let isReading: String? // N or Y로 구분
+    public let isReading: String // N or Y로 구분
     
     enum CodingKeys: String, CodingKey {
         case goalBookId
@@ -63,7 +63,6 @@ public struct Challenge: Codable {
         case dDay = "Dday"
     }
 }
-
 
 // 오늘의 챌린지 진행 현황 정보
 

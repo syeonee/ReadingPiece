@@ -9,12 +9,17 @@ import UIKit
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
-    var books : [AllReadingBook] = []
+    var books : [AllReadingBook] = [] {
+        didSet{
+            readingBookTableView.reloadData()
+        }
+    }
     @IBOutlet weak var readingBookTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getAllBooks()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,10 +33,9 @@ class BookSettingViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 책 정보 조회 성공")
+                        print("LOG - 책 정보 조회 성공", userResponse.getbookListRows)
                         guard let books = userResponse.getbookListRows else { return }
                         self.books = books
-                        self.readingBookTableView.reloadData()
                     case 2221:
                         self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
                     case 2222:
@@ -76,16 +80,14 @@ class BookSettingViewController: UIViewController {
 
 extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        books.count
-        return 1
+        return books.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReadingBookTableViewCell.identifier, for: indexPath) as? ReadingBookTableViewCell
             else { return UITableViewCell() }
-//        if books[indexPath.row].reading == "Y" {
-//            cell.readingBookStatusView.backgroundColor = .sub2
-//        }
+        cell.configure(bookData: books[indexPath.row])
+
         return cell
     }
     
@@ -96,12 +98,12 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 해당 책을 챌린지 책으로 수정(등록)
         let modifiyAction = UITableViewRowAction(style: .destructive, title: "도전하기") { _, _ in
-            self.modifiyChallengeBook()
+            self.modifiyChallengeBook(id: self.books[indexPath.row].goalBookId)
         }
 
         // 해당 책을 읽는 책 리스트에서 삭제
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, _ in
-            self.deleteChallengeBook()
+            self.deleteChallengeBook(id: self.books[indexPath.row].goalBookId)
         }
         
         modifiyAction.backgroundColor = .darkGray
@@ -110,8 +112,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
-    func modifiyChallengeBook() {
-        let req = PatchChallengeBookRequest(goalbookId: 1)
+    func modifiyChallengeBook(id: Int) {
+        let req = PatchChallengeBookRequest(goalbookId: id)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -136,8 +138,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     // 읽고있는 책 삭제
-    func deleteChallengeBook() {
-        let req = DeleteChallengeBookRequest(goalbookId: 1)
+    func deleteChallengeBook(id: Int) {
+        let req = DeleteChallengeBookRequest(goalbookId: id)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
