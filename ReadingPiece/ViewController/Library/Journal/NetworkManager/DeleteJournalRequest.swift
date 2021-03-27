@@ -11,10 +11,8 @@ import Foundation
 final class DeleteJournalRequest: Requestable {
     typealias ResponseType = DeleteJournalResponse
     
-    private var token: String
     private var journalID: Int
-    init(token: String, journalID: Int) {
-        self.token = token
+    init(journalID: Int) {
         self.journalID = journalID
     }
     

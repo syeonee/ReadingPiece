@@ -7,8 +7,10 @@
 
 import Foundation
 
+// 일지 사진 불러오기 요청
+
 final class GetJournalImageRequest: Requestable {
-    typealias ResponseType = GetJournalResponse // 바꿔놓기
+    typealias ResponseType = GetJournalImageResponse
     
     private var journalID: Int
     init(journalID: Int) {
@@ -32,7 +34,7 @@ final class GetJournalImageRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {
