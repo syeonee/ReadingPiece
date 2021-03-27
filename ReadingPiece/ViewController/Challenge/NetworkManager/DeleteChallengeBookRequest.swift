@@ -1,17 +1,17 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=182560157
-// 챌린지에 사용할 책 추가 API
-final class PostChallengeBookRequest: Requestable {
-    typealias ResponseType = PostChalleneBookResponse
-    private var goalId: Int
-    private var isbn: String
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=583204733
+// 유저가 읽고 있는 책 삭제 API
+
+final class DeleteChallengeBookRequest: Requestable {
+    typealias ResponseType = DeleteChallengeResponse
     
-    init(goalId: Int, isbn: String) {
-        self.goalId = goalId
-        self.isbn = isbn
+    private var goalbookId: Int
+    
+    init(goalbookId: Int) {
+        self.goalbookId = goalbookId
     }
-    
+
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
@@ -21,16 +21,15 @@ final class PostChallengeBookRequest: Requestable {
     }
     
     var method: Network.Method {
-        return .post
+        return .delete
     }
     
     var query: Network.QueryType {
         return .json
     }
     
-    
     var parameters: [String : Any]? {
-        return ["goalId": self.goalId, "publishNumber": self.isbn]
+        return ["goalbookId": self.goalbookId]
     }
     
     var headers: [String : String]? {
