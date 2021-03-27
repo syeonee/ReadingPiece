@@ -31,6 +31,7 @@ class TimerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        getUserBookReadingTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,6 +70,28 @@ class TimerViewController: UIViewController {
         let savedTime = defaults.integer(forKey: Constants().USERDEFAULT_KEY_CURRENT_TIMER_TIME) 
         print("LOG TIME", savedTime)
         self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
+    }
+    
+    func getUserBookReadingTime() {
+        let req = GetBookReadingTimeRequest(goalBookId: 25)
+        _ = Network.request(req: req) { (result) in
+                
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        // 책 제목 화면 표시, 남은 시간 저장해서 추후 일지 작성시 전달 필요
+                        print("LOG - 오늘의 독서시간", userResponse.message, userResponse.result?.sumtime)
+                    default:
+                        print("LOG - 오늘 독서시간 정보 없음")
+                        self.presentAlert(title: "이전 시간 정보를 불러오지 못했습니다.", isCancelActionIncluded: false)
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
+            }
+        }
     }
 
     private func setupUI() {
