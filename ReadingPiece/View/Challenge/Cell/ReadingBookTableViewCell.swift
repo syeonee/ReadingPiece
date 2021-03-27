@@ -28,12 +28,27 @@ class ReadingBookTableViewCell: UITableViewCell {
     func setupUI() {
         titleLabel.textColor = .charcoal
         authorLabel.textColor = .darkgrey
-        isReadingNotifyButton.makeSmallRoundedButtnon("도전 중", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        isReadingNotifyButton.makeisReadingButtnon("도전 중", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
         readingBookStatusView.backgroundColor = .none
+        
     }
     
     // 책 정보 cell에 입히는 함수
     func configure() {
+        
     }
     
+}
+
+extension UIButton {
+    func makeisReadingButtnon(_ title: String, titleColor: UIColor , borderColor: CGColor, backgroundColor: UIColor) {
+        self.contentEdgeInsets = UIEdgeInsets(top: 1, left: 5, bottom: 3, right: 5)
+        self.setTitleColor(titleColor, for: .normal)
+        self.setTitle(title, for: .normal)
+        self.layer.borderWidth = 0.3
+        self.layer.borderColor = borderColor
+        self.backgroundColor = backgroundColor
+        self.layer.cornerRadius = 5
+    }
+
 }
