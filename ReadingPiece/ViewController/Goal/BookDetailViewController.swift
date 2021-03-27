@@ -112,6 +112,7 @@ class BookDetailViewController: UIViewController {
                     case .cancel(let cancelError):
                         print(cancelError!)
                     case .failure(let error):
+                        print("LOG", error)
                         self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
                         self.navigationController?.popViewController(animated: true)
                 }

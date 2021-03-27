@@ -66,7 +66,7 @@ class CreateReviewViewController: UIViewController {
         tableView.tableFooterView = UIView()
         
         self.dismissKeyboardWhenTappedAround()
-        doneActivated = false
+        doneActivated = false        
     }
     
     

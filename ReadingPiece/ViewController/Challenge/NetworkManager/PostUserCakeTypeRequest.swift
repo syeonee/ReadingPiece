@@ -1,14 +1,17 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=706704690
-// 현재 읽고 있는 책의 독서시간(타이머) 조회 API
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=1204762242
+// 유저가 읽고 있는 책 변경 API
 
-final class GetBookReadingTimeRequest: Requestable {
-    typealias ResponseType = ReadingBookTimeResponse
-    private var goalBookId: Int
+final class PostUserCakeTypeRequest: Requestable {
+    typealias ResponseType = PostCakeTypeResponse
     
-    init(goalBookId: Int) {
-        self.goalBookId = goalBookId
+    private var goalId: Int
+    private var cake: String
+    
+    init(goalId: Int, cake: String) {
+        self.goalId = goalId
+        self.cake = cake
     }
 
     var baseUrl: URL {
@@ -16,19 +19,19 @@ final class GetBookReadingTimeRequest: Requestable {
     }
     
     var endpoint: String {
-        return "challenge/\(self.goalBookId)/times"
+        return "cake"
     }
     
     var method: Network.Method {
-        return .get
+        return .post
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     var parameters: [String : Any]? {
-        return defaultJSONHeader
+        return ["goalId": self.goalId, "cake": self.cake]
     }
     
     var headers: [String : String]? {
