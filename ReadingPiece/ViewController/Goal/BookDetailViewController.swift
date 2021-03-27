@@ -22,6 +22,7 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var moreReviewView: UIView!
     
     var isExpanded : Bool = false
     var observerExist : Bool = false
@@ -54,21 +55,36 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func moreReviewTapped(_ sender: Any) {
-        
+    func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.moreReviewTapped(_:)))
+        self.moreReviewView.addGestureRecognizer(tapGesture)
     }
     
+    @objc func moreReviewTapped(_ gesture: UITapGestureRecognizer) {
+        let storyboard = UIStoryboard(name: "Goal", bundle: nil)
+        guard let reviewListVC = storyboard.instantiateViewController(withIdentifier: "reviewListVC") as? BookReviewViewController else { return }
+        reviewListVC.userReview = self.userReview
+        self.navigationController?.pushViewController(reviewListVC, animated: true)
+    }
+    
+//    @IBAction func moreReviewTapped(_ sender: Any) {
+//
+//    }
+    
     @IBAction func addBook(_ sender: Any) {
-        guard let initNumber = self.initializer else { return }
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
-        if initNumber == 0 {
+        if let initNumber = self.initializer  {
+            if initNumber == 0 {
+                postChallengeBook(isbn: self.book?.isbn ?? "")
+            } else if initNumber == 1 {
+                let reviewVC = CreateReviewViewController()
+                reviewVC.book = self.book
+                reviewVC.bookID = self.bookId
+                self.navigationController?.pushViewController(reviewVC, animated: true)
+            }
+        } else { // 책 관리화면에서 호출하는 경우
             postChallengeBook(isbn: self.book?.isbn ?? "")
-        } else if initNumber == 1 {
-            let reviewVC = CreateReviewViewController()
-            reviewVC.book = self.book
-            reviewVC.bookID = self.bookId
-            self.navigationController?.pushViewController(reviewVC, animated: true)
         }
         
     }
@@ -87,7 +103,7 @@ class BookDetailViewController: UIViewController {
                         self.bookId = userResponse.bookId
                         switch userResponse.code {
                         case 1000:
-                            print("LOG 책 정보 DB추가 완료", bookData)
+                            print("LOG 책 정보 DB추가 완료", bookData.title)
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
                             print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
@@ -114,7 +130,7 @@ class BookDetailViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 리뷰 정보 조회 완료", userResponse)
+                        print("LOG - 리뷰 \(userResponse.totalReadingUser)개 조회 완료")
                         if let userReview = userResponse.userBookReview, let totalReader = userResponse.totalReadingUser?.first?.currentRead {
                             self.setTableViewDataSource(review: userReview, totalReader: totalReader)
                         }
@@ -140,7 +156,7 @@ class BookDetailViewController: UIViewController {
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
-        let addChallengeBookReq = AddChallengeBookRequest(goalId: goalId, isbn: isbn)
+        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn)
         
         _ = Network.request(req: addChallengeBookReq) { (result) in
                 
@@ -160,6 +176,7 @@ class BookDetailViewController: UIViewController {
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
+                    debugPrint(error)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }

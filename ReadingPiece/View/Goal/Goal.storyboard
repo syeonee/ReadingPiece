@@ -545,7 +545,7 @@
                                                         <color key="textColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reviewArrow" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-2k-CZW">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reviewArrow" translatesAutoresizingMaskIntoConstraints="NO" id="ziF-2k-CZW" userLabel="하지만">
                                                         <rect key="frame" x="385" y="22.5" width="7" height="12.5"/>
                                                     </imageView>
                                                 </subviews>
@@ -665,6 +665,7 @@
                         <outlet property="authorsLabel" destination="Nar-ot-7Q5" id="Zlg-se-vi5"/>
                         <outlet property="bookImageView" destination="RuQ-wj-Mws" id="VZ0-TS-kzV"/>
                         <outlet property="contentView" destination="jyc-rr-Jal" id="MaA-kG-RGF"/>
+                        <outlet property="moreReviewView" destination="IHM-KQ-FZW" id="L3T-YJ-0nA"/>
                         <outlet property="publisherLabel" destination="A4h-Y6-EgN" id="njd-PC-6Kc"/>
                         <outlet property="reviewTableView" destination="wuh-od-aD4" id="dTw-co-RNh"/>
                         <outlet property="reviewTableViewHeight" destination="NLk-Pd-QqJ" id="MDi-KK-7Tu"/>
@@ -677,7 +678,6 @@
                 <tapGestureRecognizer id="oZx-9S-ZZ9">
                     <connections>
                         <action selector="moreReviewTapped:" destination="5Rs-3U-fIc" id="n8V-Jz-qd0"/>
-                        <segue destination="Jua-9V-jwc" kind="show" id="JOJ-V7-8hT"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -696,13 +696,13 @@
         <!--리뷰-->
         <scene sceneID="PmJ-ag-8EZ">
             <objects>
-                <viewController id="Jua-9V-jwc" customClass="BookReviewViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="reviewListVC" id="Jua-9V-jwc" customClass="BookReviewViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5fW-Uz-GU2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3GL-mN-l3j">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
                             </tableView>

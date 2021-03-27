@@ -7,6 +7,12 @@ public struct BookResponse: Codable {
     public let bookId: Int
 }
 
+public struct PostChalleneBookResponse: Codable {
+    public let isSuccess: Bool
+    public let code: Int
+    public let message: String
+}
+
 // 책 추가 하단 => 리뷰 로딩에 쓰는 리스폰스 객체
 public struct UserBookReviewResponse: Codable {
     public let isSuccess: Bool
