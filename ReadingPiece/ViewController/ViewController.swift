@@ -41,7 +41,6 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.initMainView()
-        }
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {

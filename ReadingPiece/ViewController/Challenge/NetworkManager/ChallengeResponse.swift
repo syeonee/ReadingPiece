@@ -62,3 +62,9 @@ public struct DeleteChallengeResponse: Codable {
     public let code: Int
     public let message: String
 }
+
+public struct PostCakeTypeResponse: Codable {
+    public let isSuccess: Bool
+    public let code: Int
+    public let message: String
+}
