@@ -51,7 +51,7 @@ final class EditProfileRequest: Requestable {
     }
                       
     var timeout: TimeInterval {
-        return 5.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

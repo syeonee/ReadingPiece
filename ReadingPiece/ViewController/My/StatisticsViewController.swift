@@ -20,6 +20,9 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var previousYearButton: UIButton!
     @IBOutlet weak var nextYearButton: UIButton!
     
+    var myReadingInfo: ReadingInfo?
+    var myContinuityDay: ContinuityDay?
+    
     var months: [String]!
     var monthTotal: [Int]!
     
@@ -27,9 +30,76 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setStatisticsInfo()
         getCurrentYear()
-        
         drawYearCharts(year: currentYear)
+    }
+    
+    func convertToHourMinute(totalString: String) -> String {
+        let total = Int(totalString)
+        let hour = total ?? 0 / 60
+        let minute = total ?? 0 % 60
+        return "\(hour)시간 \(minute)분"
+    }
+    
+    func setStatisticsInfo(){
+        self.showIndicator()
+        Network.request(req: UserStatisticsRequest(token: Constants.KEYCHAIN_TOKEN!)) { [self] result in
+            self.dismissIndicator()
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    DispatchQueue.main.async {
+                        myReadingInfo = response.readingInfo
+                        myContinuityDay = response.continuityDay
+                        setStatisticsLabel()
+                        setStatisticsAttributedLabel()
+                    }
+                } else {
+                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+                }
+            }
+        }
+    }
+    
+    func setStatisticsLabel(){
+        if let readingInfo = myReadingInfo {
+            bookQuantityLabel.text = "\(readingInfo.totalBookQuantity)권"
+            readingTimeLabel.text = convertToHourMinute(totalString: readingInfo.totalReadingTime)
+        }
+        
+        if let continuityDay = myContinuityDay {
+            readingDayLabel.text = "\(continuityDay.totalReadingDay)일"
+        }
+    }
+    
+    func setStatisticsAttributedLabel(){
+        let fontSize = UIFont.systemFont(ofSize: 12, weight: .regular)
+        
+        let attrBookQuantity = NSMutableAttributedString(string: bookQuantityLabel.text!)
+        attrBookQuantity.addAttribute(.font, value: fontSize, range: (bookQuantityLabel.text as! NSString).range(of: "권"))
+        bookQuantityLabel.attributedText = attrBookQuantity
+        
+        let attrReadingTime = NSMutableAttributedString(string: readingTimeLabel.text!)
+        attrReadingTime.addAttribute(.font, value: fontSize, range: (readingTimeLabel.text as! NSString).range(of: "시간"))
+        attrReadingTime.addAttribute(.font, value: fontSize, range: (readingTimeLabel.text as! NSString).range(of: "분"))
+        readingTimeLabel.attributedText = attrReadingTime
+        
+        let attrReadingDay = NSMutableAttributedString(string: readingDayLabel.text!)
+        attrReadingDay.addAttribute(.font, value: fontSize, range: (readingDayLabel.text as! NSString).range(of: "일"))
+        readingDayLabel.attributedText = attrReadingDay
+
     }
     
     func getCurrentYear(){
