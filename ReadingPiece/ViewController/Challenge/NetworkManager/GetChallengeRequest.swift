@@ -22,6 +22,7 @@ final class GetChallengeRequest: Requestable {
         return .path
     }
     
+    
     var parameters: [String : Any]? {
         return defaultJSONHeader
     }
@@ -31,7 +32,7 @@ final class GetChallengeRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-//            self.getChallengeData()
+            self.getChallengeData()
         }
     }
 
@@ -96,7 +96,6 @@ class ViewController: UIViewController {
 
         
         // 챌린지 기간내에 목표를 조기 달성한 경우
-        
         // 챌린지 기간이 만료된 경우
 //        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
 //        bookSettingVC.modalTransitionStyle = .crossDissolve

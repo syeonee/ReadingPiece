@@ -4,10 +4,20 @@ public struct ChallengeResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let getchallenge1Rows: [ReadingBook]? // 읽고있는 책 정보
-    public let getchallenge2Rows: [ReadingGoal]? // 읽고있는 책별 읽기 현황
-    public let getchallenge3Rows: [Challenge]? // 전체 챌린지 진행상황
-    public let isExpired: Bool? // 챌린지 만료 여부
+    public let readingBooks: [ReadingBook]? // 읽고있는 책 정보
+    public let goalStatus: [ReadingGoal]? // 읽고있는 책별 읽기 현황
+    public let challenge: [Challenge]? // 전체 챌린지 진행상황
+    public let isExpired: Bool // 챌린지 만료 여부
+    
+    enum CodingKeys: String, CodingKey {
+        case isSuccess
+        case code
+        case message
+        case readingBooks = "getchallenge1Rows"
+        case goalStatus = "getchallenge2Rows"
+        case challenge = "getchallenge3Rows"
+        case isExpired
+    }
 }
 
 public struct TodayReadingResponse: Codable {
