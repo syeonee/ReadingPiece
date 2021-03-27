@@ -8,6 +8,8 @@
 import UIKit
 
 class TimerStopViewController: UIViewController {
+    var challengeInfo : ChallengerInfo?
+    
     @IBOutlet weak var timerStopTitleLabel: UILabel!
     @IBOutlet weak var currentRadingTimeLabel: UILabel!
     @IBOutlet weak var timerResumeButton: UIButton!

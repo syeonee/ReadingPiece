@@ -11,6 +11,7 @@ protocol ReadingStatusDelegate {
     func setReadingPercent(_ percent: Int)
 }
 class DaillyReadingWritenViewController: UIViewController {
+    var challengeInfo : ChallengerInfo?
     let cellId = ReviewImageCell.identifier
     let picker = UIImagePickerController()
     var pickedImage : UIImage?

@@ -45,13 +45,27 @@ class ViewController: UIViewController {
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {
-        let TimerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        self.navigationController?.pushViewController(TimerVC, animated: true)
+        if let goalBookId =  challengeInfo?.readingBook.first?.goalBookId {
+            let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
+            timerVC.challengeInfo = self.challengeInfo
+            self.navigationController?.pushViewController(timerVC, animated: true)
+        } else {
+            self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+        }
     }
     
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
-        let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
-        self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+        // 챌린지 현황 정보가 있다면 기존 유저이므로, initializer를 기준으로 목표 추가/수정 여부 구분
+        // 신규유저-목표 추가 : 0, 기존유저-목표 변경 : 1
+        if self.challengeInfo != nil {
+            let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+            modifyReadingGaolVC.initializer = 1
+            self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+        } else {
+            let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+            modifyReadingGaolVC.initializer = 0
+            self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+        }
     }
     
     func postUserReadingGoal() {

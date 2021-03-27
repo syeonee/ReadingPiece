@@ -11,7 +11,8 @@ class TimerViewController: UIViewController {
     let defaults = UserDefaults.standard
     var isReading: Bool = true
     var readingTime : Int = 0
-
+    var challengeInfo : ChallengerInfo?
+    
     @IBOutlet weak var timerBackgroundView: UIView!
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var bookTitleLabel: UILabel!
