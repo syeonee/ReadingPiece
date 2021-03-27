@@ -297,7 +297,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="책 이름, 작가, 출판사" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-hg-tpY">
-                                        <rect key="frame" x="18" y="16.5" width="299" height="21"/>
+                                        <rect key="frame" x="18" y="16" width="299" height="22.5"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -670,6 +670,7 @@
                         <outlet property="reviewTableViewHeight" destination="NLk-Pd-QqJ" id="MDi-KK-7Tu"/>
                         <outlet property="summaryLabel" destination="7bn-98-wi0" id="BAy-Ba-8ut"/>
                         <outlet property="titleLabel" destination="UBn-Mv-ldj" id="goH-td-G0P"/>
+                        <outlet property="totalReviewLabel" destination="Fee-iO-vTt" id="5tM-Hp-CuO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oqu-EP-NB2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
