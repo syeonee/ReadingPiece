@@ -38,6 +38,7 @@ class CreateReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("bookID: \(String(describing: bookID))")
         setNavBar()
         tableView.dataSource = self
         tableView.delegate = self

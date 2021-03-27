@@ -18,18 +18,19 @@ struct GetReviewResponse: Codable {
 struct GetReviewResult: Codable {
     let userID: Int
     let isCompleted: String
-    let time: String?
     let bookID: Int
-    let title, writer, imageURL: String
+    let title, writer: String
+    let imageURL: String
     let reviewID, star: Int
-    let text: String
+    let text, isPublic, postAt: String
+    let timeSum: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "userId"
-        case isCompleted, time
+        case isCompleted
         case bookID = "bookId"
         case title, writer, imageURL
         case reviewID = "reviewId"
-        case star, text
+        case star, text, isPublic, postAt, timeSum
     }
 }
