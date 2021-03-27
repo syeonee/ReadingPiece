@@ -11,7 +11,12 @@ import Cosmos
 class ReviewRatingCell: UITableViewCell {
     
     let cellID = "ReviewRatingCell"
-    var starCount: Int = 0
+    var starCount: Double = 0 {
+        didSet {
+            starRatingView.rating = starCount
+        }
+    }
+    var delegate: ReviewRatingCellDelegate?
 
     @IBOutlet weak var starRatingView: CosmosView!
     override func awakeFromNib() {
@@ -27,8 +32,12 @@ class ReviewRatingCell: UITableViewCell {
         starRatingView.settings.emptyImage = UIImage(named: "star")
         starRatingView.didFinishTouchingCosmos = { rating in
             print("result: \(rating)")
-            self.starCount = Int(rating)
+            self.starCount = rating
+            self.delegate?.getRatingData(star: rating)
         }
     }
     
+}
+protocol ReviewRatingCellDelegate {
+    func getRatingData(star: Double)
 }

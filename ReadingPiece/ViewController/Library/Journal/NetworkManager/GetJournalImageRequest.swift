@@ -1,15 +1,16 @@
 //
-//  DeleteJournalRequest.swift
+//  GetJournalImageRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by 정지현 on 2021/03/27.
 //
 
 import Foundation
-// 일지 삭제 api 호출 클래스
 
-final class DeleteJournalRequest: Requestable {
-    typealias ResponseType = DeleteJournalResponse
+// 일지 사진 불러오기 요청
+
+final class GetJournalImageRequest: Requestable {
+    typealias ResponseType = GetJournalImageResponse
     
     private var journalID: Int
     init(journalID: Int) {
@@ -21,19 +22,19 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals"
+        return "journals/\(journalID)"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {

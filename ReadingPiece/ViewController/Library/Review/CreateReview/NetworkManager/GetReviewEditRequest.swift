@@ -1,19 +1,20 @@
 //
-//  DeleteJournalRequest.swift
+//  GetReviewEditRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/24.
+//  Created by 정지현 on 2021/03/27.
 //
 
 import Foundation
-// 일지 삭제 api 호출 클래스
 
-final class DeleteJournalRequest: Requestable {
-    typealias ResponseType = DeleteJournalResponse
+// 리뷰 수정할 때 기존 데이터 GET
+
+final class GetReviewEditRequest: Requestable {
+    typealias ResponseType = GetReviewEditResponse
     
-    private var journalID: Int
-    init(journalID: Int) {
-        self.journalID = journalID
+    private var reviewID: Int
+    init(reviewID: Int) {
+        self.reviewID = reviewID
     }
     
     var baseUrl: URL {
@@ -21,19 +22,19 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals"
+        return "/my-review/\(reviewID)"
     }
     
     var method: Network.Method {
-        return .delete
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {
@@ -49,3 +50,4 @@ final class DeleteJournalRequest: Requestable {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
+

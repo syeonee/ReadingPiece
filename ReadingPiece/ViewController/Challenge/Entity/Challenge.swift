@@ -8,40 +8,60 @@
 import Foundation
 
 // 진행 중인 챌린지 정보 : API의 getchallenge1Rows Response에 해당되는 부분
-public struct Challenge: Codable {
-    public let amount: String
-    public let time: Int
-    public let period: Int
-    public let expriodAt: String
-    public let title: String
-    public let writer: String
-    public let imageURL: String
-    public let publishNumber: String
-    public let goalBookId: Int
+public struct ReadingBook: Codable {
+    public let goalId: Int?
+    public let bookId: Int?
+    public let title: String?
+    public let writer: String?
+    public let imageURL: String?
+    public let publishNumber: String?
+    public let goalBookId: Int?
+    public let isComplete: Int?
 }
 
 // 진행 중인 챌린지 정보 : API의 getchallenge2Rows Response에 해당되는 부분
 public struct ReadingGoal: Codable {
-    public let goalBookId: Int
-    public let page: Int
-    public let percent: Int
-    public let totalTime: Int
-    public let goalId: Int
+    public let goalBookId: Int?
+    public let page: Int?
+    public let percent: Int?
+    public let totalTime: String?
+    public let isReading: String? // N or Y로 구분
     
     enum CodingKeys: String, CodingKey {
         case goalBookId
         case page
         case percent
         case totalTime = "sum(time)"
-        case goalId
+        case isReading
     }
 }
 
 
 // 진행 중인 챌린지 정보 : API의 getchallenge3Rows Response에 해당되는 부분
-public struct TodayGoal: Codable {
-    public let sumChallengeTime: Int
-    public let countJournal: Int
+public struct Challenge: Codable {
+    public let totalJournal: Int? // 해당 챌린지동안 작성한 일지 개수
+    public let todayTime: String? // 오늘 독서 시간
+    public let amount: Int? // 챌린지 단위 기간당 목표 책 권수
+    public let time: Int? // 챌린지 단위 기간당 목표 독서시간
+    public let period: String? // 챌린지 단위 기간 (일, 주, 월)
+    public let userId: Int?
+    public let totalReadBook: Int? // 완독한 책수
+    public let name: String? // 유저 이름
+    public let expriodAt: String? // 챌린지 만료일
+    public let dDay: Int? // 챌린지 남은 일자
+    
+    enum CodingKeys: String, CodingKey {
+        case totalJournal = "sumjournal"
+        case todayTime
+        case amount
+        case time
+        case period
+        case userId
+        case totalReadBook = "sumAmount"
+        case name
+        case expriodAt
+        case dDay = "Dday"
+    }
 }
 
 
@@ -72,3 +92,4 @@ public struct TodayReadingStatus: Codable {
     public let name: String // 유저닉네임
     public let Dday: Int // 만료일까지 남은 디데이
 }
+

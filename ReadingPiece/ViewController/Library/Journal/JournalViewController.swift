@@ -152,17 +152,13 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "첨부한 사진 보기", style: .default) { (action) in
-            print("첨부한 사진 보기")
+            self.getSelectedJournal(journalID: self.journalList[index].journalID)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
-            self.deleteJournal(journalID: self.journalList[index].journalID)
-            
-            self.journalList.remove(at: index)
-            self.more.remove(at: index)
-            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            print("일지 삭제 요청중 - journalID: \(self.journalList[index].journalID)")
+            self.deleteJournal(journalID: self.journalList[index].journalID, index: index)
         }
         
         alert.addAction(success)
@@ -172,11 +168,18 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func didDeleteData() {
-        //self.journalList.remove(at: index)
-        //self.more.remove(at: index)
-        //self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+    func didDeleteData(index: Int) {
+        self.journalList.remove(at: index)
+        self.more.remove(at: index)
+        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
         self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+    }
+    
+    func didSuccessToGetImage() {
+        print("이미지 모달 띄우기")
+        let popupVC = JournalImageViewController(nibName: "JournalImageViewController", bundle: nil)
+        popupVC.modalPresentationStyle = .overCurrentContext
+        self.present(popupVC, animated: true, completion: nil)
     }
 }
 
@@ -250,23 +253,44 @@ extension JournalViewController {
     }
     
     // 일지 삭제
-    private func deleteJournal(journalID: Int) {
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: DeleteJournalRequest(token: token, journalID: journalID)) { result in
+    private func deleteJournal(journalID: Int, index: Int) {
+        Network.request(req: DeleteJournalRequest(journalID: journalID)) { result in
             switch result {
             case .success(let response):
                 print(response)
                 if response.code == 1000 {
-                    self.didDeleteData()
+                    self.didDeleteData(index: index)
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {
                         self.presentAlert(title: message)
                     }
                 }
-                
             case .cancel(let cancelError):
                 print(cancelError as Any)
+            case .failure(let error):
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+                print(error as Any)
+            }
+        }
+    }
+    
+    // 선택된 일지 정보 불러오기(사진 조회용)
+    private func getSelectedJournal(journalID: Int) {
+        Network.request(req: GetJournalImageRequest(journalID: journalID)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                if response.code == 1000 {
+                    self.didSuccessToGetImage()
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
+            case .cancel(let cancel):
+                print(cancel as Any)
             case .failure(let error):
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)

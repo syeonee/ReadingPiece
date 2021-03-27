@@ -1,15 +1,16 @@
 import Foundation
+import KeychainSwift
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=182560157
-// 챌린지에 사용할 책 추가 API
-final class PostChallengeBookRequest: Requestable {
-    typealias ResponseType = PostChalleneBookResponse
-    private var goalId: Int
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1168939781
+// 각 책에대한 상세 정보, 리뷰 조회 API
+final class GetUserBookReviewRequest: Requestable {
+    typealias ResponseType = UserBookReviewResponse
     private var isbn: String
+    private var bookId: String
     
-    init(goalId: Int, isbn: String) {
-        self.goalId = goalId
+    init(isbn: String, bookId: String) {
         self.isbn = isbn
+        self.bookId = bookId
     }
     
     var baseUrl: URL {
@@ -17,20 +18,20 @@ final class PostChallengeBookRequest: Requestable {
     }
     
     var endpoint: String {
-        return "challenge/book"
+        return "book/\(bookId)"
     }
     
     var method: Network.Method {
-        return .post
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     
     var parameters: [String : Any]? {
-        return ["goalId": self.goalId, "publishNumber": self.isbn]
+        return defaultJSONHeader
     }
     
     var headers: [String : String]? {

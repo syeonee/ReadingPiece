@@ -35,3 +35,28 @@ struct DeleteJournalResponse: Codable {
     let code: Int
     let message: String
 }
+
+// 선택한 일지 이미지 GET
+
+struct GetJournalImageResponse: Codable {
+    let isSuccess: Bool
+    let code: Int
+    let message: String
+    let result: [GetJournalImageResponseResult]
+}
+
+struct GetJournalImageResponseResult: Codable {
+    let journalID: Int
+    let text, journalImageURL, resultOpen: String
+    let time, page, percent: Int
+    let title, writer: String
+    let imageURL: String
+
+    enum CodingKeys: String, CodingKey {
+        case journalID = "journalId"
+        case text, journalImageURL
+        case resultOpen = "open"
+        case time, page, percent, title, writer, imageURL
+    }
+}
+
