@@ -111,9 +111,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqB-Ze-yH7">
-                                                        <rect key="frame" x="35" y="133.5" width="106.5" height="12"/>
+                                                        <rect key="frame" x="35" y="133.5" width="0.0" height="12"/>
                                                         <color key="backgroundColor" red="1" green="0.69803921568627447" blue="0.6705882352941176" alpha="1" colorSpace="calibratedRGB"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="width" id="dMd-Yq-Ycg"/>
                                                             <constraint firstAttribute="height" constant="12" id="gUb-9S-D6u"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
@@ -145,7 +146,6 @@
                                                     <constraint firstItem="jW3-XS-dJC" firstAttribute="centerY" secondItem="hKZ-As-SO2" secondAttribute="centerY" id="TFc-Qs-AUl"/>
                                                     <constraint firstItem="bXr-Uq-YIC" firstAttribute="leading" secondItem="TiU-3r-tyl" secondAttribute="leading" id="WuR-E7-HET"/>
                                                     <constraint firstItem="bXr-Uq-YIC" firstAttribute="top" secondItem="TiU-3r-tyl" secondAttribute="bottom" constant="6" id="ZAc-MX-OSk"/>
-                                                    <constraint firstItem="eqB-Ze-yH7" firstAttribute="width" secondItem="bXr-Uq-YIC" secondAttribute="width" multiplier="0.333" id="ZbF-tY-0HH"/>
                                                     <constraint firstItem="Om9-oU-tw6" firstAttribute="top" secondItem="kQw-LR-f9U" secondAttribute="top" constant="28" id="fJX-K7-u8f"/>
                                                     <constraint firstItem="bXr-Uq-YIC" firstAttribute="centerX" secondItem="kQw-LR-f9U" secondAttribute="centerX" id="gdn-ya-qDq"/>
                                                     <constraint firstItem="bXr-Uq-YIC" firstAttribute="width" secondItem="kQw-LR-f9U" secondAttribute="width" multiplier="0.820513" id="h2P-JP-eqF"/>
@@ -342,11 +342,18 @@
                     <size key="freeformSize" width="390" height="860"/>
                     <connections>
                         <outlet property="challengeImageView" destination="m76-UD-ZCa" id="V5D-ae-U0B"/>
+                        <outlet property="currentReadingBookCountLabel" destination="hKZ-As-SO2" id="g8L-ll-DfF"/>
+                        <outlet property="dDayLabel" destination="TiU-3r-tyl" id="dNx-tD-MWV"/>
                         <outlet property="daillyReadingDiaryCountLabel" destination="fUA-0e-a2M" id="HNf-0k-XXK"/>
                         <outlet property="daillyReadingTimeLabel" destination="3aE-Vk-MWc" id="SVw-Ac-V1a"/>
                         <outlet property="dailyReadingView" destination="QTG-j3-4a3" id="PtM-7H-DyB"/>
-                        <outlet property="goalStatusBarWidth" destination="ZbF-tY-0HH" id="mVn-gj-UOL"/>
+                        <outlet property="goalStatusBarWidth" destination="dMd-Yq-Ycg" id="F5M-vD-EvN"/>
                         <outlet property="radingBooksCollectionView" destination="jfz-8u-eZu" id="74I-Pr-tZS"/>
+                        <outlet property="statusBar" destination="bXr-Uq-YIC" id="eLg-7s-Nn0"/>
+                        <outlet property="statusBarWidth" destination="h2P-JP-eqF" id="fBD-Tp-MaM"/>
+                        <outlet property="targetReadingBookCountLabel" destination="jW3-XS-dJC" id="zvY-mM-Kfs"/>
+                        <outlet property="targetTimeLabel" destination="YTO-V9-1OQ" id="AA7-vx-KUT"/>
+                        <outlet property="userReadingGoalLabel" destination="Om9-oU-tw6" id="UFR-O2-kW7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -575,37 +582,37 @@
                                 <rect key="frame" x="180.5" y="132" width="53" height="53"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 독서" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9s-KD-NqK">
-                                <rect key="frame" x="152" y="224" width="110.5" height="28"/>
+                                <rect key="frame" x="148.5" y="224" width="117.5" height="36"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wnY-Kf-CIu">
-                                <rect key="frame" x="90.5" y="277" width="22" height="29.5"/>
+                                <rect key="frame" x="85.5" y="287.5" width="23" height="37"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00분 00초" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q77-ZW-jJk">
-                                <rect key="frame" x="122.5" y="268" width="169.5" height="47"/>
+                                <rect key="frame" x="118.5" y="276" width="177" height="59.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fzh-aT-fja">
-                                <rect key="frame" x="71.5" y="387" width="271.5" height="68.5"/>
+                                <rect key="frame" x="65" y="407.5" width="284" height="84.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="KoG-Yf-lHQ">
-                                        <rect key="frame" x="58.5" y="0.0" width="154.5" height="21"/>
+                                        <rect key="frame" x="63" y="0.0" width="158.5" height="27"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="목표 시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0a-SB-ykU">
-                                                <rect key="frame" x="0.0" y="0.0" width="67.5" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="71.5" height="27"/>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ZN-kq-SqU">
-                                                <rect key="frame" x="85.5" y="0.0" width="69" height="21"/>
+                                                <rect key="frame" x="89.5" y="0.0" width="69" height="27"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="목표 20분">
                                                         <attributes>
@@ -619,7 +626,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zGz-FV-bTv">
-                                        <rect key="frame" x="0.0" y="31" width="271.5" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="37" width="284" height="47.5"/>
                                         <string key="text">목표시간에 도달하려면 조금 더 읽어야해요.
 책을 마저 읽는 것은 어때요?</string>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="16"/>

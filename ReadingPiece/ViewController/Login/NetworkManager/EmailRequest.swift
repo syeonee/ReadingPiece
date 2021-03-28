@@ -1,20 +1,19 @@
 //
-//  GetJournalImageRequest.swift
+//  EmailRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/27.
+//  Created by 정지현 on 2021/03/28.
 //
 
 import Foundation
 
-// 일지 사진 불러오기 요청
-
-final class GetJournalImageRequest: Requestable {
-    typealias ResponseType = GetJournalImageResponse
+final class EmailRequest: Requestable {
+    typealias ResponseType = EmailResponse
     
-    private var journalID: Int
-    init(journalID: Int) {
-        self.journalID = journalID
+    private var email: String
+    
+    init(email: String) {
+        self.email = email
     }
     
     var baseUrl: URL {
@@ -22,28 +21,27 @@ final class GetJournalImageRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals/\(journalID)"
+        return "email"
     }
     
     var method: Network.Method {
-        return .get
+        return .post
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     var parameters: [String : Any]? {
-        return nil
+        return ["email" : self.email]
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return defaultJSONHeader
     }
     
     var timeout: TimeInterval {
         return 10.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

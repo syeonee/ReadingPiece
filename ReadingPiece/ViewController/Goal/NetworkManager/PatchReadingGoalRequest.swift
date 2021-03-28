@@ -12,7 +12,7 @@ final class PatchReadingGoalRequest: Requestable {
         self.goal = goal
         self.goalId = goalId
     }
-    
+
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
@@ -27,6 +27,7 @@ final class PatchReadingGoalRequest: Requestable {
     
     var query: Network.QueryType {
         return .json
+        
     }
     
     var parameters: [String : Any]? {
@@ -38,7 +39,7 @@ final class PatchReadingGoalRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

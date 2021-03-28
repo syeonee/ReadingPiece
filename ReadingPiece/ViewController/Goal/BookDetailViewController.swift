@@ -112,6 +112,7 @@ class BookDetailViewController: UIViewController {
                     case .cancel(let cancelError):
                         print(cancelError!)
                     case .failure(let error):
+                        print("LOG", error)
                         self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
                         self.navigationController?.popViewController(animated: true)
                 }
@@ -155,7 +156,7 @@ class BookDetailViewController: UIViewController {
     
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
-        let goalId = userDefaults.integer(forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
+        let goalId = userDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
         let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn)
         
         _ = Network.request(req: addChallengeBookReq) { (result) in

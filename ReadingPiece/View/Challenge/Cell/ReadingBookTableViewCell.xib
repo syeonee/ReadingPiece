@@ -77,6 +77,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="IyW-Bm-lfF" id="qWr-0L-Vfo"/>
+                <outlet property="bookImageView" destination="OI8-Hr-qDt" id="6bV-la-Jg8"/>
                 <outlet property="isReadingNotifyButton" destination="pfT-s0-e8o" id="dN7-ui-ttw"/>
                 <outlet property="readingBookStatusView" destination="MEA-RT-cbW" id="e67-ik-rOD"/>
                 <outlet property="titleLabel" destination="Qgl-Z2-Te0" id="7B4-sk-4r4"/>

@@ -152,7 +152,13 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "첨부한 사진 보기", style: .default) { (action) in
-            self.getSelectedJournal(journalID: self.journalList[index].journalID)
+            if let url = self.journalList[index].journalImageURL {
+                let vc = JournalImageViewController(imageURL: url)
+                vc.modalPresentationStyle = .overCurrentContext
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                self.presentAlert(title: "조회할 일지 사진이 없습니다. ")
+            }
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
@@ -174,13 +180,6 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
         self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
         self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
     }
-    
-    func didSuccessToGetImage() {
-        print("이미지 모달 띄우기")
-        let popupVC = JournalImageViewController(nibName: "JournalImageViewController", bundle: nil)
-        popupVC.modalPresentationStyle = .overCurrentContext
-        self.present(popupVC, animated: true, completion: nil)
-    }
 }
 
 // 정렬 기능
@@ -200,23 +199,8 @@ extension JournalViewController {
     func buttonAction () {
         print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
         
-        
-        //let homeNavigationVC = MyNavViewController()
-        //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController
-        
-        /*
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        //self.navigationController?.pushViewController(TimerVC, animated: true)
-        
-        let viewControllers = self.navigationController!.viewControllers
-        let newViewControllers = NSMutableArray()
-        
-        // preserve the root view controller
-        newViewControllers.add(viewControllers[0])
-        // add the new view controller
-        newViewControllers.add(timerVC)
-        self.navigationController?.setViewControllers(newViewControllers as! [UIViewController], animated: true)
-        */
+        self.navigationController?.pushViewController(timerVC, animated: true)
     }
     
     
@@ -268,29 +252,6 @@ extension JournalViewController {
                 }
             case .cancel(let cancelError):
                 print(cancelError as Any)
-            case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
-                print(error as Any)
-            }
-        }
-    }
-    
-    // 선택된 일지 정보 불러오기(사진 조회용)
-    private func getSelectedJournal(journalID: Int) {
-        Network.request(req: GetJournalImageRequest(journalID: journalID)) { result in
-            switch result {
-            case .success(let response):
-                print(response)
-                if response.code == 1000 {
-                    self.didSuccessToGetImage()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
-            case .cancel(let cancel):
-                print(cancel as Any)
             case .failure(let error):
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)

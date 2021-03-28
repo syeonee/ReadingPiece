@@ -46,34 +46,45 @@ class LoginViewController: UIViewController {
     
     @IBAction func IDCancelButtonTapped(_ sender: Any) {
         IDTextField.text = ""
+        loginButton.isEnabled = false
     }
     
     @IBAction func PWCancelButtonTapped(_ sender: Any) {
         passwordTextField.text = ""
+        loginButton.isEnabled = false
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.showIndicator()
-        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
+        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) {
+            result in
             switch result {
             case .success(let response):
                 self.dismissIndicator()
-                let result = response.code
-                if result == 1000 {
+                let code = response.code
+                if code == 1000 {
                     print("로그인 성공")
-                    let ud = UserDefaults.standard
-                    ud.setValue(response.jwt, forKey: "jwtToken") // 삭제 예정
-                    ud.setValue(true, forKey: "loginConnected") // 삭제 예정
-                    
                     // 키체인에 토큰 등록
-                    guard let token = response.jwt else { return }
+                    let token = response.jwt
                     if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                         print("Keychain: token setting success.")
                     } else {
                         print("Failed to set token on Keychain")
                     }
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    if response.result == 0 {
+                        print("챌린지 모두 달성했거나 등록한 챌린지가 없는 경우")
+                        // 챌린지 모두 달성했거나 등록한 챌린지가 없는 경우
+                        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        // 달성하지 않은 챌린지가 있는 경우
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                        tabBarController.modalPresentationStyle = .fullScreen
+                        self.present(tabBarController, animated: true, completion: nil)
+                    }
+                    
+                    
                 } else {
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                         self.IDTextField.text = ""
@@ -86,11 +97,7 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)  {_ in
-                    // 서버 연결되면 삭제
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
     }

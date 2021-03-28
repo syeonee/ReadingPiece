@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReadingBookCollectionViewCell: UICollectionViewCell {
     static var identifier: String = "ReadingBookCollectionViewCell"
@@ -20,11 +21,41 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupUI()
     }
 
-    func configure() {
-        setupUI()
+    func configure(data: ReadingBook?, readingStatus: ReadingGoal?) {
+        if let bookData = data, let readingGoalData = readingStatus {
+            // 하단 책 정보에 읽기 상황정보 적용
+            if  let page = readingGoalData.page, let percent = readingGoalData.percent, let time = readingGoalData.totalTime {
+                currentPageLabel.text = "\(page)p"
+                currentPercentLabel.text = "\(percent)%"
+                radingTimeLabel.text = "\(minutesToHoursAndMinutes(time))"
+            }
+            
+            // 하단 책 정보에 책관련 기본정보 적용
+            bookTitleLabel.text = bookData.title ?? ""
+            authorLabel.text = bookData.writer ?? ""
+            guard let stringUrl = bookData.imageURL else { return }
+            if let imgUrl = URL(string: stringUrl) {
+                bookThumbnail.kf.setImage(with: imgUrl)
+            }
+        }
+    }
+    
+    // 분단위로 오는 시간을 0시간 0분 형태로 변환
+    private func minutesToHoursAndMinutes (_ stringMinutes : String) -> String {
+        let minutes = Int(stringMinutes) ?? 0
+        var formattedString = "0시간 0분"
+        if minutes > 60 {
+            formattedString =  "\(minutes / 60)시간 \(minutes % 60)분"
+        } else if minutes < 60 {
+            formattedString = "0시간 \(minutes)분"
+        } else {
+            formattedString = "0시간 0분"
+        }
+        
+        return formattedString
     }
     
     private func setupUI() {
