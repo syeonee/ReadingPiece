@@ -30,6 +30,7 @@ class MyPieceViewController: UIViewController {
     func setPiece(){
         self.showIndicator()
         guard let token = keychain.get(Keys.token) else { return }
+        print("token is \(token)")
         Network.request(req: MyPieceRequest(token: token)) { [self] result in
             self.dismissIndicator()
             print("set piece = \(result)")
@@ -38,13 +39,13 @@ class MyPieceViewController: UIViewController {
                 self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
-                    if response.message == "나의 피스 조회 성공."{
+                    if response.message == "나의 피스 조회 성공"{
                         DispatchQueue.main.async {
-                            if let pieces = response.pieces{
-                                myPieces = pieces
-                                print("pie = \(myPieces)")
-                                myPieceCollectionView.reloadData()
-                            }
+                            myPieces = response.pieces!
+                            myPieceCollectionView.reloadData()
+                        }
+                    }else{
+                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                         }
                     }
                 } else {
@@ -72,8 +73,6 @@ extension MyPieceViewController: UICollectionViewDataSource {
             let nib = UINib(nibName: "PieceEmptyView", bundle: bundle)
                     
             collectionView.backgroundView = nib.instantiate(withOwner: self, options: nil).first as? UIView
-        }else{
-            collectionView.backgroundView = nil
         }
         return myPieces.count
     }
@@ -88,24 +87,24 @@ extension MyPieceViewController: UICollectionViewDataSource {
         cell.durationLabel.text = piece.challengePeriod
         
         if piece.isComplete == "달성" {
-            cell.completeImageView.image = UIImage(named: "myComplete")
+            cell.completeImageView.image = UIImage(named: "complete")
         } else {
-            cell.completeImageView.image = UIImage(named: "myOngoing")
+            cell.completeImageView.image = UIImage(named: "ongoing")
         }
         
         switch piece.cake {
         case "cream":
-            cell.cakeImageVIew.image = UIImage(named: "myCream")
+            cell.cakeImageVIew.image = UIImage(named: "cream")
         case "choco":
-            cell.cakeImageVIew.image = UIImage(named: "myChoco")
+            cell.cakeImageVIew.image = UIImage(named: "choco")
         case "berry":
-            cell.cakeImageVIew.image = UIImage(named: "myBlueberry")
+            cell.cakeImageVIew.image = UIImage(named: "blueberry")
         default:
-            cell.cakeImageVIew.image = UIImage(named: "myCream")
+            cell.cakeImageVIew.image = UIImage(named: "cream")
         }
         
         if piece.wholeCake == "홀케이크" {
-            cell.wholecakeImageView.image = UIImage(named: "myWholeCake")
+            cell.wholecakeImageView.image = UIImage(named: "wholeCake")
         } else {
             cell.wholecakeImageView.isHidden = true
         }
@@ -127,7 +126,7 @@ extension MyPieceViewController: UICollectionViewDelegateFlowLayout{
         let width = collectionView.bounds.width
         let insetSum = width - (151*2)
         let inset = insetSum/8
-        return UIEdgeInsets(top: 0, left: (inset*1.8), bottom: 0, right: (inset*1.8))
+        return UIEdgeInsets(top: 0, left: (inset*1.5), bottom: 0, right: (inset*1.5))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

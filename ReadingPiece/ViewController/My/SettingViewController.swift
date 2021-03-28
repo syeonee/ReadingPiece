@@ -15,7 +15,6 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var noticeView: UIView!
     @IBOutlet weak var versionView: UIView!
-    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var logoutView: UIView! // 로그아웃
     @IBOutlet weak var secessionView: UIView! // 회원탈퇴
@@ -27,14 +26,6 @@ class SettingViewController: UIViewController {
         versionView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
         questionView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
         logoutView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
-        currentVersion()
-    }
-    
-    func currentVersion(){
-        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
-        if let version = version{
-            versionLabel.text = "\(version)"
-        }
     }
     
     @IBAction func settingViewTapped(_ sender: UITapGestureRecognizer) {
