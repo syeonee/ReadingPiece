@@ -36,12 +36,17 @@ class DailyGoalCompletionViewController: UIViewController {
     
     @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
         // 완료한 챌린지가 있으면 계속 버튼을 눌렀을때 리뷰 작성 화면으로 이동
-        if userName != "Reader" {
-            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
-        } else {
-            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
-        }
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+        writeDiaryVC.readingTime = self.readingTime
+        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+
+//        MY페이지 기능 개발 후 주석 해제 필요
+//        if userName != "Reader" {
+//            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+//            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+//        } else {
+//            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
+//        }
     }
     
     private func setupUI() {

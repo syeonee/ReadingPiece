@@ -32,7 +32,7 @@ public struct ReadingBookTimeResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let result: ReadingBookTime?
+    public let result: [ReadingBookTime]?
 }
 
 public struct ReadingBookTime: Codable {

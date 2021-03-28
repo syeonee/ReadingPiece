@@ -68,7 +68,20 @@ class DaillyReadingWritenViewController: UIViewController {
         self.navigationItem.title = "독서 일지"
     }
 
+    // 상단 완료 버튼
     @objc func postDiary(sender: UIBarButtonItem) {
+        writeJournal()
+    }
+    
+    // 하단 완료 버튼
+    @IBAction func postDiary(_ sender: UIButton) {
+        if isValidatePost() == true {
+            // API 호출
+            writeJournal()
+        }
+    }
+    
+    func writeJournal() {
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
         let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: imgBase64String, open: isOpen, goalBookId: goalBookId,
                                      page: readingPage, percent: readingPercent, challengeId: challengeId, goalId: goalId)
@@ -82,7 +95,7 @@ class DaillyReadingWritenViewController: UIViewController {
                         print("LOG - 일지 작성 성공 \(userResponse.code)")
                         // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
-                                DailyGoalCompletionViewController else { return } 
+                                DailyGoalCompletionViewController else { return }
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
                     default:
                         print("LOG 일지 작성 실패 \(userResponse.code)", journal)
@@ -97,7 +110,6 @@ class DaillyReadingWritenViewController: UIViewController {
             }
         }
     }
-    
     // 일지 작성에 필요한 값이 스트링형태라 Bool -> String으로 변환
     func getIsOpenFromIsJson(isPublic: Bool) -> String {
         switch isPublic {
@@ -144,12 +156,6 @@ class DaillyReadingWritenViewController: UIViewController {
         DispatchQueue.main.async {
             self.publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
             self.privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
-        }
-    }
-    
-    @IBAction func postDiary(_ sender: UIButton) {
-        if isValidatePost() == true {
-            // API 호출
         }
     }
 
