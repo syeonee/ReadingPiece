@@ -58,8 +58,33 @@ class PasswordResetViewController: UIViewController {
     }
     @IBAction func submitButtonTapped(_ sender: Any) {
         // 비밀번호 재설정 api 호출
+        Network.request(req: EmailRequest(email: self.emailInputTextField.text!)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                print("email: \(String(describing: self.emailInputTextField.text))")
+                if response.code == 1000 {
+                    self.presentAlert(title: "비밀번호 이메일 전송에 성공하였습니다. ", isCancelActionIncluded: false) {_ in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                } else {
+                    let message = response.message
+                    self.presentAlert(title: message, isCancelActionIncluded: false)
+                }
+                
+            case .cancel(let cancel):
+                print(cancel as Any)
+                self.presentAlert(title: "비밀번호 이메일 전송을 취소하였습니다. ", isCancelActionIncluded: false) {_ in
+                    self.dismiss(animated: true, completion: nil)
+                }
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
+                self.presentAlert(title: "비밀번호 이메일 전송에 실패했습니다. ", isCancelActionIncluded: false) { _ in
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
         
-        self.dismiss(animated: true, completion: nil)
     }
     
 }

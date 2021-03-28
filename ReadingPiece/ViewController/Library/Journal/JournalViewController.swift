@@ -200,14 +200,10 @@ extension JournalViewController {
     func buttonAction () {
         print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
         
-        
-        //let homeNavigationVC = MyNavViewController()
-        //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController
+        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
+        self.navigationController?.pushViewController(timerVC, animated: true)
         
         /*
-        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        //self.navigationController?.pushViewController(TimerVC, animated: true)
-        
         let viewControllers = self.navigationController!.viewControllers
         let newViewControllers = NSMutableArray()
         

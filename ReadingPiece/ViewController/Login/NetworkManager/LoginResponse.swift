@@ -5,7 +5,7 @@
 //  Created by 정지현 on 2021/03/19.
 //
 
-// 로그인, 회원가입 api 응답구조
+// 로그인, 회원가입, 비밀번호 리셋 api 응답구조
 
 public struct LoginResponse: Codable {
     public let isSuccess: Bool
