@@ -6,14 +6,18 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class SettingViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var noticeView: UIView!
     @IBOutlet weak var versionView: UIView!
     @IBOutlet weak var questionView: UIView!
-    @IBOutlet weak var logoutView: UIView!
-    @IBOutlet weak var secessionView: UIView!
+    @IBOutlet weak var logoutView: UIView! // 로그아웃
+    @IBOutlet weak var secessionView: UIView! // 회원탈퇴
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +37,48 @@ class SettingViewController: UIViewController {
         case questionView:
             print()
         case logoutView:
-            print()
+            logout()
         case secessionView:
-            print()
+            self.presentAlert(title: "정말 탈퇴하시겠어요?", message: "탈퇴하면 데이터를 복구할 수 없습니다. ", isCancelActionIncluded: true) {_ in
+                self.closeAccount()
+            }
         default:
             print()
         }
+    }
+    
+    private func logout() {
+        if keychain.clear() {
+            print("cleared keychain")
+            self.presentAlert(title: "성공적으로 로그아웃되었습니다. ")
+        } else {
+            self.presentAlert(title: "로그아웃에 실패했습니다. ")
+        }
+    }
+    
+    private func closeAccount() {
+        if keychain.clear() {
+            print("cleared keychain")
+            Network.request(req: CloseAccountRequest()) { result in
+                switch result {
+                case .success(let response):
+                    if response.code == 1000 {
+                        self.presentAlert(title: "회원 탈퇴에 성공하였습니다. ") {_ in
+                            let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginNav")
+                            loginViewController.modalPresentationStyle = .fullScreen
+                            self.present(loginViewController, animated: true, completion: nil) 
+                        }
+                    } else {
+                        let message = response.message
+                        self.presentAlert(title: message)
+                    }
+                case .cancel, .failure:
+                    self.presentAlert(title: "회원 탈퇴에 실패했습니다. ")
+                }
+            }
+        }
+        self.presentAlert(title: "회원 탈퇴에 실패했습니다. ")
     }
     
 

@@ -73,8 +73,11 @@
 		5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */; };
 		5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */; };
 		5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */; };
+		591D1E912610BA3D004597B1 /* CloseAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */; };
+		591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */; };
 		5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */; };
 		5920F969260F7B9F00C2C1B4 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */; };
+		5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */; };
 		59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */; };
 		59393BBF260CC70E00A2CE30 /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */; };
 		5961DE492610140C00EF8745 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961DE482610140C00EF8745 /* EmailRequest.swift */; };
@@ -261,8 +264,11 @@
 		5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
 		5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountRequest.swift; sourceTree = "<group>"; };
+		591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountResponse.swift; sourceTree = "<group>"; };
 		5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewEditRequest.swift; sourceTree = "<group>"; };
 		5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
+		5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetRequest.swift; sourceTree = "<group>"; };
 		59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRequest.swift; sourceTree = "<group>"; };
 		59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		5961DE482610140C00EF8745 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
@@ -854,6 +860,9 @@
 				D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */,
 				D6C1C027260B9812008EE7FE /* MyPieceRequest.swift */,
 				D6C1C02A260B9828008EE7FE /* MyPieceResponse.swift */,
+				591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */,
+				591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */,
+				5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */,
 				D6541A1F260FB5D100C96647 /* UserStatisticsRequest.swift */,
 				D6541A22260FB5E600C96647 /* UserStatisticsResponse.swift */,
 			);
@@ -1189,6 +1198,7 @@
 				0092500D2602605400A930DD /* NetworkManager.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */,
+				591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */,
 				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
@@ -1209,6 +1219,7 @@
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,
 				00FF3863260EEDCC00529570 /* DeleteChallengeBookRequest.swift in Sources */,
+				5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
 				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
 				00FF377D260A685700529570 /* PostReportReviewRequest.swift in Sources */,
@@ -1260,6 +1271,7 @@
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
+				591D1E912610BA3D004597B1 /* CloseAccountRequest.swift in Sources */,
 				00FF3767260A30DA00529570 /* GetTodayChallengeRequest.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				D642423726090A1800E732D4 /* SettingViewController.swift in Sources */,
