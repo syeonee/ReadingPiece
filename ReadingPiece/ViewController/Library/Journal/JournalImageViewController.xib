@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCoverImage3" translatesAutoresizingMaskIntoConstraints="NO" id="l06-MR-NS4">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCover" translatesAutoresizingMaskIntoConstraints="NO" id="l06-MR-NS4">
                     <rect key="frame" x="48.666666666666657" y="289.66666666666669" width="317" height="317.00000000000006"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="317" id="g6a-qa-YVW"/>
@@ -51,7 +51,7 @@
         </view>
     </objects>
     <resources>
-        <image name="bookCoverImage3" width="76" height="103"/>
+        <image name="bookCover" width="117.33333587646484" height="159"/>
         <image name="clearButtonLight" width="31" height="31"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

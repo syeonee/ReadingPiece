@@ -21,7 +21,7 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals"
+        return "journals/\(journalID)"
     }
     
     var method: Network.Method {
@@ -29,11 +29,11 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {

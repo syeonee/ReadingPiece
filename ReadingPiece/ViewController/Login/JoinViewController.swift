@@ -94,11 +94,11 @@ class JoinViewController: UIViewController {
             case .success(let response):
                 let result = response.code
                 if result == 1000 {
-                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { [self]_ in
+                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { _ in
                         
                         // 키체인에 토큰 등록
-                        guard let token = response.jwt else { return }
-                        if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                        let token = response.jwt 
+                        if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                             print("Keychain setting success.")
                         } else {
                             print("Failed to set on Keychain")

@@ -56,22 +56,35 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         self.showIndicator()
-        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) { result in
+        Network.request(req: LoginRequest(email: self.IDTextField.text!, password: self.passwordTextField.text!)) {
+            result in
             switch result {
             case .success(let response):
                 self.dismissIndicator()
-                let result = response.code
-                if result == 1000 {
+                let code = response.code
+                if code == 1000 {
                     print("로그인 성공")
                     // 키체인에 토큰 등록
-                    guard let token = response.jwt else { return }
+                    let token = response.jwt
                     if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                         print("Keychain: token setting success.")
                     } else {
                         print("Failed to set token on Keychain")
                     }
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    if response.result == 0 {
+                        print("챌린지 모두 달성했거나 등록한 챌린지가 없는 경우")
+                        // 챌린지 모두 달성했거나 등록한 챌린지가 없는 경우
+                        let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    } else {
+                        // 달성하지 않은 챌린지가 있는 경우
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let tabBarController = storyboard.instantiateViewController(withIdentifier: "TabController")
+                        tabBarController.modalPresentationStyle = .fullScreen
+                        self.present(tabBarController, animated: true, completion: nil)
+                    }
+                    
+                    
                 } else {
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                         self.IDTextField.text = ""

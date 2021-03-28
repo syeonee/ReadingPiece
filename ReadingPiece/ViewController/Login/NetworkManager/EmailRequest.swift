@@ -8,7 +8,7 @@
 import Foundation
 
 final class EmailRequest: Requestable {
-    typealias ResponseType = LoginResponse
+    typealias ResponseType = EmailResponse
     
     private var email: String
     
