@@ -21,8 +21,8 @@ class MyViewController: UIViewController {
     var contentViewController: PagingContentViewController!
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    
     var userProfile: Profile?
-    var isFirstAppear: Bool = true
     
     static var contentView: (String) -> UIViewController = { (menu) in
         let sb = UIStoryboard(name: "My", bundle: nil)
@@ -45,14 +45,6 @@ class MyViewController: UIViewController {
         menuViewController.register(nib: UINib(nibName: "MyMenuCell", bundle: nil), forCellWithReuseIdentifier: "MyMenuCell")
         menuViewController.reloadData()
         contentViewController.reloadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if isFirstAppear {
-            isFirstAppear = false
-        }else{
-            setProfile()
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,15 +74,13 @@ class MyViewController: UIViewController {
                         if userProfile?.profileImagePath != "사진이 없습니다." {
                             let decodedData = NSData(base64Encoded: (userProfile?.profileImagePath)!, options: [])
                             if let data = decodedData {
-                                UserDefaults.standard.set(data, forKey: "profileImageData")
                                 let decodedimage = UIImage(data: data as Data)
                                 profileImageView.image = decodedimage
                             }else{
-                                profileImageView.image = UIImage(named: "defaultProfile")
+                                profileImageView.image = UIImage(named: "selectedMY")
                             }
                         }else{
-                            UserDefaults.standard.removeObject(forKey: "profileImageData")
-                            profileImageView.image = UIImage(named: "defaultProfile")
+                            profileImageView.image = UIImage(named: "selectedMY")
                         }
                         nameLabel.text = userProfile?.name
                         resolutionLabel.text = userProfile?.resolution
