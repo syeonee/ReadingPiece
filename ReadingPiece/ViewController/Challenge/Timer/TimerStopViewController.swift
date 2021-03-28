@@ -8,6 +8,10 @@
 import UIKit
 
 class TimerStopViewController: UIViewController {
+    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+    var challengeInfo : ChallengerInfo?
+    var readingTime : Int = 0
+    
     @IBOutlet weak var timerStopTitleLabel: UILabel!
     @IBOutlet weak var currentRadingTimeLabel: UILabel!
     @IBOutlet weak var timerResumeButton: UIButton!
@@ -30,6 +34,30 @@ class TimerStopViewController: UIViewController {
         self.navigationItem.title = "시간 기록"
     }
 
+    func getUserBookReadingTime() {
+        let req = GetBookReadingTimeRequest(goalBookId: 25)
+        _ = Network.request(req: req) { (result) in
+                
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        // 책 제목 화면 표시, 남은 시간 저장해서 추후 일지 작성시 전달 필요
+                        print("LOG - 이전 독서시간", userResponse.message, userResponse.result?.sumtime)
+                        let prevReadingTimeString = userResponse.result?.sumtime ?? "0" // 서버에서 오는 값이 string이라 변환 진행
+                        let totalReadingTime = Int(prevReadingTimeString) // 오늘의 총 독서시간
+
+                    default:
+                        print("LOG - 오늘 독서시간 정보 없음")
+                        self.presentAlert(title: "이전 시간 정보를 불러오지 못했습니다.", isCancelActionIncluded: false)
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
+            }
+        }
+    }
     private func setupUI() {
         setNavBar()
         timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
@@ -52,6 +80,7 @@ class TimerStopViewController: UIViewController {
 
         timerStopTitleLabel.textColor = .darkgrey
         feedTitleLabel.textColor = .darkgrey
+        targetTimeLabel.text = "\(Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)분"
     }
 
     private func setNavBar() {
@@ -66,8 +95,12 @@ class TimerStopViewController: UIViewController {
     }
     
     @IBAction func writeDiary(_ sender: UIButton) {
-        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+        if userName != "Reader" {
+            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+        } else {
+            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
+        }
     }
     
 }

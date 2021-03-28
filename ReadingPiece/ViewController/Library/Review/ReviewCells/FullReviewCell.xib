@@ -52,9 +52,6 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="완독" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoP-Cs-Aoe">
                                 <rect key="frame" x="117.5" y="80" width="24" height="19"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="2ce-ug-0IV"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.3960812688" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -140,75 +137,39 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tv-fS-1KV">
-                        <rect key="frame" x="21" y="165" width="336" height="65"/>
+                        <rect key="frame" x="21" y="165" width="336" height="79"/>
                         <string key="text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</string>
                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRL-Mz-34s">
-                        <rect key="frame" x="21" y="252" width="19" height="16.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="16.100000000000001" id="a1K-IT-86O"/>
-                            <constraint firstAttribute="width" constant="19" id="teH-Zj-XyP"/>
-                        </constraints>
-                        <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <state key="normal" image="like icon"/>
-                        <connections>
-                            <action selector="likeButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YOv-Bp-BCA"/>
-                        </connections>
-                    </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="102" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4W-mn-ULK">
-                        <rect key="frame" x="44.5" y="249" width="20" height="18"/>
-                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
-                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-HX-cer">
-                        <rect key="frame" x="110.5" y="249" width="14" height="18"/>
-                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
-                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtT-f9-lON">
-                        <rect key="frame" x="87" y="253" width="19" height="14.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="14.4" id="G6M-Iu-cDx"/>
-                            <constraint firstAttribute="width" constant="19" id="cnm-Ps-yLr"/>
-                        </constraints>
-                        <color key="tintColor" red="0.93541020149999998" green="0.55002129079999995" blue="0.4980216026" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <state key="normal" image="comment icon"/>
-                        <connections>
-                            <action selector="commentsButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K9k-DW-t3V"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EBg-Dv-alU">
-                        <rect key="frame" x="338" y="249.5" width="19" height="22"/>
+                        <rect key="frame" x="338" y="249" width="19" height="22"/>
                         <color key="tintColor" red="0.70983195300000002" green="0.70973712209999995" blue="0.71372652049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <state key="normal" image="ellipsis" catalog="system"/>
                         <connections>
                             <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="L2i-WL-3FR"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전체 공개 중" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7e-uM-e2p">
+                        <rect key="frame" x="20" y="251" width="62" height="18"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="EBg-Dv-alU" firstAttribute="centerY" secondItem="Q7e-uM-e2p" secondAttribute="centerY" id="0XZ-RC-XZH"/>
                     <constraint firstAttribute="trailing" secondItem="GnL-uc-SL2" secondAttribute="trailing" constant="20" id="1kh-Kc-MQG"/>
                     <constraint firstItem="5tv-fS-1KV" firstAttribute="trailing" secondItem="GnL-uc-SL2" secondAttribute="trailing" id="2LY-aJ-Z0p"/>
-                    <constraint firstItem="xhC-HX-cer" firstAttribute="centerY" secondItem="D4W-mn-ULK" secondAttribute="centerY" id="5rk-Cd-IO1"/>
+                    <constraint firstAttribute="bottom" secondItem="5tv-fS-1KV" secondAttribute="bottom" constant="55.799999999999997" id="4ni-ad-eCf"/>
                     <constraint firstItem="5tv-fS-1KV" firstAttribute="leading" secondItem="GnL-uc-SL2" secondAttribute="leading" constant="1" id="5wU-k2-orC"/>
-                    <constraint firstItem="EBg-Dv-alU" firstAttribute="centerY" secondItem="rtT-f9-lON" secondAttribute="centerY" id="A8w-H3-mhw"/>
                     <constraint firstItem="EBg-Dv-alU" firstAttribute="trailing" secondItem="GnL-uc-SL2" secondAttribute="trailing" id="FQ8-af-9bl"/>
+                    <constraint firstItem="Q7e-uM-e2p" firstAttribute="leading" secondItem="GnL-uc-SL2" secondAttribute="leading" id="Kuj-du-qxm"/>
                     <constraint firstItem="GnL-uc-SL2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25.800000000000001" id="M8a-FT-CRY"/>
-                    <constraint firstItem="xhC-HX-cer" firstAttribute="leading" secondItem="rtT-f9-lON" secondAttribute="trailing" constant="4.5" id="MPA-vb-zzm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="IRL-Mz-34s" secondAttribute="bottom" constant="20.699999999999999" id="OZC-zf-hWL"/>
-                    <constraint firstItem="IRL-Mz-34s" firstAttribute="top" secondItem="5tv-fS-1KV" secondAttribute="bottom" constant="22" id="Ow5-ig-w33"/>
-                    <constraint firstItem="IRL-Mz-34s" firstAttribute="leading" secondItem="5tv-fS-1KV" secondAttribute="leading" id="RWc-zS-sZC"/>
-                    <constraint firstItem="D4W-mn-ULK" firstAttribute="leading" secondItem="IRL-Mz-34s" secondAttribute="trailing" constant="4.5" id="SJH-mY-FYe"/>
-                    <constraint firstItem="rtT-f9-lON" firstAttribute="leading" secondItem="D4W-mn-ULK" secondAttribute="trailing" constant="22.5" id="bxy-kO-ZEl"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Q7e-uM-e2p" secondAttribute="bottom" constant="20" id="NZb-zh-vQ2"/>
                     <constraint firstItem="5tv-fS-1KV" firstAttribute="top" secondItem="GnL-uc-SL2" secondAttribute="bottom" constant="16" id="cgM-xE-QcD"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="D4W-mn-ULK" secondAttribute="bottom" constant="21.800000000000001" id="h0J-yN-vrB"/>
                     <constraint firstItem="GnL-uc-SL2" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="hdu-gi-Ms0"/>
-                    <constraint firstItem="rtT-f9-lON" firstAttribute="centerY" secondItem="IRL-Mz-34s" secondAttribute="centerY" id="j5s-iT-3V6"/>
                     <constraint firstItem="GnL-uc-SL2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="pFi-HD-ile"/>
                 </constraints>
             </tableViewCellContentView>
@@ -217,12 +178,12 @@
                 <outlet property="authorLabel" destination="M1U-bU-VMS" id="M1X-LE-YKf"/>
                 <outlet property="bookImageView" destination="iPj-2E-nfY" id="UOC-kU-TSw"/>
                 <outlet property="bookTitleLabel" destination="8Li-hq-e3g" id="gGO-cw-tRH"/>
-                <outlet property="commentCount" destination="xhC-HX-cer" id="jKJ-Re-MVo"/>
-                <outlet property="likeButton" destination="IRL-Mz-34s" id="MU2-dL-zYt"/>
-                <outlet property="likeCount" destination="D4W-mn-ULK" id="pON-MB-qxz"/>
+                <outlet property="isCompletedLabel" destination="JoP-Cs-Aoe" id="jHY-xU-NB4"/>
+                <outlet property="isPublicLabel" destination="Q7e-uM-e2p" id="6iH-D8-ijY"/>
                 <outlet property="ratingLabel" destination="YPk-6I-I2o" id="8hx-T5-G1D"/>
                 <outlet property="ratingView" destination="FUR-1M-tRQ" id="2TN-kW-ews"/>
                 <outlet property="reviewTextLabel" destination="5tv-fS-1KV" id="92R-Mc-l4L"/>
+                <outlet property="timeLabel" destination="zaR-yP-A1J" id="G9p-ab-onh"/>
                 <outlet property="upperView" destination="GnL-uc-SL2" id="Bj1-B2-18G"/>
             </connections>
             <point key="canvasLocation" x="80" y="42"/>
@@ -231,9 +192,7 @@
     <resources>
         <image name="book" width="17.5" height="13"/>
         <image name="bookCoverImage3" width="76" height="103"/>
-        <image name="comment icon" width="17" height="13"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
-        <image name="like icon" width="16.5" height="14.5"/>
         <image name="selectedStar" width="36" height="36"/>
         <image name="time" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">
