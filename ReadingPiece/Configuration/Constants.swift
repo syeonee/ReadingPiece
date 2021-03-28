@@ -13,8 +13,11 @@ struct Constants {
     static let DEV_BASE_URL = "https://dev.maekuswant.shop/"
     static let BASE_URL = "https://prod.maekuswant.shop/"
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
-    let USERDEFAULT_KEY_CURRENT_TIMER_TIME = "savedTimeInt"
-    let USERDEFAULT_KEY_GOAL_ID = "goalId"
+    static let USERDEFAULT_KEY_CURRENT_TIMER_TIME = "savedTimeInt"
+    static let USERDEFAULT_KEY_GOAL_ID = "goalId"
+    static let USERDEFAULT_KEY_GOAL_BOOK_ID = "goalBookId"
+    static let USERDEFAULT_KEY_GOAL_USER_NAME = "userName"
+    static let USERDEFAULT_KEY_GOAL_TARGET_TIME = "targetTime"
     let ACCESS_TOKEN_HEADER: [String : String] = ["Content-Type": "application/json", "x-access-token": KEYCHAIN_TOKEN ?? ""]
 }
 

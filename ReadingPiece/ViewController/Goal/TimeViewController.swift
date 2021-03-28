@@ -78,7 +78,7 @@ class TimeViewController: UIViewController {
                     case 1000:
                         print("LOG - 목표설정 완료", self.amount, self.period, self.time, userResponse.message, userResponse.goalId)
                         guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
-                        self.usderDefaults.set(userResponse.goalId, forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
+                        self.usderDefaults.set(userResponse.goalId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
                         self.navigationController?.pushViewController(searchVC, animated: true)
                     case 2100, 2101:
                         self.presentAlert(title: "입력값을 다시 확인해주세요.", isCancelActionIncluded: false)
@@ -96,7 +96,7 @@ class TimeViewController: UIViewController {
     }
     
     func patchUserReadingGoal() {
-        let goalId = usderDefaults.integer(forKey: Constants().USERDEFAULT_KEY_GOAL_ID)
+        let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
         let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId)
                                 
         _ = Network.request(req: req) { (result) in
