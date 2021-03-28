@@ -33,7 +33,7 @@ class JournalViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        getJournalData(align: "desc")
+        getJournalData()
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,7 +60,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         let count = journalList.count
         if count == 0 {
             let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType:  "journal") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "독서 시작하기") {
                 self.buttonAction()
             }
         } else {
@@ -183,11 +183,42 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 // 정렬 기능
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
-        getJournalData(align: "asc")
+        //self.spinner.startAnimating()
+        self.showWhiteIndicator()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: "asc")) { result in
+            switch result {
+            case .success(let response):
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+                guard let result = response.result else { return }
+                self.journalList = result
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .cancel, .failure:
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+            }
+        }
     }
     
     func sortRecentFirst() {
-        getJournalData(align: "desc")
+        self.spinner.startAnimating()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: "desc")) { result in
+            switch result {
+            case .success(let response):
+                self.spinner.stopAnimating()
+                guard let result = response.result else { return }
+                self.journalList = result
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .cancel, .failure:
+                self.spinner.stopAnimating()
+            }
+        }
     }
 }
 
@@ -223,30 +254,20 @@ extension JournalViewController {
 // API 연동 메소드
 extension JournalViewController {
     // 내가 쓴 일지 조회
-    private func getJournalData(align: String) {
+    private func getJournalData() {
         self.spinner.startAnimating()
         guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetJournalRequest(token: token, align: align)) { result in
+        Network.request(req: GetJournalRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
-                if response.code == 1000 {
-                    guard let result = response.result else { return }
-                    self.journalList = result
-                    self.didRetrieveData()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
-                
+                guard let result = response.result else { return }
+                self.journalList = result
+                self.didRetrieveData()
             case .cancel, .failure:
                 self.spinner.stopAnimating()
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
             }
         }
-        
     }
     
     // 일지 삭제
@@ -256,20 +277,26 @@ extension JournalViewController {
             switch result {
             case .success(let response):
                 print(response)
-                if response.code == 1000 {
-                    self.didDeleteData()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
-                
+                self.didDeleteData()
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)
+            }
+        }
+    }
+    
+    // 일지 수정
+    private func patchJournal(text: String, journalID: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PatchJournalRequest(token: token, text: text, journalID: journalID)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+            case .cancel(let cancelError):
+                print(cancelError as Any)
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
             }
         }
     }

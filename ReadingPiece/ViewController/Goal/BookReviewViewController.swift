@@ -8,9 +8,9 @@
 import UIKit
 
 class BookReviewViewController: UIViewController {
-    var userReview: [UserBookReview] = []
-    var expandedIndexSet : IndexSet = []
+
     @IBOutlet weak var reviewTableView: UITableView!
+    var expandedIndexSet : IndexSet = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,20 +28,13 @@ class BookReviewViewController: UIViewController {
 
 extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 유저 리뷰가 있을때만 1개의 리뷰를 먼저 보여주고, 없을 경우 보여주지 않음
-        switch userReview.first?.contents {
-        case nil:
-            return 0
-        default:
-            return userReview.count
-        }
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = reviewTableView.dequeueReusableCell(withIdentifier: "bookReviewCell", for: indexPath) as? ReviewTableViewCell else {
             return UITableViewCell()
         }
-        cell.configure(reviewData: userReview[indexPath.row])
         cell.reviewCellDelegate = self
         
         if expandedIndexSet.contains(indexPath.row) {// 더보기 버튼을 누른 셀인 경우

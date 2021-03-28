@@ -1,17 +1,17 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=1091617957
-// 유저가 읽고 있는 모든 책 현황 조회 API
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=2070942099
+// 챌린지 현황 조회 API
 
-final class GetAllReadingBookRequest: Requestable {
-    typealias ResponseType = AllReadingBookResponse
+final class GetChallengeRequest: Requestable {
+    typealias ResponseType = ChallengeResponse
     
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
     
     var endpoint: String {
-        return "challenge/goal/book"
+        return "challenge"
     }
     
     var method: Network.Method {
@@ -19,7 +19,7 @@ final class GetAllReadingBookRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     var parameters: [String : Any]? {

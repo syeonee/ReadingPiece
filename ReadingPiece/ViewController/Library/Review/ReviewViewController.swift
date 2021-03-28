@@ -27,7 +27,7 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadReviewData()
+        getReviewData()
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -40,10 +40,7 @@ class ReviewViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 263.5
         
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        loadReviewData()
+        
     }
     
     func didRetrieveData() {
@@ -58,7 +55,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         let count = reviewList.count
         if count == 0 {
             let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "review") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonTitle: "평가/리뷰 작성하기") {
                 self.buttonAction()
             }
         } else {
@@ -79,10 +76,13 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             let rating = Double(review.star)
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = review.text
-            cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
+            cell.likeDelegate = self
+            cell.commentsDelegate = self
             cell.index = indexPath.row
             
             return cell
@@ -92,14 +92,16 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookImageView.kf.setImage(with: url)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
-            let rating = Double(review.star)
-            cell.ratingLabel.text = String(rating)
+            cell.ratingLabel.text = String(review.star)
             cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
-            cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.moreDelegate = self
             cell.editDelegate = self
+            cell.likeDelegate = self
+            cell.commentsDelegate = self
             cell.index = indexPath.row
             
             return cell
@@ -109,13 +111,15 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookImageView.kf.setImage(with: url)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
-            let rating = Double(review.star)
-            cell.ratingLabel.text = String(rating)
+            cell.ratingLabel.text = String(review.star)
             cell.reviewTextLabel.text = review.text
-            cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            //cell.likeCount.text = String(review.liked)
+            //cell.likeState = review.like
+            //cell.commentCount.text = String(review.comments)
             
             cell.editDelegate = self
+            cell.likeDelegate = self
+            cell.commentsDelegate = self
             cell.index = indexPath.row
             
             return cell
@@ -182,25 +186,22 @@ extension ReviewViewController: ReviewMoreDelegate {
 extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
     
     func didTapEditButton(index: Int) {
-        showAlert(index: index)
+        showAlert(indexPath: IndexPath(row: index, section: 0))
     }
     func didTapFullEditButton(index: Int) {
-        showAlert(index: index)
+        showAlert(indexPath: IndexPath(row: index, section: 0))
     }
-    func showAlert(index: Int) {
+    func showAlert(indexPath: IndexPath) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "수정", style: .default) { (action) in
             print("수정하기")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            // 리뷰 삭제 api 호출
-            self.deleteReview(reviewID: self.reviewList[index].reviewID)
-            
-            self.reviewList.remove(at: index)
-            self.more.remove(at: index)
-            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            self.reviewList.remove(at: indexPath[1])
+            self.more.remove(at: indexPath[1])
+            self.tableView.deleteRows(at: [IndexPath(row: indexPath[1], section: 0)], with: .left)
+            self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -209,20 +210,69 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         
         self.present(alert, animated: true, completion: nil)
     }
-    func didDeleteData() {
-        self.presentAlert(title: "리뷰가 삭제되었습니다. ", isCancelActionIncluded: false)
-        self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+}
+
+// 좋아요 기능 관련 메소드
+extension ReviewViewController: ReviewLikeDelegate, ReviewFullLikeDelegate {
+    func didTapLikeButton(index: Int, like: Bool) {
+        if like == true {
+            Review.dummyData[index].like = true
+            Review.dummyData[index].liked += 1
+            print("ReviewViewController - didTapLikeButton() called. +1 for like")
+            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        } else {
+            Review.dummyData[index].like = false
+            Review.dummyData[index].liked -= 1
+            print("ReviewViewController - didTapLikeButton() called. -1 for like")
+            tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        }
     }
+    
+    func didTapFullLikeButton(index: Int, like: Bool) {
+        if like == true {
+            Review.dummyData[index].like = true
+            Review.dummyData[index].liked += 1
+            print("ReviewViewController - didTapFullLikeButton() called. +1 for like")
+            self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        } else {
+            Review.dummyData[index].like = false
+            Review.dummyData[index].liked -= 1
+            print("ReviewViewController - didTapFullLikeButton() called. -1 for like")
+            self.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        }
+    }
+}
+
+// 댓글 관련 델리게이트
+extension ReviewViewController: ReviewCommentsDelegate, ReviewFullCommentsDelegate {
+    func didTapCommentButton() {
+        if let commentVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "CommentController") as? CommentViewController {
+            presentPanModal(commentVC)
+        }
+    }
+    
+    func didTapFullCommentButton() {
+        print("ReviewViewController - didTapFullCommentButton() called")
+        if let commentVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "CommentController") as? CommentViewController {
+            presentPanModal(commentVC)
+        }
+    }
+    
+    
 }
 
 // 정렬 관련 메소드
 extension ReviewViewController: ReviewLatestDelegate, ReviewOldestDelegate {
     func sortRecentFirst() {
-        getReviewData(align: "desc") // 최신순 정렬
+        print("ReviewViewController - sortRecentFirst() called")
+        Review.dummyData.sort(by: { $0.date > $1.date })
+        tableView.reloadData()
     }
     
     func sortOldFirst() {
-        getReviewData(align: "asc") // 오래된 순 정렬
+        print("ReviewViewController - sortOldFirst() called")
+        Review.dummyData.sort(by: { $0.date < $1.date })
+        tableView.reloadData()
     }
 }
 
@@ -239,61 +289,24 @@ extension ReviewViewController {
 // API 호출 메소드
 extension ReviewViewController {
     
-    // 리뷰 조회 - 처음 화면 로드할 때
-    private func loadReviewData() {
-        tableView.showWhiteIndicator()
+    // 리뷰 조회
+    private func getReviewData() {
+        //self.spinner.startAnimating()
+        self.showWhiteIndicator()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
-                self.tableView.dismissIndicator()
-                if response.code == 1000 {
-                    guard let result = response.results else { return }
-                    self.reviewList = result
-                    self.didRetrieveData()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
-                
+                //self.spinner.stopAnimating()
+                self.dismissIndicator()
+                guard let result = response.results else { return }
+                self.reviewList = result
+                self.didRetrieveData()
             case .cancel(let cancel):
-                self.tableView.dismissIndicator()
+                self.dismissIndicator()
                 print(cancel as Any)
             case .failure(let error):
-                self.tableView.dismissIndicator()
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
-                print(error as Any)
-            }
-        }
-    }
-    
-    // 리뷰 조회 - 정렬 바꿀때
-    private func getReviewData(align: String) {
-        self.spinner.startAnimating()
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetReviewRequest(token: token, align: align)) { result in
-            switch result {
-            case .success(let response):
-                self.spinner.stopAnimating()
-                if response.code == 1000 {
-                    guard let result = response.results else { return }
-                    self.reviewList = result
-                    self.didRetrieveData()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
-                
-            case .cancel(let cancel):
-                self.spinner.stopAnimating()
-                print(cancel as Any)
-            case .failure(let error):
-                self.spinner.stopAnimating()
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+                self.dismissIndicator()
                 print(error as Any)
             }
         }
@@ -309,7 +322,6 @@ extension ReviewViewController {
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error?.localizedDescription as Any)
             }
         }
@@ -322,18 +334,9 @@ extension ReviewViewController {
             switch result {
             case .success(let response):
                 print(response)
-                if response.code == 1000 {
-                    self.didDeleteData()
-                } else {
-                    let message = response.message
-                    DispatchQueue.main.async {
-                        self.presentAlert(title: message)
-                    }
-                }
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error?.localizedDescription as Any)
             }
         }

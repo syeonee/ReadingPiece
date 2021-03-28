@@ -20,7 +20,6 @@ class ChallengeCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        postNewUserCakeType()
     }
     
     private func setupUI() {
@@ -29,27 +28,6 @@ class ChallengeCompletionViewController: UIViewController {
         continueButton.makeRoundedButtnon("계속하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         challengeNameLabel.textColor = .main
         challengeCakeNameLabel.textColor = .darkgrey
-    }
-    
-    func postNewUserCakeType() {
-        // 유저디폴트에 있는 goalId, 케이크 이름을 받아오도록 추후 변경 필요
-        let req = PostUserCakeTypeRequest(goalId: 33, cake: "bery")
-        
-        _ = Network.request(req: req) { (result) in
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG - 케이크 종류 변경 성공", userResponse.code)
-                    default:
-                        print("LOG - 케이크 종류 변경 실패", userResponse.message, userResponse.code)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    debugPrint("LOG", error)
-            }
-        }
     }
     
     func setFireCracker() {

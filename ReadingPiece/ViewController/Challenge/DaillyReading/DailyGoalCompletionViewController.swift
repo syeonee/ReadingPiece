@@ -8,11 +8,6 @@
 import UIKit
 
 class DailyGoalCompletionViewController: UIViewController {
-    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
-    let goalBookId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
-    let goalId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-    var time: Int = 0
-//    let challengeId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     
     @IBOutlet weak var DailyGoalResultView: UIView!
     @IBOutlet weak var readingTargetTimeLabel: UILabel!
@@ -87,12 +82,8 @@ class DailyGoalCompletionViewController: UIViewController {
         }
     
     @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
-        if userName != "Reader" {
-            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
-        } else {
-            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
-        }
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
     }
     
 }

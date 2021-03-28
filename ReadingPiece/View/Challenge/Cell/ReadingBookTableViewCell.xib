@@ -19,7 +19,7 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReadingBookTableViewCell" rowHeight="314" id="KGk-i7-Jjw" customClass="ReadingBookTableViewCell" customModule="ReadingPiece" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="377" height="111"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="377" height="111"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -42,8 +42,8 @@
                             <constraint firstAttribute="height" constant="79" id="ozg-f5-XyV"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-RT-cbW">
-                        <rect key="frame" x="0.0" y="0.0" width="6" height="126"/>
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MEA-RT-cbW">
+                        <rect key="frame" x="0.0" y="11" width="6" height="89"/>
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="6" id="uX4-ym-dJd"/>
@@ -66,7 +66,6 @@
                     <constraint firstItem="pfT-s0-e8o" firstAttribute="top" secondItem="IyW-Bm-lfF" secondAttribute="bottom" constant="10" id="PGg-ch-XfZ"/>
                     <constraint firstItem="Qgl-Z2-Te0" firstAttribute="leading" secondItem="OI8-Hr-qDt" secondAttribute="trailing" constant="12" id="Pnj-yT-lcl"/>
                     <constraint firstItem="IyW-Bm-lfF" firstAttribute="top" secondItem="Qgl-Z2-Te0" secondAttribute="bottom" constant="12" id="S5F-Mk-KfN"/>
-                    <constraint firstAttribute="bottom" secondItem="pfT-s0-e8o" secondAttribute="bottom" constant="15" id="Ux0-Ii-w8x"/>
                     <constraint firstItem="pfT-s0-e8o" firstAttribute="leading" secondItem="Qgl-Z2-Te0" secondAttribute="leading" id="W03-T0-LGb"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="beH-Qu-jwM"/>
                     <constraint firstAttribute="bottom" secondItem="OI8-Hr-qDt" secondAttribute="bottom" constant="15" id="ggk-bj-SEe"/>
@@ -77,7 +76,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="authorLabel" destination="IyW-Bm-lfF" id="qWr-0L-Vfo"/>
-                <outlet property="bookImageView" destination="OI8-Hr-qDt" id="6bV-la-Jg8"/>
                 <outlet property="isReadingNotifyButton" destination="pfT-s0-e8o" id="dN7-ui-ttw"/>
                 <outlet property="readingBookStatusView" destination="MEA-RT-cbW" id="e67-ik-rOD"/>
                 <outlet property="titleLabel" destination="Qgl-Z2-Te0" id="7B4-sk-4r4"/>

@@ -11,12 +11,9 @@ protocol ReadingStatusDelegate {
     func setReadingPercent(_ percent: Int)
 }
 class DaillyReadingWritenViewController: UIViewController {
-    let defaults = UserDefaults.standard
     let cellId = ReviewImageCell.identifier
-    var challengeInfo : ChallengerInfo?
     let picker = UIImagePickerController()
     var pickedImage : UIImage?
-    var readingTime: Int = 0
     var readingPercent: Int = 0
     var readingPage: Int = 0
     var isPublic: Bool? {
@@ -64,7 +61,6 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 
     @objc func postDiary(sender: UIBarButtonItem) {
-        // 시간, goalBookId, 챌린지 달성 여부
         // 챌린지 달성 여부에 따른 화면 분기 필요
 //        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
 //        self.navigationController?.pushViewController(writeReviewVC, animated: true)
@@ -226,8 +222,6 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
             self.pickedImage = img
-            let imgString = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
-            print("LOG - Image String", imgString)
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
         }

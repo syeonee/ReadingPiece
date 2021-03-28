@@ -9,19 +9,11 @@ import UIKit
 
 extension UITableView {
     
-    func setEmptyView(image: UIImage, message: String, buttonType: String, actionButtonClosure: @escaping () -> Void) {
+    func setEmptyView(image: UIImage, message: String, buttonTitle: String, actionButtonClosure: @escaping () -> Void) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         let imageView = UIImageView()
         let messageLabel = UILabel()
-        let button: UIButton = {
-            let button = UIButton()
-            if buttonType == "review" {
-                button.setImage(UIImage(named: "createReviewButton"), for: .normal)
-            } else {
-                button.setImage(UIImage(named: "startReadingButton"), for: .normal)
-            }
-            return button
-        } ()
+        let button = UIButton()
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -29,6 +21,8 @@ extension UITableView {
         
         messageLabel.font = .NotoSans(.medium, size: 15)
         messageLabel.textColor = .charcoal
+        button.titleLabel?.font = .NotoSans(.medium, size: 15)
+        button.makeRoundedButtnon(buttonTitle, titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
         
         emptyView.addSubview(imageView)
         emptyView.addSubview(messageLabel)
@@ -42,13 +36,7 @@ extension UITableView {
         messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
         messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 60).isActive = true
         messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -60).isActive = true
-        
-        if buttonType == "review" {
-            button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 65).isActive = true
-        } else {
-            button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 40).isActive = true
-        }
-        
+        button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 65).isActive = true
         button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
         button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
         button.heightAnchor.constraint(equalToConstant: 44).isActive = true
@@ -76,16 +64,5 @@ extension UITableView {
         self.backgroundView = nil
         self.separatorStyle = .none
     }
-    
-    // MARK: 흰배경 인디케이터 표시
-    func showWhiteIndicator() {
-        IndicatorView.shared.show()
-        IndicatorView.shared.showWhiteIndicator()
-    }
-    // MARK: 인디케이터 숨김
-    func dismissIndicator() {
-        IndicatorView.shared.dismiss()
-    }
-
     
 }

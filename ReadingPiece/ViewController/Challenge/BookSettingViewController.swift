@@ -9,47 +9,12 @@ import UIKit
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
-    var books : [AllReadingBook] = [] {
-        didSet{
-            readingBookTableView.reloadData()
-        }
-    }
+    var books : [Book] = []
     @IBOutlet weak var readingBookTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        getAllBooks()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    func getAllBooks() {
-        let req = GetAllReadingBookRequest()
-        _ = Network.request(req: req) { (result) in
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG - 책 정보 조회 성공", userResponse.getbookListRows)
-                        guard let books = userResponse.getbookListRows else { return }
-                        self.books = books
-                    case 2221:
-                        self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
-                    case 2222:
-                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-                    default:
-                        self.presentAlert(title: "유효하지 않은 로그인 정보", isCancelActionIncluded: false)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    debugPrint("LOGT", error)
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-            }
-        }
     }
     
     func setupUI() {
@@ -61,6 +26,7 @@ class BookSettingViewController: UIViewController {
         readingBookTableView.delegate = self
         readingBookTableView.dataSource = self
         readingBookTableView.register(UINib(nibName: ReadingBookTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ReadingBookTableViewCell.identifier)
+
     }
     
     private func setNavBar() {
@@ -80,14 +46,15 @@ class BookSettingViewController: UIViewController {
 
 extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return books.count
+        10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ReadingBookTableViewCell.identifier, for: indexPath) as? ReadingBookTableViewCell
             else { return UITableViewCell() }
-        cell.configure(bookData: books[indexPath.row])
-
+        if indexPath.row == 2 {
+            cell.readingBookStatusView.backgroundColor = .sub2
+        }
         return cell
     }
     
@@ -98,67 +65,17 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 해당 책을 챌린지 책으로 수정(등록)
         let modifiyAction = UITableViewRowAction(style: .destructive, title: "도전하기") { _, _ in
-            self.modifiyChallengeBook(id: self.books[indexPath.row].goalBookId)
+
         }
 
         // 해당 책을 읽는 책 리스트에서 삭제
         let deleteAction = UITableViewRowAction(style: .destructive, title: "삭제") { _, _ in
-            self.deleteChallengeBook(id: self.books[indexPath.row].goalBookId)
+
         }
         
-        modifiyAction.backgroundColor = .darkGray
-        deleteAction.backgroundColor = .disabled2
-        return [deleteAction, modifiyAction]
-    }
-    
-    // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
-    func modifiyChallengeBook(id: Int) {
-        let req = PatchChallengeBookRequest(goalbookId: id)
-        _ = Network.request(req: req) { (result) in
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG - 도전 책 변경 성공")
-                        self.getAllBooks()
-                    case 2225, 4000 :
-                        self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
-                    case 2223:
-                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-                    default:
-                        self.presentAlert(title: "유효하지 않은 로그인 정보", isCancelActionIncluded: false)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    debugPrint("LOGT", error)
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-            }
-        }
-    }
-    
-    // 읽고있는 책 삭제
-    func deleteChallengeBook(id: Int) {
-        let req = DeleteChallengeBookRequest(goalbookId: id)
-        _ = Network.request(req: req) { (result) in
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG - 책 삭제 성공")
-                        self.getAllBooks()
-                    case 4000:
-                        self.presentAlert(title: "읽고 있는 책은 1권 이상이여야 합니다.", isCancelActionIncluded: false)
-                    default:
-                        self.presentAlert(title: "책 삭제 실패! 로그인 정보를 확인해주세요.", isCancelActionIncluded: false)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    debugPrint("LOGT", error)
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-            }
-        }
+        modifiyAction.backgroundColor = .darkgrey
+        deleteAction.backgroundColor = .fillDisabled
+        return [modifiyAction, deleteAction]
     }
 
 }

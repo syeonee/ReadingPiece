@@ -16,7 +16,6 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var star3ImageView: UIImageView!
     @IBOutlet weak var star4ImageView: UIImageView!
     @IBOutlet weak var star5ImageView: UIImageView!
-    @IBOutlet weak var isCompletedImage: UIImageView!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -36,40 +35,13 @@ class ReviewTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         bookImageView.layer.cornerRadius = bookImageView.frame.height/2
         bookImageView.clipsToBounds = true
-        setupUI()
+        drawStars(rating: 3)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }
-    
-    func setupUI() {
-        likeLabel.isHidden = true
-        likeButton.isHidden = true
-        commentButton.isHidden = true
-        commentLabel.isHidden = true
-    }
-    
-    func configure(reviewData: UserBookReview) {
-        nameLabel.text = reviewData.name
-        dateLabel.text = reviewData.postAt
-        reviewLabel.text = reviewData.contents
-        guard let stringUrl = reviewData.imageURL else { return}
-        let imgUrl = URL(string: stringUrl)
-        guard let star = reviewData.star else { return }
-        bookImageView.kf.setImage(with: imgUrl)
-        drawStars(rating: star)
-        checkReadingCompleted(status: reviewData.status)
-    }
-    
-    func checkReadingCompleted(status: String?) {
-        guard let readingStatus = status else { return }
-        if readingStatus == "Y" {
-            isCompletedImage.image = UIImage(named: "readingCompeleted")
-        }
-    }
-    
     
     @IBAction func textExpandButtonTapped(_ sender: Any) {
         reviewCellDelegate?.moreTextButtonTapped(cell: self)

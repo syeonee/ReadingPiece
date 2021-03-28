@@ -76,7 +76,6 @@ PODS:
   - PanModal (1.2.7)
   - PromisesObjC (1.2.12)
   - SnapKit (5.0.1)
-  - SwiftyJSON (4.3.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
@@ -91,7 +90,6 @@ DEPENDENCIES:
   - PagingKit
   - PanModal
   - SnapKit (~> 5.0.0)
-  - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
@@ -116,7 +114,6 @@ SPEC REPOS:
     - PanModal
     - PromisesObjC
     - SnapKit
-    - SwiftyJSON
     - Toast-Swift
 
 SPEC CHECKSUMS:
@@ -140,9 +137,8 @@ SPEC CHECKSUMS:
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 44d2a20a733354b335f29489442c7f96bb4d0311
+PODFILE CHECKSUM: 90a7181beda5623aa50a76c0781e8c7e30586610
 
 COCOAPODS: 1.10.0

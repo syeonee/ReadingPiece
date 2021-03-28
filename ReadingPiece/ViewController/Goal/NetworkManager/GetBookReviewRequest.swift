@@ -1,16 +1,15 @@
 import Foundation
-import KeychainSwift
 
 // API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1168939781
 // 각 책에대한 상세 정보, 리뷰 조회 API
-final class GetUserBookReviewRequest: Requestable {
-    typealias ResponseType = UserBookReviewResponse
+final class GetBookReviewRequest: Requestable {
+    typealias ResponseType = BookReviewResponse
     private var isbn: String
-    private var bookId: String
+    private var goalBookId: String
     
-    init(isbn: String, bookId: String) {
+    init(isbn: String, goalBookId: String) {
         self.isbn = isbn
-        self.bookId = bookId
+        self.goalBookId = goalBookId
     }
     
     var baseUrl: URL {
@@ -18,7 +17,7 @@ final class GetUserBookReviewRequest: Requestable {
     }
     
     var endpoint: String {
-        return "book/\(bookId)"
+        return "book/\(self.goalBookId)"
     }
     
     var method: Network.Method {
@@ -26,12 +25,12 @@ final class GetUserBookReviewRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .path
+        return .json
     }
     
     
     var parameters: [String : Any]? {
-        return defaultJSONHeader
+        return ["publishNumber": self.isbn]
     }
     
     var headers: [String : String]? {

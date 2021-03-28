@@ -10,7 +10,6 @@ import UIKit
 class TermViewController: UIViewController {
     var period: String?
     var amount: Int?
-    var initializer: Int = 0
     
     @IBOutlet weak var bookQuantityTextField: UITextField!
     @IBOutlet weak var weekButton: UIButton!
@@ -71,7 +70,6 @@ class TermViewController: UIViewController {
         if changeNextButtonColorByValidcation() == true {
             if let readingAmount = amount, let readingPeriod = period {
                 guard let timeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return }
-                timeVC.initializer = self.initializer
                 timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount)
                 self.navigationController?.pushViewController(timeVC, animated: true)
             }

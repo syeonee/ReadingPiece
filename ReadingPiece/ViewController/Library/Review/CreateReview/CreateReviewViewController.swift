@@ -14,24 +14,6 @@ class CreateReviewViewController: UIViewController {
     let writingCell = ReviewWritingCell()
     
     var book : Book?
-    var bookID: Int?
-    
-    // 리뷰 작성 버튼 활성화여부 체크
-    var doneActivated: Bool = false {
-        didSet {
-            if doneActivated == true {
-                doneButton.isEnabled = true
-                doneButton.setImage(UIImage(named: "completeButton"), for: .normal)
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-                self.navigationItem.rightBarButtonItem?.tintColor = .main
-            } else {
-                doneButton.isEnabled = false
-                doneButton.setImage(UIImage(named: "completeButtonDisabled"), for: .normal)
-                self.navigationItem.rightBarButtonItem?.isEnabled = false
-                self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
-            }
-        }
-    }
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIButton!
@@ -46,11 +28,7 @@ class CreateReviewViewController: UIViewController {
         tableView.register(UINib(nibName: "ReviewWritingCell", bundle: nil), forCellReuseIdentifier: writingCell.cellID)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.tableFooterView = UIView()
-        
-        self.dismissKeyboardWhenTappedAround()
-        doneActivated = false        
     }
-    
     
     private func setNavBar() {
         self.navigationItem.title = "평가/리뷰"
@@ -68,14 +46,10 @@ class CreateReviewViewController: UIViewController {
     }
     
     @objc func postReview(sender: UIBarButtonItem) {
-        postReview()
+        print("리뷰 작성 완료")
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func doneButtonTapped(_ sender: Any) {
-        postReview()
-    }
-    
-    private func didSuccessToPost() {
-        // reviewList 업데이트하기
         self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -94,6 +68,8 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
             cell.titleLabel.text = book?.title
             cell.authorLabel.text = book?.authors.joined(separator: ",")
             cell.publisherLabel.text = book?.publisher
+            //let year = book?.publicationDate.components(separatedBy: "-")[0]
+            //cell.yearLabel.text = "\(year ?? "")년"
             return cell
         } else if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ratingCell.cellID) as! ReviewRatingCell
@@ -115,33 +91,9 @@ extension CreateReviewViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
 }
-
-// 리뷰 작성 완료 버튼 관련 델리게이트
 extension CreateReviewViewController: ReviewWritingCellDelegate {
     func activateDoneButton() {
-        doneActivated = true
-    }
-}
-
-// 리뷰생성 API 호출
-extension CreateReviewViewController {
-    private func postReview() {
-        Network.request(req: PostReviewRequest(bookID: self.bookID!, star: ratingCell.starCount, text: writingCell.reviewInputTextView.text, isPublic: writingCell.isPublic!)) { result in
-            switch result {
-            case .success(let response):
-                if response.code == 1000 {
-                    self.didSuccessToPost()
-                } else {
-                    let message = response.message
-                    self.presentAlert(title: message)
-                }
-                print(response)
-            case .cancel(let cancelError):
-                print(cancelError as Any)
-            case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
-                print(error?.localizedDescription as Any)
-            }
-        }
+        self.doneButton.setImage(UIImage(named: "completeButton"), for: .normal)
+        self.navigationItem.rightBarButtonItem?.tintColor = .main
     }
 }

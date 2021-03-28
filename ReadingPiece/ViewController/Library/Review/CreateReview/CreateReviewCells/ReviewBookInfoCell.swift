@@ -17,6 +17,7 @@ class ReviewBookInfoCell: UITableViewCell {
     @IBOutlet weak var authorTitleLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var publisherTitleLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
 
     override func awakeFromNib() {
@@ -30,6 +31,7 @@ class ReviewBookInfoCell: UITableViewCell {
         authorTitleLabel.textColor = .middlegrey1
         publisherLabel.textColor = .charcoal
         publisherTitleLabel.textColor = .middlegrey1
+        yearLabel.textColor = .charcoal
     }
     
 }

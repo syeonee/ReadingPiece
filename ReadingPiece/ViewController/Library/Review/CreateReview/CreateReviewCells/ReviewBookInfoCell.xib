@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="8jD-nO-U5X">
-                        <rect key="frame" x="106" y="157" width="142" height="18"/>
+                        <rect key="frame" x="77" y="157" width="200" height="18"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8pM-V9-gMB">
                                 <rect key="frame" x="0.0" y="0.0" width="61" height="18"/>
@@ -75,6 +75,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015년" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpu-n1-qtO">
+                                <rect key="frame" x="162" y="0.0" width="38" height="18"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -100,6 +106,7 @@
                 <outlet property="publisherLabel" destination="UzF-6u-76a" id="NqY-T4-Yzw"/>
                 <outlet property="publisherTitleLabel" destination="Yvs-JU-R1N" id="f1O-00-SzR"/>
                 <outlet property="titleLabel" destination="CxY-pi-toD" id="ftu-4o-CJo"/>
+                <outlet property="yearLabel" destination="Zpu-n1-qtO" id="iOl-31-Yv2"/>
             </connections>
             <point key="canvasLocation" x="130.43478260869566" y="110.49107142857143"/>
         </tableViewCell>
