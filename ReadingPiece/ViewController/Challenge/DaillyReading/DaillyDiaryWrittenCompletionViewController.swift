@@ -8,16 +8,58 @@
 import UIKit
 import SpriteKit
 
+// 일지 작성 완료시, 그날 읽은 독서정보를 정산해서 보여주는 화면
 class DaillyDiaryWrittenCompletionViewController: UIViewController {
-    
+
+    let goalId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
     @IBOutlet weak var daillyDiaryWrittenTableView: UITableView!
+    var readingContinuity: ReadingContinuity?
+
+    var todayReadingStatus: TodayReadingStatus? {
+        didSet {
+            daillyDiaryWrittenTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // 완료한 챌린지가 있으면 챌린지 축하화면으로 이동
-//        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "challengeCompletionVC") as! ChallengeCompletionViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
+        getDaillyReadingInfo()
+    }
+    
+    @objc func shareDaillyReadingResult(sender: UIBarButtonItem){
+        shareResult()
+    }
+
+    @objc func closeDaillyReadingResult(sender: UIBarButtonItem){
+        // 메인화면으로 이동
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+
+    func getDaillyReadingInfo() {
+        guard let goalId = self.goalId else { return }
+        let req = GetTodayChallengeRequest(goalId: goalId)
+        
+        _ = Network.request(req: req) { [self] (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 일일 독서정보 조회 성공 \(userResponse.code)")
+                        self.readingContinuity = userResponse.getcontinuityRows?.first
+                        self.todayReadingStatus = userResponse.getcontinuity2Rows?.first
+                        // 챌린지 달성시, 축하 애니메이션 보여주는 화면으로 이동 (추후 구현)
+                    default:
+                        print("LOG 일일 독서정보 조회 실패 \(userResponse.code), \(userResponse.message)")
+                        self.presentAlert(title: "일일 독서 정보 조회 실패", isCancelActionIncluded: false)
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "네트워크 연결 실패 통신 상태를 확인해주세요.", isCancelActionIncluded: false)
+            }
+        }
 
     }
     
@@ -25,12 +67,16 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
         setNavBar()
         setupTableView()
     }
-    
+        
     private func setNavBar() {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .darkgrey
+        
         let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))
+        let leftButton = UIBarButtonItem(image: UIImage(named: "customCancel"), style: .plain, target: self, action: #selector(closeDaillyReadingResult(sender:)))
+
         self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
     }
 
@@ -40,11 +86,7 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
         daillyDiaryWrittenTableView.register(UINib(nibName: ChallengeTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ChallengeTableViewCell.identifier)
         daillyDiaryWrittenTableView.register(UINib(nibName: DaillyReadingTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: DaillyReadingTableViewCell.identifier)
     }
-    
-    @objc func shareDaillyReadingResult(sender: UIBarButtonItem){
-        shareResult()
-    }
-    
+        
     func shareResult() {
         let image = daillyDiaryWrittenTableView.visibleCells.first?.captureScreenToImage()
         let imageToShare = [ image ]
@@ -78,8 +120,12 @@ extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITab
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
+            // 이름 반대로 적용, challengeCell에 DaillyReading 관련 내용이 있고, DaillyReadingCell에 Challenge Cake 관련 내용이 있음
             guard let challengeCell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.identifier, for: indexPath) as? ChallengeTableViewCell
                 else { return UITableViewCell() }
+            if let continuity = readingContinuity, let readingStatus = todayReadingStatus {
+                challengeCell.configure(readingContinuity: continuity, todayReadingStatus: readingStatus)
+            }
             return challengeCell
         default:
             guard let daillyReadingCell = tableView.dequeueReusableCell(withIdentifier: DaillyReadingTableViewCell.identifier, for: indexPath) as? DaillyReadingTableViewCell

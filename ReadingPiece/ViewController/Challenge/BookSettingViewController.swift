@@ -9,17 +9,21 @@ import UIKit
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
+    
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
+    @IBOutlet weak var readingBookTableView: UITableView!
     var books : [AllReadingBook] = [] {
         didSet{
             readingBookTableView.reloadData()
         }
     }
-    @IBOutlet weak var readingBookTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         getAllBooks()
+        view.makeToast("목록을 밀어서 도전할 책을\n변경, 삭제할수 있어요!", duration: 2, position: .center, title: nil, image: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,16 +41,18 @@ class BookSettingViewController: UIViewController {
                         guard let books = userResponse.getbookListRows else { return }
                         self.books = books
                     case 2221:
-                        self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
+                        print("LOG - 챌린지 진행 전", userResponse.message)
+//                        self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
                     case 2222:
-                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+                        print("LOG - 챌린지 진행 전", userResponse.message)
+//                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
                     default:
                         self.presentAlert(title: "유효하지 않은 로그인 정보", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    debugPrint("LOGT", error)
+                    debugPrint("LOG -", error)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }

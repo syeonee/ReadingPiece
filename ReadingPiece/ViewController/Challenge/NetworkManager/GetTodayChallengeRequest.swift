@@ -5,9 +5,9 @@ import Foundation
 
 final class GetTodayChallengeRequest: Requestable {
     typealias ResponseType = TodayReadingResponse
-    private var goalId: Int
+    private var goalId: String
     
-    init(goalId: Int) {
+    init(goalId: String) {
         self.goalId = goalId
     }
 
@@ -36,7 +36,7 @@ final class GetTodayChallengeRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

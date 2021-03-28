@@ -33,6 +33,7 @@
 		009250182602E08300A930DD /* BithumbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250172602E08300A930DD /* BithumbResponse.swift */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */; };
+		00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121F4261090DE00186F40 /* PostJournalRequest.swift */; };
 		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
 		00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F5526032AF1002848AB /* ReviewImageCell.swift */; };
@@ -220,6 +221,7 @@
 		009250172602E08300A930DD /* BithumbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BithumbResponse.swift; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserCakeTypeRequest.swift; sourceTree = "<group>"; };
+		00C121F4261090DE00186F40 /* PostJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJournalRequest.swift; sourceTree = "<group>"; };
 		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00C55F5526032AF1002848AB /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				00FF385E260EEDB700529570 /* PatchChallengeBookRequest.swift */,
 				00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */,
 				00FF3862260EEDCC00529570 /* DeleteChallengeBookRequest.swift */,
+				00C121F4261090DE00186F40 /* PostJournalRequest.swift */,
 				00FF375D260A293B00529570 /* ChallengeResponse.swift */,
 			);
 			path = NetworkManager;
@@ -1171,6 +1174,7 @@
 				5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
 				00FF385C260EED7600529570 /* GetAllReadingBookRequest.swift in Sources */,
+				00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */,
 				597F82B5260C7EED00777A92 /* String.swift in Sources */,
 				D642423E26091D9F00E732D4 /* AccountInfoViewController.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
@@ -1425,7 +1429,7 @@
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1448,7 +1452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
