@@ -1,27 +1,29 @@
 //
-//  UserStatisticsRequest.swift
+//  UserGraphRequest.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/03/28.
+//  Created by SYEON on 2021/03/29.
 //
 
 import Foundation
 
-final class UserStatisticsRequest: Requestable {
-    typealias ResponseType = UserStatisticsResponse
+final class UserGraphRequest: Requestable {
+    typealias ResponseType = UserGraphResponse
     
     private var token: String
+    private var year: Int
     
-    init(token: String) {
+    init(token: String, year: Int) {
         self.token = token
+        self.year = year
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "reading/info"
+        return "reading/graph"
     }
     
     var method: Network.Method {
@@ -29,11 +31,11 @@ final class UserStatisticsRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return nil
+        return ["year": self.year]
     }
     
     var headers: [String : String]? {

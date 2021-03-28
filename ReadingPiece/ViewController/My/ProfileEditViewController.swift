@@ -192,7 +192,9 @@ class ProfileEditViewController: UIViewController {
                         resolutionCountLabel.text = "\(text.count)"
                     }
                 }
-                isNameCheck = false
+                if textField == nameTextField {
+                    isNameCheck = false
+                }
             }
         }
     }

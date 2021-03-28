@@ -1,27 +1,31 @@
 //
-//  UserStatisticsRequest.swift
+//  FeedRequest.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/03/28.
+//  Created by SYEON on 2021/03/29.
 //
 
 import Foundation
 
-final class UserStatisticsRequest: Requestable {
-    typealias ResponseType = UserStatisticsResponse
+final class FeedRequest: Requestable {
+    typealias ResponseType = FeedResponse
     
     private var token: String
+    private var page: Int
+    private var limit: Int
     
-    init(token: String) {
+    init(token: String, page: Int, limit: Int) {
         self.token = token
+        self.page = page
+        self.limit = limit
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "reading/info"
+        return "reading/graph"
     }
     
     var method: Network.Method {
@@ -29,11 +33,11 @@ final class UserStatisticsRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return nil
+        return ["page": self.page, "limit": self.limit]
     }
     
     var headers: [String : String]? {

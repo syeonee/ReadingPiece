@@ -86,13 +86,13 @@ class MyViewController: UIViewController {
                                 let decodedimage = UIImage(data: data as Data)
                                 profileImageView.image = decodedimage
                             }else{
-                                profileImageView.image = UIImage(named: "selectedMY")
+                                profileImageView.image = UIImage(named: "defaultProfile")
                             }
                         }else{
-                            profileImageView.image = UIImage(named: "selectedMY")
+                            UserDefaults.standard.removeObject(forKey: "profileImageData")
+                            profileImageView.image = UIImage(named: "defaultProfile")
                         }
                         nameLabel.text = userProfile?.name
-                        print("user name is \(userProfile?.name)")
                         resolutionLabel.text = userProfile?.resolution
                     }
                 } else {

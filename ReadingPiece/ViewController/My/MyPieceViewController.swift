@@ -30,7 +30,6 @@ class MyPieceViewController: UIViewController {
     func setPiece(){
         self.showIndicator()
         guard let token = keychain.get(Keys.token) else { return }
-        print("token is \(token)")
         Network.request(req: MyPieceRequest(token: token)) { [self] result in
             self.dismissIndicator()
             print("set piece = \(result)")
@@ -39,10 +38,13 @@ class MyPieceViewController: UIViewController {
                 self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
-                    if response.message == "나의 피스 조회 성공"{
+                    if response.message == "나의 피스 조회 성공."{
                         DispatchQueue.main.async {
-                            myPieces = response.pieces!
-                            myPieceCollectionView.reloadData()
+                            if let pieces = response.pieces{
+                                myPieces = pieces
+                                print("pie = \(myPieces)")
+                                myPieceCollectionView.reloadData()
+                            }
                         }
                     }
                 } else {

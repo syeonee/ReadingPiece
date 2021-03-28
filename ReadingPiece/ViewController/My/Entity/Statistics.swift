@@ -36,3 +36,13 @@ public struct ReadingInfo: Codable {
         case totalBookQuantity = "countBook"
     }
 }
+
+public struct MonthReadingInfo: Codable {
+    public let date: Int
+    public let sum: String
+
+    enum CodingKeys: String, CodingKey {
+        case date
+        case sum = "sum(time)"
+    }
+}

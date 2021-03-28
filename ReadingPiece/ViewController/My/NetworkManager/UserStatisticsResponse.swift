@@ -11,8 +11,8 @@ public struct UserStatisticsResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let continuityDay: ContinuityDay
-    public let readingInfo: ReadingInfo
+    public let continuityDay: [ContinuityDay]?
+    public let readingInfo: [ReadingInfo]
     
     enum CodingKeys: String, CodingKey {
         case isSuccess
