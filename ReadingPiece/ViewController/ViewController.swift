@@ -149,6 +149,8 @@ class ViewController: UIViewController {
             let userName = challenge.name ?? "Reader"// 닉네임이 아직 없을 경우 리더로 기본 할당
             let targetTime = challenge.time ?? 0
             let challengeId = challenge.challengeId ?? 0
+            let goaldId = challengingBook.goalId ?? 0
+            defaults.setValue(goaldId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
             defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)

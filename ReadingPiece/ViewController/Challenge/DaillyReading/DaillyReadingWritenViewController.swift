@@ -84,7 +84,8 @@ class DaillyReadingWritenViewController: UIViewController {
     func writeJournal() {
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
         let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: imgBase64String, open: isOpen, goalBookId: goalBookId,
-                                     page: readingPage, percent: readingPercent, challengeId: challengeId, goalId: goalId)
+                                     page: readingPage, percent: readingPercent, goalId: 77)
+        print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent, journal.goalId)
         let req = PostJournalRequest(journal: journal)
         
         _ = Network.request(req: req) { (result) in
@@ -97,10 +98,11 @@ class DaillyReadingWritenViewController: UIViewController {
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
                                 DailyGoalCompletionViewController else { return }
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
+                    case 3001:
+                        self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
                     default:
                         print("LOG 일지 작성 실패 \(userResponse.code)", journal)
                         self.presentAlert(title: "일지 작성 실패 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
-                        
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)

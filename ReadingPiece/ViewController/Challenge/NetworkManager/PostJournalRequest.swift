@@ -29,10 +29,8 @@ final class PostJournalRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["time": self.journal.time, "text": self.journal.text, "journalImageURL": self.journal.journalImageURL,
-                "open": self.journal.open, "goalBookId": self.journal.goalBookId, "page": self.journal.goalBookId,
-                "percent": self.journal.percent,"challengeId": self.journal.challengeId, "goalId": self.journal.goalId
-                ]
+        return ["page": journal.time, "goalBookId": journal.goalBookId, "time": journal.time,
+                "text": journal.text, "journalImageURL": journal.journalImageURL, "open": journal.open, "percent": journal.percent ]
     }
     
     var headers: [String : String]? {
@@ -52,11 +50,10 @@ final class PostJournalRequest: Requestable {
 public struct JournalWritten {
     var time: Int
     var text: String
-    var journalImageURL: String
+    var journalImageURL: String?
     var open: String
     var goalBookId: Int
     var page: Int
     var percent: Int
-    var challengeId: Int
     var goalId: Int
 }
