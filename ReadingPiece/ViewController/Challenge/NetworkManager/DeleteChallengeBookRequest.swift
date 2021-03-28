@@ -25,7 +25,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {

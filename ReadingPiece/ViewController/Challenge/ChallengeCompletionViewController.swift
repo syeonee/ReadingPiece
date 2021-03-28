@@ -32,6 +32,7 @@ class ChallengeCompletionViewController: UIViewController {
     }
     
     func postNewUserCakeType() {
+        // 유저디폴트에 있는 goalId, 케이크 이름을 받아오도록 추후 변경 필요
         let req = PostUserCakeTypeRequest(goalId: 33, cake: "bery")
         
         _ = Network.request(req: req) { (result) in

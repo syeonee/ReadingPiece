@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    let defaults = UserDefaults.standard
     let cellId = ReadingBookCollectionViewCell.identifier
     var challengeInfo : ChallengerInfo? { didSet {
         radingBooksCollectionView.reloadData()
@@ -40,17 +41,25 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            self.initMainView()
+//            self.initMainView()
+
+        }
     }
 
     @IBAction func startReadingAction(_ sender: UIButton) {
-        if let goalBookId =  challengeInfo?.readingBook.first?.goalBookId {
-            let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-            timerVC.challengeInfo = self.challengeInfo
-            self.navigationController?.pushViewController(timerVC, animated: true)
-        } else {
-            self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-        }
+        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
+        timerVC.challengeInfo = self.challengeInfo
+        self.navigationController?.pushViewController(timerVC, animated: true)
+
+//        // 읽을 책을 추가했는지 판단
+//        if let goalBookId =  challengeInfo?.readingBook.first?.goalBookId {
+//            // 닉네임 설정도 했는지 판단 (닉네임이 없는 경우 일지 작성이 불가함)
+//            let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
+//            timerVC.challengeInfo = self.challengeInfo
+//            self.navigationController?.pushViewController(timerVC, animated: true)
+//        } else {
+//            self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+//        }
     }
     
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
@@ -68,7 +77,7 @@ class ViewController: UIViewController {
     }
     
     func postUserReadingGoal() {
-
+        
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
@@ -136,12 +145,17 @@ class ViewController: UIViewController {
     // 데이터 파싱 완료 이후, 유저에게 보여줄 데이터를 VC에 적용
     func initVC() {
         if let challenge = self.challengeInfo?.todayChallenge, let goal = self.challengeInfo?.readingGoal.first {
+            // 다른 VC에서 재사용을 위해 UserDefaults에 저장하는 값들
+            let goalBookId = goal.goalBookId ?? 0
+            let userName = challenge.name ?? "Reader"// 닉네임이 아직 없을 경우 리더로 기본 할당
+            let targetTime = challenge.time ?? 0
+            defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
+            defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+            defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+            
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
-            let userName = challenge.name ?? "리피"//
             let period = challenge.period ?? "D"// 읽기 주기
             let formattedPeriod = getDateFromPeriod(period: period)
-
-            let targetTime = challenge.time ?? 0
             let todayTime = challenge.todayTime ?? "0" // 오늘 읽은 시간
             let totalReadingDiary = challenge.totalJournal ?? 0// 챌린지 기간동안 읽은 책 권수
             let readBookAmount = challenge.totalReadBook ?? 0
