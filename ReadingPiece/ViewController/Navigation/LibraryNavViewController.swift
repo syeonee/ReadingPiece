@@ -13,9 +13,9 @@ class LibraryNavViewController: UINavigationController {
         super.viewDidLoad()
         
         // 네비게이션 바 border line 없애기
-        self.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationBar.shadowImage = UIImage()
-        self.navigationBar.layoutIfNeeded()
+        //self.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        //self.navigationBar.shadowImage = UIImage()
+        //self.navigationBar.layoutIfNeeded()
         
     }
     

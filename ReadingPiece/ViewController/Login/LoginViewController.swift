@@ -46,10 +46,12 @@ class LoginViewController: UIViewController {
     
     @IBAction func IDCancelButtonTapped(_ sender: Any) {
         IDTextField.text = ""
+        loginButton.isEnabled = false
     }
     
     @IBAction func PWCancelButtonTapped(_ sender: Any) {
         passwordTextField.text = ""
+        loginButton.isEnabled = false
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -61,10 +63,6 @@ class LoginViewController: UIViewController {
                 let result = response.code
                 if result == 1000 {
                     print("로그인 성공")
-                    let ud = UserDefaults.standard
-                    ud.setValue(response.jwt, forKey: "jwtToken") // 삭제 예정
-                    ud.setValue(true, forKey: "loginConnected") // 삭제 예정
-                    
                     // 키체인에 토큰 등록
                     guard let token = response.jwt else { return }
                     if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
@@ -86,11 +84,7 @@ class LoginViewController: UIViewController {
             case .failure(let error):
                 self.dismissIndicator()
                 print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)  {_ in
-                    // 서버 연결되면 삭제
-                    let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
     }

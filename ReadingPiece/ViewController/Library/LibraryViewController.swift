@@ -34,11 +34,19 @@ class LibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNav()
         menuViewController.register(nib: UINib(nibName: "MenuCell", bundle: nil), forCellWithReuseIdentifier: "MenuCell")
         menuViewController.registerFocusView(nib: UINib(nibName: "FocusView", bundle: nil))
         menuViewController.cellAlignment = .center
         
         dataSource = makeDataSource()
+    }
+    
+    private func setNav() {
+        // 네비게이션 바 border line 없애기
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
