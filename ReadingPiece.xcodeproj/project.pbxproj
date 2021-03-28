@@ -156,6 +156,9 @@
 		D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */; };
 		D649DDB225E6D05F00C6CD5B /* BookSearchNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */; };
 		D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6509DE625EAC87F000D7160 /* Login.storyboard */; };
+		D6541A1D260FB30A00C96647 /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6541A1C260FB30A00C96647 /* Statistics.swift */; };
+		D6541A20260FB5D100C96647 /* UserStatisticsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6541A1F260FB5D100C96647 /* UserStatisticsRequest.swift */; };
+		D6541A23260FB5E600C96647 /* UserStatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6541A22260FB5E600C96647 /* UserStatisticsResponse.swift */; };
 		D65C7BFB25F6761700944094 /* BookReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65C7BFA25F6761700944094 /* BookReviewViewController.swift */; };
 		D66CE6D92609C6A1003BB131 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */; };
 		D66CE6DC2609D3BD003BB131 /* PieceInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */; };
@@ -176,6 +179,11 @@
 		D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C658C25E5B08300F15290 /* MyNavViewController.swift */; };
 		D67C659125E5BEA700F15290 /* CommunityNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */; };
 		D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */; };
+		D68DA11C2611269E00267BBE /* UserGraphRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA11B2611269E00267BBE /* UserGraphRequest.swift */; };
+		D68DA122261126EA00267BBE /* UserGraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA121261126EA00267BBE /* UserGraphResponse.swift */; };
+		D68DA1272611329900267BBE /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA1262611329900267BBE /* Feed.swift */; };
+		D68DA12B261133E900267BBE /* FeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA12A261133E900267BBE /* FeedRequest.swift */; };
+		D68DA12E2611341100267BBE /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA12D2611341100267BBE /* FeedResponse.swift */; };
 		D6A7D3DF260606650098EA03 /* MyMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7D3DE260606650098EA03 /* MyMenuCell.xib */; };
 		D6A7D3E2260606B20098EA03 /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */; };
 		D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */; };
@@ -351,6 +359,9 @@
 		D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalNavViewController.swift; sourceTree = "<group>"; };
 		D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSearchNavViewController.swift; sourceTree = "<group>"; };
 		D6509DE625EAC87F000D7160 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D6541A1C260FB30A00C96647 /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
+		D6541A1F260FB5D100C96647 /* UserStatisticsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsRequest.swift; sourceTree = "<group>"; };
+		D6541A22260FB5E600C96647 /* UserStatisticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsResponse.swift; sourceTree = "<group>"; };
 		D65C7BFA25F6761700944094 /* BookReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookReviewViewController.swift; sourceTree = "<group>"; };
 		D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceInfoViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +382,11 @@
 		D67C658C25E5B08300F15290 /* MyNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNavViewController.swift; sourceTree = "<group>"; };
 		D67C659025E5BEA700F15290 /* CommunityNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNavViewController.swift; sourceTree = "<group>"; };
 		D67C659425E5BEB700F15290 /* LibraryNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryNavViewController.swift; sourceTree = "<group>"; };
+		D68DA11B2611269E00267BBE /* UserGraphRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphRequest.swift; sourceTree = "<group>"; };
+		D68DA121261126EA00267BBE /* UserGraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphResponse.swift; sourceTree = "<group>"; };
+		D68DA1262611329900267BBE /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		D68DA12A261133E900267BBE /* FeedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRequest.swift; sourceTree = "<group>"; };
+		D68DA12D2611341100267BBE /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
 		D6A7D3DE260606650098EA03 /* MyMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMenuCell.xib; sourceTree = "<group>"; };
 		D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
 		D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceViewController.swift; sourceTree = "<group>"; };
@@ -566,6 +582,8 @@
 		00FF3771260A576B00529570 /* Community */ = {
 			isa = PBXGroup;
 			children = (
+				D68DA1252611328900267BBE /* Entity */,
+				D68DA11A2611266200267BBE /* NetworkManager */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
 			);
 			path = Community;
@@ -860,6 +878,10 @@
 				591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */,
 				591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */,
 				5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */,
+				D6541A1F260FB5D100C96647 /* UserStatisticsRequest.swift */,
+				D6541A22260FB5E600C96647 /* UserStatisticsResponse.swift */,
+				D68DA11B2611269E00267BBE /* UserGraphRequest.swift */,
+				D68DA121261126EA00267BBE /* UserGraphResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -869,6 +891,7 @@
 			children = (
 				D66CE6E7260A396E003BB131 /* Profile.swift */,
 				D6C1C00D260B765D008EE7FE /* Piece.swift */,
+				D6541A1C260FB30A00C96647 /* Statistics.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -914,6 +937,23 @@
 				D615DF8D2608F0D2006021C4 /* MyEditNavViewController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		D68DA11A2611266200267BBE /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				D68DA12A261133E900267BBE /* FeedRequest.swift */,
+				D68DA12D2611341100267BBE /* FeedResponse.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		D68DA1252611328900267BBE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D68DA1262611329900267BBE /* Feed.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		D6A255F825E4254A00731B10 /* Model */ = {
@@ -1172,6 +1212,7 @@
 				597C33A5260F891500869624 /* JournalImageViewController.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */,
+				D6541A1D260FB30A00C96647 /* Statistics.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
 				00FF385C260EED7600529570 /* GetAllReadingBookRequest.swift in Sources */,
 				00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */,
@@ -1186,6 +1227,7 @@
 				596D4D73260A1F3800E137F3 /* JournalReponse.swift in Sources */,
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
 				D66CE6D92609C6A1003BB131 /* PasswordChangeViewController.swift in Sources */,
+				D68DA12B261133E900267BBE /* FeedRequest.swift in Sources */,
 				59A967D42603484C000EE89F /* JoinViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
 				0026127625FB24E7000B40D1 /* UIButton.swift in Sources */,
@@ -1201,6 +1243,7 @@
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
 				596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */,
+				D68DA12E2611341100267BBE /* FeedResponse.swift in Sources */,
 				59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
 				D6C1C02B260B9828008EE7FE /* MyPieceResponse.swift in Sources */,
@@ -1213,6 +1256,8 @@
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,
 				00FF3863260EEDCC00529570 /* DeleteChallengeBookRequest.swift in Sources */,
+				D68DA1272611329900267BBE /* Feed.swift in Sources */,
+				D68DA122261126EA00267BBE /* UserGraphResponse.swift in Sources */,
 				5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
 				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
@@ -1232,6 +1277,7 @@
 				00C55F732604F9CE002848AB /* Goal+Book.swift in Sources */,
 				597F82B9260C8FEE00777A92 /* PrivacyPolicyViewController.swift in Sources */,
 				00FF3752260915BF00529570 /* BookResponse.swift in Sources */,
+				D6541A20260FB5D100C96647 /* UserStatisticsRequest.swift in Sources */,
 				00FF374F2609157300529570 /* PostChallengeBookRequest.swift in Sources */,
 				D678693625F5426400DBB59C /* ReviewTableViewCell.swift in Sources */,
 				59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */,
@@ -1242,6 +1288,7 @@
 				D67C658225E572DB00F15290 /* CommunityViewController.swift in Sources */,
 				00D8632425FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.swift in Sources */,
 				0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */,
+				D68DA11C2611269E00267BBE /* UserGraphRequest.swift in Sources */,
 				00D8632F25FF867F00E9EFF9 /* Constants.swift in Sources */,
 				599D3AC125F1E32B0085F134 /* ReviewHeaderCell.swift in Sources */,
 				00FF375B260A292E00529570 /* GetChallengeRequest.swift in Sources */,
@@ -1260,6 +1307,7 @@
 				00C55F6B26048AA0002848AB /* SignUpRequest.swift in Sources */,
 				0026127C25FB2547000B40D1 /* DailyGoalCompletionViewController.swift in Sources */,
 				00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */,
+				D6541A23260FB5E600C96647 /* UserStatisticsResponse.swift in Sources */,
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,

@@ -1,17 +1,14 @@
 //
-//  UserProfileRequest.swift
+//  UserStatisticsRequest.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/03/23.
+//  Created by SYEON on 2021/03/28.
 //
 
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1844912744
-// 내 프로필 조회 API
-
-final class UserProfileRequest: Requestable {
-    typealias ResponseType = UserProfileResponse
+final class UserStatisticsRequest: Requestable {
+    typealias ResponseType = UserStatisticsResponse
     
     private var token: String
     
@@ -24,7 +21,7 @@ final class UserProfileRequest: Requestable {
     }
     
     var endpoint: String {
-        return "profile"
+        return "reading/info"
     }
     
     var method: Network.Method {

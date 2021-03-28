@@ -1,30 +1,31 @@
 //
-//  UserProfileRequest.swift
+//  FeedRequest.swift
 //  ReadingPiece
 //
-//  Created by SYEON on 2021/03/23.
+//  Created by SYEON on 2021/03/29.
 //
 
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit#gid=1844912744
-// 내 프로필 조회 API
-
-final class UserProfileRequest: Requestable {
-    typealias ResponseType = UserProfileResponse
+final class FeedRequest: Requestable {
+    typealias ResponseType = FeedResponse
     
     private var token: String
+    private var page: Int
+    private var limit: Int
     
-    init(token: String) {
+    init(token: String, page: Int, limit: Int) {
         self.token = token
+        self.page = page
+        self.limit = limit
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "profile"
+        return "reading/graph"
     }
     
     var method: Network.Method {
@@ -32,11 +33,11 @@ final class UserProfileRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return nil
+        return ["page": self.page, "limit": self.limit]
     }
     
     var headers: [String : String]? {
