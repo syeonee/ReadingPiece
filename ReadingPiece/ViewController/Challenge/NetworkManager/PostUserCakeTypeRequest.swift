@@ -1,7 +1,7 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=1204762242
-// 유저가 읽고 있는 책 변경 API
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=270962755
+// 유저가 챌린지 중인 케이크 API
 
 final class PostUserCakeTypeRequest: Requestable {
     typealias ResponseType = PostCakeTypeResponse

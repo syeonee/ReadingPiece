@@ -12,13 +12,18 @@ protocol ReadingStatusDelegate {
 }
 class DaillyReadingWritenViewController: UIViewController {
     let defaults = UserDefaults.standard
+    let goalId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
+    let challengeId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
     let cellId = ReviewImageCell.identifier
-    var challengeInfo : ChallengerInfo?
     let picker = UIImagePickerController()
+    
+    var challengeInfo : ChallengerInfo?
+    var readingTime : Int = 0
     var pickedImage : UIImage?
-    var readingTime: Int = 0
     var readingPercent: Int = 0
     var readingPage: Int = 0
+    var imgBase64String = ""
     var isPublic: Bool? {
         didSet {
             isValidatePost()
@@ -64,10 +69,43 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 
     @objc func postDiary(sender: UIBarButtonItem) {
-        // 시간, goalBookId, 챌린지 달성 여부
-        // 챌린지 달성 여부에 따른 화면 분기 필요
-//        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
-//        self.navigationController?.pushViewController(writeReviewVC, animated: true)
+        let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
+        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: imgBase64String, open: isOpen, goalBookId: goalBookId,
+                                     page: readingPage, percent: readingPercent, challengeId: challengeId, goalId: goalId)
+        let req = PostJournalRequest(journal: journal)
+        
+        _ = Network.request(req: req) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 일지 작성 성공 \(userResponse.code)")
+                        // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
+                        guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
+                                DailyGoalCompletionViewController else { return } 
+                        self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
+                    default:
+                        print("LOG 일지 작성 실패 \(userResponse.code)", journal)
+                        self.presentAlert(title: "일지 작성 실패 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "네트워크 연결 실패 통신 상태를 확인해주세요.", isCancelActionIncluded: false)
+            }
+        }
+    }
+    
+    // 일지 작성에 필요한 값이 스트링형태라 Bool -> String으로 변환
+    func getIsOpenFromIsJson(isPublic: Bool) -> String {
+        switch isPublic {
+        case true:
+            return "Y"
+        default:
+            return "N"
+        }
     }
     
     @IBAction func addImage(_ sender: UIButton) {
@@ -226,8 +264,8 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
             self.pickedImage = img
-            let imgString = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
-            print("LOG - Image String", imgString)
+            self.imgBase64String = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
+//            print("LOG - Image String", imgBase64String)
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
         }

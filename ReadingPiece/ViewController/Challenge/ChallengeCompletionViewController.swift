@@ -70,7 +70,9 @@ class ChallengeCompletionViewController: UIViewController {
     }
 
     @IBAction func continueReading(_ sender: UIButton) {
-        
+        //        챌린지 달성 시점에 해당 책에대한 리뷰 작성 화면으로 이동, 추후 구현
+        //        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
+        //        self.navigationController?.pushViewController(writeReviewVC, animated: true)
     }
     
     func shareResult() {

@@ -159,8 +159,8 @@
                 <outlet property="daillyReadingTimeLabel" destination="e8q-0I-fjC" id="rM0-s9-Vgx"/>
                 <outlet property="todayRadingPage" destination="1qE-ng-FY3" id="0bQ-f8-CBV"/>
                 <outlet property="todayRadingTime" destination="QT3-0Q-wyG" id="MfW-Nl-VcG"/>
-                <outlet property="totalDiary" destination="oIX-iG-7is" id="Bad-jR-84G"/>
-                <outlet property="totalDiaryCountLabel" destination="oDx-6g-04k" id="etE-QV-TI7"/>
+                <outlet property="totalJournal" destination="oIX-iG-7is" id="Bad-jR-84G"/>
+                <outlet property="totalJournalCountLabel" destination="oDx-6g-04k" id="etE-QV-TI7"/>
                 <outlet property="userNameLabel" destination="NVO-8O-kHk" id="0yv-5E-d5t"/>
             </connections>
             <point key="canvasLocation" x="-355.07246376811599" y="114.50892857142857"/>

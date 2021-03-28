@@ -42,6 +42,8 @@ class TimerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stopwatch.toggle()
+        // 다른 화면에서 복귀해도 시간정보가 남아있어야 하므로, 시간 재할당
+        stopwatch.timerSavedTime = Double(readingTime)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +57,7 @@ class TimerViewController: UIViewController {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
         let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
+        timerStopVC.readingTime = self.readingTime
         self.navigationController?.pushViewController(timerStopVC, animated: true)
     }
 
@@ -93,6 +96,7 @@ class TimerViewController: UIViewController {
                         // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
                         if totalReadingTime > self.targetTime {
                             let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
+                            dailyReadingCompletionVC.readingTime = self.readingTime
                             self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
                         } else {
                             let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController

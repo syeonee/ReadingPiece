@@ -9,12 +9,15 @@ import UIKit
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
+    
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
+    @IBOutlet weak var readingBookTableView: UITableView!
     var books : [AllReadingBook] = [] {
         didSet{
             readingBookTableView.reloadData()
         }
     }
-    @IBOutlet weak var readingBookTableView: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

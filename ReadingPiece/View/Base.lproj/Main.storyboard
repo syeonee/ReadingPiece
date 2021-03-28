@@ -1396,7 +1396,7 @@
         <!--Dailly Diary Written Completion View Controller-->
         <scene sceneID="SnM-go-Cow">
             <objects>
-                <viewController id="32d-bw-EHK" customClass="DaillyDiaryWrittenCompletionViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="daillyreadingResultVC" id="32d-bw-EHK" customClass="DaillyDiaryWrittenCompletionViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jaC-3d-Dkl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

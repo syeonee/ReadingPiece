@@ -41,8 +41,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-//            self.initMainView()
-
+            self.initMainView()
         }
     }
 
@@ -149,9 +148,11 @@ class ViewController: UIViewController {
             let goalBookId = goal.goalBookId ?? 0
             let userName = challenge.name ?? "Reader"// 닉네임이 아직 없을 경우 리더로 기본 할당
             let targetTime = challenge.time ?? 0
+            let challengeId = challenge.challengeId ?? 0
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
             defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+            defaults.setValue(challengeId, forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
             
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
             let period = challenge.period ?? "D"// 읽기 주기

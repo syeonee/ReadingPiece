@@ -49,6 +49,7 @@ public struct Challenge: Codable {
     public let name: String? // 유저 이름
     public let expriodAt: String? // 챌린지 만료일
     public let dDay: Int? // 챌린지 남은 일자
+    public let challengeId: Int?
     
     enum CodingKeys: String, CodingKey {
         case totalJournal = "sumjournal"
@@ -61,6 +62,7 @@ public struct Challenge: Codable {
         case name
         case expriodAt
         case dDay = "Dday"
+        case challengeId
     }
 }
 
@@ -74,8 +76,8 @@ public struct ReadingContinuity: Codable {
     
     enum CodingKeys: String, CodingKey {
         case goalId
-        case createAt
         case continuanceDay = "COUNT(row_num)"
+        case createAt
     }
 }
 
