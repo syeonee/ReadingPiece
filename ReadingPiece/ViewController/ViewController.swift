@@ -41,8 +41,7 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-//            self.initMainView()
-
+            self.initMainView()
         }
     }
 
@@ -144,14 +143,18 @@ class ViewController: UIViewController {
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
     // 데이터 파싱 완료 이후, 유저에게 보여줄 데이터를 VC에 적용
     func initVC() {
-        if let challenge = self.challengeInfo?.todayChallenge, let goal = self.challengeInfo?.readingGoal.first {
+        if let challenge = self.challengeInfo?.todayChallenge, let goal = self.challengeInfo?.readingGoal.first, let challengingBook = challengeInfo?.readingBook.first {
             // 다른 VC에서 재사용을 위해 UserDefaults에 저장하는 값들
-            let goalBookId = goal.goalBookId ?? 0
+            let goalBookId = challengingBook.goalBookId
             let userName = challenge.name ?? "Reader"// 닉네임이 아직 없을 경우 리더로 기본 할당
             let targetTime = challenge.time ?? 0
+            let challengeId = challenge.challengeId ?? 0
+            let goaldId = challengingBook.goalId ?? 0
+            defaults.setValue(goaldId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
             defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+            defaults.setValue(challengeId, forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
             
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
             let period = challenge.period ?? "D"// 읽기 주기

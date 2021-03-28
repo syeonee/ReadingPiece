@@ -7,11 +7,12 @@
 
 import UIKit
 
+// 일일 목표가아닌 챌린지(케이크) 완료 달성화면! 혼동안하게 주의
 class DailyGoalCompletionViewController: UIViewController {
     let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     let goalBookId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     let goalId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-    var time: Int = 0
+    var readingTime: Int = 0
 //    let challengeId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     
     @IBOutlet weak var DailyGoalResultView: UIView!
@@ -26,6 +27,26 @@ class DailyGoalCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        print("LOG - Challenge Completion VC", readingTime)
+    }
+    
+    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
+        shareResult()
+    }
+    
+    @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
+        // 완료한 챌린지가 있으면 계속 버튼을 눌렀을때 리뷰 작성 화면으로 이동
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+        writeDiaryVC.readingTime = self.readingTime
+        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+
+//        MY페이지 기능 개발 후 주석 해제 필요
+//        if userName != "Reader" {
+//            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+//            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+//        } else {
+//            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
+//        }
     }
     
     private func setupUI() {
@@ -59,10 +80,6 @@ class DailyGoalCompletionViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
-    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
-        shareResult()
-    }
-    
     func shareResult() {
         let image = DailyGoalResultView.captureScreenToImage()
         let waterMardkedImage = addWaterMark(image: image!)
@@ -85,14 +102,5 @@ class DailyGoalCompletionViewController: UIViewController {
             UIGraphicsEndImageContext()
             return result!
         }
-    
-    @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
-        if userName != "Reader" {
-            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
-        } else {
-            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
-        }
-    }
-    
+
 }

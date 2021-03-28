@@ -90,7 +90,7 @@ struct getChallengeRequest {
     private func getBookInfoFromJson(json: JSON) -> ReadingBook {
         let goalId = json["goalId"].intValue
         let bookId = json["bookId"].intValue
-        let title = json["bookId"].stringValue
+        let title = json["title"].stringValue
         let writer = json["writer"].stringValue
         let imageUrl = json["imageURL"].stringValue
         let isbn = json["publishNumber"].stringValue
@@ -125,9 +125,10 @@ struct getChallengeRequest {
         let name = json["name"].stringValue
         let expriodAt = json["expriodAt"].stringValue
         let dDay = json["Dday"].intValue
+        let challengeId = json["challengeId"].intValue
 
         let challenge = Challenge(totalJournal: totalJournal, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
-                                  totalReadBook: totalReadingBook, name: name, expriodAt: expriodAt, dDay: dDay)
+                                  totalReadBook: totalReadingBook, name: name, expriodAt: expriodAt, dDay: dDay, challengeId: challengeId)
 
         return challenge
     }

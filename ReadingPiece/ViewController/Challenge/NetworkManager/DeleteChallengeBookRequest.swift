@@ -17,7 +17,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var endpoint: String {
-        return "challenge/book"
+        return "challenge/book/\(goalbookId)"
     }
     
     var method: Network.Method {
@@ -29,7 +29,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["goalbookId": self.goalbookId]
+        return defaultJSONHeader
     }
     
     var headers: [String : String]? {
@@ -37,7 +37,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
