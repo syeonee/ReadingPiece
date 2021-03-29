@@ -34,7 +34,6 @@ class ChallengeTableViewCell: UITableViewCell {
         let readingContinuanceDay = readingContinuity.continuanceDay ?? 0
         let readingPercent = todayReadingStatus.todayPercent ?? "0"
         let readingTime = todayReadingStatus.todayTime ?? "0"
-        print("TTTT", readingTime)
         let writtenJournal = todayReadingStatus.sumjournal ?? 0
         let percentString = initNormalAndBoldLabel(boldText: readingPercent, normalText: "%")
         let readingTimeString = initNormalAndBoldLabel(boldText: readingTime, normalText: "분")
@@ -72,7 +71,6 @@ class ChallengeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
