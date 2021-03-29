@@ -15,7 +15,7 @@ class Stopwatch {
     // The time when user pause timer last one
     private var timeIntervalTimelapsFrom: TimeInterval?
     // The total time before user paused timer
-    private var timerSavedTime: TimeInterval = 0
+    var timerSavedTime: TimeInterval = 0
 
     typealias TimeUpdated = (_ time: Double)->Void
     let timeUpdated: TimeUpdated

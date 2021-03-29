@@ -1,23 +1,23 @@
+//
+//  CloseAccountRequest.swift
+//  ReadingPiece
+//
+//  Created by 정지현 on 2021/03/28.
+//
+
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=583204733
-// 유저가 읽고 있는 책 삭제 API
-
-final class DeleteChallengeBookRequest: Requestable {
-    typealias ResponseType = DeleteChallengeResponse
+// 회원 탈퇴 API
+final class CloseAccountRequest: Requestable {
+    typealias ResponseType = CloseAccountResponse
     
-    private var goalbookId: Int
     
-    init(goalbookId: Int) {
-        self.goalbookId = goalbookId
-    }
-
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
     
     var endpoint: String {
-        return "challenge/book/\(goalbookId)"
+        return "bye"
     }
     
     var method: Network.Method {
@@ -29,7 +29,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return defaultJSONHeader
+        return nil
     }
     
     var headers: [String : String]? {

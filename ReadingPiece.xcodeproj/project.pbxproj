@@ -33,6 +33,7 @@
 		009250182602E08300A930DD /* BithumbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250172602E08300A930DD /* BithumbResponse.swift */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */; };
+		00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121F4261090DE00186F40 /* PostJournalRequest.swift */; };
 		00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418625FD1873009B2A34 /* Firecracker.sks */; };
 		00C3418925FD1873009B2A34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00C3418725FD1873009B2A34 /* Assets.xcassets */; };
 		00C55F5726032AF1002848AB /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C55F5526032AF1002848AB /* ReviewImageCell.swift */; };
@@ -73,8 +74,11 @@
 		5913B23C25EF2E4D002AAA8C /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */; };
 		5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */; };
 		5913B23E25EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */; };
+		591D1E912610BA3D004597B1 /* CloseAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */; };
+		591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */; };
 		5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */; };
 		5920F969260F7B9F00C2C1B4 /* PatchReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */; };
+		5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */; };
 		59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */; };
 		59393BBF260CC70E00A2CE30 /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */; };
 		5961DE492610140C00EF8745 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961DE482610140C00EF8745 /* EmailRequest.swift */; };
@@ -216,6 +220,7 @@
 		009250172602E08300A930DD /* BithumbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BithumbResponse.swift; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserCakeTypeRequest.swift; sourceTree = "<group>"; };
+		00C121F4261090DE00186F40 /* PostJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJournalRequest.swift; sourceTree = "<group>"; };
 		00C3418625FD1873009B2A34 /* Firecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Firecracker.sks; sourceTree = "<group>"; };
 		00C3418725FD1873009B2A34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00C55F5526032AF1002848AB /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
@@ -257,8 +262,11 @@
 		5913B23525EF2E4B002AAA8C /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
 		5913B23625EF2E4C002AAA8C /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
 		5913B23725EF2E4D002AAA8C /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountRequest.swift; sourceTree = "<group>"; };
+		591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseAccountResponse.swift; sourceTree = "<group>"; };
 		5920F965260F2D4200C2C1B4 /* GetReviewEditRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewEditRequest.swift; sourceTree = "<group>"; };
 		5920F968260F7B9F00C2C1B4 /* PatchReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchReviewRequest.swift; sourceTree = "<group>"; };
+		5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetRequest.swift; sourceTree = "<group>"; };
 		59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRequest.swift; sourceTree = "<group>"; };
 		59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		5961DE482610140C00EF8745 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
@@ -547,6 +555,7 @@
 				00FF385E260EEDB700529570 /* PatchChallengeBookRequest.swift */,
 				00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */,
 				00FF3862260EEDCC00529570 /* DeleteChallengeBookRequest.swift */,
+				00C121F4261090DE00186F40 /* PostJournalRequest.swift */,
 				00FF375D260A293B00529570 /* ChallengeResponse.swift */,
 			);
 			path = NetworkManager;
@@ -845,6 +854,9 @@
 				D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */,
 				D6C1C027260B9812008EE7FE /* MyPieceRequest.swift */,
 				D6C1C02A260B9828008EE7FE /* MyPieceResponse.swift */,
+				591D1E902610BA3D004597B1 /* CloseAccountRequest.swift */,
+				591D1E932610BA4C004597B1 /* CloseAccountResponse.swift */,
+				5925BFC72610CD9D00BDDD18 /* PasswordResetRequest.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1159,6 +1171,7 @@
 				5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
 				00FF385C260EED7600529570 /* GetAllReadingBookRequest.swift in Sources */,
+				00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */,
 				597F82B5260C7EED00777A92 /* String.swift in Sources */,
 				D642423E26091D9F00E732D4 /* AccountInfoViewController.swift in Sources */,
 				0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */,
@@ -1176,6 +1189,7 @@
 				0092500D2602605400A930DD /* NetworkManager.swift in Sources */,
 				D67C658D25E5B08300F15290 /* MyNavViewController.swift in Sources */,
 				597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */,
+				591D1E942610BA4C004597B1 /* CloseAccountResponse.swift in Sources */,
 				00838FCE25F362DD00340AE0 /* TimerViewController.swift in Sources */,
 				009250152602DE2A00A930DD /* BithumbRequest.swift in Sources */,
 				D615DF922608F0E8006021C4 /* ProfileEditViewController.swift in Sources */,
@@ -1195,6 +1209,7 @@
 				007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */,
 				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,
 				00FF3863260EEDCC00529570 /* DeleteChallengeBookRequest.swift in Sources */,
+				5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
 				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
 				00FF377D260A685700529570 /* PostReportReviewRequest.swift in Sources */,
@@ -1244,6 +1259,7 @@
 				59F4F22F25F5C0B400E82417 /* Review.swift in Sources */,
 				00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */,
 				59F4F22425F5C09500E82417 /* UIFont.swift in Sources */,
+				591D1E912610BA3D004597B1 /* CloseAccountRequest.swift in Sources */,
 				00FF3767260A30DA00529570 /* GetTodayChallengeRequest.swift in Sources */,
 				59F4F26F25F76CF500E82417 /* Journal.swift in Sources */,
 				D642423726090A1800E732D4 /* SettingViewController.swift in Sources */,
@@ -1409,7 +1425,7 @@
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1432,7 +1448,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 69F5355JYF;
+				DEVELOPMENT_TEAM = KQS5CL5P74;
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

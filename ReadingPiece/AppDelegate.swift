@@ -23,10 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         // Firebase Analytics 설정
         FirebaseApp.configure()
-        // 키체인 삭제 테스트
-        //if keychain.clear() {
-        //    print("cleared keychain")
-        //}
+//         키체인 삭제 테스트
+//        if keychain.clear() {
+//            print("cleared keychain")
+//        }
         if let token = keychain.get(Keys.token) {
             print("token: \(token)")
         }
