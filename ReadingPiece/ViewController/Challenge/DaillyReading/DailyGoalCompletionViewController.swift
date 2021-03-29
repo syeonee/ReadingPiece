@@ -8,7 +8,6 @@
 import UIKit
 
 // 타이머 정지 시점에 목표 시간을 달성한 경우 나오는 화면
-
 class DailyGoalCompletionViewController: UIViewController {
     let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     let goalBookId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
@@ -59,7 +58,7 @@ class DailyGoalCompletionViewController: UIViewController {
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: " 목표 \(getMinutesTextByTime(readingTime))분" ))
+        attributedString.append(NSAttributedString(string: " 목표 \(getMinutesTextByTime(readingTime))" ))
         initReadingTime(time: readingTime)
         readingTargetTimeLabel.attributedText = attributedString
         readingTargetTimeLabel.textColor = .middlegrey1
