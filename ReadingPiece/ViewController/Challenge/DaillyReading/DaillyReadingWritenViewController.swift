@@ -23,7 +23,6 @@ class DaillyReadingWritenViewController: UIViewController {
     var pickedImage : UIImage?
     var readingPercent: Int = 0
     var readingPage: Int = 0
-    var imgBase64String = ""
     var isPublic: Bool? {
         didSet {
             isValidatePost()
@@ -99,10 +98,6 @@ class DaillyReadingWritenViewController: UIViewController {
                         // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
                                 DaillyDiaryWrittenCompletionViewController else { return }
-                        let readingTime = self.readingTime
-                        let totalJournal = self.challengeInfo?.todayChallenge.totalJournal
-                        let readingPercent = self.readingPercent
-//                        let contiunaceDay = self.challengeInfo?.
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
                     case 3001:
                         self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
@@ -169,6 +164,7 @@ class DaillyReadingWritenViewController: UIViewController {
 
     private func setupUI() {
         setNavBar()
+        totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)
         readingStatusButton.makeRoundedTagButtnon("읽는 중", titleColor: .middlegrey1, borderColor: UIColor.middlegrey1.cgColor, backgroundColor: .white)
         totalReadingTimeButton.makeRoundedTagButtnon(" 00분", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
@@ -186,6 +182,16 @@ class DaillyReadingWritenViewController: UIViewController {
         
     }
     
+    func getMinutesTextByTime(_ time: Int) -> String {
+        var text = ""
+        if time > 60 {
+            text = "\(time / 60)분"
+        } else {
+            text = "\(1)분"
+        }
+        return text
+    }
+
     private func setNavBar() {
         self.navigationItem.title = "독서 일지"
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -211,7 +217,6 @@ class DaillyReadingWritenViewController: UIViewController {
         return validationResult
     }
 }
-
 
 extension DaillyReadingWritenViewController: ReadingStatusDelegate {
     func setReadingPage(_ page: Int) {
