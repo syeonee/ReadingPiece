@@ -574,7 +574,7 @@
                         <outlet property="noticeView" destination="7Ro-m5-gt2" id="5cZ-lI-rEN"/>
                         <outlet property="questionView" destination="I2m-dD-Y0c" id="Efx-tT-rnp"/>
                         <outlet property="secessionView" destination="WzJ-tD-1yI" id="mqy-tu-0xt"/>
-                        <outlet property="versionLabel" destination="ZaQ-8d-hW7" id="Qhn-gH-Qz9"/>
+                        <outlet property="versionLabel" destination="ZaQ-8d-hW7" id="dyo-hL-K4G"/>
                         <outlet property="versionView" destination="vFR-lC-wqE" id="z9C-mT-HZh"/>
                         <segue destination="rox-bM-B0D" kind="show" id="O7W-Fr-nGI"/>
                         <segue destination="zB9-Pr-upQ" kind="show" id="qu5-b8-dNc"/>
