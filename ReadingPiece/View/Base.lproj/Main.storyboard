@@ -1140,7 +1140,7 @@
                                                         <rect key="frame" x="22" y="0.0" width="81" height="106"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="AzO-z3-9S5">
-                                                        <rect key="frame" x="113" y="0.0" width="98" height="88"/>
+                                                        <rect key="frame" x="113" y="0.0" width="123" height="88"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보건교사 안은영" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUB-rn-5a4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="94.5" height="21"/>
@@ -1155,7 +1155,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="CnI-ha-27j">
-                                                                <rect key="frame" x="0.0" y="56" width="98" height="32"/>
+                                                                <rect key="frame" x="0.0" y="56" width="123" height="32"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSw-m5-8Ki">
                                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="32"/>
@@ -1165,7 +1165,10 @@
                                                                         </state>
                                                                     </button>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VqH-Fd-N4E">
-                                                                        <rect key="frame" x="53" y="0.0" width="45" height="32"/>
+                                                                        <rect key="frame" x="53" y="0.0" width="70" height="32"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="70" id="QQf-zi-liZ"/>
+                                                                        </constraints>
                                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                                                         <state key="normal" title=" 20분" image="timer">
                                                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1233,7 +1236,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQx-yy-Mwx">
-                                                        <rect key="frame" x="349" y="1" width="19" height="22"/>
+                                                        <rect key="frame" x="356" y="1" width="12" height="22"/>
                                                         <state key="normal" image="addPictureIcon"/>
                                                         <connections>
                                                             <action selector="addImage:" destination="snK-Qc-9UX" eventType="touchUpInside" id="qB3-zd-Heb"/>
@@ -1290,14 +1293,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIT-SX-ugs">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DIT-SX-ugs">
                                                 <rect key="frame" x="20" y="426" width="75" height="0.0"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" id="lHP-qy-FX7"/>
                                                     <constraint firstAttribute="width" constant="75" id="m4u-fB-VBR"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Er7-9U-nTX">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Er7-9U-nTX">
                                                 <rect key="frame" x="87" y="417" width="17" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="7IF-vf-bsG"/>
@@ -1345,6 +1348,7 @@
                                             <constraint firstItem="VhQ-Jg-76O" firstAttribute="top" secondItem="DIT-SX-ugs" secondAttribute="bottom" constant="20" id="j2M-RS-gtk"/>
                                             <constraint firstAttribute="trailing" secondItem="gKz-SD-Ygn" secondAttribute="trailing" constant="20" id="l0i-oj-HOt"/>
                                             <constraint firstItem="jau-hN-NKd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YoJ-Nr-Xmh" secondAttribute="leading" constant="10" id="omW-6G-8iR"/>
+                                            <constraint firstItem="DIT-SX-ugs" firstAttribute="leading" secondItem="gKz-SD-Ygn" secondAttribute="leading" id="tOD-8A-N9w"/>
                                             <constraint firstAttribute="trailing" secondItem="iur-C6-IHE" secondAttribute="trailing" constant="24" id="wV6-eS-GYQ"/>
                                         </constraints>
                                     </view>
@@ -1526,7 +1530,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="addPictureIcon" width="19" height="19"/>
+        <image name="addPictureIcon" width="12" height="12"/>
         <image name="challenge" width="25" height="25"/>
         <image name="challengeCake" width="191.5" height="127.5"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>

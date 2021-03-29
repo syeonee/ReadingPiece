@@ -166,7 +166,7 @@ class ViewController: UIViewController {
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.1
 
-            userReadingGoalLabel.text = "\(userName)님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
+            userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = todayTime
             daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)"
@@ -175,6 +175,20 @@ class ViewController: UIViewController {
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             dDayLabel.text = "\(dDay)일 남음"
         }
+    }
+    
+    private func getUserNameByLength(_ name: String?) -> String {
+        var nameString = ""
+        if name == nil {
+            nameString = "Reader"
+        } else {
+            let index = (name?.index(name!.startIndex, offsetBy: 3))!
+            let subString = name?.substring(to: index)  // Hello
+            nameString = subString!
+            nameString += "..."
+        }
+        
+        return nameString
     }
     
     private func getDateFromPeriod(period: String) -> String {
