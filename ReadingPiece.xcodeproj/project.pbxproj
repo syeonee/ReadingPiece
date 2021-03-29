@@ -82,7 +82,6 @@
 		596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */; };
 		596D4D73260A1F3800E137F3 /* JournalReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D72260A1F3800E137F3 /* JournalReponse.swift */; };
 		596D4D76260ACD0E00E137F3 /* DeleteJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */; };
-		596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */; };
 		596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */; };
 		596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */; };
 		597C33A5260F891500869624 /* JournalImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33A3260F891500869624 /* JournalImageViewController.swift */; };
@@ -267,7 +266,6 @@
 		596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJournalRequest.swift; sourceTree = "<group>"; };
 		596D4D72260A1F3800E137F3 /* JournalReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReponse.swift; sourceTree = "<group>"; };
 		596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJournalRequest.swift; sourceTree = "<group>"; };
-		596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchJournalRequest.swift; sourceTree = "<group>"; };
 		596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
 		596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReviewRequest.swift; sourceTree = "<group>"; };
 		597C33A3260F891500869624 /* JournalImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalImageViewController.swift; sourceTree = "<group>"; };
@@ -576,7 +574,6 @@
 				596D4D72260A1F3800E137F3 /* JournalReponse.swift */,
 				596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */,
 				596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */,
-				596D4D78260AD05700E137F3 /* PatchJournalRequest.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1186,7 +1183,6 @@
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
-				596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */,
 				59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */,
 				0026127F25FB2569000B40D1 /* DaillyDiaryWrittenCompletionViewController.swift in Sources */,
 				D6C1C02B260B9828008EE7FE /* MyPieceResponse.swift in Sources */,

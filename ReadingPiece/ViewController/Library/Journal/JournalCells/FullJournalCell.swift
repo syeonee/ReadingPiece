@@ -20,6 +20,7 @@ class FullJournalCell: UITableViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var journalTextLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var readingPercentageLabel: UILabel!
     @IBOutlet weak var readingTimeLabel: UILabel!
     

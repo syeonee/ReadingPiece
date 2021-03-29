@@ -42,6 +42,11 @@ class LibraryViewController: UIViewController {
         dataSource = makeDataSource()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "내서재"
+    }
+    
     private func setNav() {
         // 네비게이션 바 border line 없애기
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)

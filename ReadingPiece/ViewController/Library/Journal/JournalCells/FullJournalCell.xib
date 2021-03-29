@@ -103,6 +103,13 @@
                                     <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4j0-WB-oLW"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addPictureIcon" translatesAutoresizingMaskIntoConstraints="NO" id="zVJ-Vs-Xed">
+                                <rect key="frame" x="224" y="15" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="U5U-KO-WJf"/>
+                                    <constraint firstAttribute="width" constant="12" id="bG5-tV-AWS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -112,6 +119,7 @@
                             <constraint firstItem="xz1-Yl-dDL" firstAttribute="top" secondItem="Fsl-eF-RoL" secondAttribute="bottom" constant="20" id="Dkj-Gc-Ksj"/>
                             <constraint firstAttribute="trailing" secondItem="D8d-TG-ALg" secondAttribute="trailing" constant="11" id="FAY-Gj-xmk"/>
                             <constraint firstItem="0wc-5U-IN5" firstAttribute="leading" secondItem="cUI-qi-Mfy" secondAttribute="leading" constant="20" id="O0V-cF-ceW"/>
+                            <constraint firstItem="zVJ-Vs-Xed" firstAttribute="centerY" secondItem="D8d-TG-ALg" secondAttribute="centerY" id="Pm5-Lk-mCd"/>
                             <constraint firstAttribute="trailing" secondItem="Fsl-eF-RoL" secondAttribute="trailing" constant="20" id="R7A-ni-bNw"/>
                             <constraint firstItem="Fsl-eF-RoL" firstAttribute="leading" secondItem="cUI-qi-Mfy" secondAttribute="leading" constant="20" id="SZV-Eb-g90"/>
                             <constraint firstItem="D8d-TG-ALg" firstAttribute="leading" secondItem="0wc-5U-IN5" secondAttribute="trailing" constant="20" id="T82-2s-HzE"/>
@@ -119,6 +127,7 @@
                             <constraint firstAttribute="bottom" secondItem="xz1-Yl-dDL" secondAttribute="bottom" constant="14" id="i8B-7v-ExJ"/>
                             <constraint firstItem="v3i-EM-POj" firstAttribute="top" secondItem="Fsl-eF-RoL" secondAttribute="bottom" constant="20" id="kqo-lz-icN"/>
                             <constraint firstItem="lVj-op-CCe" firstAttribute="centerY" secondItem="xz1-Yl-dDL" secondAttribute="centerY" id="o9x-4o-Qxx"/>
+                            <constraint firstItem="D8d-TG-ALg" firstAttribute="leading" secondItem="zVJ-Vs-Xed" secondAttribute="trailing" constant="12" id="prI-lI-AF9"/>
                             <constraint firstItem="v3i-EM-POj" firstAttribute="leading" secondItem="xz1-Yl-dDL" secondAttribute="trailing" constant="8" id="pvv-k1-3gJ"/>
                             <constraint firstItem="0wc-5U-IN5" firstAttribute="top" secondItem="cUI-qi-Mfy" secondAttribute="top" constant="14" id="tVn-fp-Y3U"/>
                             <constraint firstItem="xz1-Yl-dDL" firstAttribute="leading" secondItem="cUI-qi-Mfy" secondAttribute="leading" constant="18" id="yWp-5m-Jx3"/>
@@ -141,6 +150,7 @@
                 <outlet property="firstContainerView" destination="xz1-Yl-dDL" id="XAA-ZK-VPO"/>
                 <outlet property="journalTextLabel" destination="Fsl-eF-RoL" id="vQ9-hK-n9c"/>
                 <outlet property="mainBackgroundView" destination="cUI-qi-Mfy" id="1UN-Cd-Y8d"/>
+                <outlet property="pictureImageView" destination="zVJ-Vs-Xed" id="FKp-sY-fhI"/>
                 <outlet property="readingPercentageLabel" destination="Nhu-ga-ku4" id="pUW-Ie-3jZ"/>
                 <outlet property="readingTimeLabel" destination="BOn-c5-07Q" id="M73-S8-ze8"/>
                 <outlet property="secondContainerView" destination="v3i-EM-POj" id="te7-XF-2My"/>
@@ -149,6 +159,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="addPictureIcon" width="19" height="19"/>
         <image name="book" width="17.5" height="13"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="time" width="15" height="15"/>
