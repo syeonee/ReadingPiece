@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
                 if code == 1000 {
                     print("로그인 성공")
                     // 키체인에 토큰 등록
-                    let token = response.jwt
+                    guard let token = response.jwt else { return }
                     if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                         print("Keychain: token setting success.")
                     } else {
@@ -93,6 +93,7 @@ class LoginViewController: UIViewController {
                     
                     
                 } else {
+                    print(response.message)
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                         self.IDTextField.text = ""
                         self.passwordTextField.text = ""

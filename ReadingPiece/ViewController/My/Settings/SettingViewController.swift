@@ -17,6 +17,8 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var noticeView: UIView!
     @IBOutlet weak var versionView: UIView!
     @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var versionDescLabel: UILabel!
+    
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var logoutView: UIView! // 로그아웃
     @IBOutlet weak var secessionView: UIView! // 회원탈퇴
@@ -69,35 +71,49 @@ class SettingViewController: UIViewController {
     private func logout() {
         if keychain.clear() {
             print("cleared keychain")
-            self.presentAlert(title: "성공적으로 로그아웃되었습니다. ")
+            self.presentAlert(title: "성공적으로 로그아웃되었습니다. ", isCancelActionIncluded: false) {_ in
+                let storyboard = UIStoryboard(name: "Login", bundle: nil)
+                let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginNav")
+                self.navigationController?.changeRootViewController(loginViewController)
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         } else {
-            self.presentAlert(title: "로그아웃에 실패했습니다. ")
+            self.presentAlert(title: "로그아웃에 실패했습니다. ", isCancelActionIncluded: false) {_ in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         }
     }
     
     private func closeAccount() {
-        if keychain.clear() {
-            print("cleared keychain")
-            Network.request(req: CloseAccountRequest()) { result in
-                switch result {
-                case .success(let response):
-                    if response.code == 1000 {
-                        self.presentAlert(title: "회원 탈퇴에 성공하였습니다. ") {_ in
+        Network.request(req: CloseAccountRequest()) { result in
+            switch result {
+            case .success(let response):
+                if response.code == 1000 {
+                    if self.keychain.clear() {
+                        print("cleared keychain")
+                        self.presentAlert(title: "회원 탈퇴에 성공하였습니다. ", isCancelActionIncluded: false) {_ in
                             let storyboard = UIStoryboard(name: "Login", bundle: nil)
                             let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginNav")
-                            loginViewController.modalPresentationStyle = .fullScreen
-                            self.present(loginViewController, animated: true, completion: nil) 
+                            self.navigationController?.changeRootViewController(loginViewController)
+                            self.navigationController?.popToRootViewController(animated: true)
                         }
-                    } else {
-                        let message = response.message
-                        self.presentAlert(title: message)
                     }
-                case .cancel, .failure:
-                    self.presentAlert(title: "회원 탈퇴에 실패했습니다. ")
+                } else {
+                    let message = response.message
+                    self.presentAlert(title: message, isCancelActionIncluded: false)
+                }
+            case .cancel(let cancel):
+                print(cancel as Any)
+                self.presentAlert(title: "회원 탈퇴에 실패했습니다. ", isCancelActionIncluded: false) {_ in
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
+                self.presentAlert(title: "회원 탈퇴에 실패했습니다. ", isCancelActionIncluded: false) {_ in
+                    self.navigationController?.popToRootViewController(animated: true)
                 }
             }
         }
-        self.presentAlert(title: "회원 탈퇴에 실패했습니다. ")
     }
     
     
