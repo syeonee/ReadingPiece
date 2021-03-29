@@ -1397,7 +1397,7 @@
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KQS5CL5P74;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1420,7 +1420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ReadingPiece/ReadingPiece.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KQS5CL5P74;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReadingPiece/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
