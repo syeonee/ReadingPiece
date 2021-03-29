@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
         let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLSeKI2msAMe0hNXxNrCOWHlCBMhdAlMj4xJ4CwpDrVwP2zDB6Q/viewform?usp=sf_link")
         let request = URLRequest(url: url!)
         webview?.allowsBackForwardNavigationGestures = true

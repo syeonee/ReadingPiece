@@ -39,6 +39,14 @@ class CommunityViewController: UIViewController {
 
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if feedList.count == 0 {
+            feedTableView.separatorStyle = .none
+            feedTableView.backgroundView = UIStoryboard(name: "Community", bundle: nil).instantiateViewController(identifier: "feedEmptyView").view as! UIView
+        }else{
+            feedTableView.separatorStyle = .singleLine
+            feedTableView.separatorInset.left = 0
+            feedTableView.backgroundView = nil
+        }
         return feedList.count
     }
     
