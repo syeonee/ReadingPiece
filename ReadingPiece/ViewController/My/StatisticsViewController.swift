@@ -119,10 +119,8 @@ class StatisticsViewController: UIViewController {
     func drawYearCharts(year: Int) {
         monthTotal = Array<Int>(repeating: 0, count: 12)
         
-        self.showIndicator()
         guard let token = Constants.KEYCHAIN_TOKEN else { return }
         Network.request(req: UserGraphRequest(token: token, year: year)) { [self] result in
-            self.dismissIndicator()
             switch result {
             case .success(let response):
                 self.dismissIndicator()

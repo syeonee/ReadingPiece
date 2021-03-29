@@ -11,11 +11,13 @@ public struct FeedResponse: Codable {
     public let code: Int
     public let message: String
     public let feed: [Feed]?
+    public let journalcount: Int
     
     enum CodingKeys: String, CodingKey {
         case isSuccess
         case code
         case message
         case feed = "result"
+        case journalcount
     }
 }

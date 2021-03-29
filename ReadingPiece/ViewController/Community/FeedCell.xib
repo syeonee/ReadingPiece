@@ -132,10 +132,12 @@
                             <constraint firstItem="axz-zU-p2W" firstAttribute="leading" secondItem="RV5-bz-75o" secondAttribute="leading" constant="12" id="7qb-8L-egd"/>
                             <constraint firstItem="6Xe-LJ-5WD" firstAttribute="top" secondItem="RV5-bz-75o" secondAttribute="top" constant="14" id="EaB-xx-z6X"/>
                             <constraint firstItem="eGm-N8-38M" firstAttribute="centerY" secondItem="GKR-zb-mAE" secondAttribute="centerY" id="Gh0-eD-ZkO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ScU-1A-pZO" secondAttribute="trailing" constant="10" id="MnH-Hh-OdE"/>
                             <constraint firstItem="ScU-1A-pZO" firstAttribute="top" secondItem="bct-de-Hgm" secondAttribute="bottom" constant="4" id="S8z-6Z-DIQ"/>
                             <constraint firstItem="wSX-Mk-ldZ" firstAttribute="leading" secondItem="bct-de-Hgm" secondAttribute="leading" id="WU9-EG-JYu"/>
                             <constraint firstItem="yJh-Ws-yLG" firstAttribute="leading" secondItem="eGm-N8-38M" secondAttribute="trailing" constant="5" id="Zln-8q-8LZ"/>
                             <constraint firstItem="yJh-Ws-yLG" firstAttribute="centerY" secondItem="eGm-N8-38M" secondAttribute="centerY" id="cdj-vh-xKH"/>
+                            <constraint firstItem="6Xe-LJ-5WD" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bct-de-Hgm" secondAttribute="trailing" constant="10" id="e4S-L0-tAR"/>
                             <constraint firstItem="bct-de-Hgm" firstAttribute="top" secondItem="axz-zU-p2W" secondAttribute="top" id="jB3-zo-965"/>
                             <constraint firstAttribute="trailing" secondItem="6Xe-LJ-5WD" secondAttribute="trailing" constant="12" id="mgN-fd-aEM"/>
                             <constraint firstItem="axz-zU-p2W" firstAttribute="centerY" secondItem="RV5-bz-75o" secondAttribute="centerY" id="ngR-fD-Gc7"/>
@@ -169,6 +171,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="wGr-pK-jS3" firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" constant="-16" id="21k-WG-Slx"/>
+                    <constraint firstItem="1kn-5s-fNm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="0EA-cR-bjq" secondAttribute="trailing" constant="20" id="4As-Kq-cQc"/>
                     <constraint firstItem="0EA-cR-bjq" firstAttribute="top" secondItem="F4U-u3-olw" secondAttribute="top" id="6W3-HL-Nng"/>
                     <constraint firstItem="Ygn-bQ-91T" firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" id="9Dg-sK-C94"/>
                     <constraint firstItem="z6Y-yN-cMn" firstAttribute="leading" secondItem="0EA-cR-bjq" secondAttribute="leading" id="9aq-CH-aCn"/>
