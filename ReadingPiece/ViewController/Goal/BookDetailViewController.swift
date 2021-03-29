@@ -26,6 +26,7 @@ class BookDetailViewController: UIViewController {
     
     var isExpanded : Bool = false
     var observerExist : Bool = false
+    var isVaildBook: Bool = false
     
     var initHeight : NSLayoutConstraint?
     var book : Book?
@@ -75,9 +76,9 @@ class BookDetailViewController: UIViewController {
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
         if let initNumber = self.initializer  {
-            if initNumber == 0 {
+            if initNumber == 0  && isVaildBook == true {
                 postChallengeBook(isbn: self.book?.isbn ?? "")
-            } else if initNumber == 1 {
+            } else if initNumber == 1 && isVaildBook == true { //카카오 책 API에서 필요한 정보를 다 주는 책만 리뷰 작성화면으로 이동 가능
                 let reviewVC = CreateReviewViewController()
                 reviewVC.book = self.book
                 reviewVC.bookID = self.bookId
@@ -104,6 +105,7 @@ class BookDetailViewController: UIViewController {
                         switch userResponse.code {
                         case 1000:
                             print("LOG 책 정보 DB추가 완료", bookData.title)
+                            self.isVaildBook = true
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
                             print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
@@ -113,7 +115,7 @@ class BookDetailViewController: UIViewController {
                         print(cancelError!)
                     case .failure(let error):
                         print("LOG", error)
-                        self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "책 정보 로딩 실패, 다른 책을 선택해주세요.", isCancelActionIncluded: false)
                         self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -203,6 +205,7 @@ class BookDetailViewController: UIViewController {
         publisherLabel.text = book?.publisher
         summaryLabel.text = book?.summary
     }
+
     
 }
 
