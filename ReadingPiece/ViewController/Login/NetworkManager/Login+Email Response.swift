@@ -11,8 +11,8 @@ public struct LoginResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let jwt: String
-    public let result: Int
+    public let jwt: String?
+    public let result: Int?
 }
 
 // 이메일 api 응답구조

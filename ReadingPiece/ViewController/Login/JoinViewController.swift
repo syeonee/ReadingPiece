@@ -79,12 +79,15 @@ class JoinViewController: UIViewController {
     
     @IBAction func emailCancel(_ sender: Any) {
         emailTextField.text  = ""
+        joinActivated = false
     }
     @IBAction func pwCancel(_ sender: Any) {
         passwordTextField.text = ""
+        joinActivated = false
     }
     @IBAction func pwConfifmCancel(_ sender: Any) {
         pwConfirmTextField.text = ""
+        joinActivated = false
     }
     
     

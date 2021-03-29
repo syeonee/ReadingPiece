@@ -11,14 +11,16 @@ import Foundation
 final class PasswordResetRequest: Requestable {
     typealias ResponseType = CloseAccountResponse
     
-    private var password: String
+    private var presentPW: String // 기존 비밀번호
+    private var password: String // 새로운 비밀번호
     
-    init(password: String) {
+    init(presentPW: String, password: String) {
+        self.presentPW = presentPW
         self.password = password
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -34,7 +36,7 @@ final class PasswordResetRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["password" : self.password]
+        return ["password" : self.password, "presentPW" : self.presentPW]
     }
     
     var headers: [String : String]? {
