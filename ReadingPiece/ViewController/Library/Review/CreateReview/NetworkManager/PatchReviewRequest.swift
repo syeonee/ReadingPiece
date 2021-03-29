@@ -24,11 +24,11 @@ final class PatchReviewRequest: Requestable {
     } 
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review/\(self.reviewID)"
+        return "review/\(self.reviewID)"
     }
     
     var method: Network.Method {

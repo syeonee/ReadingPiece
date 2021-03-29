@@ -72,10 +72,10 @@
             </objects>
             <point key="canvasLocation" x="1887" y="-279"/>
         </scene>
-        <!--Library Nav View Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="kxL-pM-jx2">
             <objects>
-                <navigationController storyboardIdentifier="LibraryNavController" automaticallyAdjustsScrollViewInsets="NO" id="UsG-f2-FMU" customClass="LibraryNavViewController" customModule="ReadingPiece" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LibraryNavController" automaticallyAdjustsScrollViewInsets="NO" id="UsG-f2-FMU" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="SQA-ON-gWu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

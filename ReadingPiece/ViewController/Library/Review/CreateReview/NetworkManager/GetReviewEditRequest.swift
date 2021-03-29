@@ -18,11 +18,11 @@ final class GetReviewEditRequest: Requestable {
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "/my-review/\(reviewID)"
+        return "my-review/\(reviewID)"
     }
     
     var method: Network.Method {

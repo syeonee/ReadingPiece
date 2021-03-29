@@ -71,6 +71,7 @@ extension ReviewWritingCell: UITextViewDelegate {
         if (text == "\n") {
             textView.resignFirstResponder()
         }
+        guard textView.text!.count < 500 else { return false }
         return true
     }
     

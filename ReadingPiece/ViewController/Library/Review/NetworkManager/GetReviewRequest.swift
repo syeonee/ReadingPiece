@@ -13,14 +13,12 @@ import Foundation
 final class GetReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
-    private var token: String
     private var align: String
-    init(token: String, align: String) {
-        self.token = token
+    init(align: String) {
         self.align = align
     }
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -40,7 +38,7 @@ final class GetReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {

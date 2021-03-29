@@ -71,6 +71,13 @@ class LoginViewController: UIViewController {
                     } else {
                         print("Failed to set token on Keychain")
                     }
+                    // 키체인에 이메일 등록
+                    let email = self.IDTextField.text
+                    if self.keychain.set(email!, forKey: Keys.email, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                        print("Keychain: email setting success. ")
+                    } else {
+                        print("Failed to set email on Keychain")
+                    }
                     if response.result == 0 {
                         print("챌린지 모두 달성했거나 등록한 챌린지가 없는 경우")
                         // 챌린지 모두 달성했거나 등록한 챌린지가 없는 경우

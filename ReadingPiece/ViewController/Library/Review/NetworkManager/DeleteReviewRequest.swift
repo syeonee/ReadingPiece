@@ -12,19 +12,17 @@ import Foundation
 final class DeleteReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
-    private var token: String
     private var reviewID: Int
-    init(token: String, reviewID: Int) {
-        self.token = token
+    init(reviewID: Int) {
         self.reviewID = reviewID
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review/\(reviewID)"
+        return "review/\(reviewID)"
     }
     
     var method: Network.Method {
@@ -40,7 +38,7 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {

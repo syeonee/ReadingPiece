@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class CommunityViewController: UIViewController {
     
@@ -130,6 +129,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
 //            return cell
 //        }
     }
+
 }
 
 extension CommunityViewController: FeedCellDelegate {
@@ -144,34 +144,27 @@ extension CommunityViewController: FeedCellDelegate {
     
 }
 
-// 수정 버튼 관련 메소드
-extension CommunityViewController: ReviewEditDelegate, ReviewFullEditDelegate {
-    
+// 수정 기능 관련
+extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate {
     func didTapEditButton(index: Int) {
         showAlert(index: index)
     }
+    
     func didTapFullEditButton(index: Int) {
         showAlert(index: index)
     }
+    
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "수정", style: .default) { (action) in
-            print("수정하기")
-//            let storyboard = UIStoryboard(name: "Library", bundle: nil)
-//            if let myViewController = storyboard.instantiateViewController(withIdentifier: "LibraryNavController") as? LibraryNavViewController {
-//                self.navigationController?.pushViewController(myViewController, animated: true)
-//            }
-//            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//                let vc: UITabBarController = mainStoryboard.instantiateViewController(withIdentifier: "TabController") as! UITabBarController
-//                vc.selectedIndex = 2
-//                self.present(vc, animated: true, completion: nil)
-//            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
-//            self.present(vc, animated: true, completion: nil)
-            //self.navigationController?.pushViewController(<#T##viewController: UIViewController##UIViewController#>, animated: <#T##Bool#>)
+            print("게시글 작성자만 게시글 수정")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let destructive = UIAlertAction(title: "신고", style: .destructive) { (action) in
-            
+        let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
+            Journal.dummyData.remove(at: index)
+            self.more.remove(at: index)
+            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -214,5 +207,72 @@ extension CommunityViewController {
             }
         }
     }
+}
 
+extension CommunityViewController {
+    // 테이블 뷰에 데이터가 없을 경우 표시되는 placeholder
+    func setEmptyView(image: UIImage, message: String) {
+        let emptyView = UIView(frame: CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
+        let imageView = UIImageView()
+        let messageLabel = UILabel()
+        let button = UIButton()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        messageLabel.font = .NotoSans(.medium, size: 15)
+        messageLabel.textColor = .charcoal
+        button.titleLabel?.font = .NotoSans(.medium, size: 15)
+        button.makeRoundedButtnon("독서 시작하기", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+        
+        emptyView.addSubview(imageView)
+        emptyView.addSubview(messageLabel)
+        emptyView.addSubview(button)
+        emptyView.backgroundColor = #colorLiteral(red: 0.9646214843, green: 0.9647600055, blue: 0.9645912051, alpha: 1)
+        
+        //imageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 42).isActive = true
+        imageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: 57).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 63).isActive = true
+        messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
+        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 80).isActive = true
+        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -80).isActive = true
+        button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 40).isActive = true
+        button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
+        button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        
+        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
+        
+        
+        imageView.image = image
+        messageLabel.text = message
+        messageLabel.numberOfLines = 0
+        messageLabel.textAlignment = .center
+        
+        self.journalTableView.backgroundView = emptyView
+        self.journalTableView.separatorStyle = .none
+    }
+    
+    @objc func buttonAction (_ sender: UIButton!) {
+        print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
+        
+        //let homeNavigationVC = MyNavViewController()
+        //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController
+        
+        /*
+        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
+        //self.navigationController?.pushViewController(TimerVC, animated: true)
+        
+        let viewControllers = self.navigationController!.viewControllers
+        let newViewControllers = NSMutableArray()
+        
+        // preserve the root view controller
+        newViewControllers.add(viewControllers[0])
+        // add the new view controller
+        newViewControllers.add(timerVC)
+        self.navigationController?.setViewControllers(newViewControllers as! [UIViewController], animated: true)
+        */
+    }
 }

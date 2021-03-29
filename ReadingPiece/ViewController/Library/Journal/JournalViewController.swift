@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class JournalViewController: UIViewController {
-    
-    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     let journalCell = JournalCell()
     let fullJournalCell = FullJournalCell()
@@ -24,6 +21,10 @@ class JournalViewController: UIViewController {
     
     // 일지 리스트
     var journalList = [GetJournalResponseResult]()
+    var journalCount: Int? // 일지 수
+    var page : Int = 0 // 페이지 넘버
+    var isEnd : Bool = false  // 마지막 페이지인지 체크하는 flag
+    var align: String = "desc"  // 정렬 기준 나타내는 flag
     
     // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
     var more: [Int] = []
@@ -33,7 +34,7 @@ class JournalViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        getJournalData(align: "desc")
+        getJournalData(align: align, page: page, limit: 5)
 
         tableView.dataSource = self
         tableView.delegate = self
@@ -77,6 +78,11 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            if journal.journalImageURL == nil {
+                cell.pictureImageView.isHidden = true
+            } else {
+                cell.pictureImageView.isHidden = false
+            }
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -88,6 +94,11 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            if journal.journalImageURL == nil {
+                cell.pictureImageView.isHidden = true
+            } else {
+                cell.pictureImageView.isHidden = false
+            }
             cell.readingPercentLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -100,6 +111,11 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            if journal.journalImageURL == nil {
+                cell.pictureImageView.isHidden = true
+            } else {
+                cell.pictureImageView.isHidden = false
+            }
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -113,7 +129,10 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         } else {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerView.identifier) as! JournalHeaderCell
-            cell.count.text = String(journalList.count)
+            if let count = self.journalCount {
+                cell.count.text = String(count)
+            }
+            //cell.count.text = String(journalList.count)
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
@@ -127,8 +146,25 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             return 45
         }
     }
+}
+
+// Paging
+extension JournalViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height: CGFloat = scrollView.frame.size.height
+        let contentYOffset: CGFloat = scrollView.contentOffset.y
+        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+        if distanceFromBottom < height && !isEnd {
+            addData()
+        }
+    }
     
-    
+    func addData(){
+        print("addData() called")
+        page += 5
+        getMoreJournal(align: align, page: page, limit: 5)
+    }
 }
 
 // 더보기 기능 관련
@@ -175,6 +211,7 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     }
     
     func didDeleteData(index: Int) {
+        self.presentAlert(title: "일지가 삭제되었습니다. ", isCancelActionIncluded: false)
         self.journalList.remove(at: index)
         self.more.remove(at: index)
         self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
@@ -185,11 +222,17 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 // 정렬 기능
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
-        getJournalData(align: "asc")
+        self.align = "asc"
+        self.page = 1
+        self.isEnd = false
+        getJournalData(align: align, page: page, limit: 5)
     }
     
     func sortRecentFirst() {
-        getJournalData(align: "desc")
+        self.align = "desc"
+        self.page = 1
+        self.isEnd = false
+        getJournalData(align: align, page: page, limit: 5)
     }
 }
 
@@ -202,22 +245,20 @@ extension JournalViewController {
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
         self.navigationController?.pushViewController(timerVC, animated: true)
     }
-    
-    
 }
 
 
 // API 연동 메소드
 extension JournalViewController {
     // 내가 쓴 일지 조회
-    private func getJournalData(align: String) {
+    private func getJournalData(align: String, page: Int, limit: Int) {
         self.spinner.startAnimating()
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetJournalRequest(token: token, align: align)) { result in
+        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
                 if response.code == 1000 {
+                    self.journalCount = response.journalcount
                     guard let result = response.result else { return }
                     self.journalList = result
                     self.didRetrieveData()
@@ -228,12 +269,47 @@ extension JournalViewController {
                     }
                 }
                 
-            case .cancel, .failure:
+            case .cancel(let cancel):
+                print(cancel as Any)
+                self.spinner.stopAnimating()
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
                 self.spinner.stopAnimating()
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
             }
         }
         
+    }
+    
+    // 일지 페이징 시 reload 
+    private func getMoreJournal(align: String, page: Int, limit: Int) {
+        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
+            switch result {
+            case .success(let response):
+                self.spinner.stopAnimating()
+                if response.code == 1000 {
+                    guard let result = response.result else { return }
+                    if result.count > 0 {
+                        for i in 0...(result.count-1) {
+                            self.journalList.append(result[i])
+                        }
+                        self.didRetrieveData()
+                    } else {
+                        print("마지막 페이지입니다. ")
+                        self.isEnd = true
+                    }
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
+            case .cancel, .failure:
+                self.spinner.stopAnimating()
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+            }
+        }
     }
     
     // 일지 삭제

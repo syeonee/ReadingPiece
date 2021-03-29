@@ -10,6 +10,7 @@ import Foundation
 struct Keys {
     static let keyPrefix = "readingPiece_"
     static let token = "token"
+    static let email = "email"
     static let userIdentifier = "userIdentifier"
 }
 
