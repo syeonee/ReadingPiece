@@ -1457,10 +1457,10 @@
             </objects>
             <point key="canvasLocation" x="1994" y="808"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings Nav View Controller-->
         <scene sceneID="WSI-Lz-Cwu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="8Bf-av-pfu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="8Bf-av-pfu" customClass="SettingsNavViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="6Z7-xU-MPt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xsz-yH-DX3">
