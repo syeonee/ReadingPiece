@@ -103,6 +103,13 @@ class JoinViewController: UIViewController {
                         } else {
                             print("Failed to set on Keychain")
                         }
+                        // 키체인에 이메일 등록
+                        let email = self.emailTextField.text
+                        if self.keychain.set(email!, forKey: Keys.email, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                            print("Keychain: email setting success. ")
+                        } else {
+                            print("Failed to set email on Keychain")
+                        }
                         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                     })

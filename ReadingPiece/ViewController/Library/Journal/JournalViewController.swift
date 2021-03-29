@@ -271,7 +271,7 @@ extension JournalViewController {
         
     }
     
-    // 일지 페이징 시 reload
+    // 일지 페이징 시 reload 
     private func getMoreJournal(align: String, page: Int, limit: Int) {
         Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
             switch result {
@@ -279,10 +279,14 @@ extension JournalViewController {
                 self.spinner.stopAnimating()
                 if response.code == 1000 {
                     guard let result = response.result else { return }
-                    for i in 0...(result.count-1) {
-                        self.journalList.append(result[i])
+                    if result.count > 0 {
+                        for i in 0...(result.count-1) {
+                            self.journalList.append(result[i])
+                        }
+                        self.didRetrieveData()
+                    } else {
+                        print("마지막 페이지입니다. ")
                     }
-                    self.didRetrieveData()
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {
