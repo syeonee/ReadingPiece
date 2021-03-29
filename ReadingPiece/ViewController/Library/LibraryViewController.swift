@@ -52,6 +52,7 @@ class LibraryViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.layoutIfNeeded()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -198,7 +198,7 @@ class BookDetailViewController: UIViewController {
     func setUI(){
         if book?.thumbnailPath != "" {
             let url = URL(string: book!.thumbnailPath)
-            bookImageView.kf.setImage(with: url)
+            bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookCoverImage"), completionHandler: nil)
         }
         if book?.summary != "" {
             summaryLabel.text = book?.summary

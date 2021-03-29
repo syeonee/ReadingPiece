@@ -21,6 +21,7 @@ class NoticeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
         let url = URL(string: "https://www.notion.so/4f2b442938fa4fb0a975804f8ed56a6e")
         let request = URLRequest(url: url!)
         webView?.allowsBackForwardNavigationGestures = true

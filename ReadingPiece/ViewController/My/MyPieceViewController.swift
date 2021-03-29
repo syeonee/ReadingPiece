@@ -28,11 +28,8 @@ class MyPieceViewController: UIViewController {
         }
         
         func setPiece(){
-            self.showIndicator()
             guard let token = keychain.get(Keys.token) else { return }
             Network.request(req: MyPieceRequest(token: token)) { [self] result in
-                self.dismissIndicator()
-                print("set piece = \(result)")
                 switch result {
                 case .success(let response):
                     self.dismissIndicator()
@@ -47,18 +44,15 @@ class MyPieceViewController: UIViewController {
                                 }
                             }
                         }
-                    } else {
-                        self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
-                        }
                     }
                 case .cancel(let cancelError):
                     self.dismissIndicator()
                     print(cancelError as Any)
                 case .failure(let error):
                     self.dismissIndicator()
-                    print(error as Any)
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
-                    }
+//                    print(error as Any)
+//                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+//                    }
                 }
             }
         }

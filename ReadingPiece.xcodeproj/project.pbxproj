@@ -192,6 +192,7 @@
 		D6BEFD462611D8DF00866D45 /* UserStatisticsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD452611D8DF00866D45 /* UserStatisticsResponse.swift */; };
 		D6BEFD492611D8EE00866D45 /* UserGraphRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD482611D8EE00866D45 /* UserGraphRequest.swift */; };
 		D6BEFD4C2611D8FB00866D45 /* UserGraphResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD4B2611D8FB00866D45 /* UserGraphResponse.swift */; };
+		D6BEFD4F2612237000866D45 /* SettingsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD4E2612237000866D45 /* SettingsNavViewController.swift */; };
 		D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */; };
 		D6C1C007260B0EC6008EE7FE /* EditProfileResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */; };
 		D6C1C00E260B765D008EE7FE /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C1C00D260B765D008EE7FE /* Piece.swift */; };
@@ -398,6 +399,7 @@
 		D6BEFD452611D8DF00866D45 /* UserStatisticsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsResponse.swift; sourceTree = "<group>"; };
 		D6BEFD482611D8EE00866D45 /* UserGraphRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphRequest.swift; sourceTree = "<group>"; };
 		D6BEFD4B2611D8FB00866D45 /* UserGraphResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserGraphResponse.swift; sourceTree = "<group>"; };
+		D6BEFD4E2612237000866D45 /* SettingsNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNavViewController.swift; sourceTree = "<group>"; };
 		D6C1C003260B0D52008EE7FE /* EditProfileRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRequest.swift; sourceTree = "<group>"; };
 		D6C1C006260B0EC6008EE7FE /* EditProfileResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileResponse.swift; sourceTree = "<group>"; };
 		D6C1C00D260B765D008EE7FE /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
@@ -942,6 +944,7 @@
 				D649DDAD25E67BD500C6CD5B /* GoalNavViewController.swift */,
 				D649DDB125E6D05F00C6CD5B /* BookSearchNavViewController.swift */,
 				D615DF8D2608F0D2006021C4 /* MyEditNavViewController.swift */,
+				D6BEFD4E2612237000866D45 /* SettingsNavViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -1313,6 +1316,7 @@
 				D6BEFD492611D8EE00866D45 /* UserGraphRequest.swift in Sources */,
 				00FF375E260A293B00529570 /* ChallengeResponse.swift in Sources */,
 				D66CE6EE260A7A67003BB131 /* NameDuplicateResponse.swift in Sources */,
+				D6BEFD4F2612237000866D45 /* SettingsNavViewController.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				00FF376B260A3DD200529570 /* GetBookReadingTimeRequest.swift in Sources */,
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,

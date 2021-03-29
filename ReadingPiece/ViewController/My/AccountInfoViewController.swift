@@ -18,7 +18,8 @@ class AccountInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+
         if let email = keychain.get(Keys.email) {
             emailLabel.text = email
         }

@@ -29,9 +29,16 @@ class StatisticsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        chartEmptyView()
         setStatisticsInfo()
         getCurrentYear()
         drawYearCharts(year: currentYear)
+    }
+    
+    func chartEmptyView(){
+        barChartView.noDataText = "데이터를 불러올 수 없습니다."
+        barChartView.noDataFont = .NotoSans(.regular, size: 12)
+        barChartView.noDataTextColor = .lightGray
     }
     
     func convertToHourMinute(totalString: String) -> String {
@@ -63,18 +70,15 @@ class StatisticsViewController: UIViewController {
                         setStatisticsLabel()
                         setStatisticsAttributedLabel()
                     }
-                } else {
-                    self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
-                    }
                 }
             case .cancel(let cancelError):
                 self.dismissIndicator()
                 print(cancelError as Any)
             case .failure(let error):
                 self.dismissIndicator()
-                print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
-                }
+//                print(error as Any)
+//                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+//                }
             }
         }
     }
@@ -132,10 +136,6 @@ class StatisticsViewController: UIViewController {
                                 monthTotal[data.date-1] = Int(data.sum)!
                             }
                             yearLabel.text = "\(year)"
-                            barChartView.noDataText = "데이터가 없습니다."
-                            barChartView.noDataFont = .systemFont(ofSize: 20)
-                            barChartView.noDataTextColor = .lightGray
-                            
                             setChart(dataPoints: months, values: monthTotal)
                         }
                     }
@@ -146,9 +146,9 @@ class StatisticsViewController: UIViewController {
                 print(cancelError as Any)
             case .failure(let error):
                 self.dismissIndicator()
-                print(error as Any)
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
-                }
+//                print(error as Any)
+//                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+//                }
             }
         }
 

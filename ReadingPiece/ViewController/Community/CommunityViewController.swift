@@ -39,6 +39,14 @@ class CommunityViewController: UIViewController {
 
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if feedList.count == 0 {
+            feedTableView.separatorStyle = .none
+            feedTableView.backgroundView = UIStoryboard(name: "Community", bundle: nil).instantiateViewController(identifier: "feedEmptyView").view as! UIView
+        }else{
+            feedTableView.separatorStyle = .singleLine
+            feedTableView.separatorInset.left = 0
+            feedTableView.backgroundView = nil
+        }
         return feedList.count
     }
     
@@ -128,7 +136,7 @@ extension CommunityViewController: FeedCellDelegate {
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정", style: .default) { (action) in
-            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryNavController") as! LibraryNavViewController
+            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
         let remove = UIAlertAction(title: "신고", style: .destructive) { (action) in
@@ -157,7 +165,6 @@ extension CommunityViewController {
             switch result {
             case .success(let response):
                 if response.code == 1000 {
-                    print("feed count = \(response.journalcount)")
                     if response.journalcount != 0 {
                         if response.journalcount < limit{
                             self.isEnd = true
