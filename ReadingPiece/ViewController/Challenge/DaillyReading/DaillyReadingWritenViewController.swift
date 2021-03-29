@@ -83,8 +83,10 @@ class DaillyReadingWritenViewController: UIViewController {
     
     func writeJournal() {
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
-        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: imgBase64String, open: isOpen, goalBookId: goalBookId,
-                                     page: readingPage, percent: readingPercent, goalId: 77)
+        let testImg = self.pickedImage?.imageResized(to: CGSize(width: 10, height: 10)).jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil
+
+        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: testImg, open: isOpen, goalBookId: 77,
+                                     page: readingPage, percent: readingPercent, goalId: goalId)
         print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent, journal.goalId)
         let req = PostJournalRequest(journal: journal)
         
@@ -96,12 +98,16 @@ class DaillyReadingWritenViewController: UIViewController {
                         print("LOG - 일지 작성 성공 \(userResponse.code)")
                         // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
-                                DailyGoalCompletionViewController else { return }
+                                DaillyDiaryWrittenCompletionViewController else { return }
+                        let readingTime = self.readingTime
+                        let totalJournal = self.challengeInfo?.todayChallenge.totalJournal
+                        let readingPercent = self.readingPercent
+//                        let contiunaceDay = self.challengeInfo?.
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
                     case 3001:
                         self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
                     default:
-                        print("LOG 일지 작성 실패 \(userResponse.code)", journal)
+                        print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
                         self.presentAlert(title: "일지 작성 실패 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
@@ -272,10 +278,21 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
             self.pickedImage = img
-            self.imgBase64String = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
+//            let resizedImage = self.pickedImage?.imageResized(to: CGSize(width: 100, height: 100)).jpegData(compressionQuality: 0.1)
 //            print("LOG - Image String", imgBase64String)
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
+        }
+    }
+    
+
+    
+}
+
+extension UIImage {
+    func imageResized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
         }
     }
 }

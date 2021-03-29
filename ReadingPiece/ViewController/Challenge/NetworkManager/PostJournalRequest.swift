@@ -30,7 +30,7 @@ final class PostJournalRequest: Requestable {
     
     var parameters: [String : Any]? {
         return ["page": journal.time, "goalBookId": journal.goalBookId, "time": journal.time,
-                "text": journal.text, "journalImageURL": journal.journalImageURL, "open": journal.open, "percent": journal.percent ]
+                "text": journal.text, "journalImageURL": journal.journalImageURL ?? "", "open": journal.open, "percent": journal.percent ]
     }
     
     var headers: [String : String]? {
