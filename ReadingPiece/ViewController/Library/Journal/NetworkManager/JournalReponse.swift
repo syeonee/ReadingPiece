@@ -13,6 +13,7 @@ struct GetJournalResponse: Codable {
     let isSuccess: Bool
     let code: Int
     let message: String
+    let journalcount: Int
     let result: [GetJournalResponseResult]?
 }
 
