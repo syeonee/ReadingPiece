@@ -333,7 +333,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-13-USu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookCoverImage" translatesAutoresizingMaskIntoConstraints="NO" id="eEl-13-USu">
                                                     <rect key="frame" x="20" y="10" width="79" height="110"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="110" id="l1q-Pe-8HB"/>
@@ -451,7 +451,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-rr-Jal">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="642"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="RuQ-wj-Mws">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookCoverImage" translatesAutoresizingMaskIntoConstraints="NO" id="RuQ-wj-Mws">
                                                 <rect key="frame" x="153.5" y="28" width="107" height="149"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="107" id="ZbE-60-oJ8"/>
@@ -949,7 +949,7 @@
         <image name="bookillust" width="177.5" height="146.5"/>
         <image name="customCancel" width="17" height="17"/>
         <image name="customSearch" width="47" height="54"/>
-        <image name="defaultBookImage" width="117.5" height="159"/>
+        <image name="defaultBookCoverImage" width="117.5" height="159"/>
         <image name="month" width="86" height="36"/>
         <image name="moreEdit" width="18" height="4"/>
         <image name="navBack" width="11" height="19"/>

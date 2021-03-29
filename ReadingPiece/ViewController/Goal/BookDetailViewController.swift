@@ -196,14 +196,17 @@ class BookDetailViewController: UIViewController {
     }
     
     func setUI(){
-        let url = URL(string: book!.thumbnailPath)
-        bookImageView.kf.setImage(with: url)
+        if book?.thumbnailPath != "" {
+            let url = URL(string: book!.thumbnailPath)
+            bookImageView.kf.setImage(with: url)
+        }
+        if book?.summary != "" {
+            summaryLabel.text = book?.summary
+        }
         titleLabel.text = book?.title
         authorsLabel.text = book?.authors.joined(separator: ",")
         publisherLabel.text = book?.publisher
-        summaryLabel.text = book?.summary
     }
-    
 }
 
 extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
