@@ -28,7 +28,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="F4U-u3-olw">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="F4U-u3-olw">
                         <rect key="frame" x="20" y="19" width="41" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="41" id="dGc-xq-50W"/>
@@ -61,7 +61,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RV5-bz-75o">
                         <rect key="frame" x="20" y="71" width="335" height="123"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="axz-zU-p2W">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="axz-zU-p2W">
                                 <rect key="frame" x="12" y="15" width="66" height="93"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="66" id="9Lo-9G-5vT"/>
@@ -160,13 +160,10 @@
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGr-pK-jS3">
                         <rect key="frame" x="20" y="210" width="319" height="42"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="42" id="ZXU-TP-io3"/>
-                        </constraints>
                         <string key="text">달러구트 꿈 백화점은 우리에게 또다른 세상을 보여준다.
 우리가 전혀 알지 못했던 사실을 익숙하면서도</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -182,6 +179,7 @@
                     <constraint firstItem="RV5-bz-75o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="QhK-ug-DFI"/>
                     <constraint firstAttribute="trailing" secondItem="1kn-5s-fNm" secondAttribute="trailing" constant="25" id="SvR-sh-0Ot"/>
                     <constraint firstItem="wGr-pK-jS3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="TCw-ef-fM6"/>
+                    <constraint firstAttribute="bottom" secondItem="wGr-pK-jS3" secondAttribute="bottom" constant="32" id="Tjo-Qs-XOe"/>
                     <constraint firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" constant="20" id="UaC-Rg-qms"/>
                     <constraint firstItem="F4U-u3-olw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="aqr-8M-IbP"/>
                     <constraint firstItem="z6Y-yN-cMn" firstAttribute="top" secondItem="0EA-cR-bjq" secondAttribute="bottom" id="cYC-7B-GDg"/>
@@ -192,6 +190,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="bookAuthorLabel" destination="ScU-1A-pZO" id="GrI-Ps-dIj"/>
+                <outlet property="bookBackView" destination="RV5-bz-75o" id="A1Q-Bf-pca"/>
                 <outlet property="bookImageView" destination="axz-zU-p2W" id="bxD-tO-IX4"/>
                 <outlet property="bookTitleLabel" destination="bct-de-Hgm" id="vRE-ZS-uQ1"/>
                 <outlet property="dateLabel" destination="z6Y-yN-cMn" id="7K2-7H-Dgs"/>
@@ -201,9 +200,10 @@
                 <outlet property="nameLabel" destination="0EA-cR-bjq" id="gG5-C7-AfZ"/>
                 <outlet property="percentLabel" destination="GKR-zb-mAE" id="MAf-f7-wu2"/>
                 <outlet property="profileImageView" destination="F4U-u3-olw" id="JhJ-zF-bR4"/>
+                <outlet property="textConstraint" destination="21k-WG-Slx" id="D6F-1B-slC"/>
                 <outlet property="timeLabel" destination="yJh-Ws-yLG" id="NJs-DY-3UC"/>
             </connections>
-            <point key="canvasLocation" x="136.95652173913044" y="145.98214285714286"/>
+            <point key="canvasLocation" x="-40" y="116"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" title="커뮤니티" id="Pzc-iz-ZKR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="journalTableView" destination="aGA-57-ror" id="m4O-4y-xkc"/>
+                        <outlet property="feedTableView" destination="aGA-57-ror" id="NI3-Sq-xTz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAV-95-WFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

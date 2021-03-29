@@ -81,8 +81,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let book = books[indexPath.item]
-        let url = URL(string: book.thumbnailPath)
-        cell.bookImageView.kf.setImage(with: url)
+        if book.thumbnailPath != ""{
+            let url = URL(string: book.thumbnailPath)
+            cell.bookImageView.kf.setImage(with: url)
+        }
         cell.titleLabel.text = book.title
         cell.authorLabel.text = book.authors.joined(separator: ",")
         cell.publisherLabel.text = book.publisher

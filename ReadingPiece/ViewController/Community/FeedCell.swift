@@ -19,14 +19,17 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var bookAuthorLabel: UILabel!
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var bookBackView: UIView!
     
     @IBOutlet weak var impressionLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var textConstraint: NSLayoutConstraint!
     
     var feedCellDelegate: FeedCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
     }

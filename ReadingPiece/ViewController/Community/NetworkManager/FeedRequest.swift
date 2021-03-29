@@ -24,7 +24,7 @@ final class FeedRequest: Requestable {
     }
     
     var endpoint: String {
-        return "reading/graph"
+        return "comments/journals"
     }
     
     var method: Network.Method {
