@@ -6,106 +6,142 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class CommunityViewController: UIViewController {
-
-    let journalCell = JournalCell()
-    let fullJournalCell = FullJournalCell()
-    let headerView = JournalHeaderCell()
-    // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
-    var more: [Int] = []
-
-    let dateFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "y.MM.dd"
-        return f
-    } ()
     
-    @IBOutlet weak var journalTableView: UITableView!
+    
+    // 리뷰 리스트
+    var feedList: [Feed] = []
+    var expandedIndexSet : IndexSet = []
+
+    
+    var page : Int = 1
+    var isEnd : Bool = false
+    
+    @IBOutlet weak var feedTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 더보기 값 배열 초기화
-        self.more = Array<Int>(repeating: 0, count: Journal.dummyData.count)
-        setupUI()
-    }
-    
-    private func setupUI() {
-        setTableView()
-    }
-    
-    private func setTableView() {
-        journalTableView.dataSource = self
-        journalTableView.delegate = self
-        journalTableView.register(UINib(nibName: "JournalCell", bundle: nil), forCellReuseIdentifier: journalCell.cellID)
-        journalTableView.register(UINib(nibName: "FullJournalCell", bundle: nil), forCellReuseIdentifier: fullJournalCell.cellID)
-        journalTableView.register(UINib(nibName: "JournalHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: headerView.identifier)
+        loadReviewData()
         
-        journalTableView.rowHeight = UITableView.automaticDimension
-        journalTableView.estimatedRowHeight = 150
-        journalTableView.separatorStyle = .none
-        journalTableView.backgroundColor = .lightgrey2
+        feedTableView.delegate = self
+        feedTableView.dataSource = self
+        feedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
+        
+        feedTableView.rowHeight = UITableView.automaticDimension
+        feedTableView.estimatedRowHeight = 284
+        
     }
-
+    
 }
 
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = Journal.dummyData.count
-        if count == 0 {
-            let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            self.setEmptyView(image: UIImage(named: "recordIcon")!, message: message)
-        }
-        return count
+        return feedList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let length = Journal.dummyData[0].content.utf8.count
-        
-        if Journal.dummyData[indexPath.row].content.utf8.count <= length {
-            let cell = tableView.dequeueReusableCell(withIdentifier: fullJournalCell.cellID) as! FullJournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.editDelegate = self
-            return cell
-        } else if more[indexPath.row] == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: journalCell.cellID) as! JournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.moreDelegate = self
-            cell.editDelegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: fullJournalCell.cellID) as! FullJournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.editDelegate = self
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as? FeedCell else {
+            return UITableViewCell()
         }
+        cell.feedCellDelegate = self
+        
+//        if expandedIndexSet.contains(indexPath.row) {// 더보기 버튼을 누른 셀인 경우
+//            cell.reviewLabel.numberOfLines = 0
+//            cell.moreReadButton.isHidden = true
+//        } else {
+//            cell.reviewLabel.numberOfLines = 2
+//            cell.moreReadButton.isHidden = false
+//        }
+ 
+        return cell
+        
+        
+//        let length = 110
+//        let review = feedList[indexPath.row]
+//        if feedList[indexPath.row].text.utf8.count <= length {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
+//            let url = URL(string: review.imageURL)
+//            cell.bookImageView.kf.setImage(with: url)
+//            cell.bookTitleLabel.text = review.title
+//            cell.authorLabel.text = review.writer
+//            let rating = Double(review.star)
+//            cell.ratingLabel.text = String(rating)
+//            cell.reviewTextLabel.text = review.text
+//            cell.isCompletedLabel.text = review.isCompleted
+//            if let time = review.timeSum {
+//                cell.timeLabel.text = "\(time)분"
+//            } else {
+//                cell.timeLabel.isHidden = true
+//                cell.timeImageView.isHidden = true
+//            }
+//            cell.isPublicLabel.text = review.isPublic
+//
+//            cell.editDelegate = self
+//            cell.index = indexPath.row
+//
+//            return cell
+//        } else if more[indexPath.row] == 0 {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
+//            let url = URL(string: review.imageURL)
+//            cell.bookImageView.kf.setImage(with: url)
+//            cell.bookTitleLabel.text = review.title
+//            cell.authorLabel.text = review.writer
+//            let rating = Double(review.star)
+//            cell.ratingLabel.text = String(rating)
+//            cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
+//            cell.isCompletedLabel.text = review.isCompleted
+//            if let time = review.timeSum {
+//                cell.timeLabel.text = "\(time)분"
+//            } else {
+//                cell.timeLabel.isHidden = true
+//                cell.timeImageView.isHidden = true
+//            }
+//            cell.isPublicLabel.text = review.isPublic
+//
+//            cell.moreDelegate = self
+//            cell.editDelegate = self
+//            cell.index = indexPath.row
+//
+//            return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
+//            let url = URL(string: review.imageURL)
+//            cell.bookImageView.kf.setImage(with: url)
+//            cell.bookTitleLabel.text = review.title
+//            cell.authorLabel.text = review.writer
+//            let rating = Double(review.star)
+//            cell.ratingLabel.text = String(rating)
+//            cell.reviewTextLabel.text = review.text
+//            cell.isCompletedLabel.text = review.isCompleted
+//            if let time = review.timeSum {
+//                cell.timeLabel.text = "\(time)분"
+//            } else {
+//                cell.timeLabel.isHidden = true
+//                cell.timeImageView.isHidden = true
+//            }
+//            cell.isPublicLabel.text = review.isPublic
+//
+//            cell.editDelegate = self
+//            cell.index = indexPath.row
+//
+//            return cell
+//        }
     }
 
 }
 
-extension CommunityViewController: JournalMoreDelegate {
-    func didTapMoreButton(index: Int) {
-        self.more[index] = 1
-        self.journalTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+extension CommunityViewController: FeedCellDelegate {
+    func didTapMoreButton(cell: FeedCell) {
+        print("")
     }
+    
+    func didTapEditButton(cell: FeedCell) {
+        print("")
+    }
+    
+    
 }
 
 // 수정 기능 관련
@@ -125,10 +161,10 @@ extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate 
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Journal.dummyData.remove(at: index)
-            self.more.remove(at: index)
-            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
+//            Journal.dummyData.remove(at: index)
+//            self.more.remove(at: index)
+//            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+//            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -139,16 +175,37 @@ extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate 
     }
 }
 
-// 정렬 기능
-extension CommunityViewController: JournalOldestDelegate, JournalLatestDelegate {
-    func sortOldFirst() {
-        Journal.dummyData.sort(by: { $0.date < $1.date })
-        journalTableView.reloadData()
-    }
+
+// API 호출 메소드
+extension CommunityViewController {
     
-    func sortRecentFirst() {
-        Journal.dummyData.sort(by: { $0.date > $1.date })
-        journalTableView.reloadData()
+    // 리뷰 조회 - 처음 화면 로드할 때
+    private func loadReviewData() {
+        feedTableView.showWhiteIndicator()
+        guard let token = Constants.KEYCHAIN_TOKEN else { return }
+        Network.request(req: FeedRequest(token: token, page: 1,limit: 10)) { result in
+            switch result {
+            case .success(let response):
+                self.feedTableView.dismissIndicator()
+                if response.code == 1000 {
+                    guard let result = response.feed else { return }
+                    self.feedList = result
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
+                
+            case .cancel(let cancel):
+                self.feedTableView.dismissIndicator()
+                print(cancel as Any)
+            case .failure(let error):
+                self.feedTableView.dismissIndicator()
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+                print(error as Any)
+            }
+        }
     }
 }
 
@@ -194,8 +251,8 @@ extension CommunityViewController {
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         
-        self.journalTableView.backgroundView = emptyView
-        self.journalTableView.separatorStyle = .none
+//        self.journalTableView.backgroundView = emptyView
+//        self.journalTableView.separatorStyle = .none
     }
     
     @objc func buttonAction (_ sender: UIButton!) {

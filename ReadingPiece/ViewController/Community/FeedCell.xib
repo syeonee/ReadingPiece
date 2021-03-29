@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Bold.otf">
+            <string>NotoSansCJKkr-Bold</string>
+        </array>
+        <array key="NotoSansCJKkr-Medium.otf">
+            <string>NotoSansCJKkr-Medium</string>
+        </array>
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" id="KGk-i7-Jjw" customClass="FeedCell" customModule="ReadingPiece" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="284"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="F4U-u3-olw">
+                        <rect key="frame" x="20" y="19" width="41" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="41" id="dGc-xq-50W"/>
+                            <constraint firstAttribute="width" constant="41" id="qI4-84-UHP"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EA-cR-bjq">
+                        <rect key="frame" x="69" y="19" width="52" height="19"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="16"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021.03.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6Y-yN-cMn">
+                        <rect key="frame" x="69" y="38" width="65" height="15.5"/>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                        <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kn-5s-fNm">
+                        <rect key="frame" x="332" y="30.5" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="RYw-8q-YEo"/>
+                            <constraint firstAttribute="width" constant="18" id="bj2-a8-oNA"/>
+                        </constraints>
+                        <state key="normal" image="moreEdit"/>
+                        <connections>
+                            <action selector="editButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HyD-PI-v4N"/>
+                        </connections>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RV5-bz-75o">
+                        <rect key="frame" x="20" y="71" width="335" height="123"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="axz-zU-p2W">
+                                <rect key="frame" x="12" y="15" width="66" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="66" id="9Lo-9G-5vT"/>
+                                    <constraint firstAttribute="height" constant="92.780000000000001" id="MbR-mL-7KM"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.10000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="readOngoing" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-LJ-5WD">
+                                <rect key="frame" x="274" y="14" width="49" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="h38-Xi-Ol6"/>
+                                    <constraint firstAttribute="width" constant="49" id="xIX-0b-RDy"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bct-de-Hgm">
+                                <rect key="frame" x="97" y="15" width="40.5" height="16.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScU-1A-pZO">
+                                <rect key="frame" x="97" y="35.5" width="34" height="15.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                                <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="wSX-Mk-ldZ">
+                                <rect key="frame" x="97" y="85" width="16" height="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="11" id="1l7-Iz-n2d"/>
+                                    <constraint firstAttribute="width" constant="16" id="uiv-AK-3cr"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0% 읽음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKR-zb-mAE">
+                                <rect key="frame" x="118" y="83" width="46.5" height="15.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                                <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="eGm-N8-38M">
+                                <rect key="frame" x="180.5" y="83" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="15" id="pTH-Fg-Jk7"/>
+                                    <constraint firstAttribute="height" constant="15" id="xBv-yO-1w7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJh-Ws-yLG">
+                                <rect key="frame" x="200.5" y="83" width="18.5" height="15.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
+                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="wSX-Mk-ldZ" secondAttribute="bottom" constant="27" id="03A-Lg-cip"/>
+                            <constraint firstItem="bct-de-Hgm" firstAttribute="leading" secondItem="axz-zU-p2W" secondAttribute="trailing" constant="19" id="0h0-no-5hl"/>
+                            <constraint firstItem="GKR-zb-mAE" firstAttribute="centerY" secondItem="wSX-Mk-ldZ" secondAttribute="centerY" id="40q-HA-7jL"/>
+                            <constraint firstAttribute="height" constant="123" id="5dR-Ut-Srq"/>
+                            <constraint firstItem="axz-zU-p2W" firstAttribute="leading" secondItem="RV5-bz-75o" secondAttribute="leading" constant="12" id="7qb-8L-egd"/>
+                            <constraint firstItem="6Xe-LJ-5WD" firstAttribute="top" secondItem="RV5-bz-75o" secondAttribute="top" constant="14" id="EaB-xx-z6X"/>
+                            <constraint firstItem="eGm-N8-38M" firstAttribute="centerY" secondItem="GKR-zb-mAE" secondAttribute="centerY" id="Gh0-eD-ZkO"/>
+                            <constraint firstItem="ScU-1A-pZO" firstAttribute="top" secondItem="bct-de-Hgm" secondAttribute="bottom" constant="4" id="S8z-6Z-DIQ"/>
+                            <constraint firstItem="wSX-Mk-ldZ" firstAttribute="leading" secondItem="bct-de-Hgm" secondAttribute="leading" id="WU9-EG-JYu"/>
+                            <constraint firstItem="yJh-Ws-yLG" firstAttribute="leading" secondItem="eGm-N8-38M" secondAttribute="trailing" constant="5" id="Zln-8q-8LZ"/>
+                            <constraint firstItem="yJh-Ws-yLG" firstAttribute="centerY" secondItem="eGm-N8-38M" secondAttribute="centerY" id="cdj-vh-xKH"/>
+                            <constraint firstItem="bct-de-Hgm" firstAttribute="top" secondItem="axz-zU-p2W" secondAttribute="top" id="jB3-zo-965"/>
+                            <constraint firstAttribute="trailing" secondItem="6Xe-LJ-5WD" secondAttribute="trailing" constant="12" id="mgN-fd-aEM"/>
+                            <constraint firstItem="axz-zU-p2W" firstAttribute="centerY" secondItem="RV5-bz-75o" secondAttribute="centerY" id="ngR-fD-Gc7"/>
+                            <constraint firstItem="GKR-zb-mAE" firstAttribute="leading" secondItem="wSX-Mk-ldZ" secondAttribute="trailing" constant="5" id="r4N-Yr-0MM"/>
+                            <constraint firstItem="ScU-1A-pZO" firstAttribute="leading" secondItem="bct-de-Hgm" secondAttribute="leading" id="sPf-pS-3eV"/>
+                            <constraint firstItem="eGm-N8-38M" firstAttribute="leading" secondItem="GKR-zb-mAE" secondAttribute="trailing" constant="16" id="uSp-9F-xxR"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygn-bQ-91T">
+                        <rect key="frame" x="308" y="231" width="47" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="hzi-XH-7cX"/>
+                            <constraint firstAttribute="width" constant="47" id="nZs-uk-kLw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Medium" family="Noto Sans CJK KR" pointSize="14"/>
+                        <state key="normal" title="..더보기">
+                            <color key="titleColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="moreButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GYR-n9-pd3"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGr-pK-jS3">
+                        <rect key="frame" x="20" y="210" width="319" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="42" id="ZXU-TP-io3"/>
+                        </constraints>
+                        <string key="text">달러구트 꿈 백화점은 우리에게 또다른 세상을 보여준다.
+우리가 전혀 알지 못했던 사실을 익숙하면서도</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="wGr-pK-jS3" firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" constant="-16" id="21k-WG-Slx"/>
+                    <constraint firstItem="0EA-cR-bjq" firstAttribute="top" secondItem="F4U-u3-olw" secondAttribute="top" id="6W3-HL-Nng"/>
+                    <constraint firstItem="Ygn-bQ-91T" firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" id="9Dg-sK-C94"/>
+                    <constraint firstItem="z6Y-yN-cMn" firstAttribute="leading" secondItem="0EA-cR-bjq" secondAttribute="leading" id="9aq-CH-aCn"/>
+                    <constraint firstItem="wGr-pK-jS3" firstAttribute="top" secondItem="RV5-bz-75o" secondAttribute="bottom" constant="16" id="DKu-iL-1uj"/>
+                    <constraint firstItem="1kn-5s-fNm" firstAttribute="centerY" secondItem="F4U-u3-olw" secondAttribute="centerY" id="Eai-Jo-jYO"/>
+                    <constraint firstItem="0EA-cR-bjq" firstAttribute="leading" secondItem="F4U-u3-olw" secondAttribute="trailing" constant="8" id="J4c-ou-YuY"/>
+                    <constraint firstItem="RV5-bz-75o" firstAttribute="top" secondItem="F4U-u3-olw" secondAttribute="bottom" constant="11" id="JY0-a3-9DM"/>
+                    <constraint firstItem="RV5-bz-75o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="QhK-ug-DFI"/>
+                    <constraint firstAttribute="trailing" secondItem="1kn-5s-fNm" secondAttribute="trailing" constant="25" id="SvR-sh-0Ot"/>
+                    <constraint firstItem="wGr-pK-jS3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="TCw-ef-fM6"/>
+                    <constraint firstAttribute="trailing" secondItem="RV5-bz-75o" secondAttribute="trailing" constant="20" id="UaC-Rg-qms"/>
+                    <constraint firstItem="F4U-u3-olw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="aqr-8M-IbP"/>
+                    <constraint firstItem="z6Y-yN-cMn" firstAttribute="top" secondItem="0EA-cR-bjq" secondAttribute="bottom" id="cYC-7B-GDg"/>
+                    <constraint firstItem="Ygn-bQ-91T" firstAttribute="bottom" secondItem="wGr-pK-jS3" secondAttribute="bottom" id="ssR-Zb-9f2"/>
+                    <constraint firstItem="F4U-u3-olw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="19" id="ttA-ju-u30"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="bookAuthorLabel" destination="ScU-1A-pZO" id="GrI-Ps-dIj"/>
+                <outlet property="bookImageView" destination="axz-zU-p2W" id="bxD-tO-IX4"/>
+                <outlet property="bookTitleLabel" destination="bct-de-Hgm" id="vRE-ZS-uQ1"/>
+                <outlet property="dateLabel" destination="z6Y-yN-cMn" id="7K2-7H-Dgs"/>
+                <outlet property="editButton" destination="1kn-5s-fNm" id="vsh-07-bux"/>
+                <outlet property="impressionLabel" destination="wGr-pK-jS3" id="ghy-F8-auQ"/>
+                <outlet property="moreButton" destination="Ygn-bQ-91T" id="qy6-LX-4AN"/>
+                <outlet property="nameLabel" destination="0EA-cR-bjq" id="gG5-C7-AfZ"/>
+                <outlet property="percentLabel" destination="GKR-zb-mAE" id="MAf-f7-wu2"/>
+                <outlet property="profileImageView" destination="F4U-u3-olw" id="JhJ-zF-bR4"/>
+                <outlet property="timeLabel" destination="yJh-Ws-yLG" id="NJs-DY-3UC"/>
+            </connections>
+            <point key="canvasLocation" x="136.95652173913044" y="145.98214285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="book" width="17.5" height="13"/>
+        <image name="defaultBookImage" width="117.5" height="159"/>
+        <image name="defaultProfile" width="110" height="110"/>
+        <image name="moreEdit" width="18" height="4"/>
+        <image name="readOngoing" width="49" height="23"/>
+        <image name="time" width="15" height="15"/>
+    </resources>
+</document>
