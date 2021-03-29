@@ -184,6 +184,10 @@
 		D68DA1272611329900267BBE /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA1262611329900267BBE /* Feed.swift */; };
 		D68DA12B261133E900267BBE /* FeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA12A261133E900267BBE /* FeedRequest.swift */; };
 		D68DA12E2611341100267BBE /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA12D2611341100267BBE /* FeedResponse.swift */; };
+		D68DA45726114C7C00267BBE /* NoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA45626114C7C00267BBE /* NoticeViewController.swift */; };
+		D68DA45B26114C8800267BBE /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA45A26114C8800267BBE /* QuestionViewController.swift */; };
+		D68DA45F2611595600267BBE /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68DA45D2611595600267BBE /* FeedCell.swift */; };
+		D68DA4602611595600267BBE /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D68DA45E2611595600267BBE /* FeedCell.xib */; };
 		D6A7D3DF260606650098EA03 /* MyMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6A7D3DE260606650098EA03 /* MyMenuCell.xib */; };
 		D6A7D3E2260606B20098EA03 /* MyMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */; };
 		D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */; };
@@ -387,6 +391,10 @@
 		D68DA1262611329900267BBE /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		D68DA12A261133E900267BBE /* FeedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRequest.swift; sourceTree = "<group>"; };
 		D68DA12D2611341100267BBE /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		D68DA45626114C7C00267BBE /* NoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeViewController.swift; sourceTree = "<group>"; };
+		D68DA45A26114C8800267BBE /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
+		D68DA45D2611595600267BBE /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		D68DA45E2611595600267BBE /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		D6A7D3DE260606650098EA03 /* MyMenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyMenuCell.xib; sourceTree = "<group>"; };
 		D6A7D3E1260606B20098EA03 /* MyMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMenuCell.swift; sourceTree = "<group>"; };
 		D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceViewController.swift; sourceTree = "<group>"; };
@@ -585,6 +593,8 @@
 				D68DA1252611328900267BBE /* Entity */,
 				D68DA11A2611266200267BBE /* NetworkManager */,
 				D67C658125E572DB00F15290 /* CommunityViewController.swift */,
+				D68DA45D2611595600267BBE /* FeedCell.swift */,
+				D68DA45E2611595600267BBE /* FeedCell.xib */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -800,13 +810,13 @@
 		D60B364025EE2E45000E949D /* My */ = {
 			isa = PBXGroup;
 			children = (
+				D68DA45526114C5C00267BBE /* Settings */,
 				D66CE6E6260A38F5003BB131 /* Entity */,
 				D66CE6DE2609E84E003BB131 /* NetworkManager */,
 				D67C658425E572FA00F15290 /* MyViewController.swift */,
 				D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */,
 				D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */,
 				D615DF912608F0E8006021C4 /* ProfileEditViewController.swift */,
-				D642423626090A1800E732D4 /* SettingViewController.swift */,
 				D642423D26091D9F00E732D4 /* AccountInfoViewController.swift */,
 				D66CE6D82609C6A1003BB131 /* PasswordChangeViewController.swift */,
 				D66CE6DB2609D3BD003BB131 /* PieceInfoViewController.swift */,
@@ -954,6 +964,16 @@
 				D68DA1262611329900267BBE /* Feed.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		D68DA45526114C5C00267BBE /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				D642423626090A1800E732D4 /* SettingViewController.swift */,
+				D68DA45626114C7C00267BBE /* NoticeViewController.swift */,
+				D68DA45A26114C8800267BBE /* QuestionViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		D6A255F825E4254A00731B10 /* Model */ = {
@@ -1110,6 +1130,7 @@
 				D6288D2F25E2B5DB00D73A61 /* Main.storyboard in Resources */,
 				59F4F2FB25F9BD8600E82417 /* ReviewRatingCell.xib in Resources */,
 				599D3AB725F11AB30085F134 /* ReviewCell.xib in Resources */,
+				D68DA4602611595600267BBE /* FeedCell.xib in Resources */,
 				D6A7D3DF260606650098EA03 /* MyMenuCell.xib in Resources */,
 				D6509DE725EAC87F000D7160 /* Login.storyboard in Resources */,
 				D67C657C25E5717300F15290 /* My.storyboard in Resources */,
@@ -1242,6 +1263,7 @@
 				D6FF1B6C25F219F000A0B980 /* TimeViewController.swift in Sources */,
 				00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */,
 				599D3AA425F0909B0085F134 /* ReviewViewController.swift in Sources */,
+				D68DA45726114C7C00267BBE /* NoticeViewController.swift in Sources */,
 				596D4D79260AD05700E137F3 /* PatchJournalRequest.swift in Sources */,
 				D68DA12E2611341100267BBE /* FeedResponse.swift in Sources */,
 				59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */,
@@ -1250,6 +1272,7 @@
 				596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */,
 				5961DE492610140C00EF8745 /* EmailRequest.swift in Sources */,
 				596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */,
+				D68DA45F2611595600267BBE /* FeedCell.swift in Sources */,
 				00C55F7A2604FB16002848AB /* ReadingGoalResponse.swift in Sources */,
 				59F4F32825F9F0B200E82417 /* SearchBookViewController.swift in Sources */,
 				D6288D2825E2B5DB00D73A61 /* AppDelegate.swift in Sources */,
@@ -1260,6 +1283,7 @@
 				D68DA122261126EA00267BBE /* UserGraphResponse.swift in Sources */,
 				5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */,
 				009250182602E08300A930DD /* BithumbResponse.swift in Sources */,
+				D68DA45B26114C8800267BBE /* QuestionViewController.swift in Sources */,
 				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
 				00FF377D260A685700529570 /* PostReportReviewRequest.swift in Sources */,
 				D66CE6DC2609D3BD003BB131 /* PieceInfoViewController.swift in Sources */,

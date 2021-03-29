@@ -11,6 +11,7 @@ import KeychainSwift
 class SettingViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    @IBOutlet weak var backButton: UIBarButtonItem!
     
     @IBOutlet weak var accountInfoView: UIView!
     @IBOutlet weak var noticeView: UIView!
@@ -22,7 +23,7 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         noticeView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
         versionView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
         questionView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
@@ -36,15 +37,24 @@ class SettingViewController: UIViewController {
             versionLabel.text = "\(version)"
         }
     }
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func settingViewTapped(_ sender: UITapGestureRecognizer) {
         switch sender.view {
         case noticeView:
-            print()
+            let storyboard = UIStoryboard(name: "My", bundle: nil)
+            if let myViewController = storyboard.instantiateViewController(withIdentifier: "NoticeController") as? NoticeViewController {
+                self.navigationController?.pushViewController(myViewController, animated: true)
+            }
         case versionView:
             print()
         case questionView:
-            print()
+            let storyboard = UIStoryboard(name: "My", bundle: nil)
+            if let myViewController = storyboard.instantiateViewController(withIdentifier: "QuestionController") as? QuestionViewController {
+                self.navigationController?.pushViewController(myViewController, animated: true)
+            }
         case logoutView:
             logout()
         case secessionView:
@@ -90,5 +100,5 @@ class SettingViewController: UIViewController {
         self.presentAlert(title: "회원 탈퇴에 실패했습니다. ")
     }
     
-
+    
 }
