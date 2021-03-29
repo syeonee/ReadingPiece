@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class CommunityViewController: UIViewController {
     
-    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     // 리뷰 리스트
     var feedList: [Feed] = []
@@ -161,10 +161,10 @@ extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate 
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Journal.dummyData.remove(at: index)
-            self.more.remove(at: index)
-            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
+//            Journal.dummyData.remove(at: index)
+//            self.more.remove(at: index)
+//            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+//            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
         }
         
         alert.addAction(success)
@@ -182,7 +182,7 @@ extension CommunityViewController {
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData() {
         feedTableView.showWhiteIndicator()
-        guard let token = keychain.get(Keys.token) else { return }
+        guard let token = Constants.KEYCHAIN_TOKEN else { return }
         Network.request(req: FeedRequest(token: token, page: 1,limit: 10)) { result in
             switch result {
             case .success(let response):
@@ -251,8 +251,8 @@ extension CommunityViewController {
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         
-        self.journalTableView.backgroundView = emptyView
-        self.journalTableView.separatorStyle = .none
+//        self.journalTableView.backgroundView = emptyView
+//        self.journalTableView.separatorStyle = .none
     }
     
     @objc func buttonAction (_ sender: UIButton!) {
