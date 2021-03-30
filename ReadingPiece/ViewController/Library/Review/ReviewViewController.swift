@@ -72,7 +72,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         if reviewList[indexPath.row].text.utf8.count <= length {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
@@ -94,7 +94,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         } else if more[indexPath.row] == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
@@ -117,7 +117,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
