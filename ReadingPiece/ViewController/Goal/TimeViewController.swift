@@ -28,6 +28,11 @@ class TimeViewController: UIViewController {
         createDatePicker()
     }
     
+    @IBAction func NetxToAddBookAction(_ sender: UIBarButtonItem) {
+        postUserReadingGoal()
+        
+    }
+    
     @objc func donePressed() {
         let minute = Int(datePicker.countDownDuration/60)
         time = minute
