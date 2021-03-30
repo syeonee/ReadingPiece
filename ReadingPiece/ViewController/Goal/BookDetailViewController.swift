@@ -92,8 +92,6 @@ class BookDetailViewController: UIViewController {
                 self.navigationController?.pushViewController(reviewVC, animated: true)
             } else if initNumber == 2 && isVaildBook == true { // 책 관리화면에서 호출하는 경우, initializer = 2
                 postChallengeBook(isbn: self.book?.isbn ?? "")
-            } else {
-                self.presentAlert(title: "목표 입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)
             }
         }
     }
@@ -112,7 +110,7 @@ class BookDetailViewController: UIViewController {
                         self.bookId = userResponse.bookId
                         switch userResponse.code {
                         case 1000:
-                            print("LOG 책 정보 DB추가 완료", bookData.title)
+                            print("LOG 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
@@ -198,7 +196,8 @@ class BookDetailViewController: UIViewController {
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn)
+        guard let bookId = bookId else { return }
+        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn, bookId: bookId)
 
         _ = Network.request(req: addChallengeBookReq) { (result) in
 
@@ -211,6 +210,8 @@ class BookDetailViewController: UIViewController {
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     case 2110:
+                        self.presentAlert(title: "책 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                    case 4000:
                         self.presentAlert(title: "이미 같은 책이 추가되어 있습니다.", isCancelActionIncluded: false)
                     default:
                         self.presentAlert(title: "입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)

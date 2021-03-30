@@ -5,11 +5,14 @@ import Foundation
 final class PostChallengeBookRequest: Requestable {
     typealias ResponseType = PostChalleneBookResponse
     private var goalId: Int
+    private var bookId: Int
     private var isbn: String
     
-    init(goalId: Int, isbn: String) {
+    init(goalId: Int, isbn: String, bookId: Int) {
         self.goalId = goalId
         self.isbn = isbn
+        self.bookId = bookId
+        
     }
     
     var baseUrl: URL {
@@ -30,7 +33,7 @@ final class PostChallengeBookRequest: Requestable {
     
     
     var parameters: [String : Any]? {
-        return ["goalId": self.goalId, "publishNumber": self.isbn]
+        return ["goalId": self.goalId, "publishNumber": self.isbn, "bookId": self.bookId]
     }
     
     var headers: [String : String]? {
