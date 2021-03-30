@@ -84,9 +84,9 @@ class DaillyReadingWritenViewController: UIViewController {
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
         let testImg = self.pickedImage?.imageResized(to: CGSize(width: 10, height: 10)).jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil
 
-        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: testImg, open: isOpen, goalBookId: 77,
-                                     page: readingPage, percent: readingPercent, goalId: goalId)
-        print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent, journal.goalId)
+        let journal = JournalWritten(time: readingTime, text: commentTextView.text, open: isOpen, goalBookId: goalBookId,
+                                     page: readingPage, percent: readingPercent)
+        print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent)
         let req = PostJournalRequest(journal: journal)
         
         _ = Network.request(req: req) { (result) in
