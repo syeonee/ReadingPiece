@@ -29,6 +29,7 @@ class DaillyReadingWritenViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var postImageButton: UIButton!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var bookInfoView: UIView!
     @IBOutlet weak var bookThumbnailImage: UIImageView!
@@ -180,6 +181,8 @@ class DaillyReadingWritenViewController: UIViewController {
         commentTextView.backgroundColor = .lightgrey1
         commentLengthLabel.textColor = .darkgrey
         
+        // 일지 이미지 첨부 기능 부활시 제거
+        postImageButton.isHidden = true
     }
     
     func getMinutesTextByTime(_ time: Int) -> String {

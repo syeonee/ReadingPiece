@@ -40,6 +40,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.showIndicator()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.initMainView()
         }
@@ -119,8 +120,6 @@ class ViewController: UIViewController {
     }
     
     func initMainView() {
-        self.showIndicator()
-
         getChallengeRequest().getChallengeRequest { (challengeData) in
             switch challengeData {
             case nil :
@@ -140,7 +139,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        self.showIndicator()
+        self.dismissIndicator()
     }
 
     func showRestartChallengePopup() {
@@ -187,6 +186,7 @@ class ViewController: UIViewController {
     }
     
     private func getUserNameByLength(_ name: String?) -> String {
+        print("LOGTT", name)
         var nameString = ""
         if let userName = name {
             if userName.count > 3 {

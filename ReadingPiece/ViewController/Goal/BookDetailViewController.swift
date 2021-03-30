@@ -92,8 +92,6 @@ class BookDetailViewController: UIViewController {
                 self.navigationController?.pushViewController(reviewVC, animated: true)
             } else if initNumber == 2 && isVaildBook == true { // 책 관리화면에서 호출하는 경우, initializer = 2
                 postChallengeBook(isbn: self.book?.isbn ?? "")
-            } else { //
-                self.presentAlert(title: "목표 입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)
             }
         }
     }
@@ -211,6 +209,8 @@ class BookDetailViewController: UIViewController {
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     case 2110:
+                        self.presentAlert(title: "책 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                    case 4000:
                         self.presentAlert(title: "이미 같은 책이 추가되어 있습니다.", isCancelActionIncluded: false)
                     default:
                         self.presentAlert(title: "입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)

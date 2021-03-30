@@ -1382,6 +1382,7 @@
                         <outlet property="commentTextView" destination="gKz-SD-Ygn" id="plc-PG-TMR"/>
                         <outlet property="commentTitleLabel" destination="Jrr-Dg-Yo7" id="P1u-W9-PvJ"/>
                         <outlet property="postDairyButton" destination="s6h-FA-ZVM" id="7qY-JG-QVn"/>
+                        <outlet property="postImageButton" destination="XQx-yy-Mwx" id="lAt-XS-Xyy"/>
                         <outlet property="privatePostButton" destination="MZ3-8g-ZeT" id="yPP-fz-dvo"/>
                         <outlet property="publicPostButton" destination="Fak-Cl-ufg" id="oo8-jc-7eE"/>
                         <outlet property="readingAmountTitleLabel" destination="YQW-an-ZNf" id="iUc-qr-KYR"/>
