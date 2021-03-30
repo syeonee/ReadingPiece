@@ -78,9 +78,9 @@ class BookSettingViewController: UIViewController {
 
     @objc func addBook(sender: UIBarButtonItem) {
         let searchBookVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
+        searchBookVC.initializer = 2
         self.navigationController?.pushViewController(searchBookVC, animated: true)
     }
-
 
 }
 

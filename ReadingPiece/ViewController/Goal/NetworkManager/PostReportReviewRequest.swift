@@ -37,7 +37,7 @@ final class PostReportReviewRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
