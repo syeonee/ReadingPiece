@@ -110,7 +110,7 @@ class BookDetailViewController: UIViewController {
                         self.bookId = userResponse.bookId
                         switch userResponse.code {
                         case 1000:
-                            print("LOG 책 정보 DB추가 완료", bookData.title)
+                            print("LOG 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
@@ -196,7 +196,8 @@ class BookDetailViewController: UIViewController {
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn)
+        guard let bookId = bookId else { return }
+        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn, bookId: bookId)
 
         _ = Network.request(req: addChallengeBookReq) { (result) in
 
