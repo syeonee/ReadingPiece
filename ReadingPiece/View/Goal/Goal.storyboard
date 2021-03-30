@@ -251,7 +251,7 @@
                         <barButtonItem key="rightBarButtonItem" image="navNext" id="9aC-lo-Uad">
                             <color key="tintColor" red="1" green="0.42352941179999998" blue="0.37254901959999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="znP-37-YL6" kind="show" id="Gq0-HY-kHL"/>
+                                <action selector="NetxToAddBookAction:" destination="sME-ys-cfE" id="137-1A-pLd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -871,7 +871,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어떤 책을 읽을 건가요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAU-Nu-V6N">
-                                <rect key="frame" x="32" y="116" width="239.5" height="38"/>
+                                <rect key="frame" x="32" y="72" width="239.5" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="5Cs-nY-hv9"/>
                                 </constraints>
@@ -880,13 +880,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색을 통해 가장 먼저 읽을 책을 골라주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeI-UB-7HI">
-                                <rect key="frame" x="32" y="158" width="255.5" height="21"/>
+                                <rect key="frame" x="32" y="114" width="255.5" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Light" family="Noto Sans CJK KR" pointSize="14"/>
                                 <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kwv-MN-IM1">
-                                <rect key="frame" x="32" y="207" width="311" height="40"/>
+                                <rect key="frame" x="32" y="163" width="311" height="40"/>
                                 <state key="normal" image="bookSearchBar"/>
                                 <state key="selected" image="bookSearchBar"/>
                                 <state key="highlighted" image="bookSearchBar"/>
@@ -895,7 +895,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookillust" translatesAutoresizingMaskIntoConstraints="NO" id="MXh-Ib-D5L">
-                                <rect key="frame" x="118.5" y="418" width="177.5" height="146.5"/>
+                                <rect key="frame" x="118.5" y="343.5" width="177.5" height="146.5"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tvF-bG-pLZ"/>
