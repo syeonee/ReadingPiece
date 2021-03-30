@@ -73,11 +73,10 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .darkgrey
         
         let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))
-        let leftButton = UIBarButtonItem(image: UIImage(named: "customCancel"), style: .plain, target: self, action: #selector(closeDaillyReadingResult(sender:)))
+        let leftButton = UIBarButtonItem(image: UIImage(named: "navBack"), style: .plain, target: self, action: #selector(closeDaillyReadingResult(sender:)))
 
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.leftBarButtonItem = leftButton
-        self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
     }
 
     private func setupTableView() {
@@ -96,7 +95,6 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
 
         self.present(activityViewController, animated: true, completion: nil)
     }
-
 }
 
 extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITableViewDataSource {
@@ -110,7 +108,7 @@ extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITab
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,20 +116,28 @@ extension DaillyDiaryWrittenCompletionViewController: UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            // 이름 반대로 적용, challengeCell에 DaillyReading 관련 내용이 있고, DaillyReadingCell에 Challenge Cake 관련 내용이 있음
-            guard let challengeCell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.identifier, for: indexPath) as? ChallengeTableViewCell
-                else { return UITableViewCell() }
-            if let continuity = readingContinuity, let readingStatus = todayReadingStatus {
-                challengeCell.configure(readingContinuity: continuity, todayReadingStatus: readingStatus)
-            }
-            return challengeCell
-        default:
-            guard let daillyReadingCell = tableView.dequeueReusableCell(withIdentifier: DaillyReadingTableViewCell.identifier, for: indexPath) as? DaillyReadingTableViewCell
-                else { return UITableViewCell() }
-            return daillyReadingCell
+        guard let challengeCell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.identifier, for: indexPath) as? ChallengeTableViewCell
+            else { return UITableViewCell() }
+        if let continuity = readingContinuity, let readingStatus = todayReadingStatus {
+            challengeCell.configure(readingContinuity: continuity, todayReadingStatus: readingStatus)
         }
+        return challengeCell
+
+//    switch indexPath.section {
+        // 챌린지 결과도 보여줄 경우, 추후 구현 예정 항목
+//        case 0:
+            // 이름 반대로 적용, challengeCell에 DaillyReading 관련 내용이 있고, DaillyReadingCell에 Challenge Cake 관련 내용이 있음
+//            guard let challengeCell = tableView.dequeueReusableCell(withIdentifier: ChallengeTableViewCell.identifier, for: indexPath) as? ChallengeTableViewCell
+//                else { return UITableViewCell() }
+//            if let continuity = readingContinuity, let readingStatus = todayReadingStatus {
+//                challengeCell.configure(readingContinuity: continuity, todayReadingStatus: readingStatus)
+//            }
+//            return challengeCell
+//        default:
+//            guard let daillyReadingCell = tableView.dequeueReusableCell(withIdentifier: DaillyReadingTableViewCell.identifier, for: indexPath) as? DaillyReadingTableViewCell
+//                else { return UITableViewCell() }
+//            return daillyReadingCell
+//        }
     }
 }
 

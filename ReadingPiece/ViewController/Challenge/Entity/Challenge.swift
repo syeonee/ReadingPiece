@@ -70,9 +70,9 @@ public struct Challenge: Codable {
 
 //
 public struct ReadingContinuity: Codable {
-    public let goalId: Int // 목표인덱스
-    public let continuanceDay: Int // 연속 독서일
-    public let createAt: String // 처음읽은날
+    public let goalId: Int? // 목표인덱스
+    public let continuanceDay: Int? // 연속 독서일
+    public let createAt: String? // 처음읽은날
     
     enum CodingKeys: String, CodingKey {
         case goalId
@@ -82,15 +82,15 @@ public struct ReadingContinuity: Codable {
 }
 
 public struct TodayReadingStatus: Codable {
-    public let sumjournal: Int // 일지합계
-    public let todayTime: String // 오늘읽은 시간합계
-    public let todayPercent: String // 오늘읽은 퍼센트
-    public let startAt: String // 목표시작일
-    public let expriodAt: String // 목표만료일
-    public let period: String // 목표기간
-    public let amount: Int // 목표책수
-    public let sumAmount: Int // 완독한책수
-    public let name: String // 유저닉네임
-    public let Dday: Int // 만료일까지 남은 디데이
+    public let sumjournal: Int? // 일지합계
+    public let todayTime: String? // 오늘읽은 시간합계
+    public let todayPercent: String? // 오늘읽은 퍼센트
+    public let startAt: String? // 목표시작일
+    public let expriodAt: String? // 목표만료일
+    public let period: String? // 목표기간
+    public let amount: Int? // 목표책수
+    public let sumAmount: Int? // 완독한책수
+    public let name: String? // 유저닉네임
+    public let Dday: Int? // 만료일까지 남은 디데이
 }
 

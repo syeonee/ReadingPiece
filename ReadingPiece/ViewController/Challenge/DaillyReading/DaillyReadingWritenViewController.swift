@@ -23,7 +23,6 @@ class DaillyReadingWritenViewController: UIViewController {
     var pickedImage : UIImage?
     var readingPercent: Int = 0
     var readingPage: Int = 0
-    var imgBase64String = ""
     var isPublic: Bool? {
         didSet {
             isValidatePost()
@@ -83,8 +82,10 @@ class DaillyReadingWritenViewController: UIViewController {
     
     func writeJournal() {
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
-        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: imgBase64String, open: isOpen, goalBookId: goalBookId,
-                                     page: readingPage, percent: readingPercent, goalId: 77)
+        let testImg = self.pickedImage?.imageResized(to: CGSize(width: 10, height: 10)).jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil
+
+        let journal = JournalWritten(time: readingTime, text: commentTextView.text, journalImageURL: testImg, open: isOpen, goalBookId: 77,
+                                     page: readingPage, percent: readingPercent, goalId: goalId)
         print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent, journal.goalId)
         let req = PostJournalRequest(journal: journal)
         
@@ -96,12 +97,12 @@ class DaillyReadingWritenViewController: UIViewController {
                         print("LOG - 일지 작성 성공 \(userResponse.code)")
                         // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
-                                DailyGoalCompletionViewController else { return }
+                                DaillyDiaryWrittenCompletionViewController else { return }
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
                     case 3001:
                         self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
                     default:
-                        print("LOG 일지 작성 실패 \(userResponse.code)", journal)
+                        print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
                         self.presentAlert(title: "일지 작성 실패 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
@@ -163,6 +164,7 @@ class DaillyReadingWritenViewController: UIViewController {
 
     private func setupUI() {
         setNavBar()
+        totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)
         readingStatusButton.makeRoundedTagButtnon("읽는 중", titleColor: .middlegrey1, borderColor: UIColor.middlegrey1.cgColor, backgroundColor: .white)
         totalReadingTimeButton.makeRoundedTagButtnon(" 00분", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
@@ -180,6 +182,16 @@ class DaillyReadingWritenViewController: UIViewController {
         
     }
     
+    func getMinutesTextByTime(_ time: Int) -> String {
+        var text = ""
+        if time > 60 {
+            text = "\(time / 60)분"
+        } else {
+            text = "\(1)분"
+        }
+        return text
+    }
+
     private func setNavBar() {
         self.navigationItem.title = "독서 일지"
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -205,7 +217,6 @@ class DaillyReadingWritenViewController: UIViewController {
         return validationResult
     }
 }
-
 
 extension DaillyReadingWritenViewController: ReadingStatusDelegate {
     func setReadingPage(_ page: Int) {
@@ -272,10 +283,21 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
             self.pickedImage = img
-            self.imgBase64String = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
+//            let resizedImage = self.pickedImage?.imageResized(to: CGSize(width: 100, height: 100)).jpegData(compressionQuality: 0.1)
 //            print("LOG - Image String", imgBase64String)
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
+        }
+    }
+    
+
+    
+}
+
+extension UIImage {
+    func imageResized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
         }
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class BookDetailViewController: UIViewController {
-    
+
     var initializer: Int?
     var userReview: [UserBookReview] = []
 
@@ -17,21 +17,22 @@ class BookDetailViewController: UIViewController {
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
-    
+
     @IBOutlet weak var totalReviewLabel: UILabel!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var reviewTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var moreReviewView: UIView!
-    
+
     var isExpanded : Bool = false
     var observerExist : Bool = false
-    
+    var isVaildBook: Bool = false
+
     var initHeight : NSLayoutConstraint?
     var book : Book?
     var bookId: Int?
     let userDefaults = UserDefaults.standard
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -43,41 +44,41 @@ class BookDetailViewController: UIViewController {
         reviewTableView.rowHeight = 189.5
         reviewTableView.estimatedRowHeight = 189.5
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         if observerExist {
             reviewTableView.removeObserver(self, forKeyPath: "contentSize")
             observerExist = false
         }
     }
-    
+
     func setGesture() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.moreReviewTapped(_:)))
         self.moreReviewView.addGestureRecognizer(tapGesture)
     }
-    
+
     @objc func moreReviewTapped(_ gesture: UITapGestureRecognizer) {
         let storyboard = UIStoryboard(name: "Goal", bundle: nil)
         guard let reviewListVC = storyboard.instantiateViewController(withIdentifier: "reviewListVC") as? BookReviewViewController else { return }
         reviewListVC.userReview = self.userReview
         self.navigationController?.pushViewController(reviewListVC, animated: true)
     }
-    
+
 //    @IBAction func moreReviewTapped(_ sender: Any) {
 //
 //    }
-    
+
     @IBAction func addBook(_ sender: Any) {
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
         if let initNumber = self.initializer  {
-            if initNumber == 0 {
+            if initNumber == 0  && isVaildBook == true {
                 postChallengeBook(isbn: self.book?.isbn ?? "")
-            } else if initNumber == 1 {
+            } else if initNumber == 1 && isVaildBook == true { //카카오 책 API에서 필요한 정보를 다 주는 책만 리뷰 작성화면으로 이동 가능
                 let reviewVC = CreateReviewViewController()
                 reviewVC.book = self.book
                 reviewVC.bookID = self.bookId
@@ -86,15 +87,15 @@ class BookDetailViewController: UIViewController {
         } else { // 책 관리화면에서 호출하는 경우
             postChallengeBook(isbn: self.book?.isbn ?? "")
         }
-        
+
     }
-    
+
     // DB에 사용자가 조회한 책 정보 등록 : 챌린지 진행할 책이 아니더라도, 무조건 호출해서 책 정보 등록
     func postBookInfo() {
         if let bookData = book {
             let bookData = GeneralBook(writer: bookData.authors.joined(separator: ",") , publishDate: bookData.datetime, publishNumber: bookData.isbn, contents: bookData.summary, imageURL: bookData.thumbnailPath, title: bookData.title, publisher: bookData.publisher)
             let addBookReq = AddBookRequest(book: bookData)
-            
+
             _ = Network.request(req: addBookReq) { (result) in
                     switch result {
                     case .success(let userResponse):
@@ -104,6 +105,7 @@ class BookDetailViewController: UIViewController {
                         switch userResponse.code {
                         case 1000:
                             print("LOG 책 정보 DB추가 완료", bookData.title)
+                            self.isVaildBook = true
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
                             print("LOG 책 정보 DB추가 실패 - \(userResponse.message)")
@@ -113,7 +115,7 @@ class BookDetailViewController: UIViewController {
                         print(cancelError!)
                     case .failure(let error):
                         print("LOG", error)
-                        self.presentAlert(title: "책 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "책 정보 로딩 실패, 다른 책을 선택해주세요.", isCancelActionIncluded: false)
                         self.navigationController?.popViewController(animated: true)
                 }
             }
@@ -122,7 +124,7 @@ class BookDetailViewController: UIViewController {
             navigationController?.popViewController(animated: true)
         }
     }
-    
+
     // 불러온 유저 리뷰 정보를 바탕으로 하단 테이블뷰 리로드
     func getUserRewview(isbn: String, bookId: String) {
         let getReviewReq = GetUserBookReviewRequest(isbn: isbn, bookId: bookId)
@@ -147,20 +149,20 @@ class BookDetailViewController: UIViewController {
             }
         }
     }
-    
+
     func setTableViewDataSource(review: [UserBookReview], totalReader: Int) {
         self.userReview = review
         self.reviewTableView.reloadData()
         self.totalReviewLabel.text = "\(totalReader)"
     }
-    
+
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
         let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn)
-        
+
         _ = Network.request(req: addChallengeBookReq) { (result) in
-                
+
                 switch result {
                 case .success(let userResponse):
                     switch userResponse.code {
@@ -182,19 +184,19 @@ class BookDetailViewController: UIViewController {
             }
         }
     }
-    
+
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "contentSize" {
             if object is UITableView {
                 if let newValue = change?[.newKey]{
                     let newSize = newValue as! CGSize
                     reviewTableViewHeight.constant = newSize.width
-                    
+
                 }
             }
         }
     }
-    
+
     func setUI(){
         if book?.thumbnailPath != "" {
             let url = URL(string: book!.thumbnailPath)
@@ -207,6 +209,8 @@ class BookDetailViewController: UIViewController {
         authorsLabel.text = book?.authors.joined(separator: ",")
         publisherLabel.text = book?.publisher
     }
+
+
 }
 
 extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -219,19 +223,19 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
             return 1
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = reviewTableView.dequeueReusableCell(withIdentifier: "bookReviewCell", for: indexPath) as? ReviewTableViewCell else {
             return UITableViewCell()
         }
-        
+
         if let review = userReview.first {
             // 리뷰데이터를 받아서, cell에 적용하는 함수
             cell.configure(reviewData: review)
         }
-        
+
         cell.reviewCellDelegate = self
-        
+
         if isExpanded {// 더보기 버튼을 누른 셀인 경우
             print("is Expand")
             cell.reviewLabel.numberOfLines = 0
@@ -240,14 +244,14 @@ extension BookDetailViewController: UITableViewDelegate, UITableViewDataSource {
             cell.reviewLabel.numberOfLines = 2
             cell.moreReadButton.isHidden = false
         }
-        
+
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -263,27 +267,27 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
             reviewTableView.reloadData()
         }
     }
-    
+
     func editReviewButtonTapped(cell: ReviewTableViewCell) {
         if let indexPath = reviewTableView.indexPath(for: cell){
             showAlert(indexPath: indexPath)
         }
     }
-    
+
     func likeButtonTapped(cell: ReviewTableViewCell) {
         if let indexPath = reviewTableView.indexPath(for: cell) {
             print("like button tapped at row-\(String(indexPath.row))")
             if let cell = reviewTableView.cellForRow(at: indexPath) as? ReviewTableViewCell {
                 if cell.likeButton.isSelected { // 좋아요 누른 경우
-                    
+
                 } else { // 좋아요 안누른 경우
-                    
+
                 }
                 cell.likeButton.isSelected = !cell.likeButton.isSelected
             }
         }
     }
-    
+
     func commentButtonTapped(cell: ReviewTableViewCell) {
         if let indexPath = reviewTableView.indexPath(for: cell) {
             print("comment button tapped at row-\(String(indexPath.row))")
@@ -293,7 +297,7 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
             }
         }
     }
-    
+
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let modify = UIAlertAction(title: "수정", style: .default) { (action) in
@@ -303,15 +307,15 @@ extension BookDetailViewController: ReviewTableViewCellDelegate {
             print("리뷰 삭제 row-\(indexPath.row)")
             //TODO : 데이터 삭제
             //self.reviewTableView.deleteRows(at: [indexPath], with: .automatic)//삭제 후 다른 사람의 리뷰로 대체??
-            
+
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        
+
         alert.addAction(modify)
         alert.addAction(remove)
         alert.addAction(cancel)
-        
+
         self.present(alert, animated: true, completion: nil)
     }
-    
+
 }

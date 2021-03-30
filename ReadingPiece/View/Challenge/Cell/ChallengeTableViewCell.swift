@@ -31,10 +31,10 @@ class ChallengeTableViewCell: UITableViewCell {
     
     // 서버에서 가져온 파싱결과를 바탕으로 화면에 일일 독서 결과를 반영
     func configure(readingContinuity: ReadingContinuity, todayReadingStatus: TodayReadingStatus) {
-        let readingContinuanceDay = readingContinuity.continuanceDay
-        let readingPercent = todayReadingStatus.todayPercent
-        let readingTime = todayReadingStatus.todayTime
-        let writtenJournal = todayReadingStatus.sumjournal
+        let readingContinuanceDay = readingContinuity.continuanceDay ?? 0
+        let readingPercent = todayReadingStatus.todayPercent ?? "0"
+        let readingTime = todayReadingStatus.todayTime ?? "0"
+        let writtenJournal = todayReadingStatus.sumjournal ?? 0
         let percentString = initNormalAndBoldLabel(boldText: readingPercent, normalText: "%")
         let readingTimeString = initNormalAndBoldLabel(boldText: readingTime, normalText: "분")
         let totalJournalString = initNormalAndBoldLabel(boldText: "\(writtenJournal)", normalText: "개")
@@ -43,7 +43,7 @@ class ChallengeTableViewCell: UITableViewCell {
         challengeTitleButton.setTitle("\(readingContinuanceDay)일 연속 독서", for: .normal)
         daillyReadingStatusLabel.attributedText = percentString
         daillyReadingTimeLabel.attributedText = readingTimeString
-        totalJournal.attributedText = totalJournalString
+        totalJournalCountLabel.attributedText = totalJournalString
         
     }
 
@@ -59,7 +59,7 @@ class ChallengeTableViewCell: UITableViewCell {
         
         daillyReadingStatusLabel.attributedText = percentString
         daillyReadingTimeLabel.attributedText = readingTimeString
-        totalJournal.attributedText = totalJournalString
+        totalJournalCountLabel.attributedText = totalJournalString
     }
     
     private func initNormalAndBoldLabel(boldText: String, normalText: String) -> NSAttributedString {
@@ -71,7 +71,6 @@ class ChallengeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
