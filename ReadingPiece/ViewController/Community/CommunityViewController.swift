@@ -19,13 +19,15 @@ class CommunityViewController: UIViewController {
     var page : Int = 0
     let limit : Int = 5
     var isEnd : Bool = false
+    var isLoaded : Bool = false
     
     @IBOutlet weak var feedTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadReviewData(page: 0, limit: limit)
-        
+        feedTableView.alwaysBounceVertical = true
+        initRefresh()
         feedTableView.delegate = self
         feedTableView.dataSource = self
         feedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
@@ -33,6 +35,17 @@ class CommunityViewController: UIViewController {
         feedTableView.rowHeight = UITableView.automaticDimension
         feedTableView.estimatedRowHeight = 284
         
+    }
+    
+    func initRefresh(){
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+        feedTableView.addSubview(refresh)
+    }
+    
+    @objc func updateUI(refresh: UIRefreshControl){
+        refresh.endRefreshing()
+        loadReviewData(page: 0, limit: limit)
     }
     
 }
@@ -106,7 +119,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         let scrollViewHeight: CGFloat = scrollView.contentSize.height
         let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
                   
-        if distanceFromBottom < height && !isEnd {
+        if distanceFromBottom < height && !isEnd && isLoaded {
             addData()
         }
     }
@@ -165,6 +178,7 @@ extension CommunityViewController {
             switch result {
             case .success(let response):
                 if response.code == 1000 {
+                    self.isLoaded = true
                     if response.journalcount != 0 {
                         if response.journalcount < limit{
                             self.isEnd = true
