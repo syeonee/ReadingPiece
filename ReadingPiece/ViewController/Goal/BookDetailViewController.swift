@@ -92,7 +92,7 @@ class BookDetailViewController: UIViewController {
                 self.navigationController?.pushViewController(reviewVC, animated: true)
             } else if initNumber == 2 && isVaildBook == true { // 책 관리화면에서 호출하는 경우, initializer = 2
                 postChallengeBook(isbn: self.book?.isbn ?? "")
-            } else {
+            } else { //
                 self.presentAlert(title: "목표 입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)
             }
         }

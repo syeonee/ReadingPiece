@@ -26,6 +26,7 @@ class TermViewController: UIViewController {
     func setupUI() {
         createToolbar()
         initButtonTag()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
     func createToolbar() {

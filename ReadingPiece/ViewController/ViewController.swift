@@ -44,6 +44,12 @@ class ViewController: UIViewController {
             self.initMainView()
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "리딩피스"
+    }
+
 
     @IBAction func startReadingAction(_ sender: UIButton) {
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
@@ -113,6 +119,8 @@ class ViewController: UIViewController {
     }
     
     func initMainView() {
+        self.showIndicator()
+
         getChallengeRequest().getChallengeRequest { (challengeData) in
             switch challengeData {
             case nil :
@@ -132,6 +140,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        self.showIndicator()
     }
 
     func showRestartChallengePopup() {
@@ -179,15 +188,18 @@ class ViewController: UIViewController {
     
     private func getUserNameByLength(_ name: String?) -> String {
         var nameString = ""
-        if name == nil {
-            nameString = "Reader"
+        if let userName = name {
+            if userName.count > 3 {
+                let index = (name?.index(name!.startIndex, offsetBy: 3))!
+                let subString = name?.substring(to: index)  // Hello
+                nameString = subString!
+                nameString += "..."
+            } else {
+                nameString = userName
+            }
         } else {
-            let index = (name?.index(name!.startIndex, offsetBy: 3))!
-            let subString = name?.substring(to: index)  // Hello
-            nameString = subString!
-            nameString += "..."
+            nameString = "Reader"
         }
-        
         return nameString
     }
     

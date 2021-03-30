@@ -29,7 +29,7 @@ class BookSettingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-    
+        
     func getAllBooks() {
         let req = GetAllReadingBookRequest()
         _ = Network.request(req: req) { (result) in
@@ -67,6 +67,7 @@ class BookSettingViewController: UIViewController {
         readingBookTableView.delegate = self
         readingBookTableView.dataSource = self
         readingBookTableView.register(UINib(nibName: ReadingBookTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ReadingBookTableViewCell.identifier)
+        readingBookTableView.tableFooterView = UIView(frame: .zero)
     }
     
     private func setNavBar() {
