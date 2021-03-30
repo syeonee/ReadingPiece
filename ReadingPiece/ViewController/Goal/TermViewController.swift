@@ -10,7 +10,7 @@ import UIKit
 class TermViewController: UIViewController {
     var period: String?
     var amount: Int?
-    var initializer: Int = 0
+    var initializer: Int = 0 // 0이면 신규유저, 1이면 기존유저
     
     @IBOutlet weak var bookQuantityTextField: UITextField!
     @IBOutlet weak var weekButton: UIButton!
@@ -72,6 +72,8 @@ class TermViewController: UIViewController {
             if let readingAmount = amount, let readingPeriod = period {
                 guard let timeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return }
                 timeVC.initializer = self.initializer
+                // 보내기 전에 여기서 신규, 기존 유저여부 판단 후 다음 화면으로 보내야함
+//                timeVC.goal
                 timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount)
                 self.navigationController?.pushViewController(timeVC, animated: true)
             }
