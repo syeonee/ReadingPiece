@@ -21,13 +21,13 @@ struct GetJournalResponseResult: Codable {
     let title, text, postAt: String
     let percent, time, page, bookID: Int
     let journalID: Int
-    let journalImageURL: String?
+    let publishNumber: String
 
     enum CodingKeys: String, CodingKey {
         case title, text, postAt, percent, time, page
-        case journalImageURL
         case bookID = "bookId"
         case journalID = "journalId"
+        case publishNumber
     }
 }
 

@@ -78,11 +78,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -94,11 +90,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -111,11 +103,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -132,7 +120,6 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             if let count = self.journalCount {
                 cell.count.text = String(count)
             }
-            //cell.count.text = String(journalList.count)
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
@@ -187,15 +174,7 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let success = UIAlertAction(title: "첨부한 사진 보기", style: .default) { (action) in
-            if let url = self.journalList[index].journalImageURL {
-                let vc = JournalImageViewController(imageURL: url)
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: true, completion: nil)
-            } else {
-                self.presentAlert(title: "조회할 일지 사진이 없습니다. ")
-            }
-        }
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
@@ -203,7 +182,6 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
             self.deleteJournal(journalID: self.journalList[index].journalID, index: index)
         }
         
-        alert.addAction(success)
         alert.addAction(cancel)
         alert.addAction(destructive)
         
