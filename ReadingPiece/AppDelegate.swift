@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let token = keychain.get(Keys.token) {
             print("token: \(token)")
         }
-        if let userIdentifier = keychain.get(Keys.userIdentifier) {
-            print("userIdentifier: \(userIdentifier)")
-        }
         return true
     }
 

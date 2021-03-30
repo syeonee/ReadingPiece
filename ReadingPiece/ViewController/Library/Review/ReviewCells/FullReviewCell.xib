@@ -183,6 +183,7 @@
                 <outlet property="ratingLabel" destination="YPk-6I-I2o" id="8hx-T5-G1D"/>
                 <outlet property="ratingView" destination="FUR-1M-tRQ" id="2TN-kW-ews"/>
                 <outlet property="reviewTextLabel" destination="5tv-fS-1KV" id="92R-Mc-l4L"/>
+                <outlet property="timeImageView" destination="0b1-Cv-dXe" id="zl1-dp-x1r"/>
                 <outlet property="timeLabel" destination="zaR-yP-A1J" id="G9p-ab-onh"/>
                 <outlet property="upperView" destination="GnL-uc-SL2" id="Bj1-B2-18G"/>
             </connections>

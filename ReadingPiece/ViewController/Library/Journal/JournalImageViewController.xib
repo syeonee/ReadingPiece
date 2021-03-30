@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JournalImageViewController" customModule="ReadingPiece" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="l06-MR-NS4" id="7cd-05-qvc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCover" translatesAutoresizingMaskIntoConstraints="NO" id="l06-MR-NS4">
+                    <rect key="frame" x="48.666666666666657" y="289.66666666666669" width="317" height="317.00000000000006"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="317" id="g6a-qa-YVW"/>
+                        <constraint firstAttribute="height" constant="317" id="jxP-Al-VhJ"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8o-JV-kWo">
+                    <rect key="frame" x="334.66666666666669" y="258.66666666666669" width="31" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="31" id="B8o-7R-iSO"/>
+                        <constraint firstAttribute="height" constant="31" id="Z8T-gt-Uxo"/>
+                    </constraints>
+                    <state key="normal" image="clearButtonLight"/>
+                    <connections>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="FgM-Ic-uNd"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="l06-MR-NS4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UVK-Ss-GS4"/>
+                <constraint firstItem="l06-MR-NS4" firstAttribute="top" secondItem="O8o-JV-kWo" secondAttribute="bottom" id="lOu-mf-KN0"/>
+                <constraint firstItem="l06-MR-NS4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pir-SG-EJk"/>
+                <constraint firstItem="O8o-JV-kWo" firstAttribute="trailing" secondItem="l06-MR-NS4" secondAttribute="trailing" id="vc4-tn-Csb"/>
+            </constraints>
+            <point key="canvasLocation" x="70" y="62"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bookCover" width="117.33333587646484" height="159"/>
+        <image name="clearButtonLight" width="31" height="31"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

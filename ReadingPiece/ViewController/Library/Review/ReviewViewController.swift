@@ -6,11 +6,8 @@
 //
 
 import UIKit
-import KeychainSwift
 
 class ReviewViewController: UIViewController {
-    
-    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     let reviewCell = ReviewCell()
     let fullReviewCell = FullReviewCell()
@@ -27,7 +24,9 @@ class ReviewViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadReviewData()
+        loadReviewData()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadReviewData), name: Notification.Name("GetReviewData"), object: nil)
+        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -42,13 +41,13 @@ class ReviewViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadReviewData()
-    }
-    
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: reviewList.count)  // 더보기 값 배열 초기화
         tableView.reloadData()
+    }
+    
+    @objc func reloadReviewData(notification: NSNotification) {
+        getReviewData(align: "desc")
     }
 
 }
@@ -80,7 +79,13 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = review.text
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.timeSum {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
+            cell.isPublicLabel.text = review.isPublic
             
             cell.editDelegate = self
             cell.index = indexPath.row
@@ -96,7 +101,13 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = cell.reviewTextLabel.getTruncatingText(originalString: review.text, newEllipsis: "..더보기", maxLines: 2)
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.timeSum {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
+            cell.isPublicLabel.text = review.isPublic
             
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -113,7 +124,13 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
             cell.ratingLabel.text = String(rating)
             cell.reviewTextLabel.text = review.text
             cell.isCompletedLabel.text = review.isCompleted
-            cell.timeLabel.text = "\(review.time)분"
+            if let time = review.timeSum {
+                cell.timeLabel.text = "\(time)분"
+            } else {
+                cell.timeLabel.isHidden = true
+                cell.timeImageView.isHidden = true
+            }
+            cell.isPublicLabel.text = review.isPublic
             
             cell.editDelegate = self
             cell.index = indexPath.row
@@ -191,16 +208,15 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let success = UIAlertAction(title: "수정", style: .default) { (action) in
             print("수정하기")
+            let reviewID = self.reviewList[index].reviewID
+            let reviewVC = CreateReviewViewController()
+            reviewVC.reviewID = reviewID
+            self.navigationController?.pushViewController(reviewVC, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 리뷰 삭제 api 호출
-            self.deleteReview(reviewID: self.reviewList[index].reviewID)
-            
-            self.reviewList.remove(at: index)
-            self.more.remove(at: index)
-            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            self.deleteReview(reviewID: self.reviewList[index].reviewID, index: index)
         }
         
         alert.addAction(success)
@@ -209,8 +225,11 @@ extension ReviewViewController: ReviewEditDelegate, ReviewFullEditDelegate {
         
         self.present(alert, animated: true, completion: nil)
     }
-    func didDeleteData() {
+    func didDeleteData(index: Int) {
         self.presentAlert(title: "리뷰가 삭제되었습니다. ", isCancelActionIncluded: false)
+        self.reviewList.remove(at: index)
+        self.more.remove(at: index)
+        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
         self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
     }
 }
@@ -242,8 +261,7 @@ extension ReviewViewController {
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData() {
         tableView.showWhiteIndicator()
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
+        Network.request(req: GetReviewRequest(align: "desc")) { result in
             switch result {
             case .success(let response):
                 self.tableView.dismissIndicator()
@@ -272,8 +290,7 @@ extension ReviewViewController {
     // 리뷰 조회 - 정렬 바꿀때
     private func getReviewData(align: String) {
         self.spinner.startAnimating()
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetReviewRequest(token: token, align: align)) { result in
+        Network.request(req: GetReviewRequest(align: align)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -299,31 +316,15 @@ extension ReviewViewController {
         }
     }
     
-    // 리뷰 수정
-    private func patchReview(reviewID: Int, star: Int, text: String, isPublic: Int) {
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: PatchReviewRequest(token: token, reviewID: reviewID, star: star, text: text, isPublic: isPublic)) { result in
-            switch result {
-            case .success(let response):
-                print(response)
-            case .cancel(let cancelError):
-                print(cancelError as Any)
-            case .failure(let error):
-                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
-                print(error?.localizedDescription as Any)
-            }
-        }
-    }
-    
     // 리뷰 삭제
-    private func deleteReview(reviewID: Int) {
-        guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: DeleteReviewRequest(token: token, reviewID: reviewID)) { result in
+    private func deleteReview(reviewID: Int, index: Int) {
+        Network.request(req: DeleteReviewRequest(reviewID: reviewID)) { result in
             switch result {
             case .success(let response):
                 print(response)
+                print("reviewID:", reviewID)
                 if response.code == 1000 {
-                    self.didDeleteData()
+                    self.didDeleteData(index: index)
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {

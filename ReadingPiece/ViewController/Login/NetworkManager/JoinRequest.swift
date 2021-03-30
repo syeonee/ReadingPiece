@@ -10,7 +10,7 @@ import Foundation
 // 회원가입 api 호출 클래스
 
 final class JoinRequest: Requestable {
-    typealias ResponseType = LoginResponse
+    typealias ResponseType = JoinResponse
     
     private var email: String
     private var password: String
@@ -21,7 +21,7 @@ final class JoinRequest: Requestable {
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {

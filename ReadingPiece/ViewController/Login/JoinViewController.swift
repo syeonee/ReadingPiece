@@ -79,12 +79,15 @@ class JoinViewController: UIViewController {
     
     @IBAction func emailCancel(_ sender: Any) {
         emailTextField.text  = ""
+        joinActivated = false
     }
     @IBAction func pwCancel(_ sender: Any) {
         passwordTextField.text = ""
+        joinActivated = false
     }
     @IBAction func pwConfifmCancel(_ sender: Any) {
         pwConfirmTextField.text = ""
+        joinActivated = false
     }
     
     
@@ -94,14 +97,21 @@ class JoinViewController: UIViewController {
             case .success(let response):
                 let result = response.code
                 if result == 1000 {
-                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { [self]_ in
+                    self.presentAlert(title: "회원가입에 성공하였습니다. ", isCancelActionIncluded: false, handler: { _ in
                         
                         // 키체인에 토큰 등록
-                        guard let token = response.jwt else { return }
-                        if keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                        let token = response.jwt 
+                        if self.keychain.set(token, forKey: Keys.token, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
                             print("Keychain setting success.")
                         } else {
                             print("Failed to set on Keychain")
+                        }
+                        // 키체인에 이메일 등록
+                        let email = self.emailTextField.text
+                        if self.keychain.set(email!, forKey: Keys.email, withAccess: KeychainSwiftAccessOptions.accessibleAfterFirstUnlock) {
+                            print("Keychain: email setting success. ")
+                        } else {
+                            print("Failed to set email on Keychain")
                         }
                         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "TermViewController") as! TermViewController
                         self.navigationController?.pushViewController(vc, animated: true)

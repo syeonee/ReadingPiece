@@ -48,7 +48,7 @@ class ReviewWritingCell: UITableViewCell {
             self.isPublic = 1
         }
         if reviewInputTextView.text.isEmpty == false {
-            delegate?.activateDoneButton()
+            delegate?.activateDoneButton(text: self.reviewInputTextView.text, isPublic: self.isPublic ?? 1)
         }
     }
     @IBAction func privateButtonTapped(_ sender: Any) {
@@ -60,7 +60,7 @@ class ReviewWritingCell: UITableViewCell {
             self.isPublic = 0
         }
         if reviewInputTextView.text.isEmpty == false {
-            delegate?.activateDoneButton()
+            delegate?.activateDoneButton(text: self.reviewInputTextView.text, isPublic: self.isPublic ?? 1)
         }
     }
     
@@ -71,6 +71,7 @@ extension ReviewWritingCell: UITextViewDelegate {
         if (text == "\n") {
             textView.resignFirstResponder()
         }
+        guard textView.text!.count < 500 else { return false }
         return true
     }
     
@@ -98,5 +99,5 @@ extension ReviewWritingCell: UITextViewDelegate {
 }
 
 protocol ReviewWritingCellDelegate {
-    func activateDoneButton()
+    func activateDoneButton(text: String, isPublic: Int)
 }

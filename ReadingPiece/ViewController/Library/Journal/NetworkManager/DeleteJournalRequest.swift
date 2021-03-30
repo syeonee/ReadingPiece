@@ -11,19 +11,17 @@ import Foundation
 final class DeleteJournalRequest: Requestable {
     typealias ResponseType = DeleteJournalResponse
     
-    private var token: String
     private var journalID: Int
-    init(token: String, journalID: Int) {
-        self.token = token
+    init(journalID: Int) {
         self.journalID = journalID
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "journals"
+        return "journals/\(journalID)"
     }
     
     var method: Network.Method {
@@ -31,15 +29,15 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token, "Content-Type": "application/json"]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {

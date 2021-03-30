@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Eoo-Kf-yA7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Msr-42-8wK">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -26,140 +26,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Login Splash View Controller-->
-        <scene sceneID="Bzs-Eh-6ZY">
-            <objects>
-                <viewController storyboardIdentifier="LoginSplash" id="Eoo-Kf-yA7" customClass="LoginSplashViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="9cR-BA-n0c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashBackground" translatesAutoresizingMaskIntoConstraints="NO" id="Eqe-lz-sNr">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cba-mo-Bbc">
-                                <rect key="frame" x="104" y="814.66666666666663" width="206" height="31.333333333333371"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="계정을 만드는 것은 ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="개인정보취급방침">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content">과
-</string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="이용약관">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                            <integer key="NSUnderline" value="1"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="에 동의하는 것으로 간주합니다.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.49022287129999997" green="0.4941093922" blue="0.49411803479999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리딩 피스" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-q4-nyd">
-                                <rect key="frame" x="149" y="310" width="116" height="28.666666666666686"/>
-                                <fontDescription key="fontDescription" name="GmarketSansMedium" family="Gmarket Sans" pointSize="28"/>
-                                <color key="textColor" red="0.396078431372549" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 읽는 습관을 만드는 독서 챌린지" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOX-aG-seH">
-                                <rect key="frame" x="107" y="346.66666666666669" width="200" height="21"/>
-                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="14"/>
-                                <color key="textColor" red="0.3960812688" green="0.39607325199999999" blue="0.39607867600000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake" translatesAutoresizingMaskIntoConstraints="NO" id="sTm-MJ-JyP">
-                                <rect key="frame" x="159" y="221" width="96" height="73"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="9mL-IR-XEX"/>
-                                    <constraint firstAttribute="height" constant="73" id="H77-tW-1gj"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUf-Ae-yX9">
-                                <rect key="frame" x="0.0" y="617.66666666666663" width="414" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="bHj-NR-icX"/>
-                                </constraints>
-                                <state key="normal" image="messageIdButton">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Msr-42-8wK" kind="presentation" modalPresentationStyle="fullScreen" id="2nc-dd-X2z"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8P-ey-N89">
-                                <rect key="frame" x="0.0" y="679.66666666666663" width="414" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="HkS-LU-OaK"/>
-                                </constraints>
-                                <state key="normal" image="appleIdButtonApple">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="appleLoginButtonTapped:" destination="Eoo-Kf-yA7" eventType="touchUpInside" id="Xp5-Qi-CNs"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Orz-j0-I8D"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Orz-j0-I8D" firstAttribute="bottom" secondItem="cba-mo-Bbc" secondAttribute="bottom" constant="16" id="2a0-Zw-AMq"/>
-                            <constraint firstAttribute="bottom" secondItem="Eqe-lz-sNr" secondAttribute="bottom" id="B7H-Tu-szx"/>
-                            <constraint firstItem="Orz-j0-I8D" firstAttribute="trailing" secondItem="O8P-ey-N89" secondAttribute="trailing" id="GRF-lf-17o"/>
-                            <constraint firstItem="O8P-ey-N89" firstAttribute="leading" secondItem="Orz-j0-I8D" secondAttribute="leading" id="MvT-Zo-hnL"/>
-                            <constraint firstAttribute="trailing" secondItem="Eqe-lz-sNr" secondAttribute="trailing" id="N0W-gW-6ta"/>
-                            <constraint firstItem="4fx-q4-nyd" firstAttribute="top" secondItem="sTm-MJ-JyP" secondAttribute="bottom" constant="16" id="QTI-K6-gWu"/>
-                            <constraint firstItem="Eqe-lz-sNr" firstAttribute="leading" secondItem="9cR-BA-n0c" secondAttribute="leading" id="Qms-Ar-VN3"/>
-                            <constraint firstItem="cOX-aG-seH" firstAttribute="centerX" secondItem="9cR-BA-n0c" secondAttribute="centerX" id="Qoz-3Z-20N"/>
-                            <constraint firstItem="Orz-j0-I8D" firstAttribute="trailing" secondItem="lUf-Ae-yX9" secondAttribute="trailing" id="RmL-iY-RI4"/>
-                            <constraint firstItem="cOX-aG-seH" firstAttribute="top" secondItem="4fx-q4-nyd" secondAttribute="bottom" constant="8" id="Y72-zX-W0a"/>
-                            <constraint firstItem="lUf-Ae-yX9" firstAttribute="leading" secondItem="Orz-j0-I8D" secondAttribute="leading" id="YtY-Mu-C2Q"/>
-                            <constraint firstItem="cba-mo-Bbc" firstAttribute="centerX" secondItem="9cR-BA-n0c" secondAttribute="centerX" id="azj-iI-eR7"/>
-                            <constraint firstItem="O8P-ey-N89" firstAttribute="top" secondItem="lUf-Ae-yX9" secondAttribute="bottom" constant="16" id="ilX-pX-Shr"/>
-                            <constraint firstItem="Eqe-lz-sNr" firstAttribute="top" secondItem="9cR-BA-n0c" secondAttribute="top" id="lmF-ai-nlR"/>
-                            <constraint firstItem="cba-mo-Bbc" firstAttribute="top" secondItem="O8P-ey-N89" secondAttribute="bottom" constant="89" id="q4O-Cf-3pN"/>
-                            <constraint firstItem="4fx-q4-nyd" firstAttribute="centerX" secondItem="9cR-BA-n0c" secondAttribute="centerX" id="rlj-gr-bCh"/>
-                            <constraint firstItem="sTm-MJ-JyP" firstAttribute="top" secondItem="Orz-j0-I8D" secondAttribute="top" constant="177" id="v1q-tq-5pP"/>
-                            <constraint firstItem="sTm-MJ-JyP" firstAttribute="centerX" secondItem="9cR-BA-n0c" secondAttribute="centerX" id="wrr-F8-Eaj"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="appleLoginButton" destination="O8P-ey-N89" id="w2s-z2-jp8"/>
-                        <outlet property="backgroundImageView" destination="Eqe-lz-sNr" id="d61-Kg-Fbr"/>
-                        <outlet property="emailLoginButton" destination="lUf-Ae-yX9" id="3kX-S2-AYh"/>
-                        <outlet property="privacyPolicyLabel" destination="cba-mo-Bbc" id="3uD-Pz-3n8"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tMf-2R-HhS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-388" y="153"/>
-        </scene>
         <!--Login View Controller-->
         <scene sceneID="7Ja-m7-qmz">
             <objects>
@@ -187,13 +53,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="리딩 피스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztT-4d-L4e">
-                                <rect key="frame" x="169.66666666666666" y="275" width="75" height="23.333333333333314"/>
+                                <rect key="frame" x="165.66666666666666" y="275" width="82.666666666666657" height="20"/>
                                 <fontDescription key="fontDescription" name="GmarketSansMedium" family="Gmarket Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="책 읽는 습관을 만드는 독서 챌린지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXe-Vf-IRq">
-                                <rect key="frame" x="126" y="306.33333333333331" width="162" height="14"/>
+                                <rect key="frame" x="121.33333333333333" y="303" width="171.66666666666669" height="18"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="12"/>
                                 <color key="textColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -312,7 +178,7 @@
                                     <constraint firstAttribute="height" constant="18.600000000000001" id="V1z-zL-BiD"/>
                                 </constraints>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (8자 이상)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-n5-bIf">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (영문/숫자 6~20자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eAS-n5-bIf">
                                 <rect key="frame" x="78" y="545.33333333333337" width="240" height="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name=".SFUI-Regular" family=".AppleSystemUIFont" pointSize="14"/>
@@ -451,7 +317,7 @@
                                     <action selector="emailEditingChanged:" destination="xAE-IS-MWa" eventType="editingChanged" id="6te-GD-jyj"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (6~20자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Rd-TJn">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="비밀번호 (영문/숫자 6~20자)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pdj-Rd-TJn">
                                 <rect key="frame" x="60" y="224" width="314" height="17"/>
                                 <color key="textColor" red="0.66669440270000002" green="0.66660028699999996" blue="0.67058920860000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -764,7 +630,7 @@
         <!--Login Nav View Controller-->
         <scene sceneID="f6p-cq-9uc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Msr-42-8wK" customClass="LoginNavViewController" customModule="ReadingPiece" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="LoginNav" automaticallyAdjustsScrollViewInsets="NO" id="Msr-42-8wK" customClass="LoginNavViewController" customModule="ReadingPiece" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="navBack" backIndicatorTransitionMaskImage="navBack" id="Q5f-Vr-VvL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -783,19 +649,16 @@
     </scenes>
     <resources>
         <image name="XButton" width="15.333333015441895" height="15"/>
-        <image name="appleIdButtonApple" width="326.33334350585938" height="46"/>
         <image name="background" width="375" height="812"/>
         <image name="cake" width="82" height="63"/>
         <image name="cancel" width="16" height="16"/>
         <image name="clearGlyphSearchBar" width="16" height="16"/>
         <image name="email" width="19" height="12"/>
         <image name="messageIcon" width="19" height="12"/>
-        <image name="messageIdButton" width="326.33334350585938" height="46"/>
         <image name="navBack" width="11" height="19.333333969116211"/>
         <image name="passwordIcon" width="17" height="18.666666030883789"/>
         <image name="passwordIcon2" width="17" height="18.666666030883789"/>
         <image name="pw" width="17" height="18.666666030883789"/>
-        <image name="splashBackground" width="375" height="812"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
