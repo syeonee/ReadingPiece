@@ -71,7 +71,7 @@ class TimeViewController: UIViewController {
         let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
                                 
         _ = Network.request(req: req) { (result) in
-                
+            print("LOG - 목표설정 완료", self.amount, self.period, self.time)
                 switch result {
                 case .success(let userResponse):
                     switch userResponse.code {
