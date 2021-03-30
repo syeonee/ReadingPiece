@@ -12,7 +12,6 @@ class TimeViewController: UIViewController {
     var time: Int = 0
     var period: String = ""
     var amount: Int = 0
-    var initializer: Int = 0
     var goal: ClientGoal?
 
     @IBOutlet weak var readingTimeLabel: UILabel!
@@ -27,12 +26,30 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
+        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
     }
     
-    
+    // 화면 상단 - 다음 버튼과 연결된 액션
     @IBAction func NetxToAddBookAction(_ sender: UIBarButtonItem) {
         // 신규 유저 : 책 추가 화면까지 이동
-        if goal?.isNewUser == true {
+        if goal?.isNewUser == true && goal?.time != nil  {
+            guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+            searchVC.goal = self.goal
+            self.navigationController?.pushViewController(searchVC, animated: true)
+            
+        // 신규 유저 & 시간값을 입력하지 않은 경우
+        } else if goal?.time == nil {
+            self.presentAlert(title: "목표시간을 설정해주세요.", isCancelActionIncluded: false)
+        // 기존 유저 : 목표 수정 후 바로 메인으로 이동
+        } else {
+            patchUserReadingGoal()
+        }
+    }
+    
+    // 화면 하단 - 완료 버튼과 연결된 액션
+    @IBAction func addGoalAction(_ sender: UIButton) {
+        // 신규 유저 : 책 추가 화면까지 이동
+        if goal?.isNewUser == true && goal?.time != nil {
             guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
             searchVC.goal = self.goal
             self.navigationController?.pushViewController(searchVC, animated: true)
@@ -42,15 +59,10 @@ class TimeViewController: UIViewController {
         }
     }
     
-    @IBAction func addGoalAction(_ sender: UIButton) {
-        guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
-        searchVC.goal = self.goal
-        self.navigationController?.pushViewController(searchVC, animated: true)
-    }
-    
     @objc func donePressed() {
         let minute = Int(datePicker.countDownDuration/60)
         time = minute
+        goal?.time = time
         timeTextField.text = "\(minute)"
         minuteLabel.isHidden = false
         readingTimeLabel.text = """
@@ -64,7 +76,7 @@ class TimeViewController: UIViewController {
     @IBAction func timeSelectButtonTapped(_ sender: Any) {
         timeTextField.becomeFirstResponder()
     }
-        
+      
     func patchUserReadingGoal() {
         let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
         let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId)

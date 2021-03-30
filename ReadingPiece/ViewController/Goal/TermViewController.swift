@@ -71,10 +71,14 @@ class TermViewController: UIViewController {
         if changeNextButtonColorByValidcation() == true {
             if let readingAmount = amount, let readingPeriod = period {
                 guard let timeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return }
-                timeVC.initializer = self.initializer
-                // 보내기 전에 여기서 신규, 기존 유저여부 판단 후 다음 화면으로 보내야함
-//                timeVC.goal
-                timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount)
+                if initializer == 1 {
+                    // 시간 보내기 전에 여기서 신규, 기존 유저여부 판단 후 다음 화면으로 보내야함
+                    // 1이면 기존 유저이므로 false, 아니면 true 할당
+                    timeVC.goal = ClientGoal(period: period, amount: amount, time: nil, isNewUser: false)
+                } else {
+                    timeVC.goal = ClientGoal(period: period, amount: amount, time: nil, isNewUser: true)
+                }
+                timeVC.initTerm(readingPeriod: readingPeriod, readingAmount: readingAmount) // 다음 VC에서 쓰일 목표관련 시간, 기간 정보 초기화
                 self.navigationController?.pushViewController(timeVC, animated: true)
             }
         }
