@@ -1,25 +1,21 @@
 //
-//  JoinRequest.swift
+//  NameCheckRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/18.
+//  Created by 정지현 on 2021/03/31.
 //
 
 import Foundation
 
-// 회원가입 api 호출 클래스
+// 닉네임 중복체크 API
 
-final class JoinRequest: Requestable {
-    typealias ResponseType = JoinResponse
+final class NameCheckRequest: Requestable {
+    typealias ResponseType = NameCheckResponse
     
     private var name: String
-    private var email: String
-    private var password: String
     
-    init(name: String, email: String, password: String) {
+    init(name: String) {
         self.name = name
-        self.email = email
-        self.password = password
     }
     
     var baseUrl: URL {
@@ -27,19 +23,19 @@ final class JoinRequest: Requestable {
     }
     
     var endpoint: String {
-        return "join"
+        return "user/name"
     }
     
     var method: Network.Method {
-        return .post
+        return .get
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["email": self.email, "password": self.password, "name" : self.name]
+        return ["name" : self.name]
     }
     
     var headers: [String : String]? {
@@ -54,3 +50,4 @@ final class JoinRequest: Requestable {
         return .reloadIgnoringLocalAndRemoteCacheData
     }
 }
+

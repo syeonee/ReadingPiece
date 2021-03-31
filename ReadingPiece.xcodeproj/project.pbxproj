@@ -80,6 +80,9 @@
 		59393BBB260CC6E500A2CE30 /* GetReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */; };
 		59393BBF260CC70E00A2CE30 /* ReviewResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */; };
 		5961DE492610140C00EF8745 /* EmailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961DE482610140C00EF8745 /* EmailRequest.swift */; };
+		596CDA0D2614A855003F840E /* NameCheckRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596CDA0C2614A855003F840E /* NameCheckRequest.swift */; };
+		596CDA102614A87C003F840E /* EmailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596CDA0F2614A87C003F840E /* EmailResponse.swift */; };
+		596CDA142614A8BB003F840E /* NameCheckResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596CDA132614A8BB003F840E /* NameCheckResponse.swift */; };
 		596D4D5C2608C8BE00E137F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D5B2608C8BE00E137F3 /* User.swift */; };
 		596D4D70260A1EFC00E137F3 /* GetJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */; };
 		596D4D73260A1F3800E137F3 /* JournalReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D72260A1F3800E137F3 /* JournalReponse.swift */; };
@@ -112,7 +115,7 @@
 		59A967DA26036CC9000EE89F /* LoginNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A967D926036CC9000EE89F /* LoginNavViewController.swift */; };
 		59E18FE92604D2A000D07656 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FE82604D2A000D07656 /* UIViewController.swift */; };
 		59E18FED2604EA3100D07656 /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEC2604EA3100D07656 /* LoginRequest.swift */; };
-		59E18FF02604EA7100D07656 /* Login+Email Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEF2604EA7100D07656 /* Login+Email Response.swift */; };
+		59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FEF2604EA7100D07656 /* LoginResponse.swift */; };
 		59E18FFC26060FFB00D07656 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FFB26060FFB00D07656 /* UITableView.swift */; };
 		59E18FFF2606242500D07656 /* UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E18FFE2606242500D07656 /* UIControl.swift */; };
 		59E190252607823A00D07656 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E190242607823900D07656 /* PasswordResetViewController.swift */; };
@@ -277,6 +280,9 @@
 		59393BBA260CC6E500A2CE30 /* GetReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewRequest.swift; sourceTree = "<group>"; };
 		59393BBE260CC70E00A2CE30 /* ReviewResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResponse.swift; sourceTree = "<group>"; };
 		5961DE482610140C00EF8745 /* EmailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailRequest.swift; sourceTree = "<group>"; };
+		596CDA0C2614A855003F840E /* NameCheckRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCheckRequest.swift; sourceTree = "<group>"; };
+		596CDA0F2614A87C003F840E /* EmailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailResponse.swift; sourceTree = "<group>"; };
+		596CDA132614A8BB003F840E /* NameCheckResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCheckResponse.swift; sourceTree = "<group>"; };
 		596D4D5B2608C8BE00E137F3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		596D4D6F260A1EFC00E137F3 /* GetJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetJournalRequest.swift; sourceTree = "<group>"; };
 		596D4D72260A1F3800E137F3 /* JournalReponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalReponse.swift; sourceTree = "<group>"; };
@@ -309,7 +315,7 @@
 		59A967D926036CC9000EE89F /* LoginNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavViewController.swift; sourceTree = "<group>"; };
 		59E18FE82604D2A000D07656 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		59E18FEC2604EA3100D07656 /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		59E18FEF2604EA7100D07656 /* Login+Email Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Login+Email Response.swift"; sourceTree = "<group>"; };
+		59E18FEF2604EA7100D07656 /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		59E18FFB26060FFB00D07656 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
 		59E18FFE2606242500D07656 /* UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControl.swift; sourceTree = "<group>"; };
 		59E190242607823900D07656 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
@@ -633,10 +639,13 @@
 				5997296926039D5000573B9A /* JoinRequest.swift */,
 				598398AD2610A743005AFB6A /* JoinResponse.swift */,
 				59E18FEC2604EA3100D07656 /* LoginRequest.swift */,
-				59E18FEF2604EA7100D07656 /* Login+Email Response.swift */,
+				59E18FEF2604EA7100D07656 /* LoginResponse.swift */,
 				597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */,
 				597F82C0260C9D4800777A92 /* CheckTokenResponse.swift */,
 				5961DE482610140C00EF8745 /* EmailRequest.swift */,
+				596CDA0F2614A87C003F840E /* EmailResponse.swift */,
+				596CDA0C2614A855003F840E /* NameCheckRequest.swift */,
+				596CDA132614A8BB003F840E /* NameCheckResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1188,6 +1197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				596CDA142614A8BB003F840E /* NameCheckResponse.swift in Sources */,
 				596D4D76260ACD0E00E137F3 /* DeleteJournalRequest.swift in Sources */,
 				597F82C1260C9D4800777A92 /* CheckTokenResponse.swift in Sources */,
 				D6BEFD4C2611D8FB00866D45 /* UserGraphResponse.swift in Sources */,
@@ -1219,7 +1229,7 @@
 				D678692D25F53B5900DBB59C /* BookDetailViewController.swift in Sources */,
 				00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */,
 				00FF385F260EEDB700529570 /* PatchChallengeBookRequest.swift in Sources */,
-				59E18FF02604EA7100D07656 /* Login+Email Response.swift in Sources */,
+				59E18FF02604EA7100D07656 /* LoginResponse.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,
@@ -1301,6 +1311,8 @@
 				00FF375E260A293B00529570 /* ChallengeResponse.swift in Sources */,
 				D66CE6EE260A7A67003BB131 /* NameDuplicateResponse.swift in Sources */,
 				D6BEFD4F2612237000866D45 /* SettingsNavViewController.swift in Sources */,
+				596CDA102614A87C003F840E /* EmailResponse.swift in Sources */,
+				596CDA0D2614A855003F840E /* NameCheckRequest.swift in Sources */,
 				D67C658525E572FA00F15290 /* MyViewController.swift in Sources */,
 				00FF376B260A3DD200529570 /* GetBookReadingTimeRequest.swift in Sources */,
 				D6FF1B7125F2408700A0B980 /* SearchViewController.swift in Sources */,
