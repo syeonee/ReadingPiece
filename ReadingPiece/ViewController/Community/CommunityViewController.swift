@@ -15,6 +15,7 @@ class CommunityViewController: UIViewController {
     var feedList: [Feed] = []
     var expandedIndexSet : IndexSet = []
 
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     var page : Int = 0
     let limit : Int = 5
@@ -188,7 +189,7 @@ extension CommunityViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData(page: Int, limit: Int) {
-        guard let token = Constants.KEYCHAIN_TOKEN else { return }
+        guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
             switch result {
             case .success(let response):

@@ -5,9 +5,11 @@ import Foundation
 final class AddBookRequest: Requestable {
     typealias ResponseType = BookResponse
     private var book: GeneralBook
+    private var token: String
     
-    init(book: GeneralBook) {
+    init(book: GeneralBook, token: String) {
         self.book = book
+        self.token = token
     }
     
     var baseUrl: URL {
@@ -33,7 +35,7 @@ final class AddBookRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

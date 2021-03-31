@@ -11,6 +11,11 @@ import Foundation
 final class CloseAccountRequest: Requestable {
     typealias ResponseType = CloseAccountResponse
     
+    private var token: String
+    
+    init(token: String) {
+        self.token = token
+    }
     
     var baseUrl: URL {
         return  URL(string: Constants.BASE_URL)!
@@ -33,7 +38,7 @@ final class CloseAccountRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

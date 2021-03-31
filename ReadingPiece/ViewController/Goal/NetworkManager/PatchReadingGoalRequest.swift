@@ -7,10 +7,12 @@ final class PatchReadingGoalRequest: Requestable {
     typealias ResponseType = PatchReadingGoalResponse
     private var goal: Goal
     private var goalId: Int
+    private var token: String
     
-    init(_ goal: Goal, goalId: Int) {
+    init(_ goal: Goal, goalId: Int, token: String) {
         self.goal = goal
         self.goalId = goalId
+        self.token = token
     }
 
     var baseUrl: URL {
@@ -35,7 +37,7 @@ final class PatchReadingGoalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

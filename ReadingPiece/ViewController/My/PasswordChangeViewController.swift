@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class PasswordChangeViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     // 비밀번호 형식
     let validityType: String.ValidityType = .password
@@ -105,7 +108,8 @@ class PasswordChangeViewController: UIViewController {
     
     private func resetPassword() {
         print("비밀번호 변경 진행중")
-        Network.request(req: PasswordResetRequest(presentPW: originPasswordTextField.text!, password: checkNewPasswordTextField.text!)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PasswordResetRequest(token: token, presentPW: originPasswordTextField.text!, password: checkNewPasswordTextField.text!)) { result in
             switch result {
             case .success(let response):
                 print(response)

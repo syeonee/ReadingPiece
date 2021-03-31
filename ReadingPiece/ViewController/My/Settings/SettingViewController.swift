@@ -85,7 +85,8 @@ class SettingViewController: UIViewController {
     }
     
     private func closeAccount() {
-        Network.request(req: CloseAccountRequest()) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: CloseAccountRequest(token: token)) { result in
             switch result {
             case .success(let response):
                 if response.code == 1000 {

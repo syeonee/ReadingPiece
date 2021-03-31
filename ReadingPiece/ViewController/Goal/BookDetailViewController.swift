@@ -107,9 +107,10 @@ class BookDetailViewController: UIViewController {
 
     // DB에 사용자가 조회한 책 정보 등록 : 챌린지 진행할 책이 아니더라도, 무조건 호출해서 책 정보 등록
     func postBookInfo() {
+        guard let token = keychain.get(Keys.token) else { return }
         if let bookData = book {
             let bookData = GeneralBook(writer: bookData.authors.joined(separator: ",") , publishDate: bookData.datetime, publishNumber: bookData.isbn, contents: bookData.summary, imageURL: bookData.thumbnailPath, title: bookData.title, publisher: bookData.publisher)
-            let addBookReq = AddBookRequest(book: bookData)
+            let addBookReq = AddBookRequest(book: bookData, token: token)
 
             _ = Network.request(req: addBookReq) { (result) in
                     switch result {
@@ -142,7 +143,9 @@ class BookDetailViewController: UIViewController {
 
     // 불러온 유저 리뷰 정보를 바탕으로 하단 테이블뷰 리로드
     func getUserRewview(isbn: String, bookId: String) {
-        let getReviewReq = GetUserBookReviewRequest(isbn: isbn, bookId: bookId)
+        
+        guard let token = keychain.get(Keys.token) else { return }
+        let getReviewReq = GetUserBookReviewRequest(isbn: isbn, bookId: bookId, token: token)
         _ = Network.request(req: getReviewReq) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -168,7 +171,7 @@ class BookDetailViewController: UIViewController {
     func postUserReadingGoal() {
         guard let token = keychain.get(Keys.token) else { return }
         if let amount =  self.goal?.amount, let period = self.goal?.period, let time = self.goal?.time {
-            let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
+            let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time), token: token)
             var goalId: Int?
             
             _ = Network.request(req: req) { (result) in
@@ -206,8 +209,9 @@ class BookDetailViewController: UIViewController {
     // 사용자가 챌린지 목표로 설정한 책 등록
     func postChallengeBook(isbn: String) {
         let goalId = userDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
+        guard let token = keychain.get(Keys.token) else { return }
         guard let bookId = bookId else { return }
-        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn, bookId: bookId)
+        let addChallengeBookReq = PostChallengeBookRequest(goalId: goalId, isbn: isbn, bookId: bookId, token: token)
 
         _ = Network.request(req: addChallengeBookReq) { (result) in
 

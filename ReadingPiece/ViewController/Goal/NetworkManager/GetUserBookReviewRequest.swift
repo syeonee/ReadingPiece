@@ -7,10 +7,12 @@ final class GetUserBookReviewRequest: Requestable {
     typealias ResponseType = UserBookReviewResponse
     private var isbn: String
     private var bookId: String
+    private var token: String
     
-    init(isbn: String, bookId: String) {
+    init(isbn: String, bookId: String, token: String) {
         self.isbn = isbn
         self.bookId = bookId
+        self.token = token
     }
     
     var baseUrl: URL {
@@ -35,7 +37,7 @@ final class GetUserBookReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

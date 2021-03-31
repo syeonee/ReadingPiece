@@ -7,12 +7,13 @@ final class PostChallengeBookRequest: Requestable {
     private var goalId: Int
     private var bookId: Int
     private var isbn: String
+    private var token: String
     
-    init(goalId: Int, isbn: String, bookId: Int) {
+    init(goalId: Int, isbn: String, bookId: Int, token: String) {
         self.goalId = goalId
         self.isbn = isbn
         self.bookId = bookId
-        
+        self.token = token
     }
     
     var baseUrl: URL {
@@ -37,7 +38,7 @@ final class PostChallengeBookRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {
