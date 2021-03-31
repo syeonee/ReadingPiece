@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class ReviewViewController: UIViewController {
     
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let reviewCell = ReviewCell()
     let fullReviewCell = FullReviewCell()
     let headerView = ReviewHeaderCell()
@@ -260,9 +262,10 @@ extension ReviewViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData() {
+        guard let token = keychain.get(Keys.token) else { return }
         spinner.backgroundColor = .white
         spinner.startAnimating()
-        Network.request(req: GetReviewRequest(align: "desc")) { result in
+        Network.request(req: GetReviewRequest(token: token, align: "desc")) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -290,9 +293,10 @@ extension ReviewViewController {
     
     // 리뷰 조회 - 정렬 바꿀때
     private func getReviewData(align: String) {
+        guard let token = keychain.get(Keys.token) else { return }
         spinner.backgroundColor = .clear
         self.spinner.startAnimating()
-        Network.request(req: GetReviewRequest(align: align)) { result in
+        Network.request(req: GetReviewRequest(token: token, align: align)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -320,7 +324,8 @@ extension ReviewViewController {
     
     // 리뷰 삭제
     private func deleteReview(reviewID: Int, index: Int) {
-        Network.request(req: DeleteReviewRequest(reviewID: reviewID)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: DeleteReviewRequest(token: token, reviewID: reviewID)) { result in
             switch result {
             case .success(let response):
                 print(response)

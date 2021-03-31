@@ -12,8 +12,10 @@ import Foundation
 final class GetReviewEditRequest: Requestable {
     typealias ResponseType = GetReviewEditResponse
     
+    private var token: String
     private var reviewID: Int
-    init(reviewID: Int) {
+    init(token: String, reviewID: Int) {
+        self.token = token
         self.reviewID = reviewID
     }
     
@@ -38,7 +40,7 @@ final class GetReviewEditRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

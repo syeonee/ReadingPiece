@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimerViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     let targetTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
     let timerTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_CURRENT_TIMER_TIME)
@@ -93,7 +96,8 @@ class TimerViewController: UIViewController {
     }
     
     func getUserBookReadingTime() {
-        let req = GetBookReadingTimeRequest(goalBookId: goalBookId)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = GetBookReadingTimeRequest(token: token, goalBookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
