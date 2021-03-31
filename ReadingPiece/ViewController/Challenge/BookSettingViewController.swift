@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import KeychainSwift
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
     
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     @IBOutlet weak var readingBookTableView: UITableView!
     var books : [AllReadingBook] = [] {
@@ -31,7 +33,8 @@ class BookSettingViewController: UIViewController {
     }
         
     func getAllBooks() {
-        let req = GetAllReadingBookRequest()
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = GetAllReadingBookRequest(token: token)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -120,7 +123,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
     func modifiyChallengeBook(id: Int) {
-        let req = PatchChallengeBookRequest(goalbookId: id)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = PatchChallengeBookRequest(token: token, goalbookId: id)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -146,7 +150,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     
     // 읽고있는 책 삭제
     func deleteChallengeBook(id: Int) {
-        let req = DeleteChallengeBookRequest(goalbookId: id)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = DeleteChallengeBookRequest(token: token, goalbookId: id)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):

@@ -6,9 +6,11 @@ import Foundation
 final class DeleteChallengeBookRequest: Requestable {
     typealias ResponseType = DeleteChallengeResponse
     
+    private var token: String
     private var goalbookId: Int
     
-    init(goalbookId: Int) {
+    init(token: String, goalbookId: Int) {
+        self.token = token
         self.goalbookId = goalbookId
     }
 
@@ -33,7 +35,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

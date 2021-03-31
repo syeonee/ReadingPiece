@@ -13,8 +13,10 @@ import Foundation
 final class GetReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
+    private var token: String
     private var align: String
-    init(align: String) {
+    init(token: String, align: String) {
+        self.token = token
         self.align = align
     }
     var baseUrl: URL {
@@ -38,7 +40,7 @@ final class GetReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

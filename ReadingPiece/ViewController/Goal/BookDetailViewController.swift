@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class BookDetailViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     var initializer: Int?
     var userReview: [UserBookReview] = []
@@ -163,6 +166,7 @@ class BookDetailViewController: UIViewController {
     }
     
     func postUserReadingGoal() {
+        guard let token = keychain.get(Keys.token) else { return }
         if let amount =  self.goal?.amount, let period = self.goal?.period, let time = self.goal?.time {
             let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
             var goalId: Int?

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimerStopViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     let targetTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
     let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
@@ -38,7 +41,8 @@ class TimerStopViewController: UIViewController {
     }
 
     func getUserBookReadingTime() {
-        let req = GetBookReadingTimeRequest(goalBookId: goalBookId)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = GetBookReadingTimeRequest(token: token, goalBookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
@@ -60,8 +64,8 @@ class TimerStopViewController: UIViewController {
     }
     private func setupUI() {
         setNavBar()
-        timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
-        writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+        //timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         initReadingTime(time: self.readingTime)
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()

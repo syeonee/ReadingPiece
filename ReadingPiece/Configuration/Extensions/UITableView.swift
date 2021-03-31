@@ -11,7 +11,7 @@ extension UITableView {
     
     // 테이블 뷰 placeholder 뷰 생성
     // 이미지, 텍스트, 버튼 액션 커스텀 가능
-    func setEmptyView(image: UIImage, message: String, buttonType: String, actionButtonClosure: @escaping () -> Void) {
+    func setEmptyView(image: UIImage, message: String, buttonType: String, actionButtonClosure: @escaping () -> ()) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         let imageView = UIImageView()
         let messageLabel = UILabel()

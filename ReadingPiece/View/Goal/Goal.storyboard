@@ -29,7 +29,7 @@
         <!--목표 추가-->
         <scene sceneID="d83-YY-BAF">
             <objects>
-                <viewController storyboardIdentifier="TermViewController" id="Sde-1m-S2c" customClass="TermViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermViewController" hidesBottomBarWhenPushed="YES" id="Sde-1m-S2c" customClass="TermViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8hi-kE-ZBn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,7 +164,7 @@
         <!--목표 추가-->
         <scene sceneID="Q90-Ud-m2v">
             <objects>
-                <viewController storyboardIdentifier="TimeViewController" id="sME-ys-cfE" customClass="TimeViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimeViewController" hidesBottomBarWhenPushed="YES" id="sME-ys-cfE" customClass="TimeViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="at3-ia-Qim">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -271,7 +271,7 @@
         <!--책 추가-->
         <scene sceneID="pFa-j0-1OX">
             <objects>
-                <viewController storyboardIdentifier="SearchViewController" id="6S8-HU-csk" customClass="SearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchViewController" hidesBottomBarWhenPushed="YES" id="6S8-HU-csk" customClass="SearchViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="X8o-x7-vfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,7 +440,7 @@
         <!--책 추가-->
         <scene sceneID="WUL-on-48l">
             <objects>
-                <viewController storyboardIdentifier="BookDetailController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Rs-3U-fIc" customClass="BookDetailViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookDetailController" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Rs-3U-fIc" customClass="BookDetailViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Owz-HN-Xp9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -538,8 +538,8 @@
                                                         <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="386" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fee-iO-vTt">
-                                                        <rect key="frame" x="53" y="18.5" width="26" height="20.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fee-iO-vTt">
+                                                        <rect key="frame" x="53" y="18.5" width="9" height="20.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="15"/>
                                                         <color key="textColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -865,7 +865,7 @@
         <!--책 추가-->
         <scene sceneID="lzx-vv-T1z">
             <objects>
-                <viewController storyboardIdentifier="searchBookViewController" id="znP-37-YL6" customClass="SearchBookViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchBookViewController" hidesBottomBarWhenPushed="YES" id="znP-37-YL6" customClass="SearchBookViewController" customModule="ReadingPiece" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aJf-Je-X0K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
