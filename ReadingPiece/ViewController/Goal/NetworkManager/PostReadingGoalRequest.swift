@@ -4,6 +4,7 @@ import Foundation
 // 독서 목표 설정 API
 final class PostReadingGoalRequest: Requestable {
     typealias ResponseType = PostReadingGoalResponse
+    
     private var goal: Goal
     
     init(_ goal: Goal) {

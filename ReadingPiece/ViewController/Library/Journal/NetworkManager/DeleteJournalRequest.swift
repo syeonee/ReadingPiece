@@ -11,8 +11,10 @@ import Foundation
 final class DeleteJournalRequest: Requestable {
     typealias ResponseType = DeleteJournalResponse
     
+    private var token: String
     private var journalID: Int
-    init(journalID: Int) {
+    init(token: String, journalID: Int) {
+        self.token = token
         self.journalID = journalID
     }
     
@@ -37,12 +39,11 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
         return 10.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

@@ -6,10 +6,12 @@ import Foundation
 final class PostUserCakeTypeRequest: Requestable {
     typealias ResponseType = PostCakeTypeResponse
     
+    private var token: String
     private var goalId: Int
     private var cake: String
     
-    init(goalId: Int, cake: String) {
+    init(token: String, goalId: Int, cake: String) {
+        self.token = token
         self.goalId = goalId
         self.cake = cake
     }
@@ -35,7 +37,7 @@ final class PostUserCakeTypeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": token]
     }
     
     var timeout: TimeInterval {

@@ -8,6 +8,11 @@ import Alamofire
 final class GetChallengeRequest: Requestable {
     typealias ResponseType = ChallengeResponse
     
+    private var token: String
+    init(token: String) {
+        self.token = token
+    }
+    
     var baseUrl: URL {
         return  URL(string: Constants.BASE_URL)!
     }
@@ -30,8 +35,7 @@ final class GetChallengeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        //let tokenHeader: [String : String] = ["Content-Type": "application/json", "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImlhdCI6MTYxNjgzMjc2OCwiZXhwIjoxNjI0NjA4NzY4LCJzdWIiOiJ1c2VySW5mbyJ9.SVM7Kfhfv_o7pINXn_5j99ZRfVMFsZUu3DhbV2rqHuc"]
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

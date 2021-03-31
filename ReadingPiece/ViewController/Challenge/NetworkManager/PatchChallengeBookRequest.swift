@@ -6,9 +6,11 @@ import Foundation
 final class PatchChallengeBookRequest: Requestable {
     typealias ResponseType = DeleteChallengeResponse // 삭제와 응답코드가 같아서 재활용
     
+    private var token: String
     private var goalbookId: Int
     
-    init(goalbookId: Int) {
+    init(token: String, goalbookId: Int) {
+        self.token = token
         self.goalbookId = goalbookId
     }
 
@@ -33,7 +35,7 @@ final class PatchChallengeBookRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

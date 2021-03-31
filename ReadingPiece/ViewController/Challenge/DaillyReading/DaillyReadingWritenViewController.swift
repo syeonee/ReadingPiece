@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import KeychainSwift
+
+
 protocol ReadingStatusDelegate {
     func setReadingPage(_ page: Int)
     func setReadingPercent(_ percent: Int)
 }
 class DaillyReadingWritenViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     let goalId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
     let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
@@ -82,13 +87,14 @@ class DaillyReadingWritenViewController: UIViewController {
     }
     
     func writeJournal() {
+        guard let token = keychain.get(Keys.token) else { return }
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
         let testImg = self.pickedImage?.imageResized(to: CGSize(width: 10, height: 10)).jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil
 
         let journal = JournalWritten(time: readingTime, text: commentTextView.text, open: isOpen, goalBookId: goalBookId,
                                      page: readingPage, percent: readingPercent)
         print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent)
-        let req = PostJournalRequest(journal: journal)
+        let req = PostJournalRequest(token: token, journal: journal)
         
         _ = Network.request(req: req) { (result) in
                 switch result {

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class JournalViewController: UIViewController {
     
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let journalCell = JournalCell()
     let fullJournalCell = FullJournalCell()
     let headerView = JournalHeaderCell()
@@ -239,8 +241,9 @@ extension JournalViewController {
 extension JournalViewController {
     // 내가 쓴 일지 조회
     private func getJournalData(align: String, page: Int, limit: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
         self.spinner.startAnimating()
-        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -271,7 +274,8 @@ extension JournalViewController {
     
     // 일지 페이징 시 reload 
     private func getMoreJournal(align: String, page: Int, limit: Int) {
-        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -301,7 +305,8 @@ extension JournalViewController {
     
     // 일지 삭제
     private func deleteJournal(journalID: Int, index: Int) {
-        Network.request(req: DeleteJournalRequest(journalID: journalID)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: DeleteJournalRequest(token: token, journalID: journalID)) { result in
             switch result {
             case .success(let response):
                 print(response)
