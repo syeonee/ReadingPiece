@@ -34,7 +34,7 @@ class LibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNav()
+        //self.setupCleanNavigationBar()
         menuViewController.register(nib: UINib(nibName: "MenuCell", bundle: nil), forCellWithReuseIdentifier: "MenuCell")
         menuViewController.registerFocusView(nib: UINib(nibName: "FocusView", bundle: nil))
         menuViewController.cellAlignment = .center
@@ -42,17 +42,15 @@ class LibraryViewController: UIViewController {
         dataSource = makeDataSource()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationItem.title = "내서재"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.setupCleanNavigationBar()
     }
     
-    private func setNav() {
-        // 네비게이션 바 border line 없애기
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.layoutIfNeeded()
-        self.navigationController?.navigationBar.tintColor = .darkgrey
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.restoreNavigationBar()
+        self.navigationItem.title = "내서재"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

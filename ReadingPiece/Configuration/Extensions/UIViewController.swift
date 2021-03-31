@@ -56,6 +56,27 @@ extension UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    // MARK: 하단 border line 없는 네비게이션바 디자인 적용
+    func setupCleanNavigationBar() {
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for:.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layoutIfNeeded()
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+    }
+    
+    // MARK: 하단 border line + shadow 있는 기본 네비게이션바 디자인 적용
+    func restoreNavigationBar() {
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.layer.masksToBounds = false
+        self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+        self.navigationController?.navigationBar.layer.shadowOpacity = 0.1
+        self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+        
+    }
+    
+    
+    
     // MARK: 빈 화면을 눌렀을 때 키보드가 내려가도록 처리
     func dismissKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer =
