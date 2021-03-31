@@ -23,7 +23,7 @@ class AccountInfoViewController: UIViewController {
         if let email = keychain.get(Keys.email) {
             emailLabel.text = email
         }
-        emailView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.17)
+        emailView.layer.addBorder([.bottom], color: #colorLiteral(red: 0.8549019608, green: 0.8549019608, blue: 0.8549019608, alpha: 1), width: 0.5)
     }
     
 
