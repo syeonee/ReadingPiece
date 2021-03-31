@@ -74,16 +74,22 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = feed.postAt
         cell.bookTitleLabel.text = feed.title
         cell.bookAuthorLabel.text = feed.writer
-        cell.percentLabel.text = "\(feed.percent)% 읽음"
+        cell.percentLabel.text = "\(feed.percent) 읽음"
         cell.timeLabel.text = "\(feed.time)분"
         
-        if let profile = feed.profilePictureURL {
-            let decodedData = NSData(base64Encoded: profile, options: [])
+        if feed.profilePic != "사진 없음"{
+            let decodedData = NSData(base64Encoded: feed.profilePic, options: [])
             if let data = decodedData {
                 cell.profileImageView.image = UIImage(data: data as Data)
             }else{
-                cell.profileImageView.image = UIImage(named: "defaultProfile")
+                cell.profileImageView.image = UIImage(named: "defaultBookImage")
             }
+        }
+        
+        if feed.status == "읽는 중"{
+            cell.statusImageView.image = UIImage(named: "readOngoing")
+        }else{
+            cell.statusImageView.image = UIImage(named: "feedComplete")
         }
         
         if let name = feed.name {
@@ -148,17 +154,17 @@ extension CommunityViewController: FeedCellDelegate {
     
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
-            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+//            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
         let remove = UIAlertAction(title: "신고", style: .destructive) { (action) in
             let vc = UIStoryboard(name: "My", bundle: nil).instantiateViewController(identifier: "QuestionController") as! QuestionViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
-        alert.addAction(modify)
+//        alert.addAction(modify)
         alert.addAction(remove)
         alert.addAction(cancel)
         

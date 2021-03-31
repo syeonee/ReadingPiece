@@ -203,6 +203,7 @@
                 <outlet property="nameLabel" destination="0EA-cR-bjq" id="gG5-C7-AfZ"/>
                 <outlet property="percentLabel" destination="GKR-zb-mAE" id="MAf-f7-wu2"/>
                 <outlet property="profileImageView" destination="F4U-u3-olw" id="JhJ-zF-bR4"/>
+                <outlet property="statusImageView" destination="6Xe-LJ-5WD" id="LGo-Dc-Pgg"/>
                 <outlet property="textConstraint" destination="21k-WG-Slx" id="D6F-1B-slC"/>
                 <outlet property="timeLabel" destination="yJh-Ws-yLG" id="NJs-DY-3UC"/>
             </connections>
