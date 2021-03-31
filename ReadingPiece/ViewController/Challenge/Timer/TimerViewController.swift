@@ -81,11 +81,13 @@ class TimerViewController: UIViewController {
         // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
         if self.readingTime > self.targetTime {
             let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
+            dailyReadingCompletionVC.tabBarController?.hidesBottomBarWhenPushed = true
             dailyReadingCompletionVC.readingTime = self.readingTime
             self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
         } else {
             let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
             timerStopVC.readingTime = self.readingTime
+            timerStopVC.tabBarController?.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(timerStopVC, animated: true)
         }
     }

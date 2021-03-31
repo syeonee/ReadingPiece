@@ -50,6 +50,7 @@ class CreateReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("bookID: \(String(describing: self.bookID))")
+        self.tabBarController?.hidesBottomBarWhenPushed = true
         
         // 리뷰 수정일 경우 기존 데이터 불러오기
         if let reviewID = self.reviewID {

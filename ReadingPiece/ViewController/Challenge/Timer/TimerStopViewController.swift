@@ -60,8 +60,8 @@ class TimerStopViewController: UIViewController {
     }
     private func setupUI() {
         setNavBar()
-        timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
-        writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+        //timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         initReadingTime(time: self.readingTime)
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
