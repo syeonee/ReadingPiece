@@ -45,6 +45,11 @@ class CommunityViewController: UIViewController {
     
     @objc func updateUI(refresh: UIRefreshControl){
         refresh.endRefreshing()
+        page = 0
+        isEnd = false
+        isLoaded = false
+        feedList = []
+        expandedIndexSet = []
         loadReviewData(page: 0, limit: limit)
     }
     
@@ -82,8 +87,10 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
             if let data = decodedData {
                 cell.profileImageView.image = UIImage(data: data as Data)
             }else{
-                cell.profileImageView.image = UIImage(named: "defaultBookImage")
+                cell.profileImageView.image = UIImage(named: "defaultProfile")
             }
+        }else{
+            cell.profileImageView.image = UIImage(named: "defaultProfile")
         }
         
         if feed.status == "읽는 중"{
@@ -94,11 +101,13 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let name = feed.name {
             cell.nameLabel.text = name
+        }else{
+            cell.nameLabel.text = "Reader\(feed.userId)"
         }
         
         if let imageURL = feed.imageURL{
             let url = URL(string: imageURL)
-            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultProfile"), options: nil, completionHandler: nil)
+            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookImage"), options: nil, completionHandler: nil)
         }
         
         if feed.text.utf8.count <= length {
@@ -190,6 +199,7 @@ extension CommunityViewController {
                             self.isEnd = true
                         }
                         guard let result = response.feed else { return }
+                        print("feed is \(result)")
                         DispatchQueue.main.async {
                             self.feedList.append(contentsOf: result)
                             self.feedTableView.reloadData()
@@ -203,7 +213,6 @@ extension CommunityViewController {
                         self.presentAlert(title: message)
                     }
                 }
-                
             case .cancel(let cancel):
                 self.feedTableView.dismissIndicator()
                 print(cancel as Any)
