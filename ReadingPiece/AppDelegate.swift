@@ -30,6 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let token = keychain.get(Keys.token) {
             print("token: \(token)")
         }
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSans(.medium, size: 10)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSans(.medium, size: 10)], for: .selected)
+        
         return true
     }
 

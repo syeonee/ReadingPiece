@@ -51,8 +51,15 @@ class JournalViewController: UIViewController {
     
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
-        self.tableView.reloadData()
+        self.tableView.reloadData() {
+            self.tableView.scroll(to: .top, animated: true) // 처음 로드되거나 정렬기준을 바꿀 경우 스크롤위치 상단으로 이동
+        }
     }
+    func didRetrieveMoreData() {
+        self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
+        self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
+    }
+    
 }
 
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
@@ -61,7 +68,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         let count = journalList.count
         if count == 0 {
             let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType:  "journal") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "journal") {
                 self.buttonAction()
             }
         } else {
@@ -201,15 +208,17 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
         self.align = "asc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
     
     func sortRecentFirst() {
         self.align = "desc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
 }
@@ -272,7 +281,7 @@ extension JournalViewController {
                         for i in 0...(result.count-1) {
                             self.journalList.append(result[i])
                         }
-                        self.didRetrieveData()
+                        self.didRetrieveMoreData()
                     } else {
                         print("마지막 페이지입니다. ")
                         self.isEnd = true

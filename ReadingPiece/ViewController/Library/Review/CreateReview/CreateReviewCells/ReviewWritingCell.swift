@@ -83,6 +83,8 @@ extension ReviewWritingCell: UITextViewDelegate {
         } else if reviewInputTextView.text == "" {
             reviewInputTextView.text = "기억에 남는 문구, 소감을 기록하세요!"
             reviewInputTextView.textColor = .middlegrey1
+        } else {
+            reviewInputTextView.textColor = UIColor.black
         }
     }
     
