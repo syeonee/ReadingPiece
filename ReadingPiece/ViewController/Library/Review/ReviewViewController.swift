@@ -72,7 +72,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         if reviewList[indexPath.row].text.utf8.count <= length {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
@@ -94,7 +94,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         } else if more[indexPath.row] == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: reviewCell.cellID) as! ReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
@@ -117,7 +117,7 @@ extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: fullReviewCell.cellID) as! FullReviewCell
             let url = URL(string: review.imageURL)
-            cell.bookImageView.kf.setImage(with: url)
+            cell.bookImageView.kf.setImage(with: url,placeholder: UIImage(named: "defaultBookImage"), completionHandler: nil)
             cell.bookTitleLabel.text = review.title
             cell.authorLabel.text = review.writer
             let rating = Double(review.star)
@@ -260,11 +260,12 @@ extension ReviewViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData() {
-        tableView.showWhiteIndicator()
+        spinner.backgroundColor = .white
+        spinner.startAnimating()
         Network.request(req: GetReviewRequest(align: "desc")) { result in
             switch result {
             case .success(let response):
-                self.tableView.dismissIndicator()
+                self.spinner.stopAnimating()
                 if response.code == 1000 {
                     guard let result = response.results else { return }
                     self.reviewList = result
@@ -277,10 +278,10 @@ extension ReviewViewController {
                 }
                 
             case .cancel(let cancel):
-                self.tableView.dismissIndicator()
+                self.spinner.stopAnimating()
                 print(cancel as Any)
             case .failure(let error):
-                self.tableView.dismissIndicator()
+                self.spinner.stopAnimating()
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)
             }
@@ -289,6 +290,7 @@ extension ReviewViewController {
     
     // 리뷰 조회 - 정렬 바꿀때
     private func getReviewData(align: String) {
+        spinner.backgroundColor = .clear
         self.spinner.startAnimating()
         Network.request(req: GetReviewRequest(align: align)) { result in
             switch result {

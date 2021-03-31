@@ -56,7 +56,7 @@ class CreateReviewViewController: UIViewController {
             print("리뷰 수정 중")
             getReview(reviewID: reviewID)
         }
-        setNavBar()
+        //setNavBar()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ReviewBookInfoCell", bundle: nil), forCellReuseIdentifier: bookInfoCell.cellID)
@@ -67,6 +67,11 @@ class CreateReviewViewController: UIViewController {
         
         self.dismissKeyboardWhenTappedAround()
         doneActivated = false        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setNavBar()
     }
     
     

@@ -14,6 +14,7 @@ class BookReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewTableView.tableFooterView = UIView(frame: CGRect.zero)
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")

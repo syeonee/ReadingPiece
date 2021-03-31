@@ -51,8 +51,15 @@ class JournalViewController: UIViewController {
     
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
-        self.tableView.reloadData()
+        self.tableView.reloadData() {
+            self.tableView.scroll(to: .top, animated: true) // 처음 로드되거나 정렬기준을 바꿀 경우 스크롤위치 상단으로 이동
+        }
     }
+    func didRetrieveMoreData() {
+        self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
+        self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
+    }
+    
 }
 
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
@@ -61,7 +68,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         let count = journalList.count
         if count == 0 {
             let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType:  "journal") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "journal") {
                 self.buttonAction()
             }
         } else {
@@ -78,11 +85,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -94,11 +97,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -111,11 +110,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
-            if journal.journalImageURL == nil {
-                cell.pictureImageView.isHidden = true
-            } else {
-                cell.pictureImageView.isHidden = false
-            }
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
             cell.readingTimeLabel.text = "\(journal.time)분"
             cell.index = indexPath.row
@@ -132,7 +127,6 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             if let count = self.journalCount {
                 cell.count.text = String(count)
             }
-            //cell.count.text = String(journalList.count)
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
@@ -187,15 +181,7 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let success = UIAlertAction(title: "첨부한 사진 보기", style: .default) { (action) in
-            if let url = self.journalList[index].journalImageURL {
-                let vc = JournalImageViewController(imageURL: url)
-                vc.modalPresentationStyle = .overCurrentContext
-                self.present(vc, animated: true, completion: nil)
-            } else {
-                self.presentAlert(title: "조회할 일지 사진이 없습니다. ")
-            }
-        }
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
@@ -203,7 +189,6 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
             self.deleteJournal(journalID: self.journalList[index].journalID, index: index)
         }
         
-        alert.addAction(success)
         alert.addAction(cancel)
         alert.addAction(destructive)
         
@@ -223,15 +208,17 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
         self.align = "asc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
     
     func sortRecentFirst() {
         self.align = "desc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
 }
@@ -294,7 +281,7 @@ extension JournalViewController {
                         for i in 0...(result.count-1) {
                             self.journalList.append(result[i])
                         }
-                        self.didRetrieveData()
+                        self.didRetrieveMoreData()
                     } else {
                         print("마지막 페이지입니다. ")
                         self.isEnd = true

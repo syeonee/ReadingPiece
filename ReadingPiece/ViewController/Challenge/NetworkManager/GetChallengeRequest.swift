@@ -9,7 +9,7 @@ final class GetChallengeRequest: Requestable {
     typealias ResponseType = ChallengeResponse
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -30,8 +30,8 @@ final class GetChallengeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        let tokenHeader: [String : String] = ["Content-Type": "application/json", "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImlhdCI6MTYxNjgzMjc2OCwiZXhwIjoxNjI0NjA4NzY4LCJzdWIiOiJ1c2VySW5mbyJ9.SVM7Kfhfv_o7pINXn_5j99ZRfVMFsZUu3DhbV2rqHuc"]
-        return tokenHeader
+        //let tokenHeader: [String : String] = ["Content-Type": "application/json", "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImlhdCI6MTYxNjgzMjc2OCwiZXhwIjoxNjI0NjA4NzY4LCJzdWIiOiJ1c2VySW5mbyJ9.SVM7Kfhfv_o7pINXn_5j99ZRfVMFsZUu3DhbV2rqHuc"]
+        return Constants().ACCESS_TOKEN_HEADER
     }
     
     var timeout: TimeInterval {

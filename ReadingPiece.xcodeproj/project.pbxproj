@@ -86,8 +86,6 @@
 		596D4D76260ACD0E00E137F3 /* DeleteJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */; };
 		596D4D9A260AD82C00E137F3 /* PostReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */; };
 		596D4DA2260ADA7400E137F3 /* DeleteReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */; };
-		597C33A5260F891500869624 /* JournalImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597C33A3260F891500869624 /* JournalImageViewController.swift */; };
-		597C33A6260F891500869624 /* JournalImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 597C33A4260F891500869624 /* JournalImageViewController.xib */; };
 		597F82B5260C7EED00777A92 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82B4260C7EED00777A92 /* String.swift */; };
 		597F82B9260C8FEE00777A92 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */; };
 		597F82BE260C9D1000777A92 /* CheckTokenRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */; };
@@ -285,8 +283,6 @@
 		596D4D75260ACD0E00E137F3 /* DeleteJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteJournalRequest.swift; sourceTree = "<group>"; };
 		596D4D99260AD82C00E137F3 /* PostReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReviewRequest.swift; sourceTree = "<group>"; };
 		596D4DA1260ADA7400E137F3 /* DeleteReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteReviewRequest.swift; sourceTree = "<group>"; };
-		597C33A3260F891500869624 /* JournalImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalImageViewController.swift; sourceTree = "<group>"; };
-		597C33A4260F891500869624 /* JournalImageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JournalImageViewController.xib; sourceTree = "<group>"; };
 		597F82B4260C7EED00777A92 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		597F82B7260C8FEE00777A92 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		597F82BD260C9D1000777A92 /* CheckTokenRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenRequest.swift; sourceTree = "<group>"; };
@@ -662,8 +658,6 @@
 				596D4D6D260A1BEC00E137F3 /* NetworkManager */,
 				599D3AD925F37A770085F134 /* JournalCells */,
 				599D3AA625F090B40085F134 /* JournalViewController.swift */,
-				597C33A3260F891500869624 /* JournalImageViewController.swift */,
-				597C33A4260F891500869624 /* JournalImageViewController.xib */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -1132,7 +1126,6 @@
 				D67C657625E566C600F15290 /* Library.storyboard in Resources */,
 				599D3ACC25F240A60085F134 /* JournalHeaderCell.xib in Resources */,
 				59F4F2EE25F9A5FB00E82417 /* NotoSans-SemiBold.ttf in Resources */,
-				597C33A6260F891500869624 /* JournalImageViewController.xib in Resources */,
 				007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */,
 				D636A8F7260D10D400ED31D9 /* PieceEmptyView.xib in Resources */,
 				009250062602587100A930DD /* RedFirecracker.sks in Resources */,
@@ -1227,7 +1220,6 @@
 				00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */,
 				00FF385F260EEDB700529570 /* PatchChallengeBookRequest.swift in Sources */,
 				59E18FF02604EA7100D07656 /* Login+Email Response.swift in Sources */,
-				597C33A5260F891500869624 /* JournalImageViewController.swift in Sources */,
 				599D3AC625F236510085F134 /* JournalCell.swift in Sources */,
 				5920F966260F2D4200C2C1B4 /* GetReviewEditRequest.swift in Sources */,
 				D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */,

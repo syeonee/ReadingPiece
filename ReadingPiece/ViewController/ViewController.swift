@@ -40,10 +40,17 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.showIndicator()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.initMainView()
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = "리딩피스"
+    }
+
 
     @IBAction func startReadingAction(_ sender: UIButton) {
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
@@ -132,6 +139,7 @@ class ViewController: UIViewController {
                 }
             }
         }
+        self.dismissIndicator()
     }
 
     func showRestartChallengePopup() {
@@ -178,16 +186,20 @@ class ViewController: UIViewController {
     }
     
     private func getUserNameByLength(_ name: String?) -> String {
+        print("LOGTT", name)
         var nameString = ""
-        if name == nil {
-            nameString = "Reader"
+        if let userName = name {
+            if userName.count > 3 {
+                let index = (name?.index(name!.startIndex, offsetBy: 3))!
+                let subString = name?.substring(to: index)  // Hello
+                nameString = subString!
+                nameString += "..."
+            } else {
+                nameString = userName
+            }
         } else {
-            let index = (name?.index(name!.startIndex, offsetBy: 3))!
-            let subString = name?.substring(to: index)  // Hello
-            nameString = subString!
-            nameString += "..."
+            nameString = "Reader"
         }
-        
         return nameString
     }
     

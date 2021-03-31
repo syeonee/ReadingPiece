@@ -29,9 +29,8 @@ final class PostJournalRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        print("TFT", journal.journalImageURL)
         return ["page": journal.time, "goalBookId": journal.goalBookId, "time": journal.time,
-                "text": journal.text, "journalImageURL": journal.journalImageURL ?? "1234", "open": journal.open, "percent": journal.percent ]
+                "text": journal.text, "open": journal.open, "percent": journal.percent ]
     }
     
     var headers: [String : String]? {
@@ -51,10 +50,12 @@ final class PostJournalRequest: Requestable {
 public struct JournalWritten {
     var time: Int
     var text: String
-    var journalImageURL: String?
     var open: String
     var goalBookId: Int
     var page: Int
     var percent: Int
-    var goalId: Int
 }
+
+// 스펙 변경으로 이미지 첨부는 필드에서 제외, 추후 추가
+//var journalImageURL: String?
+//var goalId: Int
