@@ -119,7 +119,7 @@ struct getChallengeRequest {
     }
 
     private func getChallengeFromJson(json: JSON) -> Challenge {
-        let totalJournal = json["sumjournal"].intValue
+        let totalJournal = json["sumJournal"].intValue
         let todayReadingTime = json["todayTime"].string
         let amount = json["amount"].intValue
         let time = json["time"].intValue

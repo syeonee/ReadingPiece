@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     let defaults = UserDefaults.standard
@@ -148,7 +150,8 @@ class ViewController: UIViewController {
             defaults.setValue(goaldId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
-            defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+            // 클라에서는 초단위로 처리하지만, 서버는 분단위로 저장하기 때문 60 곱함
+            defaults.setValue(targetTime * 60, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
             defaults.setValue(challengeId, forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
             
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
@@ -160,7 +163,7 @@ class ViewController: UIViewController {
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.1
-
+            print("LOGT",challenge.totalJournal, challenge.amount)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = todayTime
@@ -197,6 +200,7 @@ class ViewController: UIViewController {
         default: return "일 년"
         }
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {

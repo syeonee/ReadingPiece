@@ -32,7 +32,7 @@ class TimerStopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        print("LOG - TimerStopVC", readingTime)
+        print("LOG - TimerStopVC", readingTime, challengeInfo)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,7 +78,8 @@ class TimerStopViewController: UIViewController {
         timerStopTitleLabel.textColor = .darkgrey
         feedTitleLabel.textColor = .darkgrey
         
-        targetTimeLabel.text = "\(targetTime)분"
+        // 클라 = 초 단위, 서버 = 분 단위
+        targetTimeLabel.text = "\(targetTime / 60)분"
     }
     
     // 이전 화면에서 받은 시간(초) 기준으로 00분 00초 단위로 변환해서 레이블에 적용

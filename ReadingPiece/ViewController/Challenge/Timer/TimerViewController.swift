@@ -41,6 +41,7 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         getUserBookReadingTime()
+        print("LOG - TimerVC", self.challengeInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +63,7 @@ class TimerViewController: UIViewController {
         startPauseRadingButton.isSelected = false
         let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
         timerStopVC.readingTime = self.readingTime
+        timerStopVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerStopVC, animated: true)
     }
 
@@ -73,16 +75,18 @@ class TimerViewController: UIViewController {
         changeReadingStatus()
         sender.isSelected = !sender.isSelected
         stopwatch.toggle()
-        print("LOG - Timer is Paused", currentTimeLabel.text, readingTime)
+        print("LOG - Timer is Paused", currentTimeLabel.text, readingTime, targetTime)
     }
     
     @IBAction func stopTimer(_ sender: UIButton) {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
         print("LOG - Timer is Stooped", currentTimeLabel.text, readingTime)
-
+        
         // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
+        // 클라 = 초단위 , 서버 = 분단위 이므로 변환해서 비교 필요
         if self.readingTime > self.targetTime {
+            print("LOG - 목표시간 달성 읽은 시간\(readingTime) / 목표 시간 \(targetTime)")
             let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
             dailyReadingCompletionVC.tabBarController?.hidesBottomBarWhenPushed = true
             dailyReadingCompletionVC.readingTime = self.readingTime
@@ -91,6 +95,7 @@ class TimerViewController: UIViewController {
         } else {
             let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
             timerStopVC.readingTime = self.readingTime
+            timerStopVC.challengeInfo = self.challengeInfo
             timerStopVC.tabBarController?.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(timerStopVC, animated: true)
         }
@@ -133,7 +138,8 @@ class TimerViewController: UIViewController {
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: " 목표 20분" ))
+        
+        attributedString.append(NSAttributedString(string: " 목표 \(targetTime / 60)분" ))
         targetRadingTimeLabel.attributedText = attributedString
         targetRadingTimeLabel.textColor = .darkgrey
         

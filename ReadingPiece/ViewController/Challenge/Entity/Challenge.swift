@@ -52,7 +52,7 @@ public struct Challenge: Codable {
     public let challengeId: Int?
     
     enum CodingKeys: String, CodingKey {
-        case totalJournal = "sumjournal"
+        case totalJournal = "sumJournal"
         case todayTime
         case amount
         case time
