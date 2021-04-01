@@ -26,7 +26,7 @@ extension UIButton {
         self.layer.borderWidth = 1
         self.layer.borderColor = borderColor
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 16
+        self.layer.cornerRadius = self.frame.height / 2
     }
     
     func makeRoundedTagButtnon(_ title: String, titleColor: UIColor , borderColor: CGColor, backgroundColor: UIColor) {

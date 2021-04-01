@@ -6,9 +6,11 @@ import Foundation
 final class PostJournalRequest: Requestable {
     typealias ResponseType = PostJournalResponse
     
+    private var token: String
     private var journal: JournalWritten
     
-    init(journal: JournalWritten) {
+    init(token: String, journal: JournalWritten) {
+        self.token = token
         self.journal = journal
     }
 
@@ -34,7 +36,7 @@ final class PostJournalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": token]
     }
     
     var timeout: TimeInterval {

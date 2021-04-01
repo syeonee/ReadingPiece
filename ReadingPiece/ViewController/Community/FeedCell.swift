@@ -20,6 +20,7 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var percentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var bookBackView: UIView!
+    @IBOutlet weak var statusImageView: UIImageView!
     
     @IBOutlet weak var impressionLabel: UILabel!
     @IBOutlet weak var moreButton: UIButton!

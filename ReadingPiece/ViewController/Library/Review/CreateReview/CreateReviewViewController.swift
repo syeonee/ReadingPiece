@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class CreateReviewViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     let bookInfoCell = ReviewBookInfoCell()
     let ratingCell = ReviewRatingCell()
@@ -50,13 +53,14 @@ class CreateReviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("bookID: \(String(describing: self.bookID))")
+        self.tabBarController?.hidesBottomBarWhenPushed = true
         
         // 리뷰 수정일 경우 기존 데이터 불러오기
         if let reviewID = self.reviewID {
             print("리뷰 수정 중")
             getReview(reviewID: reviewID)
         }
-        setNavBar()
+        //setNavBar()
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "ReviewBookInfoCell", bundle: nil), forCellReuseIdentifier: bookInfoCell.cellID)
@@ -67,6 +71,11 @@ class CreateReviewViewController: UIViewController {
         
         self.dismissKeyboardWhenTappedAround()
         doneActivated = false        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        setNavBar()
     }
     
     
@@ -209,7 +218,8 @@ extension CreateReviewViewController: ReviewWritingCellDelegate, ReviewRatingCel
 // 리뷰생성 API 호출
 extension CreateReviewViewController {
     private func postReview(bookID: Int) {
-        Network.request(req: PostReviewRequest(bookID: bookID, star: Int(self.starCount ?? 0), text: self.reviewText ?? "", isPublic: self.isPublic ?? 1)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PostReviewRequest(token: token, bookID: bookID, star: Int(self.starCount ?? 0), text: self.reviewText ?? "", isPublic: self.isPublic ?? 1)) { result in
             switch result {
             case .success(let response):
                 if response.code == 1000 {
@@ -231,7 +241,8 @@ extension CreateReviewViewController {
     }
     
     private func getReview(reviewID: Int) {
-        Network.request(req: GetReviewEditRequest(reviewID: reviewID)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetReviewEditRequest(token: token, reviewID: reviewID)) { result in
             switch result {
             case .success(let response):
                 if response.code == 1000 {
@@ -263,8 +274,8 @@ extension CreateReviewViewController {
     }
     
     private func patchReview(reviewID: Int) {
-        print("patch review here")
-        Network.request(req: PatchReviewRequest(reviewID: reviewID, star: Int(self.starCount ?? 0), text: self.reviewText ?? "", isPublic: self.isPublic ?? 1)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PatchReviewRequest(token: token, reviewID: reviewID, star: Int(self.starCount ?? 0), text: self.reviewText ?? "", isPublic: self.isPublic ?? 1)) { result in
             switch result {
             case .success(let response):
                 print(response)

@@ -19,13 +19,15 @@ class CommunityViewController: UIViewController {
     var page : Int = 0
     let limit : Int = 5
     var isEnd : Bool = false
+    var isLoaded : Bool = false
     
     @IBOutlet weak var feedTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadReviewData(page: 0, limit: limit)
-        
+        feedTableView.alwaysBounceVertical = true
+        initRefresh()
         feedTableView.delegate = self
         feedTableView.dataSource = self
         feedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
@@ -33,6 +35,22 @@ class CommunityViewController: UIViewController {
         feedTableView.rowHeight = UITableView.automaticDimension
         feedTableView.estimatedRowHeight = 284
         
+    }
+    
+    func initRefresh(){
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+        feedTableView.addSubview(refresh)
+    }
+    
+    @objc func updateUI(refresh: UIRefreshControl){
+        refresh.endRefreshing()
+        page = 0
+        isEnd = false
+        isLoaded = false
+        feedList = []
+        expandedIndexSet = []
+        loadReviewData(page: 0, limit: limit)
     }
     
 }
@@ -61,25 +79,35 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = feed.postAt
         cell.bookTitleLabel.text = feed.title
         cell.bookAuthorLabel.text = feed.writer
-        cell.percentLabel.text = "\(feed.percent)% 읽음"
+        cell.percentLabel.text = "\(feed.percent) 읽음"
         cell.timeLabel.text = "\(feed.time)분"
         
-        if let profile = feed.profilePictureURL {
-            let decodedData = NSData(base64Encoded: profile, options: [])
+        if feed.profilePic != "사진 없음"{
+            let decodedData = NSData(base64Encoded: feed.profilePic, options: [])
             if let data = decodedData {
                 cell.profileImageView.image = UIImage(data: data as Data)
             }else{
                 cell.profileImageView.image = UIImage(named: "defaultProfile")
             }
+        }else{
+            cell.profileImageView.image = UIImage(named: "defaultProfile")
+        }
+        
+        if feed.status == "읽는 중"{
+            cell.statusImageView.image = UIImage(named: "readOngoing")
+        }else{
+            cell.statusImageView.image = UIImage(named: "feedComplete")
         }
         
         if let name = feed.name {
             cell.nameLabel.text = name
+        }else{
+            cell.nameLabel.text = "Reader\(feed.userId)"
         }
         
         if let imageURL = feed.imageURL{
             let url = URL(string: imageURL)
-            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultProfile"), options: nil, completionHandler: nil)
+            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookImage"), options: nil, completionHandler: nil)
         }
         
         if feed.text.utf8.count <= length {
@@ -106,7 +134,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         let scrollViewHeight: CGFloat = scrollView.contentSize.height
         let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
                   
-        if distanceFromBottom < height && !isEnd {
+        if distanceFromBottom < height && !isEnd && isLoaded {
             addData()
         }
     }
@@ -135,17 +163,17 @@ extension CommunityViewController: FeedCellDelegate {
     
     func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
-            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+//        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+//            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
         let remove = UIAlertAction(title: "신고", style: .destructive) { (action) in
             let vc = UIStoryboard(name: "My", bundle: nil).instantiateViewController(identifier: "QuestionController") as! QuestionViewController
             self.navigationController?.pushViewController(vc, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
-        alert.addAction(modify)
+//        alert.addAction(modify)
         alert.addAction(remove)
         alert.addAction(cancel)
         
@@ -165,11 +193,13 @@ extension CommunityViewController {
             switch result {
             case .success(let response):
                 if response.code == 1000 {
+                    self.isLoaded = true
                     if response.journalcount != 0 {
                         if response.journalcount < limit{
                             self.isEnd = true
                         }
                         guard let result = response.feed else { return }
+                        print("feed is \(result)")
                         DispatchQueue.main.async {
                             self.feedList.append(contentsOf: result)
                             self.feedTableView.reloadData()
@@ -183,7 +213,6 @@ extension CommunityViewController {
                         self.presentAlert(title: message)
                     }
                 }
-                
             case .cancel(let cancel):
                 self.feedTableView.dismissIndicator()
                 print(cancel as Any)

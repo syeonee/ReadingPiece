@@ -6,13 +6,18 @@
 //
 
 import UIKit
+import KeychainSwift
 import SpriteKit
 
 // 일지 작성 완료시, 그날 읽은 독서정보를 정산해서 보여주는 화면
 class DaillyDiaryWrittenCompletionViewController: UIViewController {
-
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let goalId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
     @IBOutlet weak var daillyDiaryWrittenTableView: UITableView!
+    @IBOutlet weak var gotomainButton: UIButton!
+    
+    
     var readingContinuity: ReadingContinuity?
 
     var todayReadingStatus: TodayReadingStatus? {
@@ -35,10 +40,16 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
         // 메인화면으로 이동
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    @IBAction func gotomainTapped(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
 
     func getDaillyReadingInfo() {
+        guard let token = keychain.get(Keys.token) else { return }
         guard let goalId = self.goalId else { return }
-        let req = GetTodayChallengeRequest(goalId: goalId)
+        let req = GetTodayChallengeRequest(token: token, goalId: goalId)
         
         _ = Network.request(req: req) { [self] (result) in
                 switch result {
@@ -66,10 +77,12 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     private func setupUI() {
         setNavBar()
         setupTableView()
+        gotomainButton.makeRoundedButtnon("메인으로 돌아가기", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+        gotomainButton.titleLabel?.font = UIFont.NotoSans(.medium, size: 17)
     }
         
     private func setNavBar() {
-        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.topItem?.title = "인증 완료"
         self.navigationController?.navigationBar.tintColor = .darkgrey
         
         let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))

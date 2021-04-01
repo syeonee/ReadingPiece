@@ -12,8 +12,10 @@ import Foundation
 final class DeleteReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
+    private var token: String
     private var reviewID: Int
-    init(reviewID: Int) {
+    init(token: String , reviewID: Int) {
+        self.token = token
         self.reviewID = reviewID
     }
     
@@ -38,12 +40,11 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        // 테스트용
-        return 5.0
+        return 10.0
         //return 30.0
     }
     

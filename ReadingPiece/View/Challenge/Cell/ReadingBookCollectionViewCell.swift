@@ -59,9 +59,9 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupUI() {
-        bgView.layer.borderWidth = 1
+        bgView.layer.borderWidth = 0.5
         bgView.layer.cornerRadius = 10
-        bgView.layer.borderColor = UIColor.darkgrey.cgColor
+        bgView.layer.borderColor = UIColor.middlegrey2.cgColor
     }
     
 }

@@ -12,11 +12,13 @@ import Foundation
 final class PatchReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
+    private var token: String
     private var reviewID: Int
     private var star: Int
     private var text: String
     private var isPublic: Int
-    init(reviewID: Int, star: Int, text: String, isPublic: Int) {
+    init(token: String, reviewID: Int, star: Int, text: String, isPublic: Int) {
+        self.token = token
         self.reviewID = reviewID
         self.star = star
         self.text = text
@@ -44,7 +46,7 @@ final class PatchReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": token]
     }
     
     var timeout: TimeInterval {

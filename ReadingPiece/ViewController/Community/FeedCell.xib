@@ -72,9 +72,6 @@
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <real key="value" value="0.10000000000000001"/>
-                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="readOngoing" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-LJ-5WD">
@@ -203,6 +200,7 @@
                 <outlet property="nameLabel" destination="0EA-cR-bjq" id="gG5-C7-AfZ"/>
                 <outlet property="percentLabel" destination="GKR-zb-mAE" id="MAf-f7-wu2"/>
                 <outlet property="profileImageView" destination="F4U-u3-olw" id="JhJ-zF-bR4"/>
+                <outlet property="statusImageView" destination="6Xe-LJ-5WD" id="LGo-Dc-Pgg"/>
                 <outlet property="textConstraint" destination="21k-WG-Slx" id="D6F-1B-slC"/>
                 <outlet property="timeLabel" destination="yJh-Ws-yLG" id="NJs-DY-3UC"/>
             </connections>

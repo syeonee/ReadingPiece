@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class JournalViewController: UIViewController {
     
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let journalCell = JournalCell()
     let fullJournalCell = FullJournalCell()
     let headerView = JournalHeaderCell()
@@ -51,8 +53,15 @@ class JournalViewController: UIViewController {
     
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
-        self.tableView.reloadData()
+        self.tableView.reloadData() {
+            self.tableView.scroll(to: .top, animated: true) // 처음 로드되거나 정렬기준을 바꿀 경우 스크롤위치 상단으로 이동
+        }
     }
+    func didRetrieveMoreData() {
+        self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
+        self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
+    }
+    
 }
 
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
@@ -61,7 +70,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         let count = journalList.count
         if count == 0 {
             let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType:  "journal") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "journal") {
                 self.buttonAction()
             }
         } else {
@@ -201,15 +210,17 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
         self.align = "asc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
     
     func sortRecentFirst() {
         self.align = "desc"
-        self.page = 1
+        self.page = 0
         self.isEnd = false
+        self.journalList = [] // 초기화
         getJournalData(align: align, page: page, limit: 5)
     }
 }
@@ -230,8 +241,9 @@ extension JournalViewController {
 extension JournalViewController {
     // 내가 쓴 일지 조회
     private func getJournalData(align: String, page: Int, limit: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
         self.spinner.startAnimating()
-        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -262,7 +274,8 @@ extension JournalViewController {
     
     // 일지 페이징 시 reload 
     private func getMoreJournal(align: String, page: Int, limit: Int) {
-        Network.request(req: GetJournalRequest(align: align, page: page, limit: limit)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
@@ -272,7 +285,7 @@ extension JournalViewController {
                         for i in 0...(result.count-1) {
                             self.journalList.append(result[i])
                         }
-                        self.didRetrieveData()
+                        self.didRetrieveMoreData()
                     } else {
                         print("마지막 페이지입니다. ")
                         self.isEnd = true
@@ -292,7 +305,8 @@ extension JournalViewController {
     
     // 일지 삭제
     private func deleteJournal(journalID: Int, index: Int) {
-        Network.request(req: DeleteJournalRequest(journalID: journalID)) { result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: DeleteJournalRequest(token: token, journalID: journalID)) { result in
             switch result {
             case .success(let response):
                 print(response)

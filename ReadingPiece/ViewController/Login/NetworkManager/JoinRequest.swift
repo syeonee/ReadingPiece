@@ -12,10 +12,12 @@ import Foundation
 final class JoinRequest: Requestable {
     typealias ResponseType = JoinResponse
     
+    private var name: String
     private var email: String
     private var password: String
     
-    init(email: String, password: String) {
+    init(name: String, email: String, password: String) {
+        self.name = name
         self.email = email
         self.password = password
     }
@@ -25,7 +27,7 @@ final class JoinRequest: Requestable {
     }
     
     var endpoint: String {
-        return "signUp"
+        return "join"
     }
     
     var method: Network.Method {
@@ -37,7 +39,7 @@ final class JoinRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["email": self.email, "password": self.password]
+        return ["email": self.email, "password": self.password, "name" : self.name]
     }
     
     var headers: [String : String]? {
@@ -45,8 +47,7 @@ final class JoinRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 5.0
-        //return 30.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

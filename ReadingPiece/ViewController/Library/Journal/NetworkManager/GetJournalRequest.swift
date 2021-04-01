@@ -12,11 +12,13 @@ import Foundation
 final class GetJournalRequest: Requestable {
     typealias ResponseType = GetJournalResponse
     
+    private var token: String
     private var align: String
     private var page: Int
     private var limit: Int
     
-    init(align: String, page: Int, limit: Int) {
+    init(token: String, align: String, page: Int, limit: Int) {
+        self.token = token
         self.align = align
         self.page = page
         self.limit = limit
@@ -43,12 +45,11 @@ final class GetJournalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
         return 10.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
