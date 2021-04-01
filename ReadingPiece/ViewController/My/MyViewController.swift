@@ -15,6 +15,7 @@ class MyViewController: UIViewController {
     @IBOutlet weak var resolutionLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
@@ -67,13 +68,11 @@ class MyViewController: UIViewController {
     }
     
     func setProfile(){
-        self.showIndicator()
+        indicator.startAnimating()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: UserProfileRequest(token: token)) { [self] result in
-            self.dismissIndicator()
             switch result {
             case .success(let response):
-                self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
                     DispatchQueue.main.async {
@@ -93,16 +92,26 @@ class MyViewController: UIViewController {
                         }
                         nameLabel.text = userProfile?.name
                         resolutionLabel.text = userProfile?.resolution
+                        if self.indicator.isAnimating {
+                            self.indicator.stopAnimating()
+                        }
                     }
                 } else {
+                    if self.indicator.isAnimating {
+                        self.indicator.stopAnimating()
+                    }
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                     }
                 }
             case .cancel(let cancelError):
-                self.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(cancelError as Any)
             case .failure(let error):
-                self.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(error as Any)
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
                 }
