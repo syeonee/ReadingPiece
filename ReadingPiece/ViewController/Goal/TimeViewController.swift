@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimeViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     // Term VC에서 옵셔널 검사를 하고, 값을 넘겨줄 것 이기 때문에 편의상 논-옵셔널 변수로 생성
     var time: Int = 0
     var period: String = ""
@@ -78,8 +81,9 @@ class TimeViewController: UIViewController {
     }
       
     func patchUserReadingGoal() {
+        guard let token = keychain.get(Keys.token) else { return }
         let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId)
+        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId, token: token)
                                 
         _ = Network.request(req: req) { (result) in
                 

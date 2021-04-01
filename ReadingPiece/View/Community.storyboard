@@ -26,6 +26,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="NA1-p6-5jY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ib9-Wb-8Ik"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -33,6 +37,11 @@
                             <constraint firstItem="ib9-Wb-8Ik" firstAttribute="trailing" secondItem="aGA-57-ror" secondAttribute="trailing" id="0fy-1v-fFZ"/>
                             <constraint firstItem="ib9-Wb-8Ik" firstAttribute="bottom" secondItem="aGA-57-ror" secondAttribute="bottom" id="9Wb-ke-XFR"/>
                             <constraint firstItem="aGA-57-ror" firstAttribute="leading" secondItem="ib9-Wb-8Ik" secondAttribute="leading" id="Dvk-84-3PY"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="centerX" secondItem="aGA-57-ror" secondAttribute="centerX" id="GFg-y8-nqx"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="trailing" secondItem="aGA-57-ror" secondAttribute="trailing" id="Whu-Kc-xBC"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="leading" secondItem="aGA-57-ror" secondAttribute="leading" id="ZZ4-0z-rnd"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="bottom" secondItem="aGA-57-ror" secondAttribute="bottom" id="g5C-WY-W6N"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="top" secondItem="aGA-57-ror" secondAttribute="top" id="rLJ-iz-csJ"/>
                             <constraint firstItem="aGA-57-ror" firstAttribute="top" secondItem="ib9-Wb-8Ik" secondAttribute="top" id="zT0-ag-7oQ"/>
                         </constraints>
                     </view>
@@ -41,6 +50,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="feedTableView" destination="aGA-57-ror" id="NI3-Sq-xTz"/>
+                        <outlet property="indicator" destination="NA1-p6-5jY" id="ClI-mB-7Vp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAV-95-WFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -6,6 +6,7 @@
 //
 import UIKit
 import Charts
+import KeychainSwift
 
 class StatisticsViewController: UIViewController {
     
@@ -26,6 +27,8 @@ class StatisticsViewController: UIViewController {
     var monthTotal: [Int] = []
     
     var currentYear: Int = 2021
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +58,8 @@ class StatisticsViewController: UIViewController {
     
     func setStatisticsInfo(){
         self.showIndicator()
-        Network.request(req: UserStatisticsRequest(token: Constants.KEYCHAIN_TOKEN!)) { [self] result in
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: UserStatisticsRequest(token: token)) { [self] result in
             self.dismissIndicator()
             switch result {
             case .success(let response):
@@ -123,7 +127,7 @@ class StatisticsViewController: UIViewController {
     func drawYearCharts(year: Int) {
         monthTotal = Array<Int>(repeating: 0, count: 12)
         
-        guard let token = Constants.KEYCHAIN_TOKEN else { return }
+        guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: UserGraphRequest(token: token, year: year)) { [self] result in
             switch result {
             case .success(let response):

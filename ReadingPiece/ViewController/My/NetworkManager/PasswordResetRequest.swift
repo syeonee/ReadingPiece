@@ -13,8 +13,10 @@ final class PasswordResetRequest: Requestable {
     
     private var presentPW: String // 기존 비밀번호
     private var password: String // 새로운 비밀번호
+    private var token : String
     
-    init(presentPW: String, password: String) {
+    init(token: String, presentPW: String, password: String) {
+        self.token = token
         self.presentPW = presentPW
         self.password = password
     }
@@ -40,7 +42,7 @@ final class PasswordResetRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {

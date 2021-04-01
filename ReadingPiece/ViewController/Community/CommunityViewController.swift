@@ -15,6 +15,7 @@ class CommunityViewController: UIViewController {
     var feedList: [Feed] = []
     var expandedIndexSet : IndexSet = []
 
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     var page : Int = 0
     let limit : Int = 5
@@ -22,9 +23,11 @@ class CommunityViewController: UIViewController {
     var isLoaded : Bool = false
     
     @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.backgroundColor = .white
         loadReviewData(page: 0, limit: limit)
         feedTableView.alwaysBounceVertical = true
         initRefresh()
@@ -188,7 +191,10 @@ extension CommunityViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData(page: Int, limit: Int) {
-        guard let token = Constants.KEYCHAIN_TOKEN else { return }
+        if !isLoaded{//처음 로드 할 때만 인디케이터 보여주기
+            indicator.startAnimating()
+        }
+        guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
             switch result {
             case .success(let response):
@@ -199,10 +205,12 @@ extension CommunityViewController {
                             self.isEnd = true
                         }
                         guard let result = response.feed else { return }
-                        print("feed is \(result)")
                         DispatchQueue.main.async {
                             self.feedList.append(contentsOf: result)
                             self.feedTableView.reloadData()
+                            if self.indicator.isAnimating {
+                                self.indicator.stopAnimating()
+                            }
                         }
                     }else{
                         self.isEnd = true
@@ -210,14 +218,21 @@ extension CommunityViewController {
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {
+                        if self.indicator.isAnimating {
+                            self.indicator.stopAnimating()
+                        }
                         self.presentAlert(title: message)
                     }
                 }
             case .cancel(let cancel):
-                self.feedTableView.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(cancel as Any)
             case .failure(let error):
-                self.feedTableView.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)
             }
