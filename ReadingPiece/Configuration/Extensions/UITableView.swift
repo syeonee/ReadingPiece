@@ -23,6 +23,8 @@ extension UITableView {
                 button.setImage(UIImage(named: "startReadingButton"), for: .normal)
             } else {
                 button.makeRoundedButtnon(buttonType, titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+                button.layer.cornerRadius = button.frame.height / 2
+                button.titleLabel?.font = UIFont.NotoSans(.medium, size: 15)
             }
             return button
         } ()

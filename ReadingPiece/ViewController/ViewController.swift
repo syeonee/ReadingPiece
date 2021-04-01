@@ -179,7 +179,7 @@ class ViewController: UIViewController {
             daillyReadingTimeLabel.text = todayTime
             daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)"
             targetReadingBookCountLabel.text = "\(targetBookAmount)"
-            targetTimeLabel.text = "\(targetTime)분"
+            targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             dDayLabel.text = "\(dDay)일 남음"
         }

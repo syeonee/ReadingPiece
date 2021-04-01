@@ -28,6 +28,9 @@ class InputReadingPercentPopupViewController: UIViewController {
         readingStatusSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: UIControl.Event.valueChanged)
 
     }
+    override func viewDidAppear(_ animated: Bool) {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
     
     @IBAction func closePopup(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
