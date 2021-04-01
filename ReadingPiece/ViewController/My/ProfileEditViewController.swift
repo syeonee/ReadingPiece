@@ -7,6 +7,8 @@
 import UIKit
 import KeychainSwift
 
+let DidReceiveNameChangeNotification: Notification.Name = Notification.Name("DidReceiveNameChange")
+
 class ProfileEditViewController: UIViewController {
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var completeButtonItem: UIBarButtonItem!
@@ -60,7 +62,6 @@ class ProfileEditViewController: UIViewController {
         if isNameCheck {
             self.showIndicator()
             guard let token = keychain.get(Keys.token) else { return }
-            print("send name is \(nameTextField.text!)")
             Network.request(req: EditProfileRequest(token: token, name: nameTextField.text!, profileImage: pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil, resolution: resolutionTextField.text!)) { [self] result in
                 self.dismissIndicator()
                 switch result {
@@ -68,6 +69,7 @@ class ProfileEditViewController: UIViewController {
                     self.dismissIndicator()
                     let result = response.code
                     if result == 1000 {
+                        NotificationCenter.default.post(name: DidReceiveNameChangeNotification, object: nil, userInfo: ["userName":nameTextField.text!])
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in

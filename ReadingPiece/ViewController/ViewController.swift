@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveNameChangeNotification(_:)), name: DidReceiveNameChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +50,17 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "리딩피스"
+    }
+    
+    @objc func didReceiveNameChangeNotification(_ noti: Notification){
+        guard let newName: String = noti.userInfo?["userName"] as? String else { return }
+        defaults.setValue(newName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+        if let challenge = challengeInfo?.todayChallenge {
+            let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
+            let period = challenge.period ?? "D"// 읽기 주기
+            let formattedPeriod = getDateFromPeriod(period: period)
+            userReadingGoalLabel.text = "\(getUserNameByLength(newName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
+        }
     }
 
 

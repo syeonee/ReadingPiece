@@ -15,6 +15,7 @@ class CommunityViewController: UIViewController {
     var feedList: [Feed] = []
     var expandedIndexSet : IndexSet = []
 
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
     var page : Int = 0
     let limit : Int = 5
@@ -22,9 +23,11 @@ class CommunityViewController: UIViewController {
     var isLoaded : Bool = false
     
     @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.backgroundColor = .white
         loadReviewData(page: 0, limit: limit)
         feedTableView.alwaysBounceVertical = true
         initRefresh()
@@ -188,8 +191,14 @@ extension CommunityViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData(page: Int, limit: Int) {
-        guard let token = Constants.KEYCHAIN_TOKEN else { return }
+        if !isLoaded{//처음 로드 할 때만 인디케이터 보여주기
+            indicator.startAnimating()
+        }
+        guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
+            if !self.isLoaded{
+                self.indicator.stopAnimating()
+            }
             switch result {
             case .success(let response):
                 if response.code == 1000 {

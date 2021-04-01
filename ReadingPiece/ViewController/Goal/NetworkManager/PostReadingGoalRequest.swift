@@ -6,13 +6,15 @@ final class PostReadingGoalRequest: Requestable {
     typealias ResponseType = PostReadingGoalResponse
     
     private var goal: Goal
+    private var token: String
     
-    init(_ goal: Goal) {
+    init(_ goal: Goal, token: String) {
         self.goal = goal
+        self.token = token
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -32,7 +34,7 @@ final class PostReadingGoalRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": self.token]
     }
     
     var timeout: TimeInterval {
