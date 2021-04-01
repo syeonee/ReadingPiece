@@ -76,7 +76,7 @@ class BookSettingViewController: UIViewController {
     private func setNavBar() {
         let rightButton = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addBook(sender:)))
         self.navigationItem.rightBarButtonItem = rightButton
-        self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
+        self.navigationItem.rightBarButtonItem?.tintColor = .melon
         self.navigationController?.navigationBar.tintColor = .darkgrey
     }
 
@@ -90,6 +90,15 @@ class BookSettingViewController: UIViewController {
 
 extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = books.count
+        if count == 0 {
+            let message = "아직 추가한 책이 없어요. "
+            readingBookTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "메인으로 가기", actionButtonClosure: {
+                self.navigationController?.popToRootViewController(animated: true)
+            })
+        } else {
+            readingBookTableView.restoreWithLine()
+        }
         return books.count
     }
     

@@ -25,13 +25,17 @@ class InputReadingStatusPopupViewController: UIViewController {
         setupUI()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
+    
     private func setupUI() {
         view.backgroundColor = .clear
         view.isOpaque = false
         popupView.layer.cornerRadius = 14
         inputTextField.layer.borderColor = UIColor.lightgrey2.cgColor
         inputTextField.keyboardType = .numberPad
-        inputTextField.textColor = .blue
+        inputTextField.textColor = .black
         inputTextField.backgroundColor = .lightgrey2
         closePopupButton.tintColor = .darkgrey
         doneButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.middlegrey2.cgColor, backgroundColor: .middlegrey2)
