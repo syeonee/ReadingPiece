@@ -59,7 +59,7 @@ class ViewController: UIViewController {
         timerVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerVC, animated: true)
     }
-    
+
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
         // 챌린지 현황 정보가 있다면 기존 유저이므로, initializer를 기준으로 목표 추가/수정 여부 구분
         // 신규유저-목표 추가 : 0, 기존유저-목표 변경 : 1

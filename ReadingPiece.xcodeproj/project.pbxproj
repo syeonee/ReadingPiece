@@ -18,6 +18,7 @@
 		0026128225FB2585000B40D1 /* ChallengeCompletionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */; };
 		0026128825FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */; };
 		0054BD2D26161E3C00ADFB29 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD2C26161E3C00ADFB29 /* Int.swift */; };
+		0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
@@ -217,6 +218,7 @@
 		0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCompletionViewController.swift; sourceTree = "<group>"; };
 		0026128725FB25BE000B40D1 /* InputReadingStatusPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingStatusPopupViewController.swift; sourceTree = "<group>"; };
 		0054BD2C26161E3C00ADFB29 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
+		0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchRestartChallengeRequest.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				00FF385B260EED7600529570 /* GetAllReadingBookRequest.swift */,
 				00FF3766260A30DA00529570 /* GetTodayChallengeRequest.swift */,
 				00FF376A260A3DD200529570 /* GetBookReadingTimeRequest.swift */,
+				0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */,
 				00FF385E260EEDB700529570 /* PatchChallengeBookRequest.swift */,
 				00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */,
 				00FF3862260EEDCC00529570 /* DeleteChallengeBookRequest.swift */,
@@ -1293,6 +1296,7 @@
 				0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */,
 				59F4F26A25F657A600E82417 /* ReviewDropDownCell.swift in Sources */,
 				D6BEFD3B2611D83A00866D45 /* FeedResponse.swift in Sources */,
+				0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */,
 				59E18FFF2606242500D07656 /* UIControl.swift in Sources */,
 				00838FF125F5017200340AE0 /* IndicatorView.swift in Sources */,
 				00C55F732604F9CE002848AB /* Goal+Book.swift in Sources */,
