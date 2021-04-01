@@ -196,9 +196,6 @@ extension CommunityViewController {
         }
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
-            if !self.isLoaded{
-                self.indicator.stopAnimating()
-            }
             switch result {
             case .success(let response):
                 if response.code == 1000 {
@@ -208,10 +205,12 @@ extension CommunityViewController {
                             self.isEnd = true
                         }
                         guard let result = response.feed else { return }
-                        print("feed is \(result)")
                         DispatchQueue.main.async {
                             self.feedList.append(contentsOf: result)
                             self.feedTableView.reloadData()
+                            if self.indicator.isAnimating {
+                                self.indicator.stopAnimating()
+                            }
                         }
                     }else{
                         self.isEnd = true
@@ -219,14 +218,21 @@ extension CommunityViewController {
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {
+                        if self.indicator.isAnimating {
+                            self.indicator.stopAnimating()
+                        }
                         self.presentAlert(title: message)
                     }
                 }
             case .cancel(let cancel):
-                self.feedTableView.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(cancel as Any)
             case .failure(let error):
-                self.feedTableView.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
                 print(error as Any)
             }
