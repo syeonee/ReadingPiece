@@ -196,9 +196,6 @@ extension CommunityViewController {
         }
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
-            if !self.isLoaded{
-                self.indicator.stopAnimating()
-            }
             switch result {
             case .success(let response):
                 if response.code == 1000 {
@@ -212,6 +209,9 @@ extension CommunityViewController {
                         DispatchQueue.main.async {
                             self.feedList.append(contentsOf: result)
                             self.feedTableView.reloadData()
+                            if self.indicator.isAnimating {
+                                self.indicator.stopAnimating()
+                            }
                         }
                     }else{
                         self.isEnd = true
