@@ -7,6 +7,7 @@
 
 import UIKit
 import KeychainSwift
+import Kingfisher
 
 
 protocol ReadingStatusDelegate {
@@ -66,6 +67,7 @@ class DaillyReadingWritenViewController: UIViewController {
         setupUI()
         picker.delegate = self
         commentTextView.delegate = self
+        print("LOG", self.challengeInfo)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -89,8 +91,6 @@ class DaillyReadingWritenViewController: UIViewController {
     func writeJournal() {
         guard let token = keychain.get(Keys.token) else { return }
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
-        let testImg = self.pickedImage?.imageResized(to: CGSize(width: 10, height: 10)).jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil
-
         let journal = JournalWritten(time: readingTime, text: commentTextView.text, open: isOpen, goalBookId: goalBookId,
                                      page: readingPage, percent: readingPercent)
         print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent)
@@ -172,11 +172,18 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 
     private func setupUI() {
+        let readingTimeInt = Int.getMinutesTextByTime(readingTime)
+        let readingTimeString = "\(readingTimeInt) 분"
+        let author = challengeInfo?.readingBook.first?.writer ?? "저자 정보 로딩 실패"
+        let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
+
+        bookAuthorLabel.text = author
+        bookTitleLabel.text = title
+        totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
         setNavBar()
         totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)
         readingStatusButton.makeRoundedTagButtnon("읽는 중", titleColor: .middlegrey1, borderColor: UIColor.middlegrey1.cgColor, backgroundColor: .white)
-        totalReadingTimeButton.makeRoundedTagButtnon(" 00분", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
         postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         readingPageInputButton.makeSmallRoundedButtnon("00p", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         readingPercentInputButton.makeSmallRoundedButtnon("00%", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
@@ -192,6 +199,10 @@ class DaillyReadingWritenViewController: UIViewController {
         
         // 일지 이미지 첨부 기능 부활시 제거
         postImageButton.isHidden = true
+        // 실패시 리턴 처리 해놔서, 책 이미지 적용은 가장 마지막에 실행
+        guard let urlString = challengeInfo?.readingBook.first?.imageURL else { return }
+        let imgUrl = URL(string: urlString)
+        bookThumbnailImage.kf.setImage(with: imgUrl)
     }
     
     func getMinutesTextByTime(_ time: Int) -> String {
@@ -246,7 +257,6 @@ extension DaillyReadingWritenViewController: ReadingStatusDelegate {
 
 extension DaillyReadingWritenViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
         if let char = text.cString(using: String.Encoding.utf8) {
             commentLengthLabel.text = "\(textView.text.count) / 100"
             let isBackSpace = strcmp(char, "\\b")

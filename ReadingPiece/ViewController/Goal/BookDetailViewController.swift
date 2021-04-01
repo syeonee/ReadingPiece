@@ -219,15 +219,18 @@ class BookDetailViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 챌린지할 책 추가 완료")
+                        print("LOG - 챌린지할 책 추가 완료", userResponse.code, userResponse.message)
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabController") as! UITabBarController
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     case 2110:
                         self.presentAlert(title: "책 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
-                    case 4000:
-                        self.presentAlert(title: "이미 같은 책이 추가되어 있습니다.", isCancelActionIncluded: false)
+                    case 2111: // 책 중복 추가
+                        self.presentAlert(title: userResponse.message, isCancelActionIncluded: false)
+                    case 2112: // 본인 목표치보다 더 많은 책을 추가하려고 하는 경우
+                        self.presentAlert(title: userResponse.message, isCancelActionIncluded: false)
                     default:
+                        print("LOGG", userResponse.code, userResponse.message)
                         self.presentAlert(title: "입력 정보를 다시 확인 해주세요.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):

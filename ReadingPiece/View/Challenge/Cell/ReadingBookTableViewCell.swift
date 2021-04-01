@@ -38,6 +38,7 @@ class ReadingBookTableViewCell: UITableViewCell {
     
     // 책 정보 cell에 입히는 함수
     func configure(bookData: AllReadingBook) {
+        print("IS READING", bookData.reading)
         if bookData.reading == "Y" {
             readingBookStatusView.backgroundColor = .sub2
             isReadingNotifyButton.isHidden = false

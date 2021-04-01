@@ -45,12 +45,12 @@ class BookSettingViewController: UIViewController {
                         self.books = books
                     case 2221:
                         print("LOG - 챌린지 진행 전", userResponse.message)
-//                        self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "메인화면에서 먼저 목표를 추가해주세요.", isCancelActionIncluded: false)
                     case 2222:
                         print("LOG - 챌린지 진행 전", userResponse.message)
-//                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
                     default:
-                        self.presentAlert(title: "유효하지 않은 로그인 정보", isCancelActionIncluded: false)
+                        self.presentAlert(title: "도전중인 책 정보가 없습니다.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
@@ -133,7 +133,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
     func modifiyChallengeBook(id: Int) {
         guard let token = keychain.get(Keys.token) else { return }
-        let req = PatchChallengeBookRequest(token: token, goalbookId: id)
+        let req = PatchChallengeBookRequest(token: token, goalbookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -151,7 +151,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    debugPrint("LOGT", error)
+                    debugPrint("LOG", error)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
@@ -165,18 +165,19 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
                 switch result {
                 case .success(let userResponse):
                     switch userResponse.code {
-                    case 1000:
+                    case 1000, 2201:
                         print("LOG - 책 삭제 성공")
                         self.getAllBooks()
                     case 4000:
                         self.presentAlert(title: "읽고 있는 책은 1권 이상이여야 합니다.", isCancelActionIncluded: false)
                     default:
+                        print(userResponse.message, userResponse.code)
                         self.presentAlert(title: "책 삭제 실패! 로그인 정보를 확인해주세요.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    debugPrint("LOGT", error)
+                    debugPrint("LOG", error)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }

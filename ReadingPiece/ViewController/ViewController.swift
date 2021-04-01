@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     let defaults = UserDefaults.standard
@@ -68,18 +70,8 @@ class ViewController: UIViewController {
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
         timerVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerVC, animated: true)
-
-//        // 읽을 책을 추가했는지 판단
-//        if let goalBookId =  challengeInfo?.readingBook.first?.goalBookId {
-//            // 닉네임 설정도 했는지 판단 (닉네임이 없는 경우 일지 작성이 불가함)
-//            let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-//            timerVC.challengeInfo = self.challengeInfo
-//            self.navigationController?.pushViewController(timerVC, animated: true)
-//        } else {
-//            self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-//        }
     }
-    
+
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
         // 챌린지 현황 정보가 있다면 기존 유저이므로, initializer를 기준으로 목표 추가/수정 여부 구분
         // 신규유저-목표 추가 : 0, 기존유저-목표 변경 : 1
@@ -92,10 +84,6 @@ class ViewController: UIViewController {
             modifyReadingGaolVC.initializer = 0
             self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
         }
-    }
-    
-    func postUserReadingGoal() {
-        
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
@@ -133,6 +121,7 @@ class ViewController: UIViewController {
     
     func initMainView() {
         getChallengeRequest().getChallengeRequest { (challengeData) in
+            print("LOG - 유저 정보 개요", challengeData)
             switch challengeData {
             case nil :
                 self.presentAlert(title: "서버 연결 상태가 원활하지 않습니다.", isCancelActionIncluded: false)
@@ -173,7 +162,8 @@ class ViewController: UIViewController {
             defaults.setValue(goaldId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
-            defaults.setValue(targetTime, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+            // 클라에서는 초단위로 처리하지만, 서버는 분단위로 저장하기 때문 60 곱함
+            defaults.setValue(targetTime * 60, forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
             defaults.setValue(challengeId, forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
             
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
@@ -185,7 +175,7 @@ class ViewController: UIViewController {
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.1
-
+            print("LOGT",challenge.totalJournal, challenge.amount)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = todayTime
@@ -198,7 +188,7 @@ class ViewController: UIViewController {
     }
     
     private func getUserNameByLength(_ name: String?) -> String {
-        print("LOGTT", name)
+        print("LOG - 유저 이름", name)
         var nameString = ""
         if let userName = name {
             if userName.count > 3 {
@@ -222,6 +212,7 @@ class ViewController: UIViewController {
         default: return "일 년"
         }
     }
+    
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
