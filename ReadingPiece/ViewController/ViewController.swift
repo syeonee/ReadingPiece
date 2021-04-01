@@ -56,16 +56,6 @@ class ViewController: UIViewController {
         let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
         timerVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerVC, animated: true)
-
-//        // 읽을 책을 추가했는지 판단
-//        if let goalBookId =  challengeInfo?.readingBook.first?.goalBookId {
-//            // 닉네임 설정도 했는지 판단 (닉네임이 없는 경우 일지 작성이 불가함)
-//            let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-//            timerVC.challengeInfo = self.challengeInfo
-//            self.navigationController?.pushViewController(timerVC, animated: true)
-//        } else {
-//            self.presentAlert(title: "읽을 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-//        }
     }
     
     @IBAction func modifyReadingGoalAction(_ sender: UIButton) {
@@ -80,10 +70,6 @@ class ViewController: UIViewController {
             modifyReadingGaolVC.initializer = 0
             self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
         }
-    }
-    
-    func postUserReadingGoal() {
-        
     }
     
     @IBAction func addReadingBookAction(_ sender: UIButton) {
@@ -121,6 +107,7 @@ class ViewController: UIViewController {
     
     func initMainView() {
         getChallengeRequest().getChallengeRequest { (challengeData) in
+            print("LOG - 유저 정보 개요", challengeData)
             switch challengeData {
             case nil :
                 self.presentAlert(title: "서버 연결 상태가 원활하지 않습니다.", isCancelActionIncluded: false)
@@ -186,7 +173,7 @@ class ViewController: UIViewController {
     }
     
     private func getUserNameByLength(_ name: String?) -> String {
-        print("LOGTT", name)
+        print("LOG - 유저 이름", name)
         var nameString = ""
         if let userName = name {
             if userName.count > 3 {

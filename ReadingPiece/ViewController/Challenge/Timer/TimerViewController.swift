@@ -86,6 +86,7 @@ class TimerViewController: UIViewController {
             let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
             dailyReadingCompletionVC.tabBarController?.hidesBottomBarWhenPushed = true
             dailyReadingCompletionVC.readingTime = self.readingTime
+            dailyReadingCompletionVC.challengeInfo = self.challengeInfo
             self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
         } else {
             let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController

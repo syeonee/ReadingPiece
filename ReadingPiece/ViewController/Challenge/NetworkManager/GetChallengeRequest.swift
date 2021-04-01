@@ -49,7 +49,7 @@ final class GetChallengeRequest: Requestable {
 
 struct getChallengeRequest {
     func getChallengeRequest(completion:@escaping (ChallengerInfo?) -> Void) {
-        let reqUrl = "https://dev.maekuswant.shop/challenge"
+        let reqUrl =  "https://prod.maekuswant.shop/challenge"
         let tokenHeader = HTTPHeader(name: "x-access-token", value: Constants.KEYCHAIN_TOKEN ?? "")
         let typeHeader = HTTPHeader(name: "Content-Type", value: "application/json")
         let header = HTTPHeaders([typeHeader, tokenHeader])

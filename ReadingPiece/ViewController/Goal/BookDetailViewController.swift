@@ -215,7 +215,7 @@ class BookDetailViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 챌린지할 책 추가 완료")
+                        print("LOG - 챌린지할 책 추가 완료", userResponse.code, userResponse.message)
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabController") as! UITabBarController
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)

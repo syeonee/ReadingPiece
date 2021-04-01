@@ -172,6 +172,7 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 
     private func setupUI() {
+        let
         setNavBar()
         totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)

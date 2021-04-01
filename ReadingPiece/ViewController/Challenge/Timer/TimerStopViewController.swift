@@ -107,6 +107,7 @@ class TimerStopViewController: UIViewController {
     @IBAction func writeDiary(_ sender: UIButton) {
         let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
         writeDiaryVC.readingTime = self.readingTime
+        writeDiaryVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(writeDiaryVC, animated: true)
 
         // 닉네임 설정 기능 구현시 주석 해제 후 처리
