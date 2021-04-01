@@ -142,14 +142,16 @@ class DaillyReadingWritenViewController: UIViewController {
     @IBAction func pageSelect(_ sender: UIButton) {
         guard let inputReadingStatusVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingStatusPopupViewController.storyobardId) as? InputReadingStatusPopupViewController else { return }
         inputReadingStatusVC.readingStatusDelegate = self
-        inputReadingStatusVC.modalTransitionStyle = .crossDissolve
+        //inputReadingStatusVC.modalTransitionStyle = .crossDissolve
+        inputReadingStatusVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingStatusVC, animated: true, completion: nil)
     }
     
     @IBAction func percentSelect(_ sender: UIButton) {
         guard let inputReadingPercentVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingPercentPopupViewController.storyobardId) as? InputReadingPercentPopupViewController else { return }
         inputReadingPercentVC.readingStatusDelegate = self
-        inputReadingPercentVC.modalTransitionStyle = .crossDissolve
+        //inputReadingPercentVC.modalTransitionStyle = .crossDissolve
+        inputReadingPercentVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingPercentVC, animated: true, completion: nil)
     }
     
@@ -178,13 +180,14 @@ class DaillyReadingWritenViewController: UIViewController {
         postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         readingPageInputButton.makeSmallRoundedButtnon("00p", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         readingPercentInputButton.makeSmallRoundedButtnon("00%", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
-        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
+        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
         privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
         reviewImagePopButton.isHidden = true
         bookTitleLabel.textColor = .darkgrey
         bookAuthorLabel.textColor = .darkgrey
         commentTextView.textColor = .charcoal
         commentTextView.backgroundColor = .lightgrey1
+        commentTextView.layer.cornerRadius = 8
         commentLengthLabel.textColor = .darkgrey
         
         // 일지 이미지 첨부 기능 부활시 제거
@@ -264,6 +267,8 @@ extension DaillyReadingWritenViewController: UITextViewDelegate {
         } else if commentTextView.text == "" {
             commentTextView.text = "기억에 남는 문구, 소감을 기록하세요!"
             commentTextView.textColor = .middlegrey1
+        } else {
+            commentTextView.textColor = UIColor.black
         }
     }
     
