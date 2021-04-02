@@ -23,6 +23,7 @@ class BookSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "책 관리"
         setupUI()
         getAllBooks()
         view.makeToast("목록을 밀어서 도전할 책을\n변경, 삭제할수 있어요!", duration: 2, position: .center, title: nil, image: nil)
