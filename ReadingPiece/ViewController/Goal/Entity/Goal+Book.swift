@@ -49,6 +49,7 @@ public struct UserBookReview: Codable {
     public var star: Int? // 평점
     public var reviewId: Int?
     public var text: String? // 리뷰 내용
+    public var bookId: Int?
     public var status: String? // 완독유무 : Y or N
 }
 
