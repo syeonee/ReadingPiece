@@ -106,6 +106,10 @@ class DaillyReadingWritenViewController: UIViewController {
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
                                 DaillyDiaryWrittenCompletionViewController else { return }
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
+                    case 2225:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
                     case 2227:
                         let message = userResponse.message
                         print("LOG - message: \(message)")

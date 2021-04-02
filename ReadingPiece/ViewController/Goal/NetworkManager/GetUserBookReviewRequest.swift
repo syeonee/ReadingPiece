@@ -6,12 +6,10 @@ import KeychainSwift
 final class GetUserBookReviewRequest: Requestable {
     typealias ResponseType = UserBookReviewResponse
     private var isbn: String
-    private var bookId: String
     private var token: String
     
-    init(isbn: String, bookId: String, token: String) {
+    init(isbn: String, token: String) {
         self.isbn = isbn
-        self.bookId = bookId
         self.token = token
     }
     
@@ -20,7 +18,8 @@ final class GetUserBookReviewRequest: Requestable {
     }
     
     var endpoint: String {
-        return "book/\(bookId)"
+//        return "book?publishNumber=\(isbn)"
+        return "book"
     }
     
     var method: Network.Method {
@@ -33,7 +32,7 @@ final class GetUserBookReviewRequest: Requestable {
     
     
     var parameters: [String : Any]? {
-        return defaultJSONHeader
+        return ["publishNumber": isbn]
     }
     
     var headers: [String : String]? {
