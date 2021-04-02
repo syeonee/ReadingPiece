@@ -120,7 +120,11 @@ class BookDetailViewController: UIViewController {
                         self.bookId = userResponse.bookId
                         switch userResponse.code {
                         case 1000:
-                            print("LOG 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
+                            print("LOG - 책 정보 DB추가 완료 : ID\(bookId) - \(bookData.title)" )
+                            self.isVaildBook = true
+                            self.getUserRewview(isbn: isbn, bookId: bookId)
+                        case 2110:
+                            print("LOG - 책 정보 DB에 등록된 책, 유저 리뷰내역 조회... 책ID\(bookId) - \(bookData.title)" )
                             self.isVaildBook = true
                             self.getUserRewview(isbn: isbn, bookId: bookId)
                         default:
@@ -145,7 +149,7 @@ class BookDetailViewController: UIViewController {
     func getUserRewview(isbn: String, bookId: String) {
         
         guard let token = keychain.get(Keys.token) else { return }
-        let getReviewReq = GetUserBookReviewRequest(isbn: isbn, bookId: bookId, token: token)
+        let getReviewReq = GetUserBookReviewRequest(isbn: isbn, token: token)
         _ = Network.request(req: getReviewReq) { (result) in
                 switch result {
                 case .success(let userResponse):
@@ -161,7 +165,7 @@ class BookDetailViewController: UIViewController {
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    debugPrint("LOG", error)
+                    debugPrint("LOG", error, "\(getReviewReq.baseUrl)" + "\(getReviewReq.endpoint)")
                     self.presentAlert(title: "리뷰 정보 로딩 실패, 네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
                     self.navigationController?.popViewController(animated: true)
             }
@@ -224,7 +228,7 @@ class BookDetailViewController: UIViewController {
                         vc.modalPresentationStyle = .overFullScreen
                         self.present(vc, animated: true, completion: nil)
                     case 2110:
-                        self.presentAlert(title: "책 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "이미 읽고 있는 책입니다.", isCancelActionIncluded: false)
                     case 2111: // 책 중복 추가
                         self.presentAlert(title: userResponse.message, isCancelActionIncluded: false)
                     case 2112: // 본인 목표치보다 더 많은 책을 추가하려고 하는 경우

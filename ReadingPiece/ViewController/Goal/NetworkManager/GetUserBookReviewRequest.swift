@@ -18,7 +18,8 @@ final class GetUserBookReviewRequest: Requestable {
     }
     
     var endpoint: String {
-        return "book/\(bookId)"
+//        return "book?publishNumber=\(isbn)"
+        return "book"
     }
     
     var method: Network.Method {
@@ -31,7 +32,7 @@ final class GetUserBookReviewRequest: Requestable {
     
     
     var parameters: [String : Any]? {
-        return defaultJSONHeader
+        return ["publishNumber": isbn]
     }
     
     var headers: [String : String]? {
