@@ -62,6 +62,7 @@
                     <constraint firstItem="Qgl-Z2-Te0" firstAttribute="top" secondItem="OI8-Hr-qDt" secondAttribute="top" id="2S0-cK-opj"/>
                     <constraint firstAttribute="bottom" secondItem="MEA-RT-cbW" secondAttribute="bottom" id="2h3-9z-U2f"/>
                     <constraint firstItem="OI8-Hr-qDt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2kU-Sb-yhD"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IyW-Bm-lfF" secondAttribute="trailing" constant="10" id="9rv-kG-jeU"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="F2k-hT-8Us"/>
                     <constraint firstItem="pfT-s0-e8o" firstAttribute="top" secondItem="IyW-Bm-lfF" secondAttribute="bottom" constant="10" id="PGg-ch-XfZ"/>
                     <constraint firstItem="Qgl-Z2-Te0" firstAttribute="leading" secondItem="OI8-Hr-qDt" secondAttribute="trailing" constant="12" id="Pnj-yT-lcl"/>
@@ -69,6 +70,7 @@
                     <constraint firstAttribute="bottom" secondItem="pfT-s0-e8o" secondAttribute="bottom" constant="15" id="Ux0-Ii-w8x"/>
                     <constraint firstItem="pfT-s0-e8o" firstAttribute="leading" secondItem="Qgl-Z2-Te0" secondAttribute="leading" id="W03-T0-LGb"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="beH-Qu-jwM"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Qgl-Z2-Te0" secondAttribute="trailing" constant="10" id="bkg-DG-xLR"/>
                     <constraint firstAttribute="bottom" secondItem="OI8-Hr-qDt" secondAttribute="bottom" constant="15" id="ggk-bj-SEe"/>
                     <constraint firstItem="MEA-RT-cbW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="tbI-nE-neI"/>
                     <constraint firstItem="IyW-Bm-lfF" firstAttribute="leading" secondItem="Qgl-Z2-Te0" secondAttribute="leading" id="zET-xk-rlh"/>
