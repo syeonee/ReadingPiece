@@ -281,7 +281,7 @@ extension ViewController {
                         guard let todayReadingJson = jsonData["getchallenge3Rows"].arrayValue.first else { return }
 
                         let books =  goalBookInfo.compactMap{ self.getBookInfoFromJson(json: $0) }
-                        let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0)}
+                        let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0[0])}// 지금 읽는 책 1권으로 고정이라 0번째 인덱스값만 받도록함. 추후 여러권 보여준다면 수정 필요.
                         let todayReading = self.getChallengeFromJson(json: todayReadingJson)
                         let challengerInfo = ChallengerInfo(readingBook: books, readingGoal: challengeStatusList, todayChallenge: todayReading, isExpired: isExpired)
                         
