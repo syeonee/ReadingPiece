@@ -120,7 +120,7 @@ class ViewController: UIViewController {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
         //flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 50, height: 138)
-        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 20, height: 138)
+        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width, height: 138)
         flowLayout.minimumLineSpacing = 5.0
         flowLayout.minimumInteritemSpacing = 10.0
         radingBooksCollectionView.collectionViewLayout = flowLayout
@@ -197,7 +197,7 @@ class ViewController: UIViewController {
             print("LOGT",challenge.totalJournal as Any, challenge.amount as Any)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
-            daillyReadingTimeLabel.text = "\(todayTime)분"
+            daillyReadingTimeLabel.text = minutesToHoursAndMinutes(todayTime)
             daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)개"
             targetReadingBookCountLabel.text = "\(targetBookAmount)"
             targetTimeLabel.text = "목표 \(targetTime)분"
@@ -222,6 +222,20 @@ class ViewController: UIViewController {
             nameString = "Reader"
         }
         return nameString
+    }
+    
+    private func minutesToHoursAndMinutes (_ stringMinutes : String) -> String {
+        let minutes = Int(stringMinutes) ?? 0
+        var formattedString = "0시간 0분"
+        if minutes > 60 {
+            formattedString =  "\(minutes / 60)시간 \(minutes % 60)분"
+        } else if minutes < 60 {
+            formattedString = "0시간 \(minutes)분"
+        } else {
+            formattedString = "0시간 0분"
+        }
+        
+        return formattedString
     }
     
     private func getDateFromPeriod(period: String) -> String {
