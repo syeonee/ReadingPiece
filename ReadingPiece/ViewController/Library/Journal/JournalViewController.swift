@@ -62,6 +62,19 @@ class JournalViewController: UIViewController {
         self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
     }
     
+    // 분 시간으로 바꾸기
+    func convertToHourMinute(totalString: String) -> String {
+        let total = Int(totalString)
+        let hour = (total ?? 0) / 60
+        let minute = (total ?? 0) % 60
+        if hour == 0 {
+            return "\(minute)분"
+        }else if minute == 0{
+            return "\(hour)시간"
+        }
+        return "\(hour)시간 \(minute)분"
+    }
+    
 }
 
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
@@ -89,7 +102,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateLabel.text = journal.postAt
             
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.editDelegate = self
             return cell
@@ -101,7 +114,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateLabel.text = journal.postAt
             
             cell.readingPercentLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -114,7 +127,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.dateLabel.text = journal.postAt
             
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.editDelegate = self
             return cell

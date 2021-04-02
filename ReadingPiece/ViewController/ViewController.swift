@@ -196,7 +196,7 @@ class ViewController: UIViewController {
             let readBookAmount = challenge.totalReadBook ?? 0
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
-            let cgFloatPercent = CGFloat(percent) * 0.1
+            let cgFloatPercent = CGFloat(percent) * 0.01
             print("LOGT",challenge.totalJournal as Any, challenge.amount as Any)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
