@@ -38,6 +38,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         resultTableView.separatorInset.right = 20
         resultCountLabel.isHidden = true
         resultTableView.isHidden = true
+        resultTableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -141,6 +141,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
                     case 1000:
                         print("LOG - 도전 책 변경 성공")
                         self.getAllBooks()
+                        self.readingBookTableView.reloadData()
                     case 2225, 4000 :
                         self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
                     case 2223:
@@ -168,6 +169,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
                     case 1000, 2201:
                         print("LOG - 책 삭제 성공")
                         self.getAllBooks()
+                        self.readingBookTableView.reloadData()
                     case 4000:
                         self.presentAlert(title: "읽고 있는 책은 1권 이상이여야 합니다.", isCancelActionIncluded: false)
                     default:

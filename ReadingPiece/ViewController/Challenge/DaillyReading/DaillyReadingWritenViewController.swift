@@ -108,15 +108,19 @@ class DaillyReadingWritenViewController: UIViewController {
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
                     case 2227:
                         let message = userResponse.message
+                        print("LOG - message: \(message)")
                         self.presentAlert(title: message, isCancelActionIncluded: false)
                     case 2228:
                         let message = userResponse.message
+                        print("LOG - message: \(message)")
                         self.presentAlert(title: message, isCancelActionIncluded: false)
                     case 3001:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
                         self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
                     default:
                         print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
-                        self.presentAlert(title: "일지 작성 실패 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        self.presentAlert(title: "일지 작성에 실패하였습니다. 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)

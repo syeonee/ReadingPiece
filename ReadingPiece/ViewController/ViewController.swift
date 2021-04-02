@@ -50,10 +50,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
-            self.initMainView()
-        }
+        initMainView()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -15,7 +15,7 @@ final class PostJournalRequest: Requestable {
     }
 
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -31,8 +31,7 @@ final class PostJournalRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["page": journal.time, "goalBookId": journal.goalBookId, "time": journal.time,
-                "text": journal.text, "open": journal.open, "percent": journal.percent ]
+        return ["time" : journal.time, "text" : journal.text, "open" : journal.open, "goalBookId" : journal.goalBookId, "page" : journal.page, "percent" : journal.percent]
     }
     
     var headers: [String : String]? {
