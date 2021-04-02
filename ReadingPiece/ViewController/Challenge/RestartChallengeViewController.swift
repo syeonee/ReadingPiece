@@ -12,7 +12,7 @@ import KeychainSwift
 // : 챌린지를 조기 달성한 경우, 챌린지 기간이 만료된 경우
 
 class RestartChallengeViewController: UIViewController {
-    var challengeName = ""
+    var challengeName: String?
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var popupView: UIView!
@@ -26,17 +26,21 @@ class RestartChallengeViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+    }
+    
     private func setupUI() {
-        view.backgroundColor = .clear
+        //view.backgroundColor = .clear
         view.isOpaque = false
         popupView.layer.cornerRadius = 14
         popupDescLabel.text = """
-                                    \(challengeName)가 끝났어요.
+                                    \(challengeName ?? "진행 중인 챌린지")가 끝났어요.
                                     같은 목표에 다시 도전하거나,
                                     모든 것을 초기화하고 새로 시작할 수 있어요.
                               """
-        retryButton.makeRoundedButtnon("목표 재도전하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
-        restartButton.makeRoundedButtnon("새로 시작하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //retryButton.makeRoundedButtnon("목표 재도전하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+        //restartButton.makeRoundedButtnon("새로 시작하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
     }
     
     
@@ -62,7 +66,8 @@ class RestartChallengeViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         print("LOG - 챌린지 재시작 성공")
-                        self.navigationController?.popToRootViewController(animated: true)
+                        self.dismiss(animated: true, completion: nil)
+                        //self.navigationController?.popToRootViewController(animated: true)
                     case 2263:
                         self.presentAlert(title: "아직 진행 중인 목표가 있습니다! 다시 확인해주세요.", isCancelActionIncluded: false)
                     default:

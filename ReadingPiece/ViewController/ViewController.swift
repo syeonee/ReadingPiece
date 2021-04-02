@@ -8,8 +8,11 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import KeychainSwift
 
 class ViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     let cellId = ReadingBookCollectionViewCell.identifier
     var challengeInfo : ChallengerInfo? { didSet {
@@ -48,7 +51,6 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.showIndicator()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.initMainView()
         }
@@ -128,8 +130,8 @@ class ViewController: UIViewController {
     }
     
     func initMainView() {
-        getChallengeRequest().getChallengeRequest { (challengeData) in
-            print("LOG - 유저 정보 개요", challengeData)
+        self.getChallengeRequest { (challengeData) in
+            print("LOG - 유저 정보 개요", challengeData as Any)
             switch challengeData {
             case nil :
                 self.presentAlert(title: "서버 연결 상태가 원활하지 않습니다.", isCancelActionIncluded: false)
@@ -141,21 +143,31 @@ class ViewController: UIViewController {
                 self.challengeInfo = challengeData
                 // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우
                 if self.challengeInfo?.isExpired == true {
+                    print("LOG 챌린지 정보 조회 결과, 참여 기간이 만료된 경우")
                     self.showRestartChallengePopup()
                 // 목표 재시작이 필요한 경우를 제외한, 일반적인 상황
                 } else if self.challengeInfo?.readingBook.first?.isComplete == 1 {
+                    print("LOG 목표 재시작이 필요한 경우를 제외한 일반적인 상황")
                     self.showRestartChallengePopup()
                 } else {
+                    print("LOG 정상적으로 VC 초기화")
                     self.initVC()
                 }
             }
         }
-        //self.dismissIndicator()
     }
 
     func showRestartChallengePopup() {
+        print("showRestartChallengePopup() called")
         let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
-        bookSettingVC.modalTransitionStyle = .crossDissolve
+        let challenge = challengeInfo?.todayChallenge
+        let targetBookAmount = challenge?.amount ?? 0// 읽기 목표 권수
+        let period = challenge?.period ?? "D"// 읽기 주기
+        let formattedPeriod = getDateFromPeriod(period: period)
+        let challengeName = "\(formattedPeriod)에 \(targetBookAmount)권 챌린지"
+        bookSettingVC.challengeName = challengeName
+        //bookSettingVC.modalTransitionStyle = .crossDissolve
+        bookSettingVC.modalPresentationStyle = .overCurrentContext
         self.present(bookSettingVC, animated: true, completion: nil)
     }
     
@@ -168,7 +180,7 @@ class ViewController: UIViewController {
             let userName = challenge.name ?? "Reader"// 닉네임이 아직 없을 경우 리더로 기본 할당
             let targetTime = challenge.time ?? 0
             let challengeId = challenge.challengeId ?? 0
-            let goaldId = challengingBook.goalId ?? 0
+            let goaldId = challengingBook.goalId
             defaults.setValue(goaldId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
             defaults.setValue(goalBookId, forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
             defaults.setValue(userName, forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
@@ -185,7 +197,7 @@ class ViewController: UIViewController {
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.1
-            print("LOGT",challenge.totalJournal, challenge.amount)
+            print("LOGT",challenge.totalJournal as Any, challenge.amount as Any)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = "\(todayTime)분"
@@ -198,7 +210,7 @@ class ViewController: UIViewController {
     }
     
     private func getUserNameByLength(_ name: String?) -> String {
-        print("LOG - 유저 이름", name)
+        print("LOG - 유저 이름", name as Any)
         var nameString = ""
         if let userName = name {
             if userName.count > 3 {
@@ -239,4 +251,98 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+}
+
+// API 호출 함수
+extension ViewController {
+    func getChallengeRequest(completion:@escaping (ChallengerInfo?) -> Void) {
+        let reqUrl =  "https://prod.maekuswant.shop/challenge"
+        guard let token = keychain.get(Keys.token) else { return }
+        let tokenHeader = HTTPHeader(name: "x-access-token", value: token)
+        let typeHeader = HTTPHeader(name: "Content-Type", value: "application/json")
+        let header = HTTPHeaders([typeHeader, tokenHeader])
+        
+        
+        AF.request(reqUrl, method: .get, headers: header).validate(statusCode: 200..<300).responseJSON { response in
+            switch(response.result) {
+            case .success(_) :
+                if let data = response.data {
+                    guard let jsonData = try? JSON(data: data) else { return }
+                    let isSuccess = jsonData["isSuccess"].boolValue
+                    let responseCode = jsonData["code"].intValue
+                    let message = jsonData["message"].stringValue
+                    let isExpired = jsonData["isExpired"].boolValue
+
+                    if isSuccess == true {
+                        print("LOG - 책, 챌린지, 목표 정보 조회 성공")
+
+                        let goalBookInfo = jsonData["getchallenge1Rows"].arrayValue
+                        let challengeStatus = jsonData["getchallenge2Rows"].arrayValue
+                        guard let todayReadingJson = jsonData["getchallenge3Rows"].arrayValue.first else { return }
+
+                        let books =  goalBookInfo.compactMap{ self.getBookInfoFromJson(json: $0) }
+                        let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0)}
+                        let todayReading = self.getChallengeFromJson(json: todayReadingJson)
+                        let challengerInfo = ChallengerInfo(readingBook: books, readingGoal: challengeStatusList, todayChallenge: todayReading, isExpired: isExpired)
+                        
+                        completion(challengerInfo)
+                    } else {
+                        print("파싱결과 : 도전하고 있는 책 정보 없음", isSuccess, responseCode, message)
+                        completion(nil)
+                    }
+                }
+                break ;
+            case .failure(_):
+                print("LOG - 책, 챌린지, 목표 정보 조회 실패")
+                completion(nil)
+                break;
+            }
+        }
+    }
+
+    private func getBookInfoFromJson(json: JSON) -> ReadingBook {
+        let goalId = json["goalId"].intValue
+        let bookId = json["bookId"].intValue
+        let title = json["title"].stringValue
+        let writer = json["writer"].stringValue
+        let imageUrl = json["imageURL"].stringValue
+        let isbn = json["publishNumber"].stringValue
+        let goalBookId = json["goalBookId"].intValue
+        let isComplete = json["isComplete"].intValue
+
+        let chllengeReadingBook = ReadingBook(goalId: goalId, bookId: bookId, title: title, writer: writer, imageURL: imageUrl, publishNumber: isbn, goalBookId: goalBookId, isComplete: isComplete)
+
+        return chllengeReadingBook
+    }
+
+    private func getReadingGoalFromJson(json: JSON) -> ReadingGoal {
+        let goalBookId = json["goalBookId"].intValue
+        let page = json["page"].intValue
+        let percent = json["percent"].intValue
+        let totalReadingTime = json["sum(time)"].stringValue
+        let isReading = json["isReading"].stringValue
+
+        let readongGoal = ReadingGoal(goalBookId: goalBookId, page: page, percent: percent, totalTime: totalReadingTime, isReading: isReading)
+
+        return readongGoal
+    }
+
+    private func getChallengeFromJson(json: JSON) -> Challenge {
+        let totalJournal = json["sumJournal"].intValue
+        let todayReadingTime = json["todayTime"].string
+        let amount = json["amount"].intValue
+        let time = json["time"].intValue
+        let period = json["period"].stringValue
+        let userId = json["userId"].intValue
+        let totalReadingBook = json["sumAmount"].intValue
+        let name = json["name"].stringValue
+        let expriodAt = json["expriodAt"].stringValue
+        let dDay = json["Dday"].intValue
+        let challengeId = json["challengeId"].intValue
+
+        let challenge = Challenge(totalJournal: totalJournal, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
+                                  totalReadBook: totalReadingBook, name: name, expriodAt: expriodAt, dDay: dDay, challengeId: challengeId)
+
+        return challenge
+    }
 }

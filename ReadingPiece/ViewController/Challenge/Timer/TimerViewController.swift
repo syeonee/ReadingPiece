@@ -41,7 +41,7 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         getUserBookReadingTime()
-        print("LOG - TimerVC", self.challengeInfo)
+        print("LOG - TimerVC", self.challengeInfo as Any)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,13 +75,13 @@ class TimerViewController: UIViewController {
         changeReadingStatus()
         sender.isSelected = !sender.isSelected
         stopwatch.toggle()
-        print("LOG - Timer is Paused", currentTimeLabel.text, readingTime, targetTime)
+        print("LOG - Timer is Paused", currentTimeLabel.text as Any, readingTime, targetTime)
     }
     
     @IBAction func stopTimer(_ sender: UIButton) {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
-        print("LOG - Timer is Stooped", currentTimeLabel.text, readingTime)
+        print("LOG - Timer is Stooped", currentTimeLabel.text as Any, readingTime)
         
         // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
         // 클라 = 초단위 , 서버 = 분단위 이므로 변환해서 비교 필요
@@ -111,17 +111,17 @@ class TimerViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         // 책 제목 화면 표시, 남은 시간 저장해서 추후 일지 작성시 전달 필요
-                        print("LOG - ", userResponse.message, userResponse.result?.first?.sumtime)
+                        print("LOG - ", userResponse.message, userResponse.result?.first?.sumtime as Any)
                         let prevReadingTimeString = userResponse.result?.first?.sumtime ?? "0" // 서버에서 오는 값이 string이라 변환 진행
                         let pervReadingTime = Int(prevReadingTimeString)
                         let totalReadingTime = pervReadingTime ?? 0 + self.readingTime // 클라에서 지금 읽은 시간, 서버에서 받은 오늘 읽었던 시간 합산
                     default:
-                        print("LOG - 오늘 독서시간 정보 없음", userResponse.code, userResponse.result?.first?.sumtime)
+                        print("LOG - 오늘 독서시간 정보 없음", userResponse.code, userResponse.result?.first?.sumtime as Any)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    print("LOG", error)
+                    print("LOG", error as Any)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }

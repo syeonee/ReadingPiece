@@ -33,7 +33,9 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
         switch userReview.first?.contents {
         case nil:
             //let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
-            //reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none")
+            //reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none", actionButtonClosure: {
+            //    print("none")
+            //})
             return 0
         default:
             return userReview.count
