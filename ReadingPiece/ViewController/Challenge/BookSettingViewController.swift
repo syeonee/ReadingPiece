@@ -89,8 +89,8 @@ class BookSettingViewController: UIViewController {
 
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
     func modifiyChallengeBook(id: Int) {
+        print("BEFOR", self.books)
         guard let token = keychain.get(Keys.token) else { return }
-
         let req = PatchChallengeBookRequest(token: token, goalbookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 switch result {
@@ -100,7 +100,7 @@ class BookSettingViewController: UIViewController {
                         print("LOG = 도전 책 수정 완료", userResponse.message, userResponse.code)
                         self.getAllBooks()
                         self.readingBookTableView.reloadData()
-                        self.navigationController?.popViewController(animated: true)
+//                        self.navigationController?.popViewController(animated: true)
                     case 2225, 4000 :
                         self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
                     case 2223:
@@ -115,6 +115,8 @@ class BookSettingViewController: UIViewController {
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
+        print("AFTER", self.books)
+
     }
     
     // 읽고있는 책 삭제
@@ -129,7 +131,7 @@ class BookSettingViewController: UIViewController {
                         print("LOG - 책 삭제 성공")
                         self.getAllBooks()
                         self.readingBookTableView.reloadData()
-                    case 4000:
+                    case 2202:
                         self.presentAlert(title: "읽고 있는 책은 1권 이상이여야 합니다.", isCancelActionIncluded: false)
                     default:
                         print(userResponse.message, userResponse.code)
@@ -176,7 +178,6 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
         // 해당 책을 챌린지 책으로 수정(등록)
         let modifiyAction = UITableViewRowAction(style: .destructive, title: "도전하기") { _, _ in
             let goalBookId = self.books[indexPath.row].goalBookId
-            print("책 수정 완료 - goalBookId : \(goalBookId)")
             self.modifiyChallengeBook(id: goalBookId)
         }
 
@@ -187,7 +188,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
         
         modifiyAction.backgroundColor = .darkGray
         deleteAction.backgroundColor = .disabled2
-        return [deleteAction, modifiyAction]
+        return [deleteAction]
     }
     
 }
