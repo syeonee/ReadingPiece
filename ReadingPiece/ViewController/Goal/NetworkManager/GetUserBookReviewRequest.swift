@@ -6,12 +6,10 @@ import KeychainSwift
 final class GetUserBookReviewRequest: Requestable {
     typealias ResponseType = UserBookReviewResponse
     private var isbn: String
-    private var bookId: String
     private var token: String
     
-    init(isbn: String, bookId: String, token: String) {
+    init(isbn: String, token: String) {
         self.isbn = isbn
-        self.bookId = bookId
         self.token = token
     }
     
