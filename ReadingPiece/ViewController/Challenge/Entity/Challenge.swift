@@ -76,7 +76,7 @@ public struct ReadingContinuity: Codable {
     
     enum CodingKeys: String, CodingKey {
         case goalId
-        case continuanceDay = "COUNT(row_num)"
+        case continuanceDay = "countDay"
         case createAt
     }
 }
