@@ -106,6 +106,12 @@ class DaillyReadingWritenViewController: UIViewController {
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
                                 DaillyDiaryWrittenCompletionViewController else { return }
                         self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
+                    case 2227:
+                        let message = userResponse.message
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
+                    case 2228:
+                        let message = userResponse.message
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
                     case 3001:
                         self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
                     default:
