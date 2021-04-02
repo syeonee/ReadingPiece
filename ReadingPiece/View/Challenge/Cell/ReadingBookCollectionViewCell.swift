@@ -18,6 +18,10 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var radingTimeLabel: UILabel!
     
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var pageBackgroundView: UIView!
+    @IBOutlet weak var percentBackgroundView: UIView!
+    @IBOutlet weak var timeBackgroundView: UIView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -62,6 +66,10 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
         bgView.layer.borderWidth = 0.5
         bgView.layer.cornerRadius = 10
         bgView.layer.borderColor = UIColor.middlegrey2.cgColor
+        bookThumbnail.layer.cornerRadius = 4
+        pageBackgroundView.layer.cornerRadius = 5
+        percentBackgroundView.layer.cornerRadius = 5
+        timeBackgroundView.layer.cornerRadius = 5
     }
     
 }

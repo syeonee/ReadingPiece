@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             let targetBookAmount = challenge.amount ?? 0// 읽기 목표 권수
             let period = challenge.period ?? "D"// 읽기 주기
             let formattedPeriod = getDateFromPeriod(period: period)
-            userReadingGoalLabel.text = "\(getUserNameByLength(newName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
+            userReadingGoalLabel.text = "\(getUserNameByLength(newName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중!"
         }
     }
 
@@ -94,7 +94,9 @@ class ViewController: UIViewController {
     private func setupUI() {
         setupCollectionView()
         makeDaillyReadingViewShadow()
+        userReadingGoalLabel.font = .NotoSans(.medium, size: 24)
     }
+    
     
     func makeDaillyReadingViewShadow() {
         dailyReadingView.layer.shadowRadius = 5
@@ -113,7 +115,8 @@ class ViewController: UIViewController {
     func setupFlowLayout() {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 50, height: 138)
+        //flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 50, height: 138)
+        flowLayout.itemSize = CGSize(width: self.radingBooksCollectionView.layer.bounds.width - 20, height: 138)
         flowLayout.minimumLineSpacing = 5.0
         flowLayout.minimumInteritemSpacing = 10.0
         radingBooksCollectionView.collectionViewLayout = flowLayout
@@ -178,8 +181,8 @@ class ViewController: UIViewController {
             print("LOGT",challenge.totalJournal, challenge.amount)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
-            daillyReadingTimeLabel.text = todayTime
-            daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)"
+            daillyReadingTimeLabel.text = "\(todayTime)분"
+            daillyReadingDiaryCountLabel.text = "\(totalReadingDiary)개"
             targetReadingBookCountLabel.text = "\(targetBookAmount)"
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "

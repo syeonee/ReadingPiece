@@ -133,7 +133,11 @@ class TimerViewController: UIViewController {
         timerBackgroundView.layer.borderColor = UIColor.sub2.cgColor
         timerBackgroundView.makeCircle()
         currentTimeLabel.textColor = .charcoal
+        
+        let book = self.challengeInfo?.readingBook.first?.title
+        bookTitleLabel.text = book
         bookTitleLabel.textColor = .black
+        
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")

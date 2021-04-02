@@ -203,6 +203,7 @@ class DaillyReadingWritenViewController: UIViewController {
         guard let urlString = challengeInfo?.readingBook.first?.imageURL else { return }
         let imgUrl = URL(string: urlString)
         bookThumbnailImage.kf.setImage(with: imgUrl)
+        bookThumbnailImage.layer.cornerRadius = 4
     }
     
     func getMinutesTextByTime(_ time: Int) -> String {

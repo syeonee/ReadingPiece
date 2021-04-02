@@ -46,7 +46,7 @@ class DailyGoalCompletionViewController: UIViewController {
     
     private func setupUI() {
         setNavBar()
-        WriteDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //WriteDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
 
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
