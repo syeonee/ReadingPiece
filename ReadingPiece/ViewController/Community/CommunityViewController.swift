@@ -110,7 +110,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let imageURL = feed.imageURL{
             let url = URL(string: imageURL)
-            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookImage"), options: nil, completionHandler: nil)
+            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookCoverImage"), options: nil, completionHandler: nil)
         }
         
         if feed.text.utf8.count <= length {
