@@ -47,7 +47,7 @@ class ReadingBookTableViewCell: UITableViewCell {
         titleLabel.text = bookData.title
         authorLabel.text = bookData.writer
         guard let imgUrl = URL(string: bookData.imageURL) else { return }
-        bookImageView.kf.setImage(with: imgUrl )
+        bookImageView.kf.setImage(with: imgUrl,placeholder: UIImage(named: "defaultBookImage"),completionHandler: nil)
     }
     
 }
