@@ -242,10 +242,7 @@ extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
 extension JournalViewController {
     
     func buttonAction () {
-        print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
-        
-        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        self.navigationController?.pushViewController(timerVC, animated: true)
+        self.tabBarController?.selectedIndex = 0
     }
 }
 
