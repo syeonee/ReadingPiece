@@ -35,15 +35,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var dailyReadingView: UIView!
     @IBOutlet weak var radingBooksCollectionView: UICollectionView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        spinner.backgroundColor = .white
+        spinner.startAnimating()
         NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveNameChangeNotification(_:)), name: DidReceiveNameChangeNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.showIndicator()
+        //self.showIndicator()
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
             self.initMainView()
         }
@@ -128,9 +133,11 @@ class ViewController: UIViewController {
             switch challengeData {
             case nil :
                 self.presentAlert(title: "서버 연결 상태가 원활하지 않습니다.", isCancelActionIncluded: false)
+                self.spinner.stopAnimating()
             // 챌린지 진행 중, 챌린지 조기 달성, 챌린지 기간 만료에 따른 화면 처리 먼저 진행
             default :
                 print("LOG 챌린지 목표 정보 조회 성공")
+                self.spinner.stopAnimating()
                 self.challengeInfo = challengeData
                 // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우
                 if self.challengeInfo?.isExpired == true {
@@ -143,7 +150,7 @@ class ViewController: UIViewController {
                 }
             }
         }
-        self.dismissIndicator()
+        //self.dismissIndicator()
     }
 
     func showRestartChallengePopup() {
