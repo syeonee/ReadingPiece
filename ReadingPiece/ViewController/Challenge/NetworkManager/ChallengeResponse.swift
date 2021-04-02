@@ -54,7 +54,7 @@ public struct AllReadingBook: Codable {
     public let imageURL: String // 책 썸네일
     public let writer: String // 저자
     public let goalBookId: Int
-    public let reading: String // 현재 도전중 여부
+    public let reading: Int // 현재 도전중 여부
 }
 
 public struct DeleteChallengeResponse: Codable {

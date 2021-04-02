@@ -39,7 +39,7 @@ class ReadingBookTableViewCell: UITableViewCell {
     // 책 정보 cell에 입히는 함수
     func configure(bookData: AllReadingBook) {
         print("IS READING", bookData.reading)
-        if bookData.reading == "Y" {
+        if bookData.reading == 1 {
             readingBookStatusView.backgroundColor = .sub2
             isReadingNotifyButton.isHidden = false
         }
@@ -47,7 +47,7 @@ class ReadingBookTableViewCell: UITableViewCell {
         titleLabel.text = bookData.title
         authorLabel.text = bookData.writer
         guard let imgUrl = URL(string: bookData.imageURL) else { return }
-        bookImageView.kf.setImage(with: imgUrl )
+        bookImageView.kf.setImage(with: imgUrl,placeholder: UIImage(named: "defaultBookImage"),completionHandler: nil)
     }
     
 }
