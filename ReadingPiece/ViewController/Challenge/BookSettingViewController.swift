@@ -40,7 +40,7 @@ class BookSettingViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 책 정보 조회 성공", userResponse.getbookListRows)
+                        print("LOG - 책 정보 조회 성공", userResponse.getbookListRows as Any)
                         guard let books = userResponse.getbookListRows else { return }
                         self.books = books
                     case 2221:
@@ -55,7 +55,7 @@ class BookSettingViewController: UIViewController {
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
-                    debugPrint("LOG -", error)
+                    debugPrint("LOG -", error as Any)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
