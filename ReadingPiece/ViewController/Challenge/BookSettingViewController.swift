@@ -132,6 +132,9 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
     
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
     func modifiyChallengeBook(id: Int) {
+        print("LOG 도전 변경 전", self.books)
+
+        
         guard let token = keychain.get(Keys.token) else { return }
         let req = PatchChallengeBookRequest(token: token, goalbookId: goalBookId)
         _ = Network.request(req: req) { (result) in
@@ -139,9 +142,9 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 도전 책 변경 성공")
                         self.getAllBooks()
                         self.readingBookTableView.reloadData()
+//                        self.navigationController?.popViewController(animated: true)
                     case 2225, 4000 :
                         self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
                     case 2223:
