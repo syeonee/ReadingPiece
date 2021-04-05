@@ -86,9 +86,13 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.timeLabel.text = "\(feed.time)분"
         
         if feed.profilePic != "사진 없음"{
-            let decodedData = NSData(base64Encoded: feed.profilePic, options: [])
+            let decodedData = NSData(base64Encoded: feed.profilePic ?? "", options: [])
             if let data = decodedData {
-                cell.profileImageView.image = UIImage(data: data as Data)
+                if data.count < 2 {
+                    cell.profileImageView.image = UIImage(named: "defaultProfile")
+                } else {
+                    cell.profileImageView.image = UIImage(data: data as Data)
+                }
             }else{
                 cell.profileImageView.image = UIImage(named: "defaultProfile")
             }

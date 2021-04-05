@@ -7,6 +7,8 @@
 
 import UIKit
 import KeychainSwift
+import Alamofire
+import SwiftyJSON
 
 // 메인 화면 하단 -> [책 관리] 버튼 터치시 나오는 VC
 class BookSettingViewController: UIViewController {
@@ -86,36 +88,6 @@ class BookSettingViewController: UIViewController {
         searchBookVC.initializer = 2
         self.navigationController?.pushViewController(searchBookVC, animated: true)
     }
-
-    // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
-    func modifiyChallengeBook(id: Int) {
-        guard let token = keychain.get(Keys.token) else { return }
-
-        let req = PatchChallengeBookRequest(token: token, goalbookId: goalBookId)
-        _ = Network.request(req: req) { (result) in
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG = 도전 책 수정 완료", userResponse.message, userResponse.code)
-                        self.getAllBooks()
-                        self.readingBookTableView.reloadData()
-                        self.navigationController?.popViewController(animated: true)
-                    case 2225, 4000 :
-                        self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
-                    case 2223:
-                        self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
-                    default:
-                        self.presentAlert(title: "유효하지 않은 로그인 정보", isCancelActionIncluded: false)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    debugPrint("LOG", error)
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-            }
-        }
-    }
     
     // 읽고있는 책 삭제
     func deleteChallengeBook(id: Int) {
@@ -129,7 +101,7 @@ class BookSettingViewController: UIViewController {
                         print("LOG - 책 삭제 성공")
                         self.getAllBooks()
                         self.readingBookTableView.reloadData()
-                    case 4000:
+                    case 2202:
                         self.presentAlert(title: "읽고 있는 책은 1권 이상이여야 합니다.", isCancelActionIncluded: false)
                     default:
                         print(userResponse.message, userResponse.code)
@@ -176,8 +148,8 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
         // 해당 책을 챌린지 책으로 수정(등록)
         let modifiyAction = UITableViewRowAction(style: .destructive, title: "도전하기") { _, _ in
             let goalBookId = self.books[indexPath.row].goalBookId
-            print("책 수정 완료 - goalBookId : \(goalBookId)")
-            self.modifiyChallengeBook(id: goalBookId)
+            self.patchChallengeBookRequest(goalBookId: goalBookId)
+//            self.modifiyChallengeBook(id: goalBookId)
         }
 
         // 해당 책을 읽는 책 리스트에서 삭제
@@ -187,7 +159,56 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
         
         modifiyAction.backgroundColor = .darkGray
         deleteAction.backgroundColor = .disabled2
-        return [deleteAction, modifiyAction]
+        return [modifiyAction, deleteAction]
     }
     
+}
+
+// API 호출 함수
+extension BookSettingViewController {
+    // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
+    func patchChallengeBookRequest(goalBookId: Int) {
+        let reqUrl =  "https://prod.maekuswant.shop/challenge/goal/book/\(goalBookId)"
+        guard let token = keychain.get(Keys.token) else { return }
+        let tokenHeader = HTTPHeader(name: "x-access-token", value: token)
+        let typeHeader = HTTPHeader(name: "Content-Type", value: "application/json")
+        let header = HTTPHeaders([typeHeader, tokenHeader])
+        
+        
+        AF.request(reqUrl, method: .patch, headers: header).validate(statusCode: 200..<300).responseJSON { response in
+            switch(response.result) {
+            case .success(_) :
+                if let data = response.data {
+                    guard let jsonData = try? JSON(data: data) else { return }
+                    let isSuccess = jsonData["isSuccess"].boolValue
+                    let responseCode = jsonData["code"].intValue
+                    let message = jsonData["message"].stringValue
+
+                    if isSuccess == true {
+                        switch responseCode {
+                        case 1000:
+                            print("LOG - 도전할 책 변경 성공")
+                            self.getAllBooks()
+                            self.readingBookTableView.reloadData()
+                        case 2225, 2100 :
+                            self.presentAlert(title: "이미 읽고있는 책이네요! 다른 책을 골라주세요.", isCancelActionIncluded: false)
+                        case 2223:
+                            self.presentAlert(title: "도전할 책을 먼저 추가해주세요.", isCancelActionIncluded: false)
+                        case 4000, 4020:
+                            self.presentAlert(title: "로그인 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        default:
+                            self.presentAlert(title: "네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                        }
+                    } else {
+                        self.presentAlert(title: "네트워크 연결 상태를 확인해주세요.", isCancelActionIncluded: false)
+                    }
+                }
+                break ;
+            case .failure(_):
+                self.presentAlert(title: "서버 응답없음", isCancelActionIncluded: false)
+                print("LOG - 서버 응답없음", response.request, response.response)
+                break;
+            }
+        }
+    }
 }
