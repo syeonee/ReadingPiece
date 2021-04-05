@@ -89,7 +89,6 @@ class BookSettingViewController: UIViewController {
 
     // 읽고있는 책 중에 특정 책 하나를 도전중인 책으로 변경
     func modifiyChallengeBook(id: Int) {
-        print("BEFOR", self.books)
         guard let token = keychain.get(Keys.token) else { return }
         let req = PatchChallengeBookRequest(token: token, goalbookId: goalBookId)
         _ = Network.request(req: req) { (result) in
@@ -115,8 +114,6 @@ class BookSettingViewController: UIViewController {
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
-        print("AFTER", self.books)
-
     }
     
     // 읽고있는 책 삭제
@@ -188,7 +185,7 @@ extension BookSettingViewController: UITableViewDelegate, UITableViewDataSource 
         
         modifiyAction.backgroundColor = .darkGray
         deleteAction.backgroundColor = .disabled2
-        return [deleteAction]
+        return [modifiyAction, deleteAction]
     }
     
 }

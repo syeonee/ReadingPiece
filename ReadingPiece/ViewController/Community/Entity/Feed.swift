@@ -11,14 +11,14 @@ public struct Feed: Codable {
     public let imageURL: String?
     public let writer: String
     public let bookId: Int
-    public let percent: String
-    public let page: String
+    public let percent: Int
+    public let page: Int
     public let time: Int
     public let status: String
     public let postAt: String
     public let text: String
     public let journalId: Int
     public let userId: Int
-    public let profilePic: String
+    public let profilePic: String?
     public let name: String?
 }
