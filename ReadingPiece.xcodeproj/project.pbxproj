@@ -31,6 +31,7 @@
 		009250062602587100A930DD /* RedFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250042602587000A930DD /* RedFirecracker.sks */; };
 		009250092602588B00A930DD /* FireCrackerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250082602588B00A930DD /* FireCrackerScene.swift */; };
 		0092500D2602605400A930DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092500C2602605400A930DD /* NetworkManager.swift */; };
+		00B8AFFF261B680300EF870D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B8AFFE261B680300EF870D /* GoogleService-Info.plist */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */; };
 		00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121F4261090DE00186F40 /* PostJournalRequest.swift */; };
@@ -58,7 +59,6 @@
 		00FF3775260A678200529570 /* PostReadingBookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3774260A678200529570 /* PostReadingBookRequest.swift */; };
 		00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */; };
 		00FF377D260A685700529570 /* PostReportReviewRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF377C260A685700529570 /* PostReportReviewRequest.swift */; };
-		00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00FF3781260A730100529570 /* GoogleService-Info.plist */; };
 		00FF379C260C613200529570 /* RestartChallengeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF379B260C613200529570 /* RestartChallengeViewController.swift */; };
 		00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF379E260C615F00529570 /* BookSettingViewController.swift */; };
 		00FF37A5260C688B00529570 /* ReadingBookTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00FF37A3260C688B00529570 /* ReadingBookTableViewCell.swift */; };
@@ -232,6 +232,7 @@
 		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
 		009250082602588B00A930DD /* FireCrackerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCrackerScene.swift; sourceTree = "<group>"; };
 		0092500C2602605400A930DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		00B8AFFE261B680300EF870D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserCakeTypeRequest.swift; sourceTree = "<group>"; };
 		00C121F4261090DE00186F40 /* PostJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJournalRequest.swift; sourceTree = "<group>"; };
@@ -259,7 +260,6 @@
 		00FF3774260A678200529570 /* PostReadingBookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReadingBookRequest.swift; sourceTree = "<group>"; };
 		00FF3778260A67EC00529570 /* GetUserBookReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserBookReviewRequest.swift; sourceTree = "<group>"; };
 		00FF377C260A685700529570 /* PostReportReviewRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostReportReviewRequest.swift; sourceTree = "<group>"; };
-		00FF3781260A730100529570 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00FF379B260C613200529570 /* RestartChallengeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartChallengeViewController.swift; sourceTree = "<group>"; };
 		00FF379E260C615F00529570 /* BookSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookSettingViewController.swift; sourceTree = "<group>"; };
 		00FF37A3260C688B00529570 /* ReadingBookTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingBookTableViewCell.swift; sourceTree = "<group>"; };
@@ -842,6 +842,7 @@
 		D6288D1B25E2B5DB00D73A61 = {
 			isa = PBXGroup;
 			children = (
+				00B8AFFE261B680300EF870D /* GoogleService-Info.plist */,
 				D6288D2625E2B5DB00D73A61 /* ReadingPiece */,
 				D6288D2525E2B5DB00D73A61 /* Products */,
 				7D25273E0465C2D67DFF944A /* Pods */,
@@ -861,7 +862,6 @@
 		D6288D2625E2B5DB00D73A61 /* ReadingPiece */ = {
 			isa = PBXGroup;
 			children = (
-				00FF3781260A730100529570 /* GoogleService-Info.plist */,
 				59E190492608803C00D07656 /* ReadingPiece.entitlements */,
 				59E1904B2608848500D07656 /* Configuration */,
 				D6A255FA25E4256000731B10 /* ViewController */,
@@ -1108,6 +1108,7 @@
 			files = (
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */,
+				00B8AFFF261B680300EF870D /* GoogleService-Info.plist in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
 				00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */,
 				5913B23B25EF2E4D002AAA8C /* NotoSansCJKkr-DemiLight.otf in Resources */,
@@ -1119,7 +1120,6 @@
 				00C3418825FD1873009B2A34 /* Firecracker.sks in Resources */,
 				5913B23825EF2E4D002AAA8C /* NotoSansCJKkr-Regular.otf in Resources */,
 				599D3AD125F26EC00085F134 /* FullReviewCell.xib in Resources */,
-				00FF3782260A730100529570 /* GoogleService-Info.plist in Resources */,
 				59F4F2C025F902B200E82417 /* CreateReviewViewController.xib in Resources */,
 				00C55F5826032AF1002848AB /* ReviewImageCell.xib in Resources */,
 				599D3A9F25F08BFF0085F134 /* FocusView.xib in Resources */,
