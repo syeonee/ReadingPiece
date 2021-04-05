@@ -131,8 +131,10 @@ class ViewController: UIViewController {
             print("LOG - 유저 정보 개요", challengeData as Any)
             switch challengeData {
             case nil :
-                self.presentAlert(title: "서버 연결 상태가 원활하지 않습니다.", isCancelActionIncluded: false)
+                self.presentAlert(title: "목표나 책정보를 추가해주세요.", isCancelActionIncluded: false)
+                print("LOG - 유저 챌린지 정보 조회 실패")
                 self.spinner.stopAnimating()
+                self.challengeInfo = challengeData
             // 챌린지 진행 중, 챌린지 조기 달성, 챌린지 기간 만료에 따른 화면 처리 먼저 진행
             default :
                 print("LOG 챌린지 목표 정보 조회 성공")
@@ -285,18 +287,29 @@ extension ViewController {
                     let isExpired = jsonData["isExpired"].boolValue
 
                     if isSuccess == true {
-                        print("LOG - 책, 챌린지, 목표 정보 조회 성공")
+                        switch responseCode {
+                        case 1000:
+                            print("LOG - 책, 챌린지, 목표 정보 조회 성공")
 
-                        let goalBookInfo = jsonData["getchallenge1Rows"].arrayValue
-                        let challengeStatus = jsonData["getchallenge2Rows"].arrayValue
-                        guard let todayReadingJson = jsonData["getchallenge3Rows"].arrayValue.first else { return }
+                            let goalBookInfo = jsonData["getchallenge1Rows"].arrayValue
+                            let challengeStatus = jsonData["getchallenge2Rows"].arrayValue
+                            guard let todayReadingJson = jsonData["getchallenge3Rows"].arrayValue.first else { return }
 
-                        let books =  goalBookInfo.compactMap{ self.getBookInfoFromJson(json: $0) }
-                        let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0[0])}// 지금 읽는 책 1권으로 고정이라 0번째 인덱스값만 받도록함. 추후 여러권 보여준다면 수정 필요.
-                        let todayReading = self.getChallengeFromJson(json: todayReadingJson)
-                        let challengerInfo = ChallengerInfo(readingBook: books, readingGoal: challengeStatusList, todayChallenge: todayReading, isExpired: isExpired)
-                        
-                        completion(challengerInfo)
+                            let books =  goalBookInfo.compactMap{ self.getBookInfoFromJson(json: $0) }
+                            let challengeStatusList = challengeStatus.compactMap{ self.getReadingGoalFromJson(json: $0[0])}// 지금 읽는 책 1권으로 고정이라 0번째 인덱스값만 받도록함. 추후 여러권 보여준다면 수정 필요.
+                            let todayReading = self.getChallengeFromJson(json: todayReadingJson)
+                            let challengerInfo = ChallengerInfo(readingBook: books, readingGoal: challengeStatusList, todayChallenge: todayReading, isExpired: isExpired)
+                            completion(challengerInfo)
+                        case 2223:
+                            self.presentAlert(title: "읽을 책을 먼저 설정해주세요.", isCancelActionIncluded: false)
+                        case 2224:
+                            self.presentAlert(title: "독서 목표를 먼저 설정해주세요.", isCancelActionIncluded: false)
+                        case 4020:
+                            self.presentAlert(title: "로그인 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        default:
+                            print("파싱결과 : 도전하고 있는 책 정보 없음", isSuccess, responseCode, message)
+                            completion(nil)
+                        }
                     } else {
                         print("파싱결과 : 도전하고 있는 책 정보 없음", isSuccess, responseCode, message)
                         completion(nil)
