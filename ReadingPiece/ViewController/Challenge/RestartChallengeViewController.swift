@@ -52,7 +52,10 @@ class RestartChallengeViewController: UIViewController {
     // 목표/책 추가 씬으로 이동 (처음 로그인하는 유저와 동일)
     @IBAction func restartChallengeAction(_ sender: UIButton) {
         let termVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
-        self.navigationController?.pushViewController(termVC, animated: true)
+        guard let pvc = self.presentingViewController else { return }
+        self.dismiss(animated: true) {
+            pvc.present(termVC, animated: true, completion: nil)
+        }
     }
     
     // 읽고있는 책과 목표 정보 그대로 재시작
