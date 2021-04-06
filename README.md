@@ -25,6 +25,9 @@
 - iOS: 김시연(Lucy), 정지현(Haile), 한영신(Hana)
 - Server: 이채민(Nami), 한인주(Heather)
 
+## Contact
+- Wants0Server@gmail.com
+
 ## License
 
 MIT © [ReadingPiece]()
