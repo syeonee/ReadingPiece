@@ -1,4 +1,7 @@
 # ReadingPiece
+
+<a href="https://apps.apple.com/us/app/%EB%A6%AC%EB%94%A9%ED%94%BC%EC%8A%A4/id1561380285?itsct=apps_box&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1617667200&h=0f093bf7a3190b584434352a2f9980f1" alt="Download on the App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a> 
+
 > 메이커스 WANT팀의 iOS 프로젝트입니다. 
 + 리딩 피스는 꾸준한 목표 달성과 보상으로 독서 습관을 길러줍니다. 
 + 매일 조금씩 책을 읽고 기록을 남겨보세요. 목표에 가까워질수록 맛있는 케이크가 채워집니다. 
