@@ -30,7 +30,8 @@ class TimerViewController: UIViewController {
         // 매초마다 타이머 시간을 저장하고, 화면 갱신
         self.defaults.setValue(Int(timeInterval), forKey: Constants.USERDEFAULT_KEY_CURRENT_TIMER_TIME)
         self.readingTime += 1
-        self.currentTimeLabel.text = self.timeString(from: timeInterval)
+        print("LOG", self.readingTime)
+        self.currentTimeLabel.text = self.timeString(timeInterval: timeInterval)
     })
     
     deinit {
@@ -49,13 +50,15 @@ class TimerViewController: UIViewController {
         stopwatch.toggle()
         // 다른 화면에서 복귀해도 시간정보가 남아있어야 하므로, 시간 재할당
         stopwatch.timerSavedTime = Double(readingTime)
+        
+        print("LOG - 뷰 생성", readingTime)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "시간 기록"
+        print("LOG - 뷰 소멸", readingTime)
     }
-
     
     @objc func skipTimeRecoding(sender: UIBarButtonItem) {
         // 목표시간 미달 안내 씬으로 이동
@@ -172,7 +175,7 @@ class TimerViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
-    func timeString(from timeInterval: TimeInterval) -> String {
+    func timeString(timeInterval: TimeInterval) -> String {
         // 추후 재사용을 위해 타이머 시간은 초 단위로 유저디폴트에 저장
         let seconds = Int(timeInterval.truncatingRemainder(dividingBy: 60))
         let minutes = Int(timeInterval.truncatingRemainder(dividingBy: 60 * 60) / 60)
