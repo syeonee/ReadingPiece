@@ -66,10 +66,13 @@ class JoinViewController: UIViewController {
         nicknameTextField.textColor = .black
         emailTextField.font = .NotoSans(.regular, size: 14)
         emailTextField.textColor = .black
+        emailTextField.keyboardType = UIKeyboardType.asciiCapable
         passwordTextField.font = .NotoSans(.regular, size: 14)
         passwordTextField.textColor = .black
+        passwordTextField.keyboardType = UIKeyboardType.asciiCapable
         pwConfirmTextField.font = .NotoSans(.regular, size: 14)
         pwConfirmTextField.textColor = .black
+        pwConfirmTextField.keyboardType = UIKeyboardType.asciiCapable
         nicknameVerifyLabel.font = .NotoSans(.regular, size: 12)
         nicknameVerifyLabel.textColor = .red
         nicknameVerifyLabel.isHidden = true
