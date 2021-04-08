@@ -26,20 +26,31 @@
                     </attributedString>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JAl-RA-Ke7">
+                    <rect key="frame" x="14" y="47" width="46.5" height="1"/>
+                    <color key="backgroundColor" red="1" green="0.42352941176470588" blue="0.37254901960784315" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="nov-XP-b4S"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="0dC-sr-U1K"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="0dC-sr-U1K" firstAttribute="bottom" secondItem="OEq-Yz-LSh" secondAttribute="bottom" id="14Z-Zg-qKE"/>
                 <constraint firstItem="OEq-Yz-LSh" firstAttribute="centerX" secondItem="0dC-sr-U1K" secondAttribute="centerX" id="OTM-r1-PAJ"/>
+                <constraint firstItem="JAl-RA-Ke7" firstAttribute="leading" secondItem="OEq-Yz-LSh" secondAttribute="leading" id="Q8E-3H-eKI"/>
+                <constraint firstItem="JAl-RA-Ke7" firstAttribute="top" secondItem="OEq-Yz-LSh" secondAttribute="bottom" constant="-3" id="rO9-WK-QQM"/>
+                <constraint firstItem="JAl-RA-Ke7" firstAttribute="trailing" secondItem="OEq-Yz-LSh" secondAttribute="trailing" id="y8d-WA-9Ha"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="menuLabel" destination="OEq-Yz-LSh" id="uwB-HM-EFs"/>
+                <outlet property="underBarView" destination="JAl-RA-Ke7" id="wvu-fv-Shl"/>
             </connections>
-            <point key="canvasLocation" x="-318.11594202898556" y="-98.4375"/>
+            <point key="canvasLocation" x="-318.84057971014494" y="-98.4375"/>
         </view>
     </objects>
     <resources>
