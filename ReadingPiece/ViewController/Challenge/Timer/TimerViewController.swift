@@ -42,7 +42,9 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         getUserBookReadingTime()
+        print("SceneDelegate Time", SceneDelegate().timerTime)
         print("LOG - TimerVC", self.challengeInfo as Any)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,7 +197,6 @@ class TimerViewController: UIViewController {
             isReading = true
         }
     }
-    
 }
 
 extension UIView {

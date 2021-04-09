@@ -39,7 +39,7 @@ class ChallengeTableViewCell: UITableViewCell {
         let readingTimeString = initNormalAndBoldLabel(boldText: readingTime, normalText: "분")
         let totalJournalString = initNormalAndBoldLabel(boldText: "\(writtenJournal)", normalText: "개")
         
-        userNameLabel.text = userName
+        userNameLabel.text = "\(userName)님, 정말 부지런하시네요!"
         challengeTitleButton.setTitle("\(readingContinuanceDay)일 연속 독서", for: .normal)
         daillyReadingStatusLabel.attributedText = percentString
         daillyReadingTimeLabel.attributedText = readingTimeString

@@ -12,6 +12,7 @@ import AuthenticationServices
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var timerTime = 0
     var window: UIWindow?
     
 
@@ -78,11 +79,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
+        print("will back", timerTime += 1)
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        print("will front", timerTime)
+
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
