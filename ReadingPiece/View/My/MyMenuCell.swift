@@ -11,24 +11,17 @@ import PagingKit
 class MyMenuCell: PagingMenuViewCell {
     
     @IBOutlet weak var menuLabel: UILabel!
+    @IBOutlet weak var underBarView: UIView!
+    
     
     override public var isSelected: Bool {
         didSet {
             if isSelected {
                 menuLabel.textColor = .melon
-                if let textString = menuLabel.text {
-                    let attributedString = NSMutableAttributedString(string: textString)
-                    attributedString.addAttribute(NSAttributedString.Key.underlineStyle,
-                                                  value: NSUnderlineStyle.single.rawValue,
-                                                  range: NSRange(location: 0, length: attributedString.length))
-                    menuLabel.attributedText = attributedString
-                }
+                underBarView.isHidden = false
             } else {
                 menuLabel.textColor = .darkgrey
-                if let textString = menuLabel.text {
-                    menuLabel.attributedText = nil
-                    menuLabel.text = textString
-                }
+                underBarView.isHidden = true
             }
         }
     }
