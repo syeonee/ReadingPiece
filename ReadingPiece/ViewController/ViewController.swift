@@ -157,17 +157,17 @@ class ViewController: UIViewController {
     }
 
     func showRestartChallengePopup() {
-        print("showRestartChallengePopup() called")
-        let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
+        print("showRestartChallengePopup() is called")
+        let restartChallnegeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "restartChallengeVC") as! RestartChallengeViewController
         let challenge = challengeInfo?.todayChallenge
         let targetBookAmount = challenge?.amount ?? 0// 읽기 목표 권수
         let period = challenge?.period ?? "D"// 읽기 주기
         let formattedPeriod = getDateFromPeriod(period: period)
         let challengeName = "\(formattedPeriod)에 \(targetBookAmount)권 챌린지"
-        bookSettingVC.challengeName = challengeName
-        //bookSettingVC.modalTransitionStyle = .crossDissolve
-        bookSettingVC.modalPresentationStyle = .overCurrentContext
-        self.present(bookSettingVC, animated: true, completion: nil)
+        restartChallnegeVC.delegate = self
+        restartChallnegeVC.challengeName = challengeName
+        restartChallnegeVC.modalPresentationStyle = .overCurrentContext
+        self.present(restartChallnegeVC, animated: true, completion: nil)
     }
     
     // 목표 설정 화면 진입 전에, 처음 추가한 목표인지 or 기존 목표 수정인지 여부를 판단하고 적용
@@ -264,6 +264,15 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
+}
+
+// 챌린지 재시작 팝업 종료 이후, 목표설정 화면으로 이동하기 위한 프로토콜
+extension ViewController: ViewChangeDelegate {
+    func dismissViewController(_ controller: UIViewController) {
+        let modifyReadingGaolVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+        modifyReadingGaolVC.initializer = 1
+        self.navigationController?.pushViewController(modifyReadingGaolVC, animated: true)
+    }
 }
 
 // API 호출 함수

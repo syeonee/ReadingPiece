@@ -10,9 +10,13 @@ import KeychainSwift
 
 // 설정한 목표가 만료되어 재설정이 필요할 때 나오는 VC
 // : 챌린지를 조기 달성한 경우, 챌린지 기간이 만료된 경우
+protocol ViewChangeDelegate: class {
+    func dismissViewController(_ controller: UIViewController)
+}
 
 class RestartChallengeViewController: UIViewController {
     var challengeName: String?
+    var delegate: ViewChangeDelegate!
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var popupView: UIView!
@@ -46,20 +50,21 @@ class RestartChallengeViewController: UIViewController {
     
     // 챌린지 재연장 API 호출
     @IBAction func retryChallengeAction(_ sender: UIButton) {
-        restartChallenge()
+        reTryChallenge()
     }
     
     // 목표/책 추가 씬으로 이동 (처음 로그인하는 유저와 동일)
     @IBAction func restartChallengeAction(_ sender: UIButton) {
         let termVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TermViewController") as! TermViewController
+
         guard let pvc = self.presentingViewController else { return }
         self.dismiss(animated: true) {
-            pvc.present(termVC, animated: true, completion: nil)
+            self.delegate.dismissViewController(self)
         }
     }
     
-    // 읽고있는 책과 목표 정보 그대로 재시작
-    func restartChallenge() {
+    // 읽고있는 책과 목표 정보 그대로 재시작 - CH11 API 호출
+    func reTryChallenge() {
         guard let token = keychain.get(Keys.token) else { return }
         
         let req = PatchRestartChallengeRequest(token: token)
