@@ -67,7 +67,6 @@ class DaillyReadingWritenViewController: UIViewController {
         setupUI()
         picker.delegate = self
         commentTextView.delegate = self
-        print("LOG", self.challengeInfo)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -91,6 +90,7 @@ class DaillyReadingWritenViewController: UIViewController {
     func writeJournal() {
         guard let token = keychain.get(Keys.token) else { return }
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
+        print("LOG TEST", isOpen)
         let journal = JournalWritten(time: readingTime, text: commentTextView.text, open: isOpen, goalBookId: goalBookId,
                                      page: readingPage, percent: readingPercent)
         print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent)

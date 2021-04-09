@@ -22,7 +22,7 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak var totalJournal: UILabel!
 
     static var identifier: String = "ChallengeTableViewCell"
-    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME) ?? "Reader"
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +39,7 @@ class ChallengeTableViewCell: UITableViewCell {
         let readingTimeString = initNormalAndBoldLabel(boldText: readingTime, normalText: "분")
         let totalJournalString = initNormalAndBoldLabel(boldText: "\(writtenJournal)", normalText: "개")
         
-        userNameLabel.text = userName
+        userNameLabel.text = "\(userName)님, 정말 부지런하시네요!"
         challengeTitleButton.setTitle("\(readingContinuanceDay)일 연속 독서", for: .normal)
         daillyReadingStatusLabel.attributedText = percentString
         daillyReadingTimeLabel.attributedText = readingTimeString
