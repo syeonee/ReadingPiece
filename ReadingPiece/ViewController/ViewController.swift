@@ -196,7 +196,7 @@ class ViewController: UIViewController {
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.01
-            print("LOGT",challenge.totalJournal as Any, challenge.amount as Any)
+            print("LOG - 일지 작성 개수",challenge.totalJournal as Any, challenge.amount as Any)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
             daillyReadingTimeLabel.text = minutesToHoursAndMinutes(todayTime)
@@ -259,6 +259,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as? ReadingBookCollectionViewCell else { return UICollectionViewCell() }
         let book = self.challengeInfo?.readingBook.first
         let goal = self.challengeInfo?.readingGoal.first
+        print("MAIN -",goal?.totalTime)
         cell.configure(data: book, readingStatus: goal)
         
         return cell
@@ -343,7 +344,7 @@ extension ViewController {
         let goalBookId = json["goalBookId"].intValue
         let page = json["page"].intValue
         let percent = json["percent"].intValue
-        let totalReadingTime = json["sum(time)"].stringValue
+        let totalReadingTime = json["time"].stringValue
         let isReading = json["isReading"].stringValue
 
         let readongGoal = ReadingGoal(goalBookId: goalBookId, page: page, percent: percent, totalTime: totalReadingTime, isReading: isReading)

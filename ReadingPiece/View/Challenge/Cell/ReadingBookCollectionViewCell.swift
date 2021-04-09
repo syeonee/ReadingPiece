@@ -34,6 +34,8 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
             if  let page = readingGoalData.page, let percent = readingGoalData.percent, let time = readingGoalData.totalTime {
                 currentPageLabel.text = "\(page)p"
                 currentPercentLabel.text = "\(percent)%"
+                print("MAIN - TIME", "\(time)분")
+
                 radingTimeLabel.text = "\(minutesToHoursAndMinutes(time))"
             }
             
@@ -49,6 +51,7 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
     
     // 분단위로 오는 시간을 0시간 0분 형태로 변환
     private func minutesToHoursAndMinutes (_ stringMinutes : String) -> String {
+        print("MAIN - TIME", "\(stringMinutes)분")
         let minutes = Int(stringMinutes) ?? 0
         var formattedString = "0시간 0분"
         if minutes > 60 {
