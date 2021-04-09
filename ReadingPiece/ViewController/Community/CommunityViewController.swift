@@ -21,6 +21,7 @@ class CommunityViewController: UIViewController {
     let limit : Int = 5
     var isEnd : Bool = false
     var isLoaded : Bool = false
+    var isRefresh : Bool = false
     
     @IBOutlet weak var feedTableView: UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -37,7 +38,7 @@ class CommunityViewController: UIViewController {
         
         feedTableView.rowHeight = UITableView.automaticDimension
         feedTableView.estimatedRowHeight = 284
-        
+        indicator.center = self.view.center
     }
     
     func initRefresh(){
@@ -51,6 +52,7 @@ class CommunityViewController: UIViewController {
         page = 0
         isEnd = false
         isLoaded = false
+        isRefresh = true
         feedList = []
         expandedIndexSet = []
         loadReviewData(page: 0, limit: limit)
@@ -195,7 +197,7 @@ extension CommunityViewController {
     
     // 리뷰 조회 - 처음 화면 로드할 때
     private func loadReviewData(page: Int, limit: Int) {
-        if !isLoaded{//처음 로드 할 때만 인디케이터 보여주기
+        if !isLoaded && !isRefresh{//처음 로드 할 때만 인디케이터 보여주기
             indicator.startAnimating()
         }
         guard let token = keychain.get(Keys.token) else { return }
@@ -204,6 +206,7 @@ extension CommunityViewController {
             case .success(let response):
                 if response.code == 1000 {
                     self.isLoaded = true
+                    self.isRefresh = false
                     if response.journalcount != 0 {
                         if response.journalcount < limit{
                             self.isEnd = true
@@ -218,6 +221,7 @@ extension CommunityViewController {
                         }
                     }else{
                         self.isEnd = true
+                        self.isRefresh = false
                     }
                 } else {
                     let message = response.message
@@ -229,11 +233,13 @@ extension CommunityViewController {
                     }
                 }
             case .cancel(let cancel):
+                self.isRefresh = false
                 if self.indicator.isAnimating {
                     self.indicator.stopAnimating()
                 }
                 print(cancel as Any)
             case .failure(let error):
+                self.isRefresh = false
                 if self.indicator.isAnimating {
                     self.indicator.stopAnimating()
                 }
