@@ -102,6 +102,7 @@ class DaillyReadingWritenViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         print("LOG - 일지 작성 성공 \(userResponse.code)")
+                        NotificationCenter.default.post(name: Notification.Name("FetchJournalData"), object: nil)
                         // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
                         guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
                                 DaillyDiaryWrittenCompletionViewController else { return }

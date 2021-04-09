@@ -37,7 +37,7 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getJournalData(align: align, page: page, limit: 5)
-
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadJournalData), name: Notification.Name("FetchJournalData"), object: nil)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "JournalCell", bundle: nil), forCellReuseIdentifier: journalCell.cellID)
@@ -60,6 +60,10 @@ class JournalViewController: UIViewController {
     func didRetrieveMoreData() {
         self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
         self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
+    }
+    
+    @objc func reloadJournalData(notification: NSNotification) {
+        getJournalData(align: align, page: page, limit: 5)
     }
     
     // 분 시간으로 바꾸기
