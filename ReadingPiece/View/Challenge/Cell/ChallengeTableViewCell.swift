@@ -22,7 +22,7 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak var totalJournal: UILabel!
 
     static var identifier: String = "ChallengeTableViewCell"
-    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+    let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME) ?? "Reader"
     
     override func awakeFromNib() {
         super.awakeFromNib()

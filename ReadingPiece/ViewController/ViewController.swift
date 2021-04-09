@@ -259,7 +259,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath as IndexPath) as? ReadingBookCollectionViewCell else { return UICollectionViewCell() }
         let book = self.challengeInfo?.readingBook.first
         let goal = self.challengeInfo?.readingGoal.first
-        print("MAIN -",goal?.totalTime)
         cell.configure(data: book, readingStatus: goal)
         
         return cell

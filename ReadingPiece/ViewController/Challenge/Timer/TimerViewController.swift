@@ -18,6 +18,7 @@ class TimerViewController: UIViewController {
     var isReading: Bool = true
     var readingTime : Int = 0
     var challengeInfo : ChallengerInfo?
+    let sceneDelegate = SceneDelegate()
     
     @IBOutlet weak var timerBackgroundView: UIView!
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -29,9 +30,12 @@ class TimerViewController: UIViewController {
     private lazy var stopwatch = Stopwatch(timeUpdated: { timeInterval in
         // 매초마다 타이머 시간을 저장하고, 화면 갱신
         self.defaults.setValue(Int(timeInterval), forKey: Constants.USERDEFAULT_KEY_CURRENT_TIMER_TIME)
-        self.readingTime += 1
-        print("LOG", self.readingTime)
         self.currentTimeLabel.text = self.timeString(timeInterval: timeInterval)
+        // 매초마다 레이블에 표시되는 값을 초(Int)로 변환하여 readingTime 변수에 저장
+        // VC가 사라지는 시점에 Label값이 0으로 초기화 되기 때문에, 0보다 큰 경우만 저장하도록 if문 추가
+        if self.getTimeFromLable() > 0 {
+            self.readingTime = self.getTimeFromLable()
+        }
     })
     
     deinit {
@@ -42,8 +46,7 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         getUserBookReadingTime()
-        print("SceneDelegate Time", SceneDelegate().timerTime)
-        print("LOG - TimerVC", self.challengeInfo as Any)
+        print("LOG - TimerVC is initialzed", self.challengeInfo as Any)
         
     }
     
@@ -52,14 +55,12 @@ class TimerViewController: UIViewController {
         stopwatch.toggle()
         // 다른 화면에서 복귀해도 시간정보가 남아있어야 하므로, 시간 재할당
         stopwatch.timerSavedTime = Double(readingTime)
-        
-        print("LOG - 뷰 생성", readingTime)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "시간 기록"
-        print("LOG - 뷰 소멸", readingTime)
+        stopwatch.stop()
     }
     
     @objc func skipTimeRecoding(sender: UIBarButtonItem) {
@@ -80,13 +81,13 @@ class TimerViewController: UIViewController {
         changeReadingStatus()
         sender.isSelected = !sender.isSelected
         stopwatch.toggle()
-        print("LOG - Timer is Paused", currentTimeLabel.text as Any, readingTime, targetTime)
+        print("LOG - Timer is Paused", self.readingTime, targetTime)
     }
     
     @IBAction func stopTimer(_ sender: UIButton) {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
-        print("LOG - Timer is Stooped", currentTimeLabel.text as Any, readingTime)
+        print("LOG - Timer is Stooped", currentTimeLabel.text, self.readingTime)
         
         // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
         // 클라 = 초단위 , 서버 = 분단위 이므로 변환해서 비교 필요
@@ -179,10 +180,21 @@ class TimerViewController: UIViewController {
     
     func timeString(timeInterval: TimeInterval) -> String {
         // 추후 재사용을 위해 타이머 시간은 초 단위로 유저디폴트에 저장
+        self.readingTime += 1
         let seconds = Int(timeInterval.truncatingRemainder(dividingBy: 60))
         let minutes = Int(timeInterval.truncatingRemainder(dividingBy: 60 * 60) / 60)
         let hours = Int(timeInterval / 3600)
         return String(format: "%.2d:%.2d:%.2d", hours, minutes, seconds)
+    }
+    
+    func getTimeFromLable() -> Int {
+        let time = currentTimeLabel.text?.components(separatedBy: ":") ?? ["00", "00", "00"]
+        var readingTime = 0
+
+        if let hour = Int(time.first!), let minutes = Int(time[1]), let seconds = Int(time.last!) {
+            readingTime = (hour * 60) * 60 + minutes * 60 + seconds
+        }
+        return readingTime
     }
 
     private func changeReadingStatus() {
