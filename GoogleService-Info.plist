@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>476277619955-envd3hnb6coofu2lj6eb193f99lqe10j.apps.googleusercontent.com</string>
+	<string>476277619955-f60jj89kv4hl4oa792mbl5eu23ahp19v.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.476277619955-envd3hnb6coofu2lj6eb193f99lqe10j</string>
+	<string>com.googleusercontent.apps.476277619955-f60jj89kv4hl4oa792mbl5eu23ahp19v</string>
 	<key>API_KEY</key>
 	<string>AIzaSyC16L_c4TcoBAlRwtu-2t1xiwl0ArtrvhU</string>
 	<key>GCM_SENDER_ID</key>
@@ -19,16 +19,16 @@
 	<key>STORAGE_BUCKET</key>
 	<string>readingpiece-7bab2.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:476277619955:ios:7ac165373739d3efe6cb86</string>
+	<string>1:476277619955:ios:9b641d24c38f6819e6cb86</string>
 </dict>
 </plist>
