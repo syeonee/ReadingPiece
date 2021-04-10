@@ -31,7 +31,7 @@
 		009250062602587100A930DD /* RedFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250042602587000A930DD /* RedFirecracker.sks */; };
 		009250092602588B00A930DD /* FireCrackerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250082602588B00A930DD /* FireCrackerScene.swift */; };
 		0092500D2602605400A930DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092500C2602605400A930DD /* NetworkManager.swift */; };
-		00B8AFFF261B680300EF870D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B8AFFE261B680300EF870D /* GoogleService-Info.plist */; };
+		00B8B08D2621FD4D00EF870D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */; };
 		00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121F4261090DE00186F40 /* PostJournalRequest.swift */; };
@@ -232,7 +232,7 @@
 		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
 		009250082602588B00A930DD /* FireCrackerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCrackerScene.swift; sourceTree = "<group>"; };
 		0092500C2602605400A930DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		00B8AFFE261B680300EF870D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserCakeTypeRequest.swift; sourceTree = "<group>"; };
 		00C121F4261090DE00186F40 /* PostJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJournalRequest.swift; sourceTree = "<group>"; };
@@ -842,7 +842,7 @@
 		D6288D1B25E2B5DB00D73A61 = {
 			isa = PBXGroup;
 			children = (
-				00B8AFFE261B680300EF870D /* GoogleService-Info.plist */,
+				00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */,
 				D6288D2625E2B5DB00D73A61 /* ReadingPiece */,
 				D6288D2525E2B5DB00D73A61 /* Products */,
 				7D25273E0465C2D67DFF944A /* Pods */,
@@ -1108,7 +1108,7 @@
 			files = (
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */,
-				00B8AFFF261B680300EF870D /* GoogleService-Info.plist in Resources */,
+				00B8B08D2621FD4D00EF870D /* GoogleService-Info.plist in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
 				00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */,
 				5913B23B25EF2E4D002AAA8C /* NotoSansCJKkr-DemiLight.otf in Resources */,
