@@ -16,6 +16,8 @@ class BookSettingViewController: UIViewController {
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     @IBOutlet weak var readingBookTableView: UITableView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
     var books : [AllReadingBook] = [] {
         didSet{
             readingBookTableView.reloadData()
@@ -36,11 +38,14 @@ class BookSettingViewController: UIViewController {
     }
         
     func getAllBooks() {
+        spinner.backgroundColor = .white
+        spinner.startAnimating()
         guard let token = keychain.get(Keys.token) else { return }
         let req = GetAllReadingBookRequest(token: token)
         _ = Network.request(req: req) { (result) in
                 switch result {
                 case .success(let userResponse):
+                    self.spinner.stopAnimating()
                     switch userResponse.code {
                     case 1000:
                         print("LOG - 책 정보 조회 성공", userResponse.getbookListRows as Any)
@@ -57,7 +62,9 @@ class BookSettingViewController: UIViewController {
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
+                    self.spinner.stopAnimating()
                 case .failure(let error):
+                    self.spinner.stopAnimating()
                     debugPrint("LOG -", error as Any)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }

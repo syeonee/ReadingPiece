@@ -887,13 +887,20 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ite-fr-qj1">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2Lb-l1-kpN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ite-fr-qj1" firstAttribute="trailing" secondItem="2Lb-l1-kpN" secondAttribute="trailing" id="2cX-fo-ssg"/>
                             <constraint firstItem="fB1-e6-eeB" firstAttribute="top" secondItem="2Lb-l1-kpN" secondAttribute="top" id="GbI-x9-aKx"/>
                             <constraint firstItem="2Lb-l1-kpN" firstAttribute="bottom" secondItem="fB1-e6-eeB" secondAttribute="bottom" id="HcF-9K-uFe"/>
                             <constraint firstItem="2Lb-l1-kpN" firstAttribute="trailing" secondItem="fB1-e6-eeB" secondAttribute="trailing" id="OLQ-39-y7f"/>
+                            <constraint firstItem="ite-fr-qj1" firstAttribute="top" secondItem="2Lb-l1-kpN" secondAttribute="top" id="XGh-bv-q3S"/>
+                            <constraint firstItem="ite-fr-qj1" firstAttribute="leading" secondItem="2Lb-l1-kpN" secondAttribute="leading" id="kiG-rt-9C8"/>
+                            <constraint firstItem="ite-fr-qj1" firstAttribute="bottom" secondItem="2Lb-l1-kpN" secondAttribute="bottom" id="lpn-79-gkE"/>
                             <constraint firstItem="fB1-e6-eeB" firstAttribute="leading" secondItem="2Lb-l1-kpN" secondAttribute="leading" id="qNw-Az-Gvc"/>
                         </constraints>
                     </view>
@@ -901,11 +908,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="readingBookTableView" destination="fB1-e6-eeB" id="GSg-bw-cCh"/>
+                        <outlet property="spinner" destination="ite-fr-qj1" id="M8r-Ce-r7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b38-Dt-1xG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1665" y="1612"/>
+            <point key="canvasLocation" x="1664.8" y="1611.5442278860571"/>
         </scene>
         <!--InputReadingStatusPopupVC-->
         <scene sceneID="RyQ-Xr-ndL">
