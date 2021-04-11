@@ -11,6 +11,7 @@ public struct Feed: Codable {
     public let imageURL: String?
     public let writer: String
     public let bookId: Int
+    public let publishNumber: String
     public let percent: Int
     public let page: Int
     public let time: Int
