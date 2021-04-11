@@ -103,7 +103,6 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if feed.status == "N"{
-            print("feeeee")
             cell.statusImageView.image = UIImage(named: "readOngoing")
         }else{
             cell.statusImageView.image = UIImage(named: "feedComplete")
