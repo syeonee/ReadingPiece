@@ -161,7 +161,7 @@ class ProfileEditViewController: UIViewController {
         let deleteImage =  UIAlertAction(title: "삭제", style: .destructive) { (action) in
             self.pickedImage = nil
             UserDefaults.standard.removeObject(forKey: "profileImageData")
-            self.profileImageView.image = UIImage(named: "defaultProfile")
+            self.profileImageView.image = UIImage(named: "profile_basic_photo2")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(camera)
@@ -205,7 +205,7 @@ class ProfileEditViewController: UIViewController {
         let newWidth = image.size.width * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage(named: "defaultProfile")! }
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage(named: "profile_basic_photo2")! }
         UIGraphicsEndImageContext()
         return newImage
     }

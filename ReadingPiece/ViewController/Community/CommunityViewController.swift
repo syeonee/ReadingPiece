@@ -84,25 +84,25 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = feed.postAt
         cell.bookTitleLabel.text = feed.title
         cell.bookAuthorLabel.text = feed.writer
-        cell.percentLabel.text = "\(feed.percent) 읽음"
+        cell.percentLabel.text = "\(feed.percent)% 읽음"
         cell.timeLabel.text = "\(feed.time)분"
         
-        if feed.profilePic != "사진 없음"{
-            let decodedData = NSData(base64Encoded: feed.profilePic ?? "", options: [])
+        if feed.profilePictureURL != nil{
+            let decodedData = NSData(base64Encoded: feed.profilePictureURL ?? "", options: [])
             if let data = decodedData {
                 if data.count < 2 {
-                    cell.profileImageView.image = UIImage(named: "defaultProfile")
+                    cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
                 } else {
                     cell.profileImageView.image = UIImage(data: data as Data)
                 }
             }else{
-                cell.profileImageView.image = UIImage(named: "defaultProfile")
+                cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
             }
         }else{
-            cell.profileImageView.image = UIImage(named: "defaultProfile")
+            cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
         }
         
-        if feed.status == "읽는 중"{
+        if feed.status == "N"{
             cell.statusImageView.image = UIImage(named: "readOngoing")
         }else{
             cell.statusImageView.image = UIImage(named: "feedComplete")
