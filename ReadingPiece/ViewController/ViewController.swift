@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import KeychainSwift
+import FirebaseAnalytics
 
 class ViewController: UIViewController {
     
