@@ -84,11 +84,11 @@ class MyViewController: UIViewController {
                                 let decodedimage = UIImage(data: data as Data)
                                 profileImageView.image = decodedimage
                             }else{
-                                profileImageView.image = UIImage(named: "defaultProfile")
+                                profileImageView.image = UIImage(named: "profile_basic_photo2")
                             }
                         }else{
                             UserDefaults.standard.removeObject(forKey: "profileImageData")
-                            profileImageView.image = UIImage(named: "defaultProfile")
+                            profileImageView.image = UIImage(named: "profile_basic_photo2")
                         }
                         nameLabel.text = userProfile?.name
                         resolutionLabel.text = userProfile?.resolution

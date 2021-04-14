@@ -20,6 +20,6 @@ public struct Feed: Codable {
     public let text: String
     public let journalId: Int
     public let userId: Int
-    public let profilePic: String?
+    public let profilePictureURL: String?
     public let name: String?
 }
