@@ -20,6 +20,7 @@
 		0054BD2D26161E3C00ADFB29 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD2C26161E3C00ADFB29 /* Int.swift */; };
 		0054BD312616385000ADFB29 /* PatchRestartChallengeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */; };
 		005E154725FB7636003CD008 /* InputReadingPercentPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */; };
+		0066A3E72627439800C48355 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0066A3E62627439700C48355 /* GoogleService-Info.plist */; };
 		007CF5F32603192800F530AD /* ReviewImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 007CF5F22603192800F530AD /* ReviewImageView.xib */; };
 		007CF5F8260321E800F530AD /* ReviewImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007CF5F7260321E800F530AD /* ReviewImageView.swift */; };
 		00838FC625F3607A00340AE0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00838FC525F3607A00340AE0 /* Colors.swift */; };
@@ -31,7 +32,6 @@
 		009250062602587100A930DD /* RedFirecracker.sks in Resources */ = {isa = PBXBuildFile; fileRef = 009250042602587000A930DD /* RedFirecracker.sks */; };
 		009250092602588B00A930DD /* FireCrackerScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009250082602588B00A930DD /* FireCrackerScene.swift */; };
 		0092500D2602605400A930DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0092500C2602605400A930DD /* NetworkManager.swift */; };
-		00B8B08D2621FD4D00EF870D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */; };
 		00BCFD3025FB006400E1E2E7 /* NSMutableAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */; };
 		00C121A8260FAE2C00186F40 /* PostUserCakeTypeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */; };
 		00C121F5261090DE00186F40 /* PostJournalRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C121F4261090DE00186F40 /* PostJournalRequest.swift */; };
@@ -220,6 +220,7 @@
 		0054BD2C26161E3C00ADFB29 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		0054BD302616385000ADFB29 /* PatchRestartChallengeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchRestartChallengeRequest.swift; sourceTree = "<group>"; };
 		005E154625FB7636003CD008 /* InputReadingPercentPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputReadingPercentPopupViewController.swift; sourceTree = "<group>"; };
+		0066A3E62627439700C48355 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		007CF5F22603192800F530AD /* ReviewImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewImageView.xib; sourceTree = "<group>"; };
 		007CF5F7260321E800F530AD /* ReviewImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageView.swift; sourceTree = "<group>"; };
 		00838FC525F3607A00340AE0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -232,7 +233,6 @@
 		009250042602587000A930DD /* RedFirecracker.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RedFirecracker.sks; sourceTree = "<group>"; };
 		009250082602588B00A930DD /* FireCrackerScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireCrackerScene.swift; sourceTree = "<group>"; };
 		0092500C2602605400A930DD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		00BCFD2F25FB006400E1E2E7 /* NSMutableAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSMutableAttributedString.swift; sourceTree = "<group>"; };
 		00C121A7260FAE2C00186F40 /* PostUserCakeTypeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserCakeTypeRequest.swift; sourceTree = "<group>"; };
 		00C121F4261090DE00186F40 /* PostJournalRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostJournalRequest.swift; sourceTree = "<group>"; };
@@ -842,7 +842,7 @@
 		D6288D1B25E2B5DB00D73A61 = {
 			isa = PBXGroup;
 			children = (
-				00B8B08C2621FD4D00EF870D /* GoogleService-Info.plist */,
+				0066A3E62627439700C48355 /* GoogleService-Info.plist */,
 				D6288D2625E2B5DB00D73A61 /* ReadingPiece */,
 				D6288D2525E2B5DB00D73A61 /* Products */,
 				7D25273E0465C2D67DFF944A /* Pods */,
@@ -1108,7 +1108,7 @@
 			files = (
 				D67C657925E5715F00F15290 /* Community.storyboard in Resources */,
 				0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */,
-				00B8B08D2621FD4D00EF870D /* GoogleService-Info.plist in Resources */,
+				0066A3E72627439800C48355 /* GoogleService-Info.plist in Resources */,
 				5913B23D25EF2E4D002AAA8C /* NotoSansCJKkr-Black.otf in Resources */,
 				00D8632525FF3E2200E9EFF9 /* ReadingBookCollectionViewCell.xib in Resources */,
 				5913B23B25EF2E4D002AAA8C /* NotoSansCJKkr-DemiLight.otf in Resources */,
