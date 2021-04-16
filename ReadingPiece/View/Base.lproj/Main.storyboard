@@ -1153,7 +1153,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pYB-hm-scj">
                                                 <rect key="frame" x="0.0" y="28" width="365" height="106"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedChallenge" translatesAutoresizingMaskIntoConstraints="NO" id="Z0H-Tk-GrJ">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selectedChallenge" translatesAutoresizingMaskIntoConstraints="NO" id="Z0H-Tk-GrJ">
                                                         <rect key="frame" x="22" y="0.0" width="73" height="106"/>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="AzO-z3-9S5">

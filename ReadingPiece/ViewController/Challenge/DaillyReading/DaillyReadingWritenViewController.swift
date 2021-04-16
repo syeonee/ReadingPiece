@@ -198,6 +198,9 @@ class DaillyReadingWritenViewController: UIViewController {
         let author = challengeInfo?.readingBook.first?.writer ?? "저자 정보 로딩 실패"
         let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
 
+        bookThumbnailImage.layer.cornerRadius = 4
+        bookThumbnailImage.layer.borderWidth = 0.4
+        bookThumbnailImage.layer.borderColor = UIColor.darkgrey.cgColor
         bookAuthorLabel.text = author
         bookTitleLabel.text = title
         totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
@@ -278,7 +281,9 @@ extension DaillyReadingWritenViewController: ReadingStatusDelegate {
 }
 
 extension DaillyReadingWritenViewController: UITextViewDelegate {
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
         if let char = text.cString(using: String.Encoding.utf8) {
             commentLengthLabel.text = "\(textView.text.count) / 100"
             let isBackSpace = strcmp(char, "\\b")
