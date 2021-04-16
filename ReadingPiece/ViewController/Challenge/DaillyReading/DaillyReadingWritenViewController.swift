@@ -88,6 +88,9 @@ class DaillyReadingWritenViewController: UIViewController {
     }
     
     func writeJournal() {
+        // 네트워크 통신 동안 작성 버튼의 중복터치를 막는 코드
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
         guard let token = keychain.get(Keys.token) else { return }
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
         print("LOG TEST", isOpen)
@@ -126,6 +129,9 @@ class DaillyReadingWritenViewController: UIViewController {
                     default:
                         print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
                         self.presentAlert(title: "일지 작성에 실패하였습니다. 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        
+                    // 버튼 작성 잠금 해제
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
