@@ -29,23 +29,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kTU-q1-ANg">
                         <rect key="frame" x="0.0" y="0.0" width="518" height="251"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCover" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-vv-rXu">
-                                <rect key="frame" x="12" y="13" width="155.5" height="225"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookCover" translatesAutoresizingMaskIntoConstraints="NO" id="g4J-vv-rXu">
+                                <rect key="frame" x="12" y="13" width="129.5" height="225"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="지은이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbQ-bT-cko">
-                                <rect key="frame" x="190.5" y="42" width="36" height="19.5"/>
+                                <rect key="frame" x="164.5" y="42" width="36" height="19.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Da6-FU-2sW">
-                                <rect key="frame" x="190.5" y="13" width="26" height="21"/>
+                                <rect key="frame" x="164.5" y="13" width="26" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="14"/>
                                 <color key="textColor" red="0.59131073950000002" green="0.59138607980000002" blue="0.59129363300000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCF-Mt-6pV">
-                                <rect key="frame" x="190.5" y="69.5" width="69" height="23"/>
+                                <rect key="frame" x="164.5" y="69.5" width="69" height="23"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="fFF-Ji-hci">
                                         <rect key="frame" x="5" y="6" width="17.5" height="11"/>
@@ -69,7 +69,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3IW-zt-sPx">
-                                <rect key="frame" x="190.5" y="98.5" width="89.5" height="23"/>
+                                <rect key="frame" x="164.5" y="98.5" width="89.5" height="23"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="Ol9-rl-W75">
                                         <rect key="frame" x="5" y="4" width="15" height="15"/>
@@ -93,7 +93,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THU-Oy-xRm">
-                                <rect key="frame" x="265.5" y="69.5" width="66" height="23"/>
+                                <rect key="frame" x="239.5" y="69.5" width="66" height="23"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="Q52-33-sjw">
                                         <rect key="frame" x="5" y="6" width="17.5" height="11"/>
@@ -127,11 +127,11 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Da6-FU-2sW" secondAttribute="trailing" constant="10" id="VEM-O1-daE"/>
                             <constraint firstItem="g4J-vv-rXu" firstAttribute="top" secondItem="kTU-q1-ANg" secondAttribute="top" constant="13" id="Xkf-LW-2tz"/>
                             <constraint firstItem="3IW-zt-sPx" firstAttribute="leading" secondItem="Da6-FU-2sW" secondAttribute="leading" id="eqY-CJ-Yaz"/>
-                            <constraint firstItem="g4J-vv-rXu" firstAttribute="width" secondItem="kTU-q1-ANg" secondAttribute="width" multiplier="0.3" id="iLm-aS-DGp"/>
                             <constraint firstItem="THU-Oy-xRm" firstAttribute="leading" secondItem="TCF-Mt-6pV" secondAttribute="trailing" constant="6" id="j2y-MQ-0oZ"/>
                             <constraint firstItem="TCF-Mt-6pV" firstAttribute="top" secondItem="RbQ-bT-cko" secondAttribute="bottom" constant="8" id="jBa-u4-545"/>
                             <constraint firstItem="Da6-FU-2sW" firstAttribute="top" secondItem="g4J-vv-rXu" secondAttribute="top" id="jmp-v6-ZQa"/>
                             <constraint firstItem="RbQ-bT-cko" firstAttribute="top" secondItem="Da6-FU-2sW" secondAttribute="bottom" constant="8" id="tHW-4u-KCr"/>
+                            <constraint firstItem="g4J-vv-rXu" firstAttribute="width" secondItem="kTU-q1-ANg" secondAttribute="width" multiplier="0.25" id="vSD-04-9iw"/>
                             <constraint firstItem="TCF-Mt-6pV" firstAttribute="leading" secondItem="Da6-FU-2sW" secondAttribute="leading" id="ydw-Up-Uaa"/>
                             <constraint firstAttribute="bottom" secondItem="g4J-vv-rXu" secondAttribute="bottom" constant="13" id="yev-6k-VbV"/>
                             <constraint firstItem="g4J-vv-rXu" firstAttribute="leading" secondItem="kTU-q1-ANg" secondAttribute="leading" constant="12" id="zVN-lL-Bvl"/>

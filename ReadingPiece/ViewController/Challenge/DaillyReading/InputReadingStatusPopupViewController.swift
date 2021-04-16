@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 읽은 페이지수를 입력받는 화면
 class InputReadingStatusPopupViewController: UIViewController {
     
     static var storyobardId: String = "InputReadingStatusPopupVC"
@@ -61,7 +62,7 @@ class InputReadingStatusPopupViewController: UIViewController {
 extension InputReadingStatusPopupViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             guard let text = textField.text else {return false}
-        if text.count >= 1 && text.count < 3 {
+        if text != nil  {
                 doneButton.makeRoundedButtnon("완료", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
             } else {
                 doneButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.middlegrey2.cgColor, backgroundColor: .middlegrey2)

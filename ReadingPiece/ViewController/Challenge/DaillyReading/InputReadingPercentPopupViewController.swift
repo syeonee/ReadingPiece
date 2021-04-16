@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 읽은 %를 입력받는 화면
 class InputReadingPercentPopupViewController: UIViewController {
     static var storyobardId: String = "InputReadingPercentVC"
     var readingStatusDelegate: ReadingStatusDelegate?
