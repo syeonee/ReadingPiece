@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001118EE262DD41100EC0EB5 /* Cake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001118ED262DD41100EC0EB5 /* Cake.swift */; };
 		0026126D25FB23BF000B40D1 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */; };
 		0026126E25FB23BF000B40D1 /* ChallengeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */; };
 		0026127225FB244C000B40D1 /* DaillyReadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */; };
@@ -207,6 +208,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		001118ED262DD41100EC0EB5 /* Cake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cake.swift; sourceTree = "<group>"; };
 		0026126B25FB23BF000B40D1 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		0026126C25FB23BF000B40D1 /* ChallengeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChallengeTableViewCell.xib; sourceTree = "<group>"; };
 		0026127025FB244C000B40D1 /* DaillyReadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaillyReadingTableViewCell.swift; sourceTree = "<group>"; };
@@ -539,6 +541,7 @@
 			isa = PBXGroup;
 			children = (
 				00D8632A25FF77D200E9EFF9 /* Stopwatch.swift */,
+				001118ED262DD41100EC0EB5 /* Cake.swift */,
 			);
 			path = Challenge;
 			sourceTree = "<group>";
@@ -1282,6 +1285,7 @@
 				D6C1C004260B0D52008EE7FE /* EditProfileRequest.swift in Sources */,
 				00FF3863260EEDCC00529570 /* DeleteChallengeBookRequest.swift in Sources */,
 				5925BFC82610CD9D00BDDD18 /* PasswordResetRequest.swift in Sources */,
+				001118EE262DD41100EC0EB5 /* Cake.swift in Sources */,
 				D68DA45B26114C8800267BBE /* QuestionViewController.swift in Sources */,
 				00FF379F260C615F00529570 /* BookSettingViewController.swift in Sources */,
 				00FF377D260A685700529570 /* PostReportReviewRequest.swift in Sources */,

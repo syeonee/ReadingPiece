@@ -197,6 +197,7 @@ class ViewController: UIViewController {
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
             let cgFloatPercent = CGFloat(percent) * 0.01
+
             print("LOG - 일지 작성 개수",challenge.totalJournal as Any, challenge.amount as Any)
             userReadingGoalLabel.text = "\(getUserNameByLength(userName))님은 \(formattedPeriod)동안\n\(targetBookAmount)권 읽기에 도전 중"
             goalStatusBarWidth.constant = statusBar.frame.width * cgFloatPercent
@@ -205,6 +206,7 @@ class ViewController: UIViewController {
             targetReadingBookCountLabel.text = "\(targetBookAmount)"
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
+            challengeImageView.image = UIImage(named: "\(Cake.Types.chocoCake)\(percent.imageNameByChallengePercent)")
             dDayLabel.text = "\(dDay)일 남음"
         }
     }

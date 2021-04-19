@@ -28,6 +28,7 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UIApplication.shared.endIgnoringInteractionEvents()
         setupUI()
         getDaillyReadingInfo()
     }
