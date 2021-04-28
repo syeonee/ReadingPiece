@@ -14,13 +14,18 @@ final class GetJournalRequest: Requestable {
     
     private var token: String
     private var align: String
-    init(token: String, align: String) {
+    private var page: Int
+    private var limit: Int
+    
+    init(token: String, align: String, page: Int, limit: Int) {
         self.token = token
         self.align = align
+        self.page = page
+        self.limit = limit
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -36,16 +41,15 @@ final class GetJournalRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["align": align] 
+        return ["align": align, "page": page, "limit": limit] 
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
         return 10.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

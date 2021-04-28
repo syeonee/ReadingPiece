@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimerStopViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
+    let targetTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     var challengeInfo : ChallengerInfo?
     var readingTime : Int = 0
     
@@ -27,6 +32,7 @@ class TimerStopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        print("LOG - TimerStopVC", readingTime, challengeInfo)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,7 +41,8 @@ class TimerStopViewController: UIViewController {
     }
 
     func getUserBookReadingTime() {
-        let req = GetBookReadingTimeRequest(goalBookId: 25)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = GetBookReadingTimeRequest(token: token, goalBookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
@@ -43,33 +50,23 @@ class TimerStopViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         // 책 제목 화면 표시, 남은 시간 저장해서 추후 일지 작성시 전달 필요
-                        print("LOG - 이전 독서시간", userResponse.message, userResponse.result?.sumtime)
-                        let prevReadingTimeString = userResponse.result?.sumtime ?? "0" // 서버에서 오는 값이 string이라 변환 진행
-                        let totalReadingTime = Int(prevReadingTimeString) // 오늘의 총 독서시간
-
+                        print("LOG", userResponse.message)
                     default:
-                        print("LOG - 오늘 독서시간 정보 없음")
-                        self.presentAlert(title: "이전 시간 정보를 불러오지 못했습니다.", isCancelActionIncluded: false)
+                        print("LOG - 오늘 독서시간 정보 없음", userResponse.code, userResponse.result?.first?.sumtime)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
+                    print("LOG", error)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
     }
     private func setupUI() {
         setNavBar()
-        timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
-        writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
-        
-        let attributedTimeString = NSMutableAttributedString()
-            .bold("00", fontSize: 40)
-            .normal("분", fontSize: 40)
-            .bold("00", fontSize: 40)
-            .normal("초", fontSize: 40)
-        currentRadingTimeLabel.attributedText = attributedTimeString
-
+        //timerResumeButton.makeRoundedButtnon("마저 읽기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //writeDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
+        initReadingTime(time: self.readingTime)
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")
@@ -80,7 +77,21 @@ class TimerStopViewController: UIViewController {
 
         timerStopTitleLabel.textColor = .darkgrey
         feedTitleLabel.textColor = .darkgrey
-        targetTimeLabel.text = "\(Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)분"
+        
+        // 클라 = 초 단위, 서버 = 분 단위
+        targetTimeLabel.text = "\(targetTime / 60)분"
+    }
+    
+    // 이전 화면에서 받은 시간(초) 기준으로 00분 00초 단위로 변환해서 레이블에 적용
+    private func initReadingTime(time: Int) {
+        let minutes = time / 60
+        let seconds = time % 60
+        let attributedTimeString = NSMutableAttributedString()
+            .bold("\(minutes)", fontSize: 40)
+            .normal("분", fontSize: 40)
+            .bold("\(seconds)", fontSize: 40)
+            .normal("초", fontSize: 40)
+        currentRadingTimeLabel.attributedText = attributedTimeString
     }
 
     private func setNavBar() {
@@ -95,12 +106,19 @@ class TimerStopViewController: UIViewController {
     }
     
     @IBAction func writeDiary(_ sender: UIButton) {
-        if userName != "Reader" {
-            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
-        } else {
-            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
-        }
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+        writeDiaryVC.readingTime = self.readingTime
+        writeDiaryVC.challengeInfo = self.challengeInfo
+        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+
+        // 닉네임 설정 기능 구현시 주석 해제 후 처리
+//        if userName != "Reader" {
+//            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+//            writeDiaryVC.readingTime = self.readingTime
+//            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+//        } else {
+//            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
+//        }
     }
     
 }

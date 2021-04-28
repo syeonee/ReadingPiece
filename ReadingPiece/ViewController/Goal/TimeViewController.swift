@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimeViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     // Term VC에서 옵셔널 검사를 하고, 값을 넘겨줄 것 이기 때문에 편의상 논-옵셔널 변수로 생성
     var time: Int = 0
     var period: String = ""
     var amount: Int = 0
-    var initializer: Int = 0
+    var goal: ClientGoal?
 
     @IBOutlet weak var readingTimeLabel: UILabel!
     @IBOutlet weak var timeTextField: UITextField!
@@ -26,11 +29,43 @@ class TimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createDatePicker()
+        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
+    }
+    
+    // 화면 상단 - 다음 버튼과 연결된 액션
+    @IBAction func NetxToAddBookAction(_ sender: UIBarButtonItem) {
+        // 신규 유저 : 책 추가 화면까지 이동
+        if goal?.isNewUser == true && goal?.time != nil  {
+            guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+            searchVC.goal = self.goal
+            self.navigationController?.pushViewController(searchVC, animated: true)
+            
+        // 신규 유저 & 시간값을 입력하지 않은 경우
+        } else if goal?.time == nil {
+            self.presentAlert(title: "목표시간을 설정해주세요.", isCancelActionIncluded: false)
+        // 기존 유저 : 목표 수정 후 바로 메인으로 이동
+        } else {
+            patchUserReadingGoal()
+        }
+    }
+    
+    // 화면 하단 - 완료 버튼과 연결된 액션
+    @IBAction func addGoalAction(_ sender: UIButton) {
+        // 신규 유저 : 책 추가 화면까지 이동
+        if goal?.isNewUser == true && goal?.time != nil {
+            guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
+            searchVC.goal = self.goal
+            self.navigationController?.pushViewController(searchVC, animated: true)
+        // 기존 유저 : 목표 수정 후 바로 메인으로 이동
+        } else {
+            patchUserReadingGoal()
+        }
     }
     
     @objc func donePressed() {
         let minute = Int(datePicker.countDownDuration/60)
         time = minute
+        goal?.time = time
         timeTextField.text = "\(minute)"
         minuteLabel.isHidden = false
         readingTimeLabel.text = """
@@ -44,60 +79,11 @@ class TimeViewController: UIViewController {
     @IBAction func timeSelectButtonTapped(_ sender: Any) {
         timeTextField.becomeFirstResponder()
     }
-    
-    @IBAction func addGoalAction(_ sender: UIButton) {
-        setReadingGoal()
-    }
-    
-    func initTerm(readingPeriod: String, readingAmount: Int) {
-        period = readingPeriod
-        amount = readingAmount
-    }
-    
-    // 전달받은 Goal 값을 이용해 목표 설정
-    func setReadingGoal() {
-        if amount != 0 && period != "" && time != 0 {
-            // 기존 유저의 목표 변경
-            if self.initializer == 1 {
-                patchUserReadingGoal()
-            // 신규 유저의 목표 추가
-            } else {
-                postUserReadingGoal()
-            }
-        }
-    }
-    
-    func postUserReadingGoal() {
-        let req = PostReadingGoalRequest(Goal(period: period, amount: amount, time: time))
-                                
-        _ = Network.request(req: req) { (result) in
-                
-                switch result {
-                case .success(let userResponse):
-                    switch userResponse.code {
-                    case 1000:
-                        print("LOG - 목표설정 완료", self.amount, self.period, self.time, userResponse.message, userResponse.goalId)
-                        guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
-                        self.usderDefaults.set(userResponse.goalId, forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-                        self.navigationController?.pushViewController(searchVC, animated: true)
-                    case 2100, 2101:
-                        self.presentAlert(title: "입력값을 다시 확인해주세요.", isCancelActionIncluded: false)
-                    case 2122:
-                        self.presentAlert(title: "해당 기간에 이미 설정한 목표가 있습니다.", isCancelActionIncluded: false)
-                    default:
-                        self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-                    }
-                case .cancel(let cancelError):
-                    print(cancelError!)
-                case .failure(let error):
-                    self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
-            }
-        }
-    }
-    
+      
     func patchUserReadingGoal() {
+        guard let token = keychain.get(Keys.token) else { return }
         let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId)
+        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId, token: token)
                                 
         _ = Network.request(req: req) { (result) in
                 
@@ -121,6 +107,11 @@ class TimeViewController: UIViewController {
         }
     }
     
+    func initTerm(readingPeriod: String, readingAmount: Int) {
+        period = readingPeriod
+        amount = readingAmount
+    }
+        
     func createDatePicker() {
         minuteLabel.isHidden = true
         let toolbar = UIToolbar()

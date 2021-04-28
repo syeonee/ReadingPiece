@@ -4,9 +4,10 @@
 //
 //  Created by SYEON on 2021/03/22.
 //
-
 import UIKit
 import KeychainSwift
+
+let DidReceiveNameChangeNotification: Notification.Name = Notification.Name("DidReceiveNameChange")
 
 class ProfileEditViewController: UIViewController {
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
@@ -38,10 +39,19 @@ class ProfileEditViewController: UIViewController {
         resolutionTextField.delegate = self
         profileImageView.layer.cornerRadius = profileImageView.frame.height/2
         profileImageView.clipsToBounds = true
-        print("image == \(String(describing: profileImageView.image))")
+        if let data = UserDefaults.standard.data(forKey: "profileImageData"){
+            let decodedimage = UIImage(data: data as Data)
+            profileImageView.image = decodedimage
+            pickedImage = decodedimage
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: nameTextField)
         NotificationCenter.default.addObserver(self, selector: #selector(textDidChange(_:)), name: UITextField.textDidChangeNotification, object: resolutionTextField)
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: nameTextField)
+        NotificationCenter.default.removeObserver(self, name: UITextField.textDidChangeNotification, object: resolutionTextField)
     }
     
     @IBAction func editCancelButtonTapped(_ sender: Any) {
@@ -52,7 +62,6 @@ class ProfileEditViewController: UIViewController {
         if isNameCheck {
             self.showIndicator()
             guard let token = keychain.get(Keys.token) else { return }
-            print("name = \(nameTextField.text!), resolution = \(resolutionTextField.text!) img = \(pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)")
             Network.request(req: EditProfileRequest(token: token, name: nameTextField.text!, profileImage: pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil, resolution: resolutionTextField.text!)) { [self] result in
                 self.dismissIndicator()
                 switch result {
@@ -60,6 +69,7 @@ class ProfileEditViewController: UIViewController {
                     self.dismissIndicator()
                     let result = response.code
                     if result == 1000 {
+                        NotificationCenter.default.post(name: DidReceiveNameChangeNotification, object: nil, userInfo: ["userName":nameTextField.text!])
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
@@ -92,9 +102,9 @@ class ProfileEditViewController: UIViewController {
             isNameCheck = false
             self.showIndicator()
             guard let token = keychain.get(Keys.token) else { return }
+            print("send name is \(nameTextField.text!)")
             Network.request(req: NameDuplicateRequest(token: token, name: nameTextField.text!)) { [self] result in
                 self.dismissIndicator()
-                print("network is \(result)")
                 switch result {
                 case .success(let response):
                     self.dismissIndicator()
@@ -150,7 +160,8 @@ class ProfileEditViewController: UIViewController {
         }
         let deleteImage =  UIAlertAction(title: "삭제", style: .destructive) { (action) in
             self.pickedImage = nil
-            self.profileImageView.image = UIImage(named: "defaultProfile")
+            UserDefaults.standard.removeObject(forKey: "profileImageData")
+            self.profileImageView.image = UIImage(named: "profile_basic_photo2")
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         alert.addAction(camera)
@@ -182,6 +193,9 @@ class ProfileEditViewController: UIViewController {
                         resolutionCountLabel.text = "\(text.count)"
                     }
                 }
+                if textField == nameTextField {
+                    isNameCheck = false
+                }
             }
         }
     }
@@ -191,7 +205,7 @@ class ProfileEditViewController: UIViewController {
         let newWidth = image.size.width * scale
         UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
         image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
-        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage(named: "defaultProfile")! }
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else { return UIImage(named: "profile_basic_photo2")! }
         UIGraphicsEndImageContext()
         return newImage
     }
@@ -227,4 +241,3 @@ extension ProfileEditViewController: UITextFieldDelegate {
         return true
     }
 }
-

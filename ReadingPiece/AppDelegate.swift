@@ -23,19 +23,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         // Firebase Analytics 설정
         FirebaseApp.configure()
-        // 키체인 삭제 테스트
-        //if keychain.clear() {
-        //    print("cleared keychain")
-        //}
+//         키체인 삭제 테스트
+//        if keychain.clear() {
+//            print("cleared keychain")
+//        }
         if let token = keychain.get(Keys.token) {
             print("token: \(token)")
         }
-        if let userIdentifier = keychain.get(Keys.userIdentifier) {
-            print("userIdentifier: \(userIdentifier)")
-        }
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSans(.medium, size: 10)], for: .normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.NotoSans(.medium, size: 10)], for: .selected)
+        
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

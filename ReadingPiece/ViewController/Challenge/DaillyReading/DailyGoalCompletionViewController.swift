@@ -7,11 +7,14 @@
 
 import UIKit
 
+// 타이머 정지 시점에 목표 시간을 달성한 경우 나오는 화면
 class DailyGoalCompletionViewController: UIViewController {
     let userName = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     let goalBookId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     let goalId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-    var time: Int = 0
+    let targetTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
+    var readingTime: Int = 0
+    var challengeInfo: ChallengerInfo?
 //    let challengeId = UserDefaults.standard.string(forKey: Constants.USERDEFAULT_KEY_GOAL_USER_NAME)
     
     @IBOutlet weak var DailyGoalResultView: UIView!
@@ -26,30 +29,59 @@ class DailyGoalCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        print("LOG - Challenge Completion VC", readingTime)
+    }
+    
+    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
+        shareResult()
+    }
+    
+    @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
+        // 완료한 챌린지가 있으면 계속 버튼을 눌렀을때 리뷰 작성 화면으로 이동
+        let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+        writeDiaryVC.readingTime = self.readingTime
+        writeDiaryVC.challengeInfo = self.challengeInfo
+        self.navigationController?.pushViewController(writeDiaryVC, animated: true)
     }
     
     private func setupUI() {
         setNavBar()
-        WriteDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
+        //WriteDiaryButton.makeRoundedButtnon("일지 작성하기", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
 
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: " 목표 00분" ))
+        attributedString.append(NSAttributedString(string: " 목표 \(getMinutesTextByTime(readingTime))" ))
+        initReadingTime(time: readingTime)
         readingTargetTimeLabel.attributedText = attributedString
         readingTargetTimeLabel.textColor = .middlegrey1
-        
         daillyRadingTitleLabel.textColor = .charcoal
         daillyTotalReadingTimeLabel.textColor = .main
-        let attributedTimeString = NSMutableAttributedString()
-            .normal("총", fontSize: 25)
-            .bold("00", fontSize: 25)
-            .normal("분", fontSize: 25)
-            .bold("00", fontSize: 25)
-            .normal("초", fontSize: 25)
-        daillyTotalReadingTimeLabel.attributedText = attributedTimeString
         daillyRadingSubTitleLabel.textColor = .darkgrey
+    }
+    
+    func getMinutesTextByTime(_ time: Int) -> String {
+        var text = ""
+        if time > 60 {
+            text = "\(time / 60)분"
+        } else {
+            text = "\(1)분"
+        }
+        return text
+    }
+
+    
+    // 이전 화면에서 받은 시간(초) 기준으로 00분 00초 단위로 변환해서 레이블에 적용
+    private func initReadingTime(time: Int) {
+        let minutes = time / 60
+        let seconds = time % 60
+        let attributedTimeString = NSMutableAttributedString()
+            .bold("\(minutes)", fontSize: 40)
+            .normal("분", fontSize: 40)
+            .bold("\(seconds)", fontSize: 40)
+            .normal("초", fontSize: 40)
+        daillyTotalReadingTimeLabel.attributedText = attributedTimeString
     }
     
     private func setNavBar() {
@@ -57,10 +89,6 @@ class DailyGoalCompletionViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
         self.navigationController?.navigationBar.tintColor = .darkgrey
-    }
-    
-    @objc func shareDaillyReadingResult(sender: UIBarButtonItem) {
-        shareResult()
     }
     
     func shareResult() {
@@ -85,14 +113,5 @@ class DailyGoalCompletionViewController: UIViewController {
             UIGraphicsEndImageContext()
             return result!
         }
-    
-    @IBAction func writeDaillyReadingDiary(_ sender: UIButton) {
-        if userName != "Reader" {
-            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
-            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
-        } else {
-            self.presentAlert(title: "MY페이지에서 닉네임을 먼저 설정해주세요.", isCancelActionIncluded: false)
-        }
-    }
-    
+
 }

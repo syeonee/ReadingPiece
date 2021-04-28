@@ -6,14 +6,19 @@
 //
 
 import UIKit
+import KeychainSwift
 
 class TimerViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
     let targetTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_TARGET_TIME)
     let timerTime = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_CURRENT_TIMER_TIME)
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
     var isReading: Bool = true
     var readingTime : Int = 0
     var challengeInfo : ChallengerInfo?
+    let sceneDelegate = SceneDelegate()
     
     @IBOutlet weak var timerBackgroundView: UIView!
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -25,8 +30,12 @@ class TimerViewController: UIViewController {
     private lazy var stopwatch = Stopwatch(timeUpdated: { timeInterval in
         // 매초마다 타이머 시간을 저장하고, 화면 갱신
         self.defaults.setValue(Int(timeInterval), forKey: Constants.USERDEFAULT_KEY_CURRENT_TIMER_TIME)
-        self.readingTime += 1
-        self.currentTimeLabel.text = self.timeString(from: timeInterval)
+        self.currentTimeLabel.text = self.timeString(timeInterval: timeInterval)
+        // 매초마다 레이블에 표시되는 값을 초(Int)로 변환하여 readingTime 변수에 저장
+        // VC가 사라지는 시점에 Label값이 0으로 초기화 되기 때문에, 0보다 큰 경우만 저장하도록 if문 추가
+        if self.getTimeFromLable() > 0 {
+            self.readingTime = self.getTimeFromLable()
+        }
     })
     
     deinit {
@@ -37,24 +46,30 @@ class TimerViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         getUserBookReadingTime()
+        print("LOG - TimerVC is initialzed", self.challengeInfo as Any)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         stopwatch.toggle()
+        // 다른 화면에서 복귀해도 시간정보가 남아있어야 하므로, 시간 재할당
+        stopwatch.timerSavedTime = Double(readingTime)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationItem.title = "시간 기록"
+        stopwatch.stop()
     }
-
     
     @objc func skipTimeRecoding(sender: UIBarButtonItem) {
         // 목표시간 미달 안내 씬으로 이동
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
         let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
+        timerStopVC.readingTime = self.readingTime
+        timerStopVC.challengeInfo = self.challengeInfo
         self.navigationController?.pushViewController(timerStopVC, animated: true)
     }
 
@@ -66,18 +81,35 @@ class TimerViewController: UIViewController {
         changeReadingStatus()
         sender.isSelected = !sender.isSelected
         stopwatch.toggle()
-        print("LOG - Timer is Paused", currentTimeLabel.text, readingTime)
+        print("LOG - Timer is Paused", self.readingTime, targetTime)
     }
     
     @IBAction func stopTimer(_ sender: UIButton) {
         stopwatch.stop()
         startPauseRadingButton.isSelected = false
-        print("LOG - Timer is Stooped", currentTimeLabel.text, readingTime)
-//        getUserBookReadingTime()
+        print("LOG - Timer is Stooped", currentTimeLabel.text, self.readingTime)
+        
+        // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
+        // 클라 = 초단위 , 서버 = 분단위 이므로 변환해서 비교 필요
+        if self.readingTime > self.targetTime {
+            print("LOG - 목표시간 달성 읽은 시간\(readingTime) / 목표 시간 \(targetTime)")
+            let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
+            dailyReadingCompletionVC.tabBarController?.hidesBottomBarWhenPushed = true
+            dailyReadingCompletionVC.readingTime = self.readingTime
+            dailyReadingCompletionVC.challengeInfo = self.challengeInfo
+            self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
+        } else {
+            let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
+            timerStopVC.readingTime = self.readingTime
+            timerStopVC.challengeInfo = self.challengeInfo
+            timerStopVC.tabBarController?.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(timerStopVC, animated: true)
+        }
     }
     
     func getUserBookReadingTime() {
-        let req = GetBookReadingTimeRequest(goalBookId: 25)
+        guard let token = keychain.get(Keys.token) else { return }
+        let req = GetBookReadingTimeRequest(token: token, goalBookId: goalBookId)
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
@@ -85,26 +117,17 @@ class TimerViewController: UIViewController {
                     switch userResponse.code {
                     case 1000:
                         // 책 제목 화면 표시, 남은 시간 저장해서 추후 일지 작성시 전달 필요
-                        print("LOG - 이전 독서시간", userResponse.message, userResponse.result?.sumtime)
-                        let prevReadingTimeString = userResponse.result?.sumtime ?? "0" // 서버에서 오는 값이 string이라 변환 진행
+                        print("LOG - ", userResponse.message, userResponse.result?.first?.sumtime as Any)
+                        let prevReadingTimeString = userResponse.result?.first?.sumtime ?? "0" // 서버에서 오는 값이 string이라 변환 진행
                         let pervReadingTime = Int(prevReadingTimeString)
                         let totalReadingTime = pervReadingTime ?? 0 + self.readingTime // 클라에서 지금 읽은 시간, 서버에서 받은 오늘 읽었던 시간 합산
-                        
-                        // 합산 시간이 데일리 목표시간보다 많으면, 일일목표 완료 화면, 적으면 중간 포기 화면으로 이동
-                        if totalReadingTime > self.targetTime {
-                            let dailyReadingCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "dailyReadingCompletionVC") as! DailyGoalCompletionViewController
-                            self.navigationController?.pushViewController(dailyReadingCompletionVC, animated: true)
-                        } else {
-                            let timerStopVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerStopVC") as! TimerStopViewController
-                            self.navigationController?.pushViewController(timerStopVC, animated: true)
-                        }
                     default:
-                        print("LOG - 오늘 독서시간 정보 없음")
-                        self.presentAlert(title: "이전 시간 정보를 불러오지 못했습니다.", isCancelActionIncluded: false)
+                        print("LOG - 오늘 독서시간 정보 없음", userResponse.code, userResponse.result?.first?.sumtime as Any)
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
                 case .failure(let error):
+                    print("LOG", error as Any)
                     self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
@@ -116,12 +139,17 @@ class TimerViewController: UIViewController {
         timerBackgroundView.layer.borderColor = UIColor.sub2.cgColor
         timerBackgroundView.makeCircle()
         currentTimeLabel.textColor = .charcoal
+        
+        let book = self.challengeInfo?.readingBook.first?.title
+        bookTitleLabel.text = book
         bookTitleLabel.textColor = .black
+        
         let attributedString = NSMutableAttributedString(string: "")
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(named: "timer")
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: " 목표 20분" ))
+        
+        attributedString.append(NSAttributedString(string: " 목표 \(targetTime / 60)분" ))
         targetRadingTimeLabel.attributedText = attributedString
         targetRadingTimeLabel.textColor = .darkgrey
         
@@ -150,12 +178,23 @@ class TimerViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .darkgrey
     }
     
-    func timeString(from timeInterval: TimeInterval) -> String {
+    func timeString(timeInterval: TimeInterval) -> String {
         // 추후 재사용을 위해 타이머 시간은 초 단위로 유저디폴트에 저장
+        self.readingTime += 1
         let seconds = Int(timeInterval.truncatingRemainder(dividingBy: 60))
         let minutes = Int(timeInterval.truncatingRemainder(dividingBy: 60 * 60) / 60)
         let hours = Int(timeInterval / 3600)
         return String(format: "%.2d:%.2d:%.2d", hours, minutes, seconds)
+    }
+    
+    func getTimeFromLable() -> Int {
+        let time = currentTimeLabel.text?.components(separatedBy: ":") ?? ["00", "00", "00"]
+        var readingTime = 0
+
+        if let hour = Int(time.first!), let minutes = Int(time[1]), let seconds = Int(time.last!) {
+            readingTime = (hour * 60) * 60 + minutes * 60 + seconds
+        }
+        return readingTime
     }
 
     private func changeReadingStatus() {
@@ -170,7 +209,6 @@ class TimerViewController: UIViewController {
             isReading = true
         }
     }
-    
 }
 
 extension UIView {

@@ -6,6 +6,11 @@ import Foundation
 final class GetAllReadingBookRequest: Requestable {
     typealias ResponseType = AllReadingBookResponse
     
+    private var token: String
+    init(token: String) {
+        self.token = token
+    }
+    
     var baseUrl: URL {
         return  URL(string: Constants.DEV_BASE_URL)!
     }
@@ -27,11 +32,11 @@ final class GetAllReadingBookRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

@@ -6,17 +6,27 @@
 //
 
 import UIKit
+import KeychainSwift
+import Kingfisher
+
+
 protocol ReadingStatusDelegate {
     func setReadingPage(_ page: Int)
     func setReadingPercent(_ percent: Int)
 }
 class DaillyReadingWritenViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     let defaults = UserDefaults.standard
+    let goalId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
+    let goalBookId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_BOOK_ID)
+    let challengeId = UserDefaults.standard.integer(forKey: Constants.USERDEFAULT_KEY_CHALLENGE_ID)
     let cellId = ReviewImageCell.identifier
-    var challengeInfo : ChallengerInfo?
     let picker = UIImagePickerController()
+    
+    var challengeInfo : ChallengerInfo?
+    var readingTime : Int = 0
     var pickedImage : UIImage?
-    var readingTime: Int = 0
     var readingPercent: Int = 0
     var readingPage: Int = 0
     var isPublic: Bool? {
@@ -25,6 +35,7 @@ class DaillyReadingWritenViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var postImageButton: UIButton!
     @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var bookInfoView: UIView!
     @IBOutlet weak var bookThumbnailImage: UIImageView!
@@ -63,11 +74,81 @@ class DaillyReadingWritenViewController: UIViewController {
         self.navigationItem.title = "독서 일지"
     }
 
+    // 상단 완료 버튼
     @objc func postDiary(sender: UIBarButtonItem) {
-        // 시간, goalBookId, 챌린지 달성 여부
-        // 챌린지 달성 여부에 따른 화면 분기 필요
-//        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
-//        self.navigationController?.pushViewController(writeReviewVC, animated: true)
+        writeJournal()
+    }
+    
+    // 하단 완료 버튼
+    @IBAction func postDiary(_ sender: UIButton) {
+        if isValidatePost() == true {
+            // API 호출
+            writeJournal()
+        }
+    }
+    
+    func writeJournal() {
+        // 네트워크 통신 동안 작성 버튼의 중복터치를 막는 코드
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        guard let token = keychain.get(Keys.token) else { return }
+        let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
+        print("LOG TEST", isOpen)
+        let journal = JournalWritten(time: readingTime, text: commentTextView.text, open: isOpen, goalBookId: goalBookId,
+                                     page: readingPage, percent: readingPercent)
+        print("LOG - 일지 입력 정보",journal.time, journal.text, journal.open, journal.goalBookId, journal.page, journal.percent)
+        let req = PostJournalRequest(token: token, journal: journal)
+        
+        _ = Network.request(req: req) { (result) in
+                switch result {
+                case .success(let userResponse):
+                    switch userResponse.code {
+                    case 1000:
+                        print("LOG - 일지 작성 성공 \(userResponse.code)")
+                        NotificationCenter.default.post(name: Notification.Name("FetchJournalData"), object: nil)
+                        // 일지 작성 후, 그 날 읽은 결과를 보여주는 화면
+                        guard let daillyreadingResultVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "daillyreadingResultVC") as?
+                                DaillyDiaryWrittenCompletionViewController else { return }
+                        self.navigationController?.pushViewController(daillyreadingResultVC, animated: true)
+                    case 2225:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
+                    case 2227:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
+                    case 2228:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
+                        self.presentAlert(title: message, isCancelActionIncluded: false)
+                    case 3001:
+                        let message = userResponse.message
+                        print("LOG - message: \(message)")
+                        self.presentAlert(title: "일지 작성을 위해 먼저 닉네임을 설정해주세요.", isCancelActionIncluded: false)
+                    default:
+                        print("LOG 일지 작성 실패 \(userResponse.code)", journal, journal.goalBookId)
+                        self.presentAlert(title: "일지 작성에 실패하였습니다. 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
+                        
+                    // 버튼 작성 잠금 해제
+                    UIApplication.shared.endIgnoringInteractionEvents()
+                    }
+                case .cancel(let cancelError):
+                    print(cancelError!)
+                case .failure(let error):
+                    debugPrint("LOG", error)
+                    self.presentAlert(title: "네트워크 연결 실패 통신 상태를 확인해주세요.", isCancelActionIncluded: false)
+            }
+        }
+    }
+    // 일지 작성에 필요한 값이 스트링형태라 Bool -> String으로 변환
+    func getIsOpenFromIsJson(isPublic: Bool) -> String {
+        switch isPublic {
+        case true:
+            return "Y"
+        default:
+            return "N"
+        }
     }
     
     @IBAction func addImage(_ sender: UIButton) {
@@ -82,14 +163,16 @@ class DaillyReadingWritenViewController: UIViewController {
     @IBAction func pageSelect(_ sender: UIButton) {
         guard let inputReadingStatusVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingStatusPopupViewController.storyobardId) as? InputReadingStatusPopupViewController else { return }
         inputReadingStatusVC.readingStatusDelegate = self
-        inputReadingStatusVC.modalTransitionStyle = .crossDissolve
+        //inputReadingStatusVC.modalTransitionStyle = .crossDissolve
+        inputReadingStatusVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingStatusVC, animated: true, completion: nil)
     }
     
     @IBAction func percentSelect(_ sender: UIButton) {
         guard let inputReadingPercentVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingPercentPopupViewController.storyobardId) as? InputReadingPercentPopupViewController else { return }
         inputReadingPercentVC.readingStatusDelegate = self
-        inputReadingPercentVC.modalTransitionStyle = .crossDissolve
+        //inputReadingPercentVC.modalTransitionStyle = .crossDissolve
+        inputReadingPercentVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingPercentVC, animated: true, completion: nil)
     }
     
@@ -108,32 +191,55 @@ class DaillyReadingWritenViewController: UIViewController {
             self.privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
         }
     }
-    
-    @IBAction func postDiary(_ sender: UIButton) {
-        if isValidatePost() == true {
-            // API 호출
-        }
-    }
 
     private func setupUI() {
+        let readingTimeInt = Int.getMinutesTextByTime(readingTime)
+        let readingTimeString = "\(readingTimeInt) 분"
+        let author = challengeInfo?.readingBook.first?.writer ?? "저자 정보 로딩 실패"
+        let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
+
+        bookThumbnailImage.layer.cornerRadius = 4
+        bookThumbnailImage.layer.borderWidth = 0.4
+        bookThumbnailImage.layer.borderColor = UIColor.darkgrey.cgColor
+        bookAuthorLabel.text = author
+        bookTitleLabel.text = title
+        totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
         setNavBar()
+        totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)
         readingStatusButton.makeRoundedTagButtnon("읽는 중", titleColor: .middlegrey1, borderColor: UIColor.middlegrey1.cgColor, backgroundColor: .white)
-        totalReadingTimeButton.makeRoundedTagButtnon(" 00분", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
         postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
         readingPageInputButton.makeSmallRoundedButtnon("00p", titleColor: .white, borderColor: UIColor.main.cgColor, backgroundColor: .main)
         readingPercentInputButton.makeSmallRoundedButtnon("00%", titleColor: .main, borderColor: UIColor.main.cgColor, backgroundColor: .white)
-        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .white, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .darkgrey)
+        publicPostButton.makeSmallRoundedButtnon("전체 공개", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
         privatePostButton.makeSmallRoundedButtnon("나만 보기", titleColor: .darkgrey, borderColor: UIColor.darkgrey.cgColor, backgroundColor: .white)
         reviewImagePopButton.isHidden = true
         bookTitleLabel.textColor = .darkgrey
         bookAuthorLabel.textColor = .darkgrey
         commentTextView.textColor = .charcoal
         commentTextView.backgroundColor = .lightgrey1
+        commentTextView.layer.cornerRadius = 8
         commentLengthLabel.textColor = .darkgrey
         
+        // 일지 이미지 첨부 기능 부활시 제거
+        postImageButton.isHidden = true
+        // 실패시 리턴 처리 해놔서, 책 이미지 적용은 가장 마지막에 실행
+        guard let urlString = challengeInfo?.readingBook.first?.imageURL else { return }
+        let imgUrl = URL(string: urlString)
+        bookThumbnailImage.kf.setImage(with: imgUrl)
+        bookThumbnailImage.layer.cornerRadius = 4
     }
     
+    func getMinutesTextByTime(_ time: Int) -> String {
+        var text = ""
+        if time > 60 {
+            text = "\(time / 60)분"
+        } else {
+            text = "\(1)분"
+        }
+        return text
+    }
+
     private func setNavBar() {
         self.navigationItem.title = "독서 일지"
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -160,7 +266,6 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 }
 
-
 extension DaillyReadingWritenViewController: ReadingStatusDelegate {
     func setReadingPage(_ page: Int) {
         print("LOG - 읽은 페이지 수 저장 완료")
@@ -176,6 +281,7 @@ extension DaillyReadingWritenViewController: ReadingStatusDelegate {
 }
 
 extension DaillyReadingWritenViewController: UITextViewDelegate {
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if let char = text.cString(using: String.Encoding.utf8) {
@@ -198,6 +304,8 @@ extension DaillyReadingWritenViewController: UITextViewDelegate {
         } else if commentTextView.text == "" {
             commentTextView.text = "기억에 남는 문구, 소감을 기록하세요!"
             commentTextView.textColor = .middlegrey1
+        } else {
+            commentTextView.textColor = UIColor.black
         }
     }
     
@@ -226,10 +334,21 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
             self.pickedImage = img
-            let imgString = "\(self.pickedImage?.jpegData(compressionQuality: 0.3)?.base64EncodedString() ?? nil)"
-            print("LOG - Image String", imgString)
+//            let resizedImage = self.pickedImage?.imageResized(to: CGSize(width: 100, height: 100)).jpegData(compressionQuality: 0.1)
+//            print("LOG - Image String", imgBase64String)
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
+        }
+    }
+    
+
+    
+}
+
+extension UIImage {
+    func imageResized(to size: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: size).image { _ in
+            draw(in: CGRect(origin: .zero, size: size))
         }
     }
 }

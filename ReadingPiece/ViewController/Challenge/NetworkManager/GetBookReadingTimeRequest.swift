@@ -5,9 +5,12 @@ import Foundation
 
 final class GetBookReadingTimeRequest: Requestable {
     typealias ResponseType = ReadingBookTimeResponse
+    
+    private var token: String
     private var goalBookId: Int
     
-    init(goalBookId: Int) {
+    init(token: String, goalBookId: Int) {
+        self.token = token
         self.goalBookId = goalBookId
     }
 
@@ -32,11 +35,11 @@ final class GetBookReadingTimeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        return 10.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

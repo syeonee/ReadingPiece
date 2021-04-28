@@ -44,8 +44,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정세랑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1U-bU-VMS">
-                                <rect key="frame" x="97" y="41" width="38" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정세랑" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1U-bU-VMS">
+                                <rect key="frame" x="97" y="41" width="220" height="19"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" red="0.49806612729999999" green="0.50195240969999999" blue="0.50196123120000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -125,9 +125,9 @@
                             <constraint firstAttribute="bottom" secondItem="iPj-2E-nfY" secondAttribute="bottom" constant="15.199999999999999" id="J4E-Pi-68S"/>
                             <constraint firstItem="FUR-1M-tRQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Li-hq-e3g" secondAttribute="trailing" constant="19" id="Njj-1h-L6v"/>
                             <constraint firstAttribute="bottom" secondItem="JoP-Cs-Aoe" secondAttribute="bottom" constant="24" id="OC2-zf-hye"/>
-                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="M1U-bU-VMS" secondAttribute="trailing" constant="202" id="OT2-ah-zRd"/>
                             <constraint firstItem="zaR-yP-A1J" firstAttribute="centerY" secondItem="JoP-Cs-Aoe" secondAttribute="centerY" id="S9B-xS-QhI"/>
                             <constraint firstItem="M1U-bU-VMS" firstAttribute="leading" secondItem="iPj-2E-nfY" secondAttribute="trailing" constant="19" id="WnF-Xi-8CU"/>
+                            <constraint firstAttribute="trailing" secondItem="M1U-bU-VMS" secondAttribute="trailing" constant="20" id="Znu-aA-Sl6"/>
                             <constraint firstItem="8Li-hq-e3g" firstAttribute="leading" secondItem="iPj-2E-nfY" secondAttribute="trailing" constant="19" id="fcY-eT-HCb"/>
                             <constraint firstItem="M1U-bU-VMS" firstAttribute="top" secondItem="8Li-hq-e3g" secondAttribute="bottom" constant="3" id="gRb-CS-6Zo"/>
                             <constraint firstItem="iPj-2E-nfY" firstAttribute="leading" secondItem="GnL-uc-SL2" secondAttribute="leading" constant="12" id="pHd-0w-EG4"/>
@@ -183,6 +183,7 @@
                 <outlet property="ratingLabel" destination="YPk-6I-I2o" id="8hx-T5-G1D"/>
                 <outlet property="ratingView" destination="FUR-1M-tRQ" id="2TN-kW-ews"/>
                 <outlet property="reviewTextLabel" destination="5tv-fS-1KV" id="92R-Mc-l4L"/>
+                <outlet property="timeImageView" destination="0b1-Cv-dXe" id="zl1-dp-x1r"/>
                 <outlet property="timeLabel" destination="zaR-yP-A1J" id="G9p-ab-onh"/>
                 <outlet property="upperView" destination="GnL-uc-SL2" id="Bj1-B2-18G"/>
             </connections>

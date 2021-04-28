@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchBookViewController: UIViewController {
+    var goal: ClientGoal?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,7 @@ class SearchBookViewController: UIViewController {
     @IBAction func goToSearch(_ sender: Any) {
         let vc = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(identifier: "SearchViewController") as! SearchViewController
         vc.initializer = 0
+        vc.goal = self.goal
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

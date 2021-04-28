@@ -5,9 +5,12 @@ import Foundation
 
 final class GetTodayChallengeRequest: Requestable {
     typealias ResponseType = TodayReadingResponse
-    private var goalId: Int
     
-    init(goalId: Int) {
+    private var token: String
+    private var goalId: String
+    
+    init(token: String, goalId: String) {
+        self.token = token
         self.goalId = goalId
     }
 
@@ -32,11 +35,11 @@ final class GetTodayChallengeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

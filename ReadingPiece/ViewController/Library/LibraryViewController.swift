@@ -34,11 +34,23 @@ class LibraryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //self.setupCleanNavigationBar()
         menuViewController.register(nib: UINib(nibName: "MenuCell", bundle: nil), forCellWithReuseIdentifier: "MenuCell")
         menuViewController.registerFocusView(nib: UINib(nibName: "FocusView", bundle: nil))
         menuViewController.cellAlignment = .center
         
         dataSource = makeDataSource()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.setupCleanNavigationBar()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.restoreNavigationBar()
+        self.navigationItem.title = "내서재"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

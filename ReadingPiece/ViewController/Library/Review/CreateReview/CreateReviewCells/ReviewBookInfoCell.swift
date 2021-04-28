@@ -30,6 +30,7 @@ class ReviewBookInfoCell: UITableViewCell {
         authorTitleLabel.textColor = .middlegrey1
         publisherLabel.textColor = .charcoal
         publisherTitleLabel.textColor = .middlegrey1
+        coverImageView.layer.cornerRadius = 4
     }
     
 }

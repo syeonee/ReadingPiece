@@ -20,7 +20,7 @@ final class UserProfileRequest: Requestable {
     }
     
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -44,7 +44,7 @@ final class UserProfileRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 5.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

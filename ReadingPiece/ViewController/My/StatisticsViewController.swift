@@ -4,9 +4,9 @@
 //
 //  Created by SYEON on 2021/03/20.
 //
-
 import UIKit
 import Charts
+import KeychainSwift
 
 class StatisticsViewController: UIViewController {
     
@@ -20,16 +20,100 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var previousYearButton: UIButton!
     @IBOutlet weak var nextYearButton: UIButton!
     
-    var months: [String]!
-    var monthTotal: [Int]!
+    var myReadingInfo: ReadingInfo?
+    var myContinuityDay: ContinuityDay?
+    
+    var months: [String] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
+    var monthTotal: [Int] = []
     
     var currentYear: Int = 2021
     
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        chartEmptyView()
+        setStatisticsInfo()
         getCurrentYear()
-        
         drawYearCharts(year: currentYear)
+    }
+    
+    func chartEmptyView(){
+        barChartView.noDataText = "데이터를 불러올 수 없습니다."
+        barChartView.noDataFont = .NotoSans(.regular, size: 12)
+        barChartView.noDataTextColor = .lightGray
+    }
+    
+    func convertToHourMinute(totalString: String) -> String {
+        let total = Int(totalString)
+        let hour = (total ?? 0) / 60
+        let minute = (total ?? 0) % 60
+        if hour == 0 {
+            return "\(minute)분"
+        }else if minute == 0{
+            return "\(hour)시간"
+        }
+        return "\(hour)시간 \(minute)분"
+    }
+    
+    func setStatisticsInfo(){
+        self.showIndicator()
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: UserStatisticsRequest(token: token)) { [self] result in
+            self.dismissIndicator()
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    DispatchQueue.main.async {
+                        if let continuityDay = response.continuityDay, continuityDay.count != 0{
+                            myContinuityDay = continuityDay[0]
+                        }
+                        myReadingInfo = response.readingInfo[0]
+                        setStatisticsLabel()
+                        setStatisticsAttributedLabel()
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+//                print(error as Any)
+//                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+//                }
+            }
+        }
+    }
+    
+    func setStatisticsLabel(){
+        if let readingInfo = myReadingInfo {
+            bookQuantityLabel.text = "\(readingInfo.totalBookQuantity)권"
+            readingTimeLabel.text = convertToHourMinute(totalString: readingInfo.totalReadingTime)
+        }
+        
+        if let continuityDay = myContinuityDay {
+            readingDayLabel.text = "\(continuityDay.totalReadingDay)일"
+        }
+    }
+    
+    func setStatisticsAttributedLabel(){
+        let fontSize = UIFont.systemFont(ofSize: 12, weight: .regular)
+        
+        let attrBookQuantity = NSMutableAttributedString(string: bookQuantityLabel.text!)
+        attrBookQuantity.addAttribute(.font, value: fontSize, range: (bookQuantityLabel.text as! NSString).range(of: "권"))
+        bookQuantityLabel.attributedText = attrBookQuantity
+        
+        let attrReadingTime = NSMutableAttributedString(string: readingTimeLabel.text!)
+        attrReadingTime.addAttribute(.font, value: fontSize, range: (readingTimeLabel.text as! NSString).range(of: "시간"))
+        attrReadingTime.addAttribute(.font, value: fontSize, range: (readingTimeLabel.text as! NSString).range(of: "분"))
+        readingTimeLabel.attributedText = attrReadingTime
+        
+        let attrReadingDay = NSMutableAttributedString(string: readingDayLabel.text!)
+        attrReadingDay.addAttribute(.font, value: fontSize, range: (readingDayLabel.text as! NSString).range(of: "일"))
+        readingDayLabel.attributedText = attrReadingDay
+
     }
     
     func getCurrentYear(){
@@ -37,20 +121,41 @@ class StatisticsViewController: UIViewController {
         formatter_year.dateFormat = "yyyy"
         let current_year_string = formatter_year.string(from: Date())
         currentYear = Int(current_year_string)!
-        print("현재 연도 : \(currentYear)")
     }
     
     
     func drawYearCharts(year: Int) {
-        yearLabel.text = "\(year)"
-        months = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
-        monthTotal = [10, 4, 6, 3, 12, 16, 0, 18, 2, 4, 5, 4]
+        monthTotal = Array<Int>(repeating: 0, count: 12)
         
-        barChartView.noDataText = "데이터가 없습니다."
-        barChartView.noDataFont = .systemFont(ofSize: 20)
-        barChartView.noDataTextColor = .lightGray
-        
-        setChart(dataPoints: months, values: monthTotal)
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: UserGraphRequest(token: token, year: year)) { [self] result in
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    if let monthData = response.monthReadingInfos{
+                        DispatchQueue.main.async {
+                            for data in monthData {
+                                monthTotal[data.date-1] = Int(data.sum)!
+                            }
+                            yearLabel.text = "\(year)"
+                            setChart(dataPoints: months, values: monthTotal)
+                        }
+                    }
+                }
+                
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+//                print(error as Any)
+//                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
+//                }
+            }
+        }
+
     }
     
     func setChart(dataPoints: [String], values: [Int]) {
@@ -113,4 +218,3 @@ class StatisticsViewController: UIViewController {
     }
     
 }
-

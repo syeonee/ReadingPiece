@@ -9,10 +9,11 @@ import UIKit
 import Kingfisher
 
 class SearchViewController: UIViewController, UITextFieldDelegate {
-    
+    var goal: ClientGoal?
     // SearchViewController가 어디서 호출되었는지 Int 값으로 전달하는 변수입니다
     // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
     // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
+    // initializer가 2이면 메인 -> 책관리 화면에서 호출, BookDetailVC에서 챌린지 책이 아닌, 일반 책 추가 API 호출
     var initializer: Int?
 
     @IBOutlet weak var cancelButton: UIButton!
@@ -37,6 +38,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         resultTableView.separatorInset.right = 20
         resultCountLabel.isHidden = true
         resultTableView.isHidden = true
+        resultTableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.restoreNavigationBar()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -81,8 +87,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let book = books[indexPath.item]
-        let url = URL(string: book.thumbnailPath)
-        cell.bookImageView.kf.setImage(with: url)
+        if book.thumbnailPath != ""{
+            let url = URL(string: book.thumbnailPath)
+            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookCoverImage"), completionHandler: nil)
+        }
         cell.titleLabel.text = book.title
         cell.authorLabel.text = book.authors.joined(separator: ",")
         cell.publisherLabel.text = book.publisher
@@ -97,6 +105,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         vc.modalPresentationStyle = .fullScreen
         vc.initializer = self.initializer
         vc.book = book
+        vc.goal = self.goal
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -7,13 +7,15 @@ final class PostReportReviewRequest: Requestable {
     typealias ResponseType = DeleteChallengeResponse // 응답코드가 같아서 재활용
     
     private var reviewId: Int
+    private var token: String
     
-    init(reviewId: Int) {
+    init(reviewId: Int, token: String) {
         self.reviewId = reviewId
+        self.token = token
     }
 
     var baseUrl: URL {
-        return  URL(string: Constants.DEV_BASE_URL)!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -37,7 +39,7 @@ final class PostReportReviewRequest: Requestable {
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

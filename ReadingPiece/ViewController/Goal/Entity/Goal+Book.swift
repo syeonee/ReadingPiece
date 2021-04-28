@@ -14,6 +14,15 @@ struct Goal {
     var time: Int
 }
 
+// 목표 설정시, 신규 or 기존 유저여부를 구분하기 위해 별도로 구조체 선언
+struct ClientGoal {
+    var period: String?
+    var amount: Int?
+    var time: Int?
+    var isNewUser: Bool?
+}
+
+
 // 일반 책 추가에 필요한 구조체(챌린지 중인 책과 다름)
 struct GeneralBook {
     var writer: String // 저자
@@ -40,6 +49,7 @@ public struct UserBookReview: Codable {
     public var star: Int? // 평점
     public var reviewId: Int?
     public var text: String? // 리뷰 내용
+    public var bookId: Int?
     public var status: String? // 완독유무 : Y or N
 }
 

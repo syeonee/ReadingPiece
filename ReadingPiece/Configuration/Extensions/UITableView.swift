@@ -9,7 +9,9 @@ import UIKit
 
 extension UITableView {
     
-    func setEmptyView(image: UIImage, message: String, buttonType: String, actionButtonClosure: @escaping () -> Void) {
+    // 테이블 뷰 placeholder 뷰 생성
+    // 이미지, 텍스트, 버튼 액션 커스텀 가능
+    func setEmptyView(image: UIImage, message: String, buttonType: String, actionButtonClosure: @escaping () -> ()) {
         let emptyView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
         let imageView = UIImageView()
         let messageLabel = UILabel()
@@ -17,8 +19,12 @@ extension UITableView {
             let button = UIButton()
             if buttonType == "review" {
                 button.setImage(UIImage(named: "createReviewButton"), for: .normal)
-            } else {
+            } else if buttonType == "journal" {
                 button.setImage(UIImage(named: "startReadingButton"), for: .normal)
+            } else {
+                button.makeRoundedButtnon(buttonType, titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
+                button.layer.cornerRadius = button.frame.height / 2
+                button.titleLabel?.font = UIFont.NotoSans(.medium, size: 15)
             }
             return button
         } ()
@@ -85,6 +91,40 @@ extension UITableView {
     // MARK: 인디케이터 숨김
     func dismissIndicator() {
         IndicatorView.shared.dismiss()
+    }
+    
+    // 테이블뷰 리로드 후 completion handler 필요할 때
+    public func reloadData(_ completion: @escaping ()->()) {
+        UIView.animate(withDuration: 0, animations: {
+            self.reloadData()
+        }, completion:{ _ in
+            completion()
+        })
+    }
+    
+    // 테이블 뷰 리로드 후 스크롤 위치 변경할 때
+    func scroll(to: scrollsTo, animated: Bool) {
+        DispatchQueue.main.async() {
+            let numberOfSections = self.numberOfSections
+            let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
+            switch to{
+            case .top:
+                if numberOfRows > 0 {
+                     let indexPath = IndexPath(row: 0, section: 0)
+                     self.scrollToRow(at: indexPath, at: .top, animated: animated)
+                }
+                break
+            case .bottom:
+                if numberOfRows > 0 {
+                    let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                    self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+                }
+                break
+            }
+        }
+    }
+    enum scrollsTo {
+        case top,bottom
     }
 
     

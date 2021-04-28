@@ -6,216 +6,246 @@
 //
 
 import UIKit
+import KeychainSwift
+import SnapKit
 
 class CommunityViewController: UIViewController {
 
-    let journalCell = JournalCell()
-    let fullJournalCell = FullJournalCell()
-    let headerView = JournalHeaderCell()
-    // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
-    var more: [Int] = []
+    // 리뷰 리스트
+    var feedList: [Feed] = []
+    var expandedIndexSet : IndexSet = []
 
-    let dateFormatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateFormat = "y.MM.dd"
-        return f
-    } ()
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
     
-    @IBOutlet weak var journalTableView: UITableView!
+    var page : Int = 0
+    let limit : Int = 5
+    var isEnd : Bool = false
+    var isLoaded : Bool = false
+    var isRefresh : Bool = false
+    
+    @IBOutlet weak var feedTableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // 더보기 값 배열 초기화
-        self.more = Array<Int>(repeating: 0, count: Journal.dummyData.count)
-        setupUI()
-    }
-    
-    private func setupUI() {
-        setTableView()
-    }
-    
-    private func setTableView() {
-        journalTableView.dataSource = self
-        journalTableView.delegate = self
-        journalTableView.register(UINib(nibName: "JournalCell", bundle: nil), forCellReuseIdentifier: journalCell.cellID)
-        journalTableView.register(UINib(nibName: "FullJournalCell", bundle: nil), forCellReuseIdentifier: fullJournalCell.cellID)
-        journalTableView.register(UINib(nibName: "JournalHeaderCell", bundle: nil), forHeaderFooterViewReuseIdentifier: headerView.identifier)
+        indicator.backgroundColor = .white
+        loadReviewData(page: 0, limit: limit)
+        feedTableView.alwaysBounceVertical = true
+        initRefresh()
+        feedTableView.delegate = self
+        feedTableView.dataSource = self
+        feedTableView.register(UINib(nibName: "FeedCell", bundle: nil), forCellReuseIdentifier: "feedCell")
         
-        journalTableView.rowHeight = UITableView.automaticDimension
-        journalTableView.estimatedRowHeight = 150
-        journalTableView.separatorStyle = .none
-        journalTableView.backgroundColor = .lightgrey2
+        feedTableView.rowHeight = UITableView.automaticDimension
+        feedTableView.estimatedRowHeight = 284
+        indicator.center = self.view.center
     }
-
+    
+    func initRefresh(){
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(updateUI(refresh:)), for: .valueChanged)
+        feedTableView.addSubview(refresh)
+    }
+    
+    @objc func updateUI(refresh: UIRefreshControl){
+        refresh.endRefreshing()
+        page = 0
+        isEnd = false
+        isLoaded = false
+        isRefresh = true
+        feedList = []
+        expandedIndexSet = []
+        loadReviewData(page: 0, limit: limit)
+    }
+    
 }
 
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = Journal.dummyData.count
-        if count == 0 {
-            let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            self.setEmptyView(image: UIImage(named: "recordIcon")!, message: message)
+        if feedList.count == 0 {
+            feedTableView.separatorStyle = .none
+            feedTableView.backgroundView = UIStoryboard(name: "Community", bundle: nil).instantiateViewController(identifier: "feedEmptyView").view as! UIView
+        }else{
+            feedTableView.separatorStyle = .singleLine
+            feedTableView.separatorInset.left = 0
+            feedTableView.backgroundView = nil
         }
-        return count
+        return feedList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let length = Journal.dummyData[0].content.utf8.count
+        let length = 110
+        let feed = feedList[indexPath.row]
         
-        if Journal.dummyData[indexPath.row].content.utf8.count <= length {
-            let cell = tableView.dequeueReusableCell(withIdentifier: fullJournalCell.cellID) as! FullJournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.editDelegate = self
-            return cell
-        } else if more[indexPath.row] == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: journalCell.cellID) as! JournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.moreDelegate = self
-            cell.editDelegate = self
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: fullJournalCell.cellID) as! FullJournalCell
-            let journal = Journal.dummyData[indexPath.row]
-            cell.bookTitleLabel.text = journal.bookTitle
-            cell.journalTextLabel.text = journal.content
-            cell.dateLabel.text = dateFormatter.string(from: journal.date)
-            cell.readingPercentageLabel.text = "\(journal.readingPercentage)% 읽음"
-            cell.readingTimeLabel.text = journal.time
-            cell.index = indexPath.row
-            cell.editDelegate = self
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "feedCell", for: indexPath) as? FeedCell else {
+            return UITableViewCell()
+        }
+        cell.feedCellDelegate = self
+        cell.dateLabel.text = feed.postAt
+        cell.bookTitleLabel.text = feed.title
+        cell.bookAuthorLabel.text = feed.writer
+        cell.percentLabel.text = "\(feed.percent)% 읽음"
+        cell.timeLabel.text = "\(feed.time)분"
+        
+        if feed.profilePictureURL != nil{
+            let decodedData = NSData(base64Encoded: feed.profilePictureURL ?? "", options: [])
+            if let data = decodedData {
+                if data.count < 2 {
+                    cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
+                } else {
+                    cell.profileImageView.image = UIImage(data: data as Data)
+                }
+            }else{
+                cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
+            }
+        }else{
+            cell.profileImageView.image = UIImage(named: "profile_basic_photo2")
+        }
+        
+        if feed.status == "N"{
+            cell.statusImageView.image = UIImage(named: "readOngoing")
+        }else{
+            cell.statusImageView.image = UIImage(named: "feedComplete")
+        }
+        
+        if let name = feed.name {
+            cell.nameLabel.text = name
+        }else{
+            cell.nameLabel.text = "Reader\(feed.userId)"
+        }
+        
+        if let imageURL = feed.imageURL{
+            let url = URL(string: imageURL)
+            cell.bookImageView.kf.setImage(with: url, placeholder: UIImage(named: "defaultBookCoverImage"), options: nil, completionHandler: nil)
+        }
+        
+        if feed.text.utf8.count <= length {
+            cell.impressionLabel.numberOfLines = 0
+            cell.impressionLabel.text = feed.text
+            cell.moreButton.isHidden = true
+        }else if expandedIndexSet.contains(indexPath.row) {
+            cell.impressionLabel.numberOfLines = 0
+            cell.textConstraint.constant = 0
+            self.view.layoutIfNeeded()
+            cell.impressionLabel.text = feed.text
+            cell.moreButton.isHidden = true
+        }else{
+            cell.impressionLabel.numberOfLines = 2
+            cell.impressionLabel.text = cell.impressionLabel.getTruncatingText(originalString: feed.text, newEllipsis: "..더보기", maxLines: 2)
+            cell.moreButton.isHidden = false
+        }
+        return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height: CGFloat = scrollView.frame.size.height
+        let contentYOffset: CGFloat = scrollView.contentOffset.y
+        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+                  
+        if distanceFromBottom < height && !isEnd && isLoaded {
+            addData()
         }
     }
+    
+    func addData(){
+        page+=5
+        loadReviewData(page: page, limit: limit)
+    }
 
 }
 
-extension CommunityViewController: JournalMoreDelegate {
-    func didTapMoreButton(index: Int) {
-        self.more[index] = 1
-        self.journalTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-    }
-}
-
-// 수정 기능 관련
-extension CommunityViewController: JournalEditDelegate, FullJournalEditDelegate {
-    func didTapEditButton(index: Int) {
-        showAlert(index: index)
+extension CommunityViewController: FeedCellDelegate {
+    func didTapMoreButton(cell: FeedCell) {
+        if let indexPath = feedTableView.indexPath(for: cell) {
+            print("more button tapped at row-\(String(indexPath.row))")
+            expandedIndexSet.insert(indexPath.row)
+            feedTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
-    func didTapFullEditButton(index: Int) {
-        showAlert(index: index)
+    func didTapEditButton(cell: FeedCell) {
+        if let indexPath = feedTableView.indexPath(for: cell){
+            showAlert(indexPath: indexPath)
+        }
     }
     
-    func showAlert(index: Int) {
+    func showAlert(indexPath: IndexPath) { // alert 보여줄 때 breaking constraint는 버그라고 한다.
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let success = UIAlertAction(title: "수정", style: .default) { (action) in
-            print("게시글 작성자만 게시글 수정")
+//        let modify = UIAlertAction(title: "수정", style: .default) { (action) in
+//            let vc = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(identifier: "LibraryController") as! LibraryViewController
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }
+        let remove = UIAlertAction(title: "신고", style: .destructive) { (action) in
+            let vc = UIStoryboard(name: "My", bundle: nil).instantiateViewController(identifier: "QuestionController") as! QuestionViewController
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-        let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
-            Journal.dummyData.remove(at: index)
-            self.more.remove(at: index)
-            self.journalTableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            self.journalTableView.reloadData()  // 섹션 헤더 reload 위해 사용
-        }
         
-        alert.addAction(success)
+//        alert.addAction(modify)
+        alert.addAction(remove)
         alert.addAction(cancel)
-        alert.addAction(destructive)
         
         self.present(alert, animated: true, completion: nil)
     }
-}
-
-// 정렬 기능
-extension CommunityViewController: JournalOldestDelegate, JournalLatestDelegate {
-    func sortOldFirst() {
-        Journal.dummyData.sort(by: { $0.date < $1.date })
-        journalTableView.reloadData()
-    }
     
-    func sortRecentFirst() {
-        Journal.dummyData.sort(by: { $0.date > $1.date })
-        journalTableView.reloadData()
-    }
 }
 
+
+// API 호출 메소드
 extension CommunityViewController {
-    // 테이블 뷰에 데이터가 없을 경우 표시되는 placeholder
-    func setEmptyView(image: UIImage, message: String) {
-        let emptyView = UIView(frame: CGRect(x: self.view.center.x, y: self.view.center.y, width: self.view.bounds.size.width, height: self.view.bounds.size.height))
-        let imageView = UIImageView()
-        let messageLabel = UILabel()
-        let button = UIButton()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        messageLabel.font = .NotoSans(.medium, size: 15)
-        messageLabel.textColor = .charcoal
-        button.titleLabel?.font = .NotoSans(.medium, size: 15)
-        button.makeRoundedButtnon("독서 시작하기", titleColor: .white, borderColor: UIColor.melon.cgColor, backgroundColor: .melon)
-        
-        emptyView.addSubview(imageView)
-        emptyView.addSubview(messageLabel)
-        emptyView.addSubview(button)
-        emptyView.backgroundColor = #colorLiteral(red: 0.9646214843, green: 0.9647600055, blue: 0.9645912051, alpha: 1)
-        
-        //imageView.centerYAnchor.constraint(equalTo: emptyView.centerYAnchor).isActive = true
-        imageView.topAnchor.constraint(equalTo: emptyView.topAnchor, constant: 42).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: emptyView.centerXAnchor).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 57).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 63).isActive = true
-        messageLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16).isActive = true
-        messageLabel.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 80).isActive = true
-        messageLabel.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -80).isActive = true
-        button.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 40).isActive = true
-        button.leftAnchor.constraint(equalTo: emptyView.leftAnchor, constant: 40).isActive = true
-        button.rightAnchor.constraint(equalTo: emptyView.rightAnchor, constant: -40).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        
-        button.addTarget(self, action: #selector(buttonAction(_:)), for: .touchUpInside)
-        
-        
-        imageView.image = image
-        messageLabel.text = message
-        messageLabel.numberOfLines = 0
-        messageLabel.textAlignment = .center
-        
-        self.journalTableView.backgroundView = emptyView
-        self.journalTableView.separatorStyle = .none
-    }
     
-    @objc func buttonAction (_ sender: UIButton!) {
-        print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
-        
-        //let homeNavigationVC = MyNavViewController()
-        //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController
-        
-        /*
-        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        //self.navigationController?.pushViewController(TimerVC, animated: true)
-        
-        let viewControllers = self.navigationController!.viewControllers
-        let newViewControllers = NSMutableArray()
-        
-        // preserve the root view controller
-        newViewControllers.add(viewControllers[0])
-        // add the new view controller
-        newViewControllers.add(timerVC)
-        self.navigationController?.setViewControllers(newViewControllers as! [UIViewController], animated: true)
-        */
+    // 리뷰 조회 - 처음 화면 로드할 때
+    private func loadReviewData(page: Int, limit: Int) {
+        if !isLoaded && !isRefresh{//처음 로드 할 때만 인디케이터 보여주기
+            indicator.startAnimating()
+        }
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: FeedRequest(token: token, page: page,limit: limit)) { result in
+            switch result {
+            case .success(let response):
+                if response.code == 1000 {
+                    self.isLoaded = true
+                    self.isRefresh = false
+                    if response.journalcount != 0 {
+                        if response.journalcount < limit{
+                            self.isEnd = true
+                        }
+                        guard let result = response.feed else { return }
+                        DispatchQueue.main.async {
+                            self.feedList.append(contentsOf: result)
+                            self.feedTableView.reloadData()
+                            if self.indicator.isAnimating {
+                                self.indicator.stopAnimating()
+                            }
+                        }
+                    }else{
+                        self.isEnd = true
+                        self.isRefresh = false
+                    }
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        if self.indicator.isAnimating {
+                            self.indicator.stopAnimating()
+                        }
+                        self.presentAlert(title: message)
+                    }
+                }
+            case .cancel(let cancel):
+                self.isRefresh = false
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
+                print(cancel as Any)
+            case .failure(let error):
+                self.isRefresh = false
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+                print(error as Any)
+            }
+        }
     }
 }

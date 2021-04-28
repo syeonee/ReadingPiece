@@ -14,17 +14,17 @@ final class DeleteReviewRequest: Requestable {
     
     private var token: String
     private var reviewID: Int
-    init(token: String, reviewID: Int) {
+    init(token: String , reviewID: Int) {
         self.token = token
         self.reviewID = reviewID
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review/\(reviewID)"
+        return "review/\(reviewID)"
     }
     
     var method: Network.Method {
@@ -40,12 +40,11 @@ final class DeleteReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        // 테스트용
-        return 5.0
+        return 10.0
         //return 30.0
     }
     

@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import KeychainSwift
 import SpriteKit
 
 class ChallengeCompletionViewController: UIViewController {
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
 
     @IBOutlet weak var challengeRewardView: UIView!
     @IBOutlet weak var challengeRewardImage: UIImageView!
@@ -32,8 +35,9 @@ class ChallengeCompletionViewController: UIViewController {
     }
     
     func postNewUserCakeType() {
+        guard let token = keychain.get(Keys.token) else { return }
         // 유저디폴트에 있는 goalId, 케이크 이름을 받아오도록 추후 변경 필요
-        let req = PostUserCakeTypeRequest(goalId: 33, cake: "bery")
+        let req = PostUserCakeTypeRequest(token: token, goalId: 33, cake: "bery")
         
         _ = Network.request(req: req) { (result) in
                 switch result {
@@ -70,7 +74,9 @@ class ChallengeCompletionViewController: UIViewController {
     }
 
     @IBAction func continueReading(_ sender: UIButton) {
-        
+        //        챌린지 달성 시점에 해당 책에대한 리뷰 작성 화면으로 이동, 추후 구현
+        //        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
+        //        self.navigationController?.pushViewController(writeReviewVC, animated: true)
     }
     
     func shareResult() {

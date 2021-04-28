@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Community-->
         <scene sceneID="dKV-UG-xjK">
@@ -21,6 +26,10 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" id="NA1-p6-5jY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ib9-Wb-8Ik"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -28,6 +37,8 @@
                             <constraint firstItem="ib9-Wb-8Ik" firstAttribute="trailing" secondItem="aGA-57-ror" secondAttribute="trailing" id="0fy-1v-fFZ"/>
                             <constraint firstItem="ib9-Wb-8Ik" firstAttribute="bottom" secondItem="aGA-57-ror" secondAttribute="bottom" id="9Wb-ke-XFR"/>
                             <constraint firstItem="aGA-57-ror" firstAttribute="leading" secondItem="ib9-Wb-8Ik" secondAttribute="leading" id="Dvk-84-3PY"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="centerX" secondItem="aGA-57-ror" secondAttribute="centerX" id="NEZ-o1-3M8"/>
+                            <constraint firstItem="NA1-p6-5jY" firstAttribute="centerY" secondItem="aGA-57-ror" secondAttribute="centerY" id="Y0U-YO-zKb"/>
                             <constraint firstItem="aGA-57-ror" firstAttribute="top" secondItem="ib9-Wb-8Ik" secondAttribute="top" id="zT0-ag-7oQ"/>
                         </constraints>
                     </view>
@@ -35,12 +46,51 @@
                     <navigationItem key="navigationItem" title="커뮤니티" id="Pzc-iz-ZKR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="journalTableView" destination="aGA-57-ror" id="m4O-4y-xkc"/>
+                        <outlet property="feedTableView" destination="aGA-57-ror" id="NI3-Sq-xTz"/>
+                        <outlet property="indicator" destination="NA1-p6-5jY" id="ClI-mB-7Vp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LAV-95-WFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1189.8550724637682" y="59.598214285714285"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="yLt-fw-w30">
+            <objects>
+                <viewController storyboardIdentifier="feedEmptyView" id="b4i-80-RWC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cuo-LN-M9Q">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNR-IF-np7">
+                                <rect key="frame" x="75.5" y="425" width="263" height="56.5"/>
+                                <string key="text">일지를 불러오지 못했습니다.
+화면을 내려서 새로고침 해주세요.</string>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="19"/>
+                                <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cake" translatesAutoresizingMaskIntoConstraints="NO" id="47b-Nn-83v">
+                                <rect key="frame" x="168.5" y="342" width="77" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="7P2-Zd-D6n"/>
+                                    <constraint firstAttribute="width" constant="77" id="ZTj-RY-Ocm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="d2s-nh-ats"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nNR-IF-np7" firstAttribute="centerX" secondItem="d2s-nh-ats" secondAttribute="centerX" id="2KC-Me-1GE"/>
+                            <constraint firstItem="nNR-IF-np7" firstAttribute="top" secondItem="47b-Nn-83v" secondAttribute="bottom" constant="24" id="6lQ-VY-J6t"/>
+                            <constraint firstItem="47b-Nn-83v" firstAttribute="centerX" secondItem="d2s-nh-ats" secondAttribute="centerX" id="Ecg-iC-P8V"/>
+                            <constraint firstItem="nNR-IF-np7" firstAttribute="centerY" secondItem="d2s-nh-ats" secondAttribute="centerY" id="sbd-Wu-rps"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AHA-gh-Shm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046" y="60"/>
         </scene>
         <!--Community Nav View Controller-->
         <scene sceneID="JRt-jr-cgs">
@@ -66,6 +116,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cake" width="82" height="63"/>
         <image name="community" width="25" height="25"/>
         <image name="selectedCommunity" width="25" height="25"/>
         <systemColor name="systemBackgroundColor">

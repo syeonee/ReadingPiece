@@ -12,11 +12,13 @@ import Foundation
 final class PostReviewRequest: Requestable {
     typealias ResponseType = GetReviewResponse
     
+    private var token: String
     private var bookID: Int
     private var star: Int
     private var text: String
     private var isPublic: Int
-    init(bookID: Int, star: Int, text: String, isPublic: Int) {
+    init(token: String, bookID: Int, star: Int, text: String, isPublic: Int) {
+        self.token = token
         self.bookID = bookID
         self.star = star
         self.text = text
@@ -24,11 +26,11 @@ final class PostReviewRequest: Requestable {
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "/review"
+        return "review"
     }
     
     var method: Network.Method {
@@ -44,7 +46,7 @@ final class PostReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": token]
     }
     
     var timeout: TimeInterval {

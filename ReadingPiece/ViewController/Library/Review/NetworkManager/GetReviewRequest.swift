@@ -20,7 +20,7 @@ final class GetReviewRequest: Requestable {
         self.align = align
     }
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
@@ -40,7 +40,7 @@ final class GetReviewRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token]
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {

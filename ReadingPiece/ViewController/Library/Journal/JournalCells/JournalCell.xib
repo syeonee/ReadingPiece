@@ -33,13 +33,13 @@
                         <rect key="frame" x="20" y="10" width="320" height="123"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="보건교사 안은영" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhi-Fn-gdP">
-                                <rect key="frame" x="20" y="14" width="204" height="23"/>
+                                <rect key="frame" x="20" y="14" width="204" height="22.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="2021.03.03" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UL6-iN-qxs">
-                                <rect key="frame" x="244" y="11" width="65" height="20"/>
+                                <rect key="frame" x="244" y="11" width="65" height="19.5"/>
                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                         <rect key="frame" x="5" y="6" width="17.5" height="11"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="48% 읽음" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d64-Kr-rjK">
-                                        <rect key="frame" x="27" y="1.5" width="54" height="20"/>
+                                        <rect key="frame" x="27" y="2" width="54" height="19.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -81,7 +81,7 @@
                                         <rect key="frame" x="5" y="4" width="15" height="15"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1시간 20분" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iZ-GT-2g2">
-                                        <rect key="frame" x="24" y="1.5" width="60.5" height="20"/>
+                                        <rect key="frame" x="24" y="2" width="60.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="13"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -164,7 +164,7 @@
                 <outlet property="readingTimeLabel" destination="2iZ-GT-2g2" id="U8Q-cW-2B7"/>
                 <outlet property="secondContainerView" destination="efC-VW-7Tz" id="YRX-Qh-MEU"/>
             </connections>
-            <point key="canvasLocation" x="21.739130434782609" y="64.285714285714278"/>
+            <point key="canvasLocation" x="21.739130434782609" y="63.616071428571423"/>
         </tableViewCell>
     </objects>
     <resources>

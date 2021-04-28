@@ -11,7 +11,6 @@ import KeychainSwift
 class JournalViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
-    
     let journalCell = JournalCell()
     let fullJournalCell = FullJournalCell()
     let headerView = JournalHeaderCell()
@@ -24,6 +23,10 @@ class JournalViewController: UIViewController {
     
     // 일지 리스트
     var journalList = [GetJournalResponseResult]()
+    var journalCount: Int? // 일지 수
+    var page : Int = 0 // 페이지 넘버
+    var isEnd : Bool = false  // 마지막 페이지인지 체크하는 flag
+    var align: String = "desc"  // 정렬 기준 나타내는 flag
     
     // 더보기 기능을 위한 0 또는 1 값을 저장하기 위한 Array
     var more: [Int] = []
@@ -33,8 +36,8 @@ class JournalViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        getJournalData(align: "desc")
-
+        getJournalData(align: align, page: page, limit: 5)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadJournalData), name: Notification.Name("FetchJournalData"), object: nil)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "JournalCell", bundle: nil), forCellReuseIdentifier: journalCell.cellID)
@@ -50,8 +53,32 @@ class JournalViewController: UIViewController {
     
     func didRetrieveData() {
         self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
-        self.tableView.reloadData()
+        self.tableView.reloadData() {
+            self.tableView.scroll(to: .top, animated: true) // 처음 로드되거나 정렬기준을 바꿀 경우 스크롤위치 상단으로 이동
+        }
     }
+    func didRetrieveMoreData() {
+        self.more = Array<Int>(repeating: 0, count: journalList.count)  // 더보기 값 배열 초기화
+        self.tableView.reloadData() // 페이징으로 인한 추가 데이터 fetch 시에는 스크롤위치 변경하지 않음
+    }
+    
+    @objc func reloadJournalData(notification: NSNotification) {
+        getJournalData(align: align, page: page, limit: 5)
+    }
+    
+    // 분 시간으로 바꾸기
+    func convertToHourMinute(totalString: String) -> String {
+        let total = Int(totalString)
+        let hour = (total ?? 0) / 60
+        let minute = (total ?? 0) % 60
+        if hour == 0 {
+            return "\(minute)분"
+        }else if minute == 0{
+            return "\(hour)시간"
+        }
+        return "\(hour)시간 \(minute)분"
+    }
+    
 }
 
 extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
@@ -60,7 +87,7 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
         let count = journalList.count
         if count == 0 {
             let message = "아직 인증이 없어요. \n매일 독서 시간과 소감을 기록하고 \n챌린지를 달성해요!"
-            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType:  "journal") {
+            tableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "journal") {
                 self.buttonAction()
             }
         } else {
@@ -77,8 +104,9 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.editDelegate = self
             return cell
@@ -88,8 +116,9 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            
             cell.readingPercentLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.moreDelegate = self
             cell.editDelegate = self
@@ -100,8 +129,9 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             cell.bookTitleLabel.text = journal.title
             cell.journalTextLabel.text = journal.text
             cell.dateLabel.text = journal.postAt
+            
             cell.readingPercentageLabel.text = "\(journal.percent)% 읽음"
-            cell.readingTimeLabel.text = "\(journal.time)분"
+            cell.readingTimeLabel.text = convertToHourMinute(totalString: String(journal.time))
             cell.index = indexPath.row
             cell.editDelegate = self
             return cell
@@ -113,7 +143,9 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             return nil
         } else {
             let cell = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerView.identifier) as! JournalHeaderCell
-            cell.count.text = String(journalList.count)
+            if let count = self.journalCount {
+                cell.count.text = String(count)
+            }
             cell.recentDelegate = self
             cell.oldDelegate = self
             return cell
@@ -127,8 +159,25 @@ extension JournalViewController: UITableViewDataSource, UITableViewDelegate {
             return 45
         }
     }
+}
+
+// Paging
+extension JournalViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height: CGFloat = scrollView.frame.size.height
+        let contentYOffset: CGFloat = scrollView.contentOffset.y
+        let scrollViewHeight: CGFloat = scrollView.contentSize.height
+        let distanceFromBottom: CGFloat = scrollViewHeight - contentYOffset
+        if distanceFromBottom < height && !isEnd {
+            addData()
+        }
+    }
     
-    
+    func addData(){
+        print("addData() called")
+        page += 5
+        getMoreJournal(align: align, page: page, limit: 5)
+    }
 }
 
 // 더보기 기능 관련
@@ -151,31 +200,25 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let success = UIAlertAction(title: "첨부한 사진 보기", style: .default) { (action) in
-            print("첨부한 사진 보기")
-        }
+        
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
-            self.deleteJournal(journalID: self.journalList[index].journalID)
-            
-            self.journalList.remove(at: index)
-            self.more.remove(at: index)
-            self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
-            //self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
+            print("일지 삭제 요청중 - journalID: \(self.journalList[index].journalID)")
+            self.deleteJournal(journalID: self.journalList[index].journalID, index: index)
         }
         
-        alert.addAction(success)
         alert.addAction(cancel)
         alert.addAction(destructive)
         
         self.present(alert, animated: true, completion: nil)
     }
     
-    func didDeleteData() {
-        //self.journalList.remove(at: index)
-        //self.more.remove(at: index)
-        //self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
+    func didDeleteData(index: Int) {
+        self.presentAlert(title: "일지가 삭제되었습니다. ", isCancelActionIncluded: false)
+        self.journalList.remove(at: index)
+        self.more.remove(at: index)
+        self.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .left)
         self.tableView.reloadData()  // 섹션 헤더 reload 위해 사용
     }
 }
@@ -183,11 +226,19 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
 // 정렬 기능
 extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
     func sortOldFirst() {
-        getJournalData(align: "asc")
+        self.align = "asc"
+        self.page = 0
+        self.isEnd = false
+        self.journalList = [] // 초기화
+        getJournalData(align: align, page: page, limit: 5)
     }
     
     func sortRecentFirst() {
-        getJournalData(align: "desc")
+        self.align = "desc"
+        self.page = 0
+        self.isEnd = false
+        self.journalList = [] // 초기화
+        getJournalData(align: align, page: page, limit: 5)
     }
 }
 
@@ -195,42 +246,23 @@ extension JournalViewController: JournalOldestDelegate, JournalLatestDelegate {
 extension JournalViewController {
     
     func buttonAction () {
-        print("독서 시작 - 홈탭으로 이동 후 타이머 VC로 이동해야 함")
-        
-        
-        //let homeNavigationVC = MyNavViewController()
-        //let homeVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "") as! MyNavViewController
-        
-        /*
-        let timerVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "timerVC") as! TimerViewController
-        //self.navigationController?.pushViewController(TimerVC, animated: true)
-        
-        let viewControllers = self.navigationController!.viewControllers
-        let newViewControllers = NSMutableArray()
-        
-        // preserve the root view controller
-        newViewControllers.add(viewControllers[0])
-        // add the new view controller
-        newViewControllers.add(timerVC)
-        self.navigationController?.setViewControllers(newViewControllers as! [UIViewController], animated: true)
-        */
+        self.tabBarController?.selectedIndex = 0
     }
-    
-    
 }
 
 
 // API 연동 메소드
 extension JournalViewController {
     // 내가 쓴 일지 조회
-    private func getJournalData(align: String) {
-        self.spinner.startAnimating()
+    private func getJournalData(align: String, page: Int, limit: Int) {
         guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: GetJournalRequest(token: token, align: align)) { result in
+        self.spinner.startAnimating()
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
                 self.spinner.stopAnimating()
                 if response.code == 1000 {
+                    self.journalCount = response.journalcount
                     guard let result = response.result else { return }
                     self.journalList = result
                     self.didRetrieveData()
@@ -241,7 +273,12 @@ extension JournalViewController {
                     }
                 }
                 
-            case .cancel, .failure:
+            case .cancel(let cancel):
+                print(cancel as Any)
+                self.spinner.stopAnimating()
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+            case .failure(let error):
+                print(error?.localizedDescription as Any)
                 self.spinner.stopAnimating()
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
             }
@@ -249,22 +286,52 @@ extension JournalViewController {
         
     }
     
-    // 일지 삭제
-    private func deleteJournal(journalID: Int) {
+    // 일지 페이징 시 reload 
+    private func getMoreJournal(align: String, page: Int, limit: Int) {
         guard let token = keychain.get(Keys.token) else { return }
-        Network.request(req: DeleteJournalRequest(token: token, journalID: journalID)) { result in
+        Network.request(req: GetJournalRequest(token: token, align: align, page: page, limit: limit)) { result in
             switch result {
             case .success(let response):
-                print(response)
+                self.spinner.stopAnimating()
                 if response.code == 1000 {
-                    self.didDeleteData()
+                    guard let result = response.result else { return }
+                    if result.count > 0 {
+                        for i in 0...(result.count-1) {
+                            self.journalList.append(result[i])
+                        }
+                        self.didRetrieveMoreData()
+                    } else {
+                        print("마지막 페이지입니다. ")
+                        self.isEnd = true
+                    }
                 } else {
                     let message = response.message
                     DispatchQueue.main.async {
                         self.presentAlert(title: message)
                     }
                 }
-                
+            case .cancel, .failure:
+                self.spinner.stopAnimating()
+                self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.")
+            }
+        }
+    }
+    
+    // 일지 삭제
+    private func deleteJournal(journalID: Int, index: Int) {
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: DeleteJournalRequest(token: token, journalID: journalID)) { result in
+            switch result {
+            case .success(let response):
+                print(response)
+                if response.code == 1000 {
+                    self.didDeleteData(index: index)
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
             case .cancel(let cancelError):
                 print(cancelError as Any)
             case .failure(let error):

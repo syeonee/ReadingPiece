@@ -1,15 +1,17 @@
 import Foundation
 
-// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=1204762242
-// 유저가 읽고 있는 책 변경 API
+// API 문서 : https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4ec0#gid=270962755
+// 유저가 챌린지 중인 케이크 API
 
 final class PostUserCakeTypeRequest: Requestable {
     typealias ResponseType = PostCakeTypeResponse
     
+    private var token: String
     private var goalId: Int
     private var cake: String
     
-    init(goalId: Int, cake: String) {
+    init(token: String, goalId: Int, cake: String) {
+        self.token = token
         self.goalId = goalId
         self.cake = cake
     }
@@ -35,11 +37,11 @@ final class PostUserCakeTypeRequest: Requestable {
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["Content-Type": "application/json", "x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        return 10.0
+        return 5.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

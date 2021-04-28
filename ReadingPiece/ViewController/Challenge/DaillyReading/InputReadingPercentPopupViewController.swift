@@ -7,6 +7,7 @@
 
 import UIKit
 
+// 읽은 %를 입력받는 화면
 class InputReadingPercentPopupViewController: UIViewController {
     static var storyobardId: String = "InputReadingPercentVC"
     var readingStatusDelegate: ReadingStatusDelegate?
@@ -27,6 +28,9 @@ class InputReadingPercentPopupViewController: UIViewController {
         setupUI()
         readingStatusSlider.addTarget(self, action: #selector(sliderValueChanged(_:)), for: UIControl.Event.valueChanged)
 
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
     }
     
     @IBAction func closePopup(_ sender: UIButton) {

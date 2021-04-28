@@ -32,7 +32,7 @@ public struct ReadingBookTimeResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String
-    public let result: ReadingBookTime?
+    public let result: [ReadingBookTime]?
 }
 
 public struct ReadingBookTime: Codable {
@@ -54,7 +54,7 @@ public struct AllReadingBook: Codable {
     public let imageURL: String // 책 썸네일
     public let writer: String // 저자
     public let goalBookId: Int
-    public let reading: String // 현재 도전중 여부
+    public let reading: Int // 현재 도전중 여부
 }
 
 public struct DeleteChallengeResponse: Codable {
@@ -64,6 +64,12 @@ public struct DeleteChallengeResponse: Codable {
 }
 
 public struct PostCakeTypeResponse: Codable {
+    public let isSuccess: Bool
+    public let code: Int
+    public let message: String
+}
+
+public struct PostJournalResponse: Codable {
     public let isSuccess: Bool
     public let code: Int
     public let message: String

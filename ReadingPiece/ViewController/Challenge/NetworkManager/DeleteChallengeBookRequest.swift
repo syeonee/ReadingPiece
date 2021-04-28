@@ -6,9 +6,11 @@ import Foundation
 final class DeleteChallengeBookRequest: Requestable {
     typealias ResponseType = DeleteChallengeResponse
     
+    private var token: String
     private var goalbookId: Int
     
-    init(goalbookId: Int) {
+    init(token: String, goalbookId: Int) {
+        self.token = token
         self.goalbookId = goalbookId
     }
 
@@ -17,7 +19,7 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var endpoint: String {
-        return "challenge/book"
+        return "challenge/book/\(goalbookId)"
     }
     
     var method: Network.Method {
@@ -29,15 +31,15 @@ final class DeleteChallengeBookRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["goalbookId": self.goalbookId]
+        return defaultJSONHeader
     }
     
     var headers: [String : String]? {
-        return Constants().ACCESS_TOKEN_HEADER
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
-        return 30.0
+        return 10.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {

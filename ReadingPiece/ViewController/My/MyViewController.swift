@@ -4,7 +4,6 @@
 //
 //  Created by SYEON on 2021/02/24.
 //  [] 설정해놨던 프로필 이미지 받아오기
-
 import UIKit
 import PagingKit
 import KeychainSwift
@@ -16,13 +15,14 @@ class MyViewController: UIViewController {
     @IBOutlet weak var resolutionLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var settingButton: UIButton!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var menuViewController: PagingMenuViewController!
     var contentViewController: PagingContentViewController!
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
-    
     var userProfile: Profile?
+    var isFirstAppear: Bool = true
     
     static var contentView: (String) -> UIViewController = { (menu) in
         let sb = UIStoryboard(name: "My", bundle: nil)
@@ -47,6 +47,14 @@ class MyViewController: UIViewController {
         contentViewController.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if isFirstAppear {
+            isFirstAppear = false
+        }else{
+            setProfile()
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PagingMenuViewController {
             menuViewController = vc
@@ -60,13 +68,11 @@ class MyViewController: UIViewController {
     }
     
     func setProfile(){
-        self.showIndicator()
+        indicator.startAnimating()
         guard let token = keychain.get(Keys.token) else { return }
         Network.request(req: UserProfileRequest(token: token)) { [self] result in
-            self.dismissIndicator()
             switch result {
             case .success(let response):
-                self.dismissIndicator()
                 let result = response.code
                 if result == 1000 {
                     DispatchQueue.main.async {
@@ -74,26 +80,38 @@ class MyViewController: UIViewController {
                         if userProfile?.profileImagePath != "사진이 없습니다." {
                             let decodedData = NSData(base64Encoded: (userProfile?.profileImagePath)!, options: [])
                             if let data = decodedData {
+                                UserDefaults.standard.set(data, forKey: "profileImageData")
                                 let decodedimage = UIImage(data: data as Data)
                                 profileImageView.image = decodedimage
                             }else{
-                                profileImageView.image = UIImage(named: "selectedMY")
+                                profileImageView.image = UIImage(named: "profile_basic_photo2")
                             }
                         }else{
-                            profileImageView.image = UIImage(named: "selectedMY")
+                            UserDefaults.standard.removeObject(forKey: "profileImageData")
+                            profileImageView.image = UIImage(named: "profile_basic_photo2")
                         }
                         nameLabel.text = userProfile?.name
                         resolutionLabel.text = userProfile?.resolution
+                        if self.indicator.isAnimating {
+                            self.indicator.stopAnimating()
+                        }
                     }
                 } else {
+                    if self.indicator.isAnimating {
+                        self.indicator.stopAnimating()
+                    }
                     self.presentAlert(title: response.message, isCancelActionIncluded: false) {_ in
                     }
                 }
             case .cancel(let cancelError):
-                self.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(cancelError as Any)
             case .failure(let error):
-                self.dismissIndicator()
+                if self.indicator.isAnimating {
+                    self.indicator.stopAnimating()
+                }
                 print(error as Any)
                 self.presentAlert(title: "서버와의 연결이 원활하지 않습니다.", isCancelActionIncluded: false) {_ in
                 }

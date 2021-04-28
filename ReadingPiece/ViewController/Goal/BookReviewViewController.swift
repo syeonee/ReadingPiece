@@ -14,6 +14,7 @@ class BookReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reviewTableView.tableFooterView = UIView(frame: CGRect.zero)
         reviewTableView.delegate = self
         reviewTableView.dataSource = self
         reviewTableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: "bookReviewCell")
@@ -31,6 +32,10 @@ extension BookReviewViewController: UITableViewDelegate, UITableViewDataSource {
         // 유저 리뷰가 있을때만 1개의 리뷰를 먼저 보여주고, 없을 경우 보여주지 않음
         switch userReview.first?.contents {
         case nil:
+            //let message = "아직 평가/리뷰가 없어요. \n꾸준히 독서하고 책에 대해 평가해보세요!"
+            //reviewTableView.setEmptyView(image: UIImage(named: "recordIcon")!, message: message, buttonType: "none", actionButtonClosure: {
+            //    print("none")
+            //})
             return 0
         default:
             return userReview.count

@@ -19,11 +19,11 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var baseUrl: URL {
-        return  URL(string: "https://dev.maekuswant.shop/")!
+        return  URL(string: Constants.BASE_URL)!
     }
     
     var endpoint: String {
-        return "journals"
+        return "journals/\(journalID)"
     }
     
     var method: Network.Method {
@@ -31,20 +31,19 @@ final class DeleteJournalRequest: Requestable {
     }
     
     var query: Network.QueryType {
-        return .json
+        return .path
     }
     
     var parameters: [String : Any]? {
-        return ["journalId" : self.journalID]
+        return nil
     }
     
     var headers: [String : String]? {
-        return ["x-access-token" : self.token, "Content-Type": "application/json"]
+        return ["x-access-token": token]
     }
     
     var timeout: TimeInterval {
         return 10.0
-        //return 30.0
     }
     
     var cachePolicy: NSURLRequest.CachePolicy {
