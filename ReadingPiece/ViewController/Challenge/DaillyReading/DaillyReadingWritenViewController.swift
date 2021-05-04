@@ -24,6 +24,10 @@ class DaillyReadingWritenViewController: UIViewController {
     let cellId = ReviewImageCell.identifier
     let picker = UIImagePickerController()
     
+    var isJournalEditing: Bool = false // 일지 수정화면인지 아닌지 나타내는 flag. false로 초기화
+    // false이면 일지 생성 <-> true면 일지 수정
+    var journalID: Int? // 일지 수정 시 값 전달에 사용
+    
     var challengeInfo : ChallengerInfo?
     var readingTime : Int = 0
     var pickedImage : UIImage?
@@ -65,6 +69,13 @@ class DaillyReadingWritenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        if isJournalEditing == false { // 일지 생성인 경우
+            fetchDataForCreateJournal()
+        } else { // 일지 수정인 경우
+            fetchDataForEditJournal()
+        }
+        
         picker.delegate = self
         commentTextView.delegate = self
     }
@@ -76,14 +87,23 @@ class DaillyReadingWritenViewController: UIViewController {
 
     // 상단 완료 버튼
     @objc func postDiary(sender: UIBarButtonItem) {
-        writeJournal()
+        if isValidatePost() == true {
+            if isJournalEditing == false {
+                writeJournal() // 일지 생성 API 호출
+            } else {
+                editJournal() // 일지 수정 API 호출
+            }
+        }
     }
     
     // 하단 완료 버튼
     @IBAction func postDiary(_ sender: UIButton) {
         if isValidatePost() == true {
-            // API 호출
-            writeJournal()
+            if isJournalEditing == false {
+                writeJournal() // 일지 생성 API 호출
+            } else {
+                editJournal() // 일지 수정 API 호출
+            }
         }
     }
     
@@ -137,10 +157,44 @@ class DaillyReadingWritenViewController: UIViewController {
                     print(cancelError!)
                 case .failure(let error):
                     debugPrint("LOG", error)
-                    self.presentAlert(title: "네트워크 연결 실패 통신 상태를 확인해주세요.", isCancelActionIncluded: false)
+                    self.presentAlert(title: "네트워크 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
             }
         }
     }
+    
+    func editJournal() {
+        // 네트워크 통신 동안 작성 버튼의 중복터치를 막는 코드
+        UIApplication.shared.beginIgnoringInteractionEvents()
+
+        guard let token = keychain.get(Keys.token) else { return }
+        guard let journalID = journalID else { return }
+        let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
+        Network.request(req: PatchJournalRequest(token: token, text: commentTextView.text, open: isOpen, journalId: journalID)) { result in
+            switch result {
+            case .success(let response):
+                if response.code == 1000 {
+                    print("LOG - 일지 수정 성공 \(response.code)")
+                    NotificationCenter.default.post(name: Notification.Name("FetchJournalData"), object: nil)
+                    DispatchQueue.main.async {
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
+            case .cancel(let cancel):
+                debugPrint(cancel as Any)
+            case .failure(let error):
+                debugPrint(error as Any)
+                DispatchQueue.main.async {
+                    self.presentAlert(title: "네트워크 연결이 원활하지 않습니다.", isCancelActionIncluded: false)
+                }
+            }
+        }
+    }
+    
     // 일지 작성에 필요한 값이 스트링형태라 Bool -> String으로 변환
     func getIsOpenFromIsJson(isPublic: Bool) -> String {
         switch isPublic {
@@ -163,7 +217,6 @@ class DaillyReadingWritenViewController: UIViewController {
     @IBAction func pageSelect(_ sender: UIButton) {
         guard let inputReadingStatusVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingStatusPopupViewController.storyobardId) as? InputReadingStatusPopupViewController else { return }
         inputReadingStatusVC.readingStatusDelegate = self
-        //inputReadingStatusVC.modalTransitionStyle = .crossDissolve
         inputReadingStatusVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingStatusVC, animated: true, completion: nil)
     }
@@ -171,7 +224,6 @@ class DaillyReadingWritenViewController: UIViewController {
     @IBAction func percentSelect(_ sender: UIButton) {
         guard let inputReadingPercentVC = self.storyboard?.instantiateViewController(withIdentifier: InputReadingPercentPopupViewController.storyobardId) as? InputReadingPercentPopupViewController else { return }
         inputReadingPercentVC.readingStatusDelegate = self
-        //inputReadingPercentVC.modalTransitionStyle = .crossDissolve
         inputReadingPercentVC.modalPresentationStyle = .overCurrentContext
         self.present(inputReadingPercentVC, animated: true, completion: nil)
     }
@@ -193,19 +245,11 @@ class DaillyReadingWritenViewController: UIViewController {
     }
 
     private func setupUI() {
-        let readingTimeInt = Int.getMinutesTextByTime(readingTime)
-        let readingTimeString = "\(readingTimeInt) 분"
-        let author = challengeInfo?.readingBook.first?.writer ?? "저자 정보 로딩 실패"
-        let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
-
+        setNavBar()
         bookThumbnailImage.layer.cornerRadius = 4
         bookThumbnailImage.layer.borderWidth = 0.4
         bookThumbnailImage.layer.borderColor = UIColor.darkgrey.cgColor
-        bookAuthorLabel.text = author
-        bookTitleLabel.text = title
-        totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
-        setNavBar()
-        totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
+        
         bookInfoView.layer.addBorder([.bottom], color: .middlegrey2, width: 0.5)
         readingStatusButton.makeRoundedTagButtnon("읽는 중", titleColor: .middlegrey1, borderColor: UIColor.middlegrey1.cgColor, backgroundColor: .white)
         postDairyButton.makeRoundedButtnon("완료", titleColor: .darkgrey, borderColor: UIColor.fillDisabled.cgColor, backgroundColor: .fillDisabled)
@@ -223,11 +267,69 @@ class DaillyReadingWritenViewController: UIViewController {
         
         // 일지 이미지 첨부 기능 부활시 제거
         postImageButton.isHidden = true
+    }
+    
+    private func fetchDataForCreateJournal() {
+        let readingTimeInt = Int.getMinutesTextByTime(readingTime)
+        let readingTimeString = "\(readingTimeInt) 분"
+        let author = challengeInfo?.readingBook.first?.writer ?? "저자 정보 로딩 실패"
+        let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
+        
+        bookAuthorLabel.text = author
+        bookTitleLabel.text = title
+        totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
+        totalReadingTimeButton.setTitle("\(getMinutesTextByTime(readingTime))", for: .normal)
+        
         // 실패시 리턴 처리 해놔서, 책 이미지 적용은 가장 마지막에 실행
         guard let urlString = challengeInfo?.readingBook.first?.imageURL else { return }
         let imgUrl = URL(string: urlString)
         bookThumbnailImage.kf.setImage(with: imgUrl)
-        bookThumbnailImage.layer.cornerRadius = 4
+    }
+    
+    private func fetchDataForEditJournal() {
+        guard let token = keychain.get(Keys.token) else { return }
+        guard let id = self.journalID else { return }
+        Network.request(req: GetJournalStatusRequest(token: token, journalId: id)) { result in
+            switch result {
+            case .success(let response):
+                if response.code == 1000 {
+                    // 파싱해서 화면에 데이터 넣기 (main thread)
+                    let result = response.result[0]
+                    let readingTimeInt = result.time
+                    let readingTimeString = "\(readingTimeInt) 분"
+                    let author = result.writer
+                    let title = result.title
+                    let url = result.imageURL
+                    let imageURL = URL(string: url)
+                    
+                    let page = result.page
+                    self.readingPage = page
+                    let percent = result.percent
+                    self.readingPercent = percent
+                    let text = result.text
+                    DispatchQueue.main.async {
+                        self.bookAuthorLabel.text = author
+                        self.bookTitleLabel.text = title
+                        self.totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)
+                        self.totalReadingTimeButton.setTitle("\(self.getMinutesTextByTime(readingTimeInt))", for: .normal)
+                        self.bookThumbnailImage.kf.setImage(with: imageURL)
+                        
+                        self.readingPageInputButton.setTitle("\(page) p", for: .normal)
+                        self.readingPercentInputButton.setTitle("\(percent) %", for: .normal)
+                        self.commentTextView.text = text
+                    }
+                } else {
+                    let message = response.message
+                    DispatchQueue.main.async {
+                        self.presentAlert(title: message)
+                    }
+                }
+            case .cancel(let cancel):
+                debugPrint(cancel as Any)
+            case .failure(let error):
+                debugPrint(error?.localizedDescription as Any)
+            }
+        }
     }
     
     func getMinutesTextByTime(_ time: Int) -> String {
