@@ -200,14 +200,20 @@ extension JournalViewController: JournalEditDelegate, FullJournalEditDelegate {
     
     func showAlert(index: Int) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
+        let edit = UIAlertAction(title: "수정", style: .default) { (action) in
+            // 일지 수정 화면으로 이동
+            let writeDiaryVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "writeDiaryVC") as! DaillyReadingWritenViewController
+            writeDiaryVC.isJournalEditing = true
+            writeDiaryVC.journalID = self.journalList[index].journalID
+            self.navigationController?.pushViewController(writeDiaryVC, animated: true)
+        }
         let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         let destructive = UIAlertAction(title: "삭제", style: .destructive) { (action) in
             // 일지 삭제 api 호출
             print("일지 삭제 요청중 - journalID: \(self.journalList[index].journalID)")
             self.deleteJournal(journalID: self.journalList[index].journalID, index: index)
         }
-        
+        alert.addAction(edit)
         alert.addAction(cancel)
         alert.addAction(destructive)
         

@@ -6,7 +6,9 @@
 //
 
 import Foundation
-// 일지 삭제 api 호출 클래스
+
+// 일지 삭제 api 호출 (ML7)
+// https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4eb4#gid=771765964
 
 final class DeleteJournalRequest: Requestable {
     typealias ResponseType = DeleteJournalResponse

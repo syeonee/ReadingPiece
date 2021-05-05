@@ -1,28 +1,24 @@
 //
-//  GetJournalRequest.swift
+//  GetJournalStatusRequest.swift
 //  ReadingPiece
 //
-//  Created by 정지현 on 2021/03/23.
+//  Created by 정지현 on 2021/05/03.
 //
 
 import Foundation
 
-// 작성한 일지 조회 api 호출 (ML5)
-// https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4eb4#gid=1771622540
+// 이미 작성한 일지 내용 조회 api 호출 (ML9)
+// https://docs.google.com/spreadsheets/d/1nY5_ryn5OeViz3lUqXVRPNYvNR4hLHJx4nahqUGKcRo/edit?ts=605c4eb4#gid=1377453979
 
-final class GetJournalRequest: Requestable {
-    typealias ResponseType = GetJournalResponse
+final class GetJournalStatusRequest: Requestable {
+    typealias ResponseType = GetJournalStatusResponse
     
     private var token: String
-    private var align: String
-    private var page: Int
-    private var limit: Int
+    private var journalId: Int
     
-    init(token: String, align: String, page: Int, limit: Int) {
+    init(token: String, journalId: Int) {
         self.token = token
-        self.align = align
-        self.page = page
-        self.limit = limit
+        self.journalId = journalId
     }
     
     var baseUrl: URL {
@@ -30,7 +26,7 @@ final class GetJournalRequest: Requestable {
     }
     
     var endpoint: String {
-        return "journals"
+        return "journals/\(self.journalId)"
     }
     
     var method: Network.Method {
@@ -42,7 +38,7 @@ final class GetJournalRequest: Requestable {
     }
     
     var parameters: [String : Any]? {
-        return ["align": align, "page": page, "limit": limit] 
+        return nil
     }
     
     var headers: [String : String]? {
