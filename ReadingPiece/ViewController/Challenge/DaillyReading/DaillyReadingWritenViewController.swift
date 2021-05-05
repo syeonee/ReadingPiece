@@ -74,6 +74,9 @@ class DaillyReadingWritenViewController: UIViewController {
             fetchDataForCreateJournal()
         } else { // 일지 수정인 경우
             fetchDataForEditJournal()
+            readingPageInputButton.isEnabled = false
+            readingPercentInputButton.isEnabled = false
+            
         }
         
         picker.delegate = self
@@ -109,7 +112,7 @@ class DaillyReadingWritenViewController: UIViewController {
     
     func writeJournal() {
         // 네트워크 통신 동안 작성 버튼의 중복터치를 막는 코드
-        UIApplication.shared.beginIgnoringInteractionEvents()
+        //UIApplication.shared.beginIgnoringInteractionEvents()
 
         guard let token = keychain.get(Keys.token) else { return }
         let isOpen = getIsOpenFromIsJson(isPublic: isPublic ?? true)
@@ -151,7 +154,7 @@ class DaillyReadingWritenViewController: UIViewController {
                         self.presentAlert(title: "일지 작성에 실패하였습니다. 입력 정보를 다시 확인해주세요.", isCancelActionIncluded: false)
                         
                     // 버튼 작성 잠금 해제
-                    UIApplication.shared.endIgnoringInteractionEvents()
+                    //UIApplication.shared.endIgnoringInteractionEvents()
                     }
                 case .cancel(let cancelError):
                     print(cancelError!)
@@ -163,8 +166,6 @@ class DaillyReadingWritenViewController: UIViewController {
     }
     
     func editJournal() {
-        // 네트워크 통신 동안 작성 버튼의 중복터치를 막는 코드
-        UIApplication.shared.beginIgnoringInteractionEvents()
 
         guard let token = keychain.get(Keys.token) else { return }
         guard let journalID = journalID else { return }
