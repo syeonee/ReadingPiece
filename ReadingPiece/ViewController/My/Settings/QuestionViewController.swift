@@ -7,10 +7,14 @@
 
 import UIKit
 import WebKit
+import KeychainSwift
 
 class QuestionViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
     @IBOutlet weak var webview: WKWebView!
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var questionUriInfo: UriInfo!
     
     override func loadView() {
         super.loadView()
@@ -22,15 +26,38 @@ class QuestionViewController: UIViewController, WKNavigationDelegate, WKUIDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .darkgrey
-        let url = URL(string: "https://docs.google.com/forms/d/e/1FAIpQLSeKI2msAMe0hNXxNrCOWHlCBMhdAlMj4xJ4CwpDrVwP2zDB6Q/viewform?usp=sf_link")
-        let request = URLRequest(url: url!)
-        webview?.allowsBackForwardNavigationGestures = true
-        webview.configuration.preferences.javaScriptEnabled = true
-        webview.load(request)
+        getQuestionURL()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getQuestionURL(){
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PageURLRequest(token: token, uriId: 2)) { [self] result in
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    DispatchQueue.main.async {
+                        questionUriInfo = response.uriInfo[0]
+                        let url = URL(string: questionUriInfo.uri)
+                        let request = URLRequest(url: url!)
+                        webview?.allowsBackForwardNavigationGestures = true
+                        webview.configuration.preferences.javaScriptEnabled = true
+                        webview.load(request)
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+            }
+        }
     }
     
     //alert 처리

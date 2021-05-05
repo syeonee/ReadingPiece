@@ -7,10 +7,14 @@
 
 import UIKit
 import WebKit
+import KeychainSwift
 
 class NoticeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
-
+    
     @IBOutlet weak var webView: WKWebView!
+    
+    let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var noticeUriInfo: UriInfo!
     
     override func loadView() {
         super.loadView()
@@ -22,15 +26,38 @@ class NoticeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .darkgrey
-        let url = URL(string: "https://www.notion.so/4f2b442938fa4fb0a975804f8ed56a6e")
-        let request = URLRequest(url: url!)
-        webView?.allowsBackForwardNavigationGestures = true
-        webView.configuration.preferences.javaScriptEnabled = true
-        webView.load(request)
+        getNoticeURL()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getNoticeURL(){
+        guard let token = keychain.get(Keys.token) else { return }
+        Network.request(req: PageURLRequest(token: token, uriId: 1)) { [self] result in
+            switch result {
+            case .success(let response):
+                self.dismissIndicator()
+                let result = response.code
+                if result == 1000 {
+                    DispatchQueue.main.async {
+                        noticeUriInfo = response.uriInfo[0]
+                        let url = URL(string: noticeUriInfo.uri)
+                        let request = URLRequest(url: url!)
+                        webView?.allowsBackForwardNavigationGestures = true
+                        webView.configuration.preferences.javaScriptEnabled = true
+                        webView.load(request)
+                    }
+                }
+            case .cancel(let cancelError):
+                self.dismissIndicator()
+                print(cancelError as Any)
+            case .failure(let error):
+                self.dismissIndicator()
+                print(error as Any)
+            }
+        }
     }
     
     //alert 처리
@@ -52,5 +79,5 @@ class NoticeViewController: UIViewController, WKUIDelegate, WKNavigationDelegate
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil { webView.load(navigationAction.request) }
         return nil }
-
+    
 }

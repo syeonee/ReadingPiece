@@ -187,6 +187,8 @@
 		D6A7D3E62606075D0098EA03 /* MyPieceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */; };
 		D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */; };
 		D6AC741225FF4EDE0072F2F5 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */; };
+		D6B81E6226430214001119E3 /* PageURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B81E6126430214001119E3 /* PageURLRequest.swift */; };
+		D6B81E65264304FC001119E3 /* PageURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B81E64264304FC001119E3 /* PageURLResponse.swift */; };
 		D6BEFD322611D80900866D45 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD312611D80900866D45 /* Feed.swift */; };
 		D6BEFD372611D82B00866D45 /* FeedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD362611D82B00866D45 /* FeedRequest.swift */; };
 		D6BEFD3B2611D83A00866D45 /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6BEFD3A2611D83A00866D45 /* FeedResponse.swift */; };
@@ -397,6 +399,8 @@
 		D6A7D3E52606075D0098EA03 /* MyPieceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPieceViewController.swift; sourceTree = "<group>"; };
 		D6A7D3E8260607720098EA03 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		D6AC741125FF4EDE0072F2F5 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		D6B81E6126430214001119E3 /* PageURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageURLRequest.swift; sourceTree = "<group>"; };
+		D6B81E64264304FC001119E3 /* PageURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageURLResponse.swift; sourceTree = "<group>"; };
 		D6BEFD312611D80900866D45 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		D6BEFD362611D82B00866D45 /* FeedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRequest.swift; sourceTree = "<group>"; };
 		D6BEFD3A2611D83A00866D45 /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
@@ -900,6 +904,8 @@
 				D6BEFD452611D8DF00866D45 /* UserStatisticsResponse.swift */,
 				D6BEFD482611D8EE00866D45 /* UserGraphRequest.swift */,
 				D6BEFD4B2611D8FB00866D45 /* UserGraphResponse.swift */,
+				D6B81E6126430214001119E3 /* PageURLRequest.swift */,
+				D6B81E64264304FC001119E3 /* PageURLResponse.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -1236,6 +1242,7 @@
 				59F4F22C25F5C0AB00E82417 /* Review.swift in Sources */,
 				D6A7D3E9260607720098EA03 /* StatisticsViewController.swift in Sources */,
 				0026127925FB2501000B40D1 /* CALayer.swift in Sources */,
+				D6B81E65264304FC001119E3 /* PageURLResponse.swift in Sources */,
 				D66CE6E8260A396E003BB131 /* Profile.swift in Sources */,
 				D67C659525E5BEB700F15290 /* LibraryNavViewController.swift in Sources */,
 				00FF3779260A67EC00529570 /* GetUserBookReviewRequest.swift in Sources */,
@@ -1258,6 +1265,7 @@
 				599D3AA725F090B40085F134 /* JournalViewController.swift in Sources */,
 				596D4D73260A1F3800E137F3 /* JournalReponse.swift in Sources */,
 				00838FDC25F3659700340AE0 /* DaillyReadingWritenViewController.swift in Sources */,
+				D6B81E6226430214001119E3 /* PageURLRequest.swift in Sources */,
 				D66CE6D92609C6A1003BB131 /* PasswordChangeViewController.swift in Sources */,
 				59A967D42603484C000EE89F /* JoinViewController.swift in Sources */,
 				D649DDAE25E67BD500C6CD5B /* GoalNavViewController.swift in Sources */,
