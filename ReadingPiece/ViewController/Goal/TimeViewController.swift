@@ -31,6 +31,7 @@ class TimeViewController: UIViewController {
         createDatePicker()
         print("LOG - 신규유저 여부 \(goal?.isNewUser)")
     }
+    // initializer 기준으로, 목표시간만 변경하는 경우 : navbar 타이틀, 버튼, [다음 버튼] 텍스트 & 액션 변경 필요
     
     // 화면 상단 - 다음 버튼과 연결된 액션
     @IBAction func NetxToAddBookAction(_ sender: UIBarButtonItem) {

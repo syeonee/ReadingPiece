@@ -95,14 +95,22 @@ class ViewController: UIViewController {
         let bookSettingVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "bookSettingVC") as! BookSettingViewController
         self.navigationController?.pushViewController(bookSettingVC, animated: true)
     }
-    
+        
     private func setupUI() {
         setupCollectionView()
         makeDaillyReadingViewShadow()
         userReadingGoalLabel.font = .NotoSans(.medium, size: 24)
+        targetTimeLabel.isUserInteractionEnabled = true
+        let modifiyTargetTimeGesture = UITapGestureRecognizer(target: self, action: #selector(modifiyTargetTimeAction(_:)))
+        targetTimeLabel.addGestureRecognizer(modifiyTargetTimeGesture)
     }
     
-    
+    @objc func modifiyTargetTimeAction(_ sender: UITapGestureRecognizer) {
+        print("LOG - 목표시간 변경")
+        guard let modifyReadingTimeVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "TimeViewController") as? TimeViewController else { return}
+        self.navigationController?.pushViewController(modifyReadingTimeVC, animated: true)
+    }
+
     func makeDaillyReadingViewShadow() {
         dailyReadingView.layer.shadowRadius = 5
         dailyReadingView.layer.shadowColor = UIColor.black.cgColor
@@ -210,7 +218,7 @@ class ViewController: UIViewController {
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
             challengeImageView.image = UIImage(named: "\(cakeName)\(percent.imageNameByChallengePercent)")
-            dDayLabel.text = "\(dDay)일 남음)"
+            dDayLabel.text = "\(dDay)일 남음"
         }
     }
     
