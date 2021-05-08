@@ -62,7 +62,6 @@ class DaillyDiaryWrittenCompletionViewController: UIViewController {
                         self.todayReadingStatus = userResponse.getcontinuity2Rows?.first
                         print("LOG - readingContinuity: \(String(describing: self.readingContinuity))")
                         print("LOG - todayReadingStatus: \(String(describing: self.todayReadingStatus))")
-                        // 챌린지 달성시, 축하 애니메이션 보여주는 화면으로 이동 (추후 구현)
                     default:
                         print("LOG 일일 독서정보 조회 실패 \(userResponse.code), \(userResponse.message)")
                         self.presentAlert(title: "일일 독서 정보 조회 실패", isCancelActionIncluded: false)

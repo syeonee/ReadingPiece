@@ -463,11 +463,11 @@
 		00838FCC25F362CD00340AE0 /* Challenge */ = {
 			isa = PBXGroup;
 			children = (
+				0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */,
 				00D8633525FF8AB300E9EFF9 /* Timer */,
 				00D8633625FF8ADD00E9EFF9 /* DaillyReading */,
 				00FF3756260A286800529570 /* NetworkManager */,
 				00FF3755260A286200529570 /* Entity */,
-				0026128125FB2585000B40D1 /* ChallengeCompletionViewController.swift */,
 				00FF379B260C613200529570 /* RestartChallengeViewController.swift */,
 				00FF379E260C615F00529570 /* BookSettingViewController.swift */,
 				009250082602588B00A930DD /* FireCrackerScene.swift */,

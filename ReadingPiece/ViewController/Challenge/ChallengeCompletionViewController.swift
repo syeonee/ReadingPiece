@@ -23,7 +23,7 @@ class ChallengeCompletionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        postNewUserCakeType()
+//        postNewUserCakeType()
     }
     
     private func setupUI() {
@@ -34,6 +34,7 @@ class ChallengeCompletionViewController: UIViewController {
         challengeCakeNameLabel.textColor = .darkgrey
     }
     
+    // [이전 케이크와 비교하여 교체, 모든 케이크 전부 할당] 예외사항 처리 필요
     func postNewUserCakeType() {
         guard let token = keychain.get(Keys.token) else { return }
         // 유저디폴트에 있는 goalId, 케이크 이름을 받아오도록 추후 변경 필요

@@ -145,6 +145,12 @@ class ViewController: UIViewController {
                 if self.challengeInfo?.isExpired == true {
                     self.showRestartChallengePopup()
                 // 목표 재시작이 필요한 경우를 제외한, 일반적인 상황
+                } else if self.challengeInfo?.readingBook.first?.isComplete == 1 {
+                    print("LOG 목표를 달성한 경우")
+                    guard let challengeCompletionVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "challengeCompletionVC") as? ChallengeCompletionViewController else { return }
+                    self.navigationController?.pushViewController(challengeCompletionVC, animated: true)
+//                    challengeCompletionVC.modalPresentationStyle = .overCurrentContext
+//                    self.present(challengeCompletionVC, animated: true, completion: nil)
                 } else {
                     print("LOG 정상적으로 VC 초기화")
                     self.initVC()
