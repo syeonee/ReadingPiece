@@ -143,12 +143,8 @@ class ViewController: UIViewController {
                 self.challengeInfo = challengeData
                 // 챌린지 정보 조회 결과, 참여 기간이 만료된 경우
                 if self.challengeInfo?.isExpired == true {
-                    print("LOG 챌린지 정보 조회 결과, 참여 기간이 만료된 경우")
                     self.showRestartChallengePopup()
                 // 목표 재시작이 필요한 경우를 제외한, 일반적인 상황
-                } else if self.challengeInfo?.readingBook.first?.isComplete == 1 {
-                    print("LOG 목표 재시작이 필요한 경우를 제외한 일반적인 상황")
-                    self.showRestartChallengePopup()
                 } else {
                     print("LOG 정상적으로 VC 초기화")
                     self.initVC()
@@ -196,6 +192,7 @@ class ViewController: UIViewController {
             let readBookAmount = challenge.totalReadBook ?? 0
             let dDay = challenge.dDay ?? 0 // 챌린지 남은 기간
             let percent = goal.percent ?? 0 // 챌린지 달성도
+            let cakeName = challenge.cake ?? "cream"
             let cgFloatPercent = CGFloat(percent) * 0.01
 
             print("LOG - 일지 작성 개수",challenge.totalJournal as Any, challenge.amount as Any)
@@ -206,8 +203,8 @@ class ViewController: UIViewController {
             targetReadingBookCountLabel.text = "\(targetBookAmount)"
             targetTimeLabel.text = "목표 \(targetTime)분"
             currentReadingBookCountLabel.text = "\(readBookAmount)권 / "
-            challengeImageView.image = UIImage(named: "\(Cake.Types.chocoCake)\(percent.imageNameByChallengePercent)")
-            dDayLabel.text = "\(dDay)일 남음"
+            challengeImageView.image = UIImage(named: "\(cakeName)\(percent.imageNameByChallengePercent)")
+            dDayLabel.text = "\(dDay)일 남음)"
         }
     }
     
@@ -365,6 +362,7 @@ extension ViewController {
 
     private func getChallengeFromJson(json: JSON) -> Challenge {
         let totalJournal = json["sumJournal"].intValue
+        let cake = json["cake"].stringValue
         let todayReadingTime = json["todayTime"].string
         let amount = json["amount"].intValue
         let time = json["time"].intValue
@@ -376,7 +374,7 @@ extension ViewController {
         let dDay = json["Dday"].intValue
         let challengeId = json["challengeId"].intValue
 
-        let challenge = Challenge(totalJournal: totalJournal, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
+        let challenge = Challenge(totalJournal: totalJournal, cake: cake, todayTime: todayReadingTime, amount: amount, time: time, period: period, userId: userId,
                                   totalReadBook: totalReadingBook, name: name, expriodAt: expriodAt, dDay: dDay, challengeId: challengeId)
 
         return challenge
