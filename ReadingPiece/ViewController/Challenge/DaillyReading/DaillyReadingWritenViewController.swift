@@ -30,7 +30,7 @@ class DaillyReadingWritenViewController: UIViewController {
     
     var challengeInfo : ChallengerInfo?
     var readingTime : Int = 0
-    var pickedImage : UIImage?
+    var pickedImage : Data?
     var readingPercent: Int = 0
     var readingPage: Int = 0
     var isPublic: Bool? {
@@ -267,7 +267,7 @@ class DaillyReadingWritenViewController: UIViewController {
         commentLengthLabel.textColor = .darkgrey
         
         // 일지 이미지 첨부 기능 부활시 제거
-        postImageButton.isHidden = true
+        //postImageButton.isHidden = true
     }
     
     private func fetchDataForCreateJournal() {
@@ -430,15 +430,22 @@ extension DaillyReadingWritenViewController : UIImagePickerControllerDelegate, U
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
             setSelectedImage(image)
          }
-        dismiss(animated: true, completion: nil)
+        
+        dismiss(animated: true) {
+            let nextVC = JournalLineDrawingViewController()
+            if let imageData = self.pickedImage {
+                nextVC.image = UIImage(data: imageData)
+            }
+            self.navigationController?.pushViewController(nextVC, animated: true)
+        }
      }
     
     func setSelectedImage(_ img: UIImage) {
+        print("LOG - setSelectedImage() called")
         DispatchQueue.main.async {
             self.reviewImageHeight.constant = 75
-            self.pickedImage = img
-//            let resizedImage = self.pickedImage?.imageResized(to: CGSize(width: 100, height: 100)).jpegData(compressionQuality: 0.1)
-//            print("LOG - Image String", imgBase64String)
+            let resizedImage = img.aspectFittedToWidth(self.view.frame.width).jpegData(compressionQuality: 0.5)
+            self.pickedImage = resizedImage
             self.reviewImagePopButton.isHidden = false
             self.reviewImageView.image = img
         }
