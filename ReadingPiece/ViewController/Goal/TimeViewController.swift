@@ -11,10 +11,10 @@ import KeychainSwift
 class TimeViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
-    // Term VC에서 옵셔널 검사를 하고, 값을 넘겨줄 것 이기 때문에 편의상 논-옵셔널 변수로 생성
     var time: Int = 0
     var period: String = ""
     var amount: Int = 0
+    var goalid: Int = 0
     var goal: ClientGoal?
 
     @IBOutlet weak var readingTimeLabel: UILabel!
@@ -28,8 +28,7 @@ class TimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createDatePicker()
-        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
+        setupUI()
     }
     // initializer 기준으로, 목표시간만 변경하는 경우 : navbar 타이틀, 버튼, [다음 버튼] 텍스트 & 액션 변경 필요
     
@@ -53,7 +52,7 @@ class TimeViewController: UIViewController {
     // 화면 하단 - 완료 버튼과 연결된 액션
     @IBAction func addGoalAction(_ sender: UIButton) {
         // 신규 유저 : 책 추가 화면까지 이동
-        if goal?.isNewUser == true && goal?.time != nil {
+        if goal?.isNewUser != false {
             guard let searchVC = UIStoryboard(name: "Goal", bundle: nil).instantiateViewController(withIdentifier: "searchBookViewController") as? SearchBookViewController else { return }
             searchVC.goal = self.goal
             self.navigationController?.pushViewController(searchVC, animated: true)
@@ -73,23 +72,35 @@ class TimeViewController: UIViewController {
                                     매일  \(minute) 분
                                     책을 읽을 거에요
                                 """
-        addGoalButton.setImage(UIImage(named: "selectedNext"), for: .normal)
         self.view.endEditing(true)
+
+        if goal?.isNewUser == false {
+            addGoalButton.setImage(UIImage(named: "completeButton"), for: .normal)
+        } else {
+            addGoalButton.setImage(UIImage(named: "selectedNext"), for: .normal)
+        }
+
     }
     
     @IBAction func timeSelectButtonTapped(_ sender: Any) {
         timeTextField.becomeFirstResponder()
     }
+    
+    @objc func popViewController(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
       
     func patchUserReadingGoal() {
         guard let token = keychain.get(Keys.token) else { return }
         let goalId = usderDefaults.integer(forKey: Constants.USERDEFAULT_KEY_GOAL_ID)
-        let req = PatchReadingGoalRequest(Goal(period: period, amount: amount, time: time), goalId: goalId, token: token)
+        let req = PatchReadingTimeRequest(time, goalId: goalid, token: token)
                                 
         _ = Network.request(req: req) { (result) in
                 
                 switch result {
                 case .success(let userResponse):
+                    print(userResponse)
                     switch userResponse.code {
                     case 1000:
                         print("LOG - 목표변경 완료", self.amount, self.period, self.time, userResponse.message)
@@ -112,6 +123,25 @@ class TimeViewController: UIViewController {
         period = readingPeriod
         amount = readingAmount
     }
+    
+    func setupUI() {
+        print("LOG - 신규유저 여부 \(goal?.isNewUser)")
+        createDatePicker()
+        if goal?.isNewUser == false {
+            self.navigationItem.title = "매일 독서 시간"
+            addGoalButton.setImage(UIImage(named: "completeButton"), for: .normal)
+            setNavBar()
+        }
+    }
+    
+    private func setNavBar() {
+        let rightButton = UIBarButtonItem(image: UIImage(named: "XButton"), style: .plain, target: self, action: #selector(popViewController(sender:)))
+        navigationItem.hidesBackButton = true
+        self.navigationItem.rightBarButtonItem = rightButton
+        self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
+        self.navigationController?.navigationBar.tintColor = .darkgrey
+    }
+
         
     func createDatePicker() {
         minuteLabel.isHidden = true

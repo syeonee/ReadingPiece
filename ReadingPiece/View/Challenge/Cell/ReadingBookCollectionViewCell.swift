@@ -71,7 +71,7 @@ class ReadingBookCollectionViewCell: UICollectionViewCell {
         percentBackgroundView.layer.cornerRadius = 5
         timeBackgroundView.layer.cornerRadius = 5
         bookThumbnail.layer.cornerRadius = 4
-        bookThumbnail.layer.borderWidth = 0.4
+        bookThumbnail.layer.borderWidth = 0.5
         bookThumbnail.layer.borderColor = UIColor.darkgrey.cgColor
 
     }

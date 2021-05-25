@@ -198,8 +198,9 @@ class DaillyReadingWritenViewController: UIViewController {
         let title = challengeInfo?.readingBook.first?.title ?? "제목 정보 로딩 실패"
 
         bookThumbnailImage.layer.cornerRadius = 4
-        bookThumbnailImage.layer.borderWidth = 0.4
+        bookThumbnailImage.layer.borderWidth = 0.5
         bookThumbnailImage.layer.borderColor = UIColor.darkgrey.cgColor
+        
         bookAuthorLabel.text = author
         bookTitleLabel.text = title
         totalReadingTimeButton.makeRoundedTagButtnon(" \(readingTimeString)", titleColor: .middlegrey1, borderColor: UIColor.lightgrey1.cgColor, backgroundColor: .lightgrey1)

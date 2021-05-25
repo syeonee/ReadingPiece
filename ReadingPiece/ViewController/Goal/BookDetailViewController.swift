@@ -85,6 +85,7 @@ class BookDetailViewController: UIViewController {
     @IBAction func addBook(_ sender: Any) {
         // initializer가 0이면 목표 설정에서 호출, 책추가 버튼 누르면 메인 탭 바 컨트롤러로 이동
         // initializer가 1이면 내서재 리뷰쓰기 화면에서 호출, 책추가 버튼 누르면 리뷰 작성 화면으로 이동
+        // initializer가 2이면 책 관리 화면에서 호출, 책추가 버튼 누르면 책 관리 화면으로 이동
         if let initNumber = self.initializer  {
             if initNumber == 0  && isVaildBook == true {
                 // 신규유저 : 목표 자체가 설정된게 없으므로, 목표 추가 -> 책 추가 -> 메인으로 이동
@@ -155,9 +156,9 @@ class BookDetailViewController: UIViewController {
                 case .success(let userResponse):
                     switch userResponse.code {
                     case 1000:
-                        print("LOG - 리뷰 \(userResponse.totalReadingUser)개 조회 완료")
-                        if let userReview = userResponse.userBookReview, let totalReader = userResponse.totalReadingUser?.first?.currentRead {
-                            self.setTableViewDataSource(review: userReview, totalReader: totalReader)
+                        print("LOG - 리뷰 \(userResponse.userBookReview?.first?.reviewSum)개 조회 완료")
+                        if let userReview = userResponse.userBookReview {
+                            self.setTableViewDataSource(review: userReview, totalReader: userReview.first?.reviewSum ?? 1)
                         }
                     default:
                         print("LOG 리뷰 정보 조회 실패 \(userResponse.code)")

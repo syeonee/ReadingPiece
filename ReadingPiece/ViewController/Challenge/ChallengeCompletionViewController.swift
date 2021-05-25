@@ -12,6 +12,7 @@ import SpriteKit
 class ChallengeCompletionViewController: UIViewController {
     
     let keychain = KeychainSwift(keyPrefix: Keys.keyPrefix)
+    var sharedImage : UIImage?
 
     @IBOutlet weak var challengeRewardView: UIView!
     @IBOutlet weak var challengeRewardImage: UIImageView!
@@ -24,6 +25,10 @@ class ChallengeCompletionViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
 //        postNewUserCakeType()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     private func setupUI() {
@@ -64,7 +69,9 @@ class ChallengeCompletionViewController: UIViewController {
     }
     
     private func setNavBar() {
+        let leftButton = UIBarButtonItem(image: UIImage(named: "XButton"), style: .plain, target: self, action: #selector(backToMainVC(sender:)))
         let rightButton = UIBarButtonItem(image: UIImage(named: "shareIconLine"), style: .plain, target: self, action: #selector(shareDaillyReadingResult(sender:)))
+        self.navigationItem.leftBarButtonItem = leftButton
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.rightBarButtonItem?.tintColor = .darkgrey
         self.navigationController?.navigationBar.tintColor = .darkgrey
@@ -74,10 +81,13 @@ class ChallengeCompletionViewController: UIViewController {
         shareResult()
     }
 
+    @objc func backToMainVC(sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    // 계속하기 버튼 : 메인 화면으로 이동
     @IBAction func continueReading(_ sender: UIButton) {
-        //        챌린지 달성 시점에 해당 책에대한 리뷰 작성 화면으로 이동, 추후 구현
-        //        let writeReviewVC = UIStoryboard(name: "Library", bundle: nil).instantiateViewController(withIdentifier: "writeReviewVC") as! ReviewWrittenViewController
-        //        self.navigationController?.pushViewController(writeReviewVC, animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func shareResult() {
@@ -86,7 +96,6 @@ class ChallengeCompletionViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
-
         self.present(activityViewController, animated: true, completion: nil)
     }
         
